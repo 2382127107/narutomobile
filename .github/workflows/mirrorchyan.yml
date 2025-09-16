@@ -16,7 +16,7 @@ jobs:
         uses: MirrorChyan/uploading-action@v1
         with:
           filetype: latest-release
-          filename: "MaaNM-${{ matrix.os }}-${{ matrix.arch }}-*.zip"
+          filename: "MaaAutoNaruto-${{ matrix.os }}-${{ matrix.arch }}-*.zip"
           mirrorchyan_rid: MaaAutoNaruto
 
           owner: duorua
@@ -33,7 +33,7 @@ jobs:
         uses: MirrorChyan/uploading-action@v1
         with:
           filetype: latest-release
-          filename: "MaaNM-win-x86_64-*.zip"
+          filename: "MaaAutoNaruto-win-x86_64-*.zip"
           pick_files: '["resource", "interface.json"]'
           exclude_files: '["resource/model/ocr/**"]'
           mirrorchyan_rid: MaaAutoNaruto

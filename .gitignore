@@ -463,3 +463,4 @@ install/debug/maa.log
 /install/debug
 /.nicegui
 /debug
+.nicegui/storage-general.json
