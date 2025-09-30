@@ -51,6 +51,8 @@
 
 本项目的前端使用了 **[MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)** 。
 
+本项目在开发过程中，修改或借鉴了来自 **[M9A](https://github.com/MAA1999/M9A)** 的代码以及文档。
+
 感谢以下开发者对本项目作出的贡献:
 
 [![Contributors](https://contrib.rocks/image?repo=duorua/narutomobile)](https://github.com/duorua/narutomobile/graphs/contributors)
