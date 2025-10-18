@@ -1,26 +1,39 @@
 {
     "start_up": {
+        "action": "StartApp",
+        "package": "com.tencent.KiHan",
         "next": [
             "start_naruto"
         ],
-        "focus": "[color:DeepSkyBlue]进入启动游戏子任务[/color]"
+        "focus": "[color:DeepSkyBlue]火影忍者，启动！[/color]"
     },
     "start_naruto": {
-        "action": "StartApp",
-        "package": "com.tencent.KiHan",
+        "next": [
+            "check_main_screen_and_stop"
+        ],
+        "interrupt": [
+            "before_game",
+            "close_before_game_notice",
+            "close_teenager_page"
+        ]
+    },
+    "before_game": {
+        "recognition": "TemplateMatch",
+        "template": "Startgame/naruto_logo.png",
+        "recommended roi": [
+            6,
+            0,
+            348,
+            218
+        ],
         "next": [
             "check_start_game"
         ],
         "interrupt": [
-            "agree_log_in",
-            "close_teenager_page",
-            "close_before_game_notice",
-            "unagreement",
             "agreement",
-            "click_icon",
-            "wait_5_second"
-        ],
-        "focus": "[color:DeepSkyBlue]启动游戏[/color]"
+            "unagreement",
+            "agree_log_in"
+        ]
     },
     "close_teenager_page": {
         "recognition": "TemplateMatch",
@@ -32,16 +45,6 @@
             50
         ],
         "action": "Click",
-        "next": [
-            "check_start_game"
-        ],
-        "interrupt": [
-            "agree_log_in",
-            "close_before_game_notice",
-            "unagreement",
-            "agreement",
-            "click_icon"
-        ],
         "pre_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]尝试关闭青少年界面[/color]"
     },
@@ -75,35 +78,8 @@
         ],
         "action": "Click",
         "inverse": true,
-        "next": [
-            "check_start_game"
-        ],
-        "interrupt": [
-            "agree_log_in",
-            "close_teenager_page",
-            "unagreement",
-            "agreement",
-            "click_icon"
-        ],
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]检查是否关闭游戏前公告[/color]"
-    },
-    "click_icon": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/icon.png",
-        "action": "Click",
-        "next": [
-            "check_start_game"
-        ],
-        "threshold": 0.85,
-        "interrupt": [
-            "agree_log_in",
-            "unagreement",
-            "agreement",
-            "click_icon",
-            "wait_5_second"
-        ],
-        "focus": "[color:DeepSkyBlue]点击游戏图标[/color]"
     },
     "check_start_game": {
         "recognition": "TemplateMatch",
@@ -158,7 +134,6 @@
         ],
         "action": "Click",
         "next": "agree_log_in",
-        "interrupt": "check_start_game",
         "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]安卓qq账号[/color]"
     },
@@ -186,24 +161,7 @@
             34
         ],
         "action": "Click",
-        "next": [
-            "check_start_game"
-        ],
-        "interrupt": [
-            "close_before_game_notice",
-            "agreement",
-            "restart_naruto",
-            "click_icon"
-        ],
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
-    },
-    "restart_naruto": {
-        "action": "StopApp",
-        "package": "com.tencent.KiHan",
-        "next": [
-            "click_icon"
-        ],
-        "focus": "[color:DeepSkyBlue]重启游戏[/color]"
     }
 }
