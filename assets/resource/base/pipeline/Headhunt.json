@@ -42,8 +42,7 @@
         "threshold": 0.97,
         "action": "Click",
         "next": [
-            "confrim_free_headhunt",
-            "click_x_single"
+            "confrim_free_headhunt"
         ],
         "interrupt": [
             "headhunt_recruit_undone",

@@ -80,7 +80,9 @@
         "interrupt": [
             "ninjia_book_share_to_qq"
         ],
-        "post_wait_freezes": 500
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 400,
+        "post_delay": 1000
     },
     "click_ninjia_book_share_x_single": {
         "recognition": "TemplateMatch",

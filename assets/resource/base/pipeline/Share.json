@@ -170,6 +170,20 @@
         "action": "StopApp",
         "package": "com.tencent.mobileqq",
         "next": [
+            "close_share_top_bar"
+        ],
+        "focus": "[color:DeepSkyBlue]关闭QQ[/color]"
+    },
+    "close_share_top_bar": {
+        "recognition": "DirectHit",
+        "target": [
+            1067,
+            0,
+            213,
+            143
+        ],
+        "action": "Click",
+        "next": [
             "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]关闭QQ[/color]"
