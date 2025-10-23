@@ -157,7 +157,7 @@
             "team_dash_group_help_undone"
         ],
         "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]组织助战已完成[/color]"
+        "focus": "[color:DeepSkyBlue]选择组织助战[/color]"
     },
     "team_dash_my_help_done": {
         "recognition": "TemplateMatch",
@@ -170,7 +170,7 @@
         ],
         "threshold": 0.7,
         "next": [
-            "team_dash_invite"
+            "team_dash_invite_page"
         ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]我的助战已完成[/color]"
@@ -222,12 +222,33 @@
         ],
         "action": "Click",
         "next": [
-            "team_dash_invite"
+            "team_dash_invite_page"
         ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭我的助战[/color]"
     },
-    "team_dash_invite": {
+    "team_dash_invite_page": {
+        "recognition": "TemplateMatch",
+        "template": "Team_dash/team_dash_group.png",
+        "recommended roi": [
+            0,
+            50,
+            200,
+            146
+        ],
+        "next": [
+            "team_dash_invite_ninjia"
+        ],
+        "interrupt": [
+            "can_not_invite"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            "team_dash_auto_fight"
+        ],
+        "focus": "[color:DeepSkyBlue]进入助战邀请界面[/color]"
+    },
+    "team_dash_invite_ninjia": {
         "recognition": "TemplateMatch",
         "template": "Team_dash/team_dash_invite.png",
         "roi": [
@@ -244,6 +265,28 @@
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]邀请组织助战忍者[/color]"
+    },
+    "can_not_invite": {
+        "recognition": "OCR",
+        "action": "Swipe",
+        "begin": [
+            261,
+            476,
+            1,
+            1
+        ],
+        "end": [
+            261,
+            308,
+            1,
+            1
+        ],
+        "expected": [
+            "今日",
+            "已达"
+        ],
+        "threshold": 0.5,
+        "focus": "[color:darkgray]当前页面没有可邀请的助战忍者[/color]"
     },
     "team_dash_remin_2": {
         "recognition": "OCR",
@@ -449,7 +492,7 @@
         ],
         "action": "Click",
         "next": [
-            "team_dash_invite"
+            "team_dash_invite_page"
         ],
         "post_delay": 200,
         "focus": "[color:DeepSkyBlue]进入组织助战[/color]"
