@@ -151,39 +151,5 @@
             "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]点击开始游戏[/color]"
-    },
-    "check_main_screen_and_stop": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Startgame/main_green_masked.png"
-        ],
-        "roi": [
-            11,
-            0,
-            1269,
-            720
-        ],
-        "threshold": 0.95,
-        "action": "StopTask",
-        "green_mask": true,
-        "post_delay": 500,
-        "focus": "[color:tomato]当前任务结束[/color]"
-    },
-    "check_main_screen": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Startgame/main_green_masked.png"
-        ],
-        "roi": [
-            11,
-            0,
-            1269,
-            720
-        ],
-        "threshold": 0.95,
-        "action": "DoNothing",
-        "green_mask": true,
-        "post_delay": 500,
-        "focus": "[color:tomato]检查在主界面[/color]"
     }
 }
