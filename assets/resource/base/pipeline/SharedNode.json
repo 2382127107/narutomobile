@@ -13,12 +13,6 @@
     "template": [
       "Startgame/main_green_masked.png"
     ],
-    "roi": [
-      11,
-      0,
-      1269,
-      720
-    ],
     "inverse": true,
     "threshold": 0.95,
     "action": "DoNothing",
@@ -32,7 +26,6 @@
       "weekly_sign",
       "close_chat",
       "close_friend_rank",
-      "close_current_page",
       "close_announcement",
       "direct_hit_quit",
       "im_come_back",
@@ -54,44 +47,20 @@
   },
   "check_has_x": {
     "recognition": "TemplateMatch",
-    "template": "Share/green_masked_x.png",
-    "action": "DoNothing",
-    "green_mask": true,
-    "threshold": 0.5,
-    "timeout": 2000,
-    "next": [
-      "click_x",
-      "click_x_single",
-      "close_headhunt_end_announcement"
-    ],
-    "post_delay": 700,
-    "focus": "[color:darkgray]检查有没有可关闭窗口[/color]"
-  },
-  "click_x": {
-    "recognition": "TemplateMatch",
     "template": [
-      "Share/green_masked_x.png"
+      "Share/green_masked_x.png",
+      "Share/headhunt_end_green_masked.png",
+      "Share/ad_x_button.png",
+      "Share/right_up_x.png",
+      "Share/green_masked_x.png",
+      "Share/x.png"
     ],
     "action": "Click",
     "green_mask": true,
     "threshold": 0.5,
+    "pre_delay": 500,
     "post_delay": 500,
-    "focus": "[color:darkgray]点击关闭按钮[/color]"
-  },
-  "close_headhunt_end_announcement": {
-    "recognition": "TemplateMatch",
-    "template": "Startgame/headhunt_end_green_masked.png",
-    "roi": [
-      1140,
-      0,
-      140,
-      118
-    ],
-    "green_mask": true,
-    "threshold": 0.5,
-    "action": "Click",
-    "post_wait_freezes": 200,
-    "focus": "[color:DeepSkyBlue]关闭高招公告[/color]"
+    "focus": "[color:darkgray]关闭当前窗口[/color]"
   },
   "close_friend_rank": {
     "recognition": "TemplateMatch",
@@ -117,25 +86,6 @@
     ],
     "action": "Click",
     "focus": "[color:darkgray]关闭聊天[/color]"
-  },
-  "click_x_single": {
-    "recognition": "TemplateMatch",
-    "roi": [
-      1067,
-      0,
-      213,
-      143
-    ],
-    "template": [
-      "Share/green_masked_x.png",
-      "Share/x.png"
-    ],
-    "action": "Swipe",
-    "duration": 50,
-    "green_mask": true,
-    "threshold": 0.5,
-    "post_delay": 500,
-    "focus": "[color:darkgray]关闭当前窗口[/color]"
   },
   "award_center_enter": {
     "recognition": "TemplateMatch",
@@ -194,19 +144,6 @@
       130,
       47
     ]
-  },
-  "close_current_page": {
-    "recognition": "TemplateMatch",
-    "template": "Startgame/right_up_x.png",
-    "roi": [
-      1188,
-      0,
-      92,
-      52
-    ],
-    "action": "Click",
-    "post_wait_freezes": 500,
-    "focus": "[color:DeepSkyBlue]关闭当前页面[/color]"
   },
   "weekly_sign": {
     "recognition": "OCR",
