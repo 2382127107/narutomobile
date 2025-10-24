@@ -391,18 +391,50 @@
         ],
         "threshold": 0.9,
         "next": [
-            "check_no_ninjia_book_award_red_point"
-        ],
-        "interrupt": [
-            "get_ninjia_book_award",
-            "confirm_ninjia_book_award",
-            "Swipe_for_ninjia_book_award"
+            "ninjia_book_award_swip_to_left"
         ],
         "post_wait_freezes": 500,
         "action": "Click",
         "focus": "[color:DeepSkyBlue]忍法帖奖励未领取[/color]"
     },
-    "Swipe_for_ninjia_book_award": {
+    "ninjia_book_award_swip_to_left": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Ninjia_book/ninjia_book_award_undone_v2.png",
+            "Ninjia_book/selected_red_point.png"
+        ],
+        "roi": [
+            116,
+            108,
+            56,
+            79
+        ],
+        "threshold": 0.9,
+        "action": "Swipe",
+        "begin": [
+            238,
+            522,
+            84,
+            86
+        ],
+        "end": [
+            416,
+            525,
+            84,
+            81
+        ],
+        "duration": 500,
+        "next": [
+            "check_no_ninjia_book_award_red_point"
+        ],
+        "interrupt": [
+            "get_ninjia_book_award",
+            "confirm_ninjia_book_award",
+            "ninjia_book_award_swip_to_right"
+        ],
+        "focus": "[color:DeepSkyBlue]滑动领取忍法帖奖励[/color]"
+    },
+    "ninjia_book_award_swip_to_right": {
         "recognition": "TemplateMatch",
         "template": [
             "Ninjia_book/ninjia_book_award_undone_v2.png",
