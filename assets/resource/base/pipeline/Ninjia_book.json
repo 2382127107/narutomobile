@@ -74,6 +74,7 @@
         "next": [
             "close_ninjia_book_leaderboard"
         ],
+        "interrupt": "check_has_x",
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]关闭分享[/color]"
     },
