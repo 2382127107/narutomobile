@@ -176,7 +176,9 @@
         "next": [
             "close_share_top_bar"
         ],
-        "focus": "[color:DeepSkyBlue]关闭QQ[/color]"
+        "focus": "[color:DeepSkyBlue]关闭QQ[/color]",
+        "pre_delay": 1000,
+        "post_delay": 1000
     },
     "close_share_top_bar": {
         "recognition": "DirectHit",

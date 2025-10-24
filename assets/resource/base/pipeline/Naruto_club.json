@@ -630,6 +630,7 @@
         "action": "StartApp",
         "package": "com.tencent.mobileqq",
         "post_delay": 1000,
+        "pre_delay": 1000,
         "focus": "[color:DeepSkyBlue]打开qq[/color]"
     },
     "club_award": {
@@ -915,7 +916,9 @@
     },
     "shut_qq": {
         "action": "StopApp",
-        "package": "com.tencent.mobileqq"
+        "package": "com.tencent.mobileqq",
+        "pre_delay": 1000,
+        "post_delay": 1000
     },
     "restart_qq": {
         "action": "StopApp",
