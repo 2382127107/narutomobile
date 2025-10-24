@@ -187,6 +187,7 @@
     "focus": "[color:DeepSkyBlue]点击领取礼物[/color]"
   },
   "direct_hit_quit": {
+    "recognition": "TemplateMatch",
     "template": "SharedNode/direct_hit_quit.png",
     "roi": [
       506,
