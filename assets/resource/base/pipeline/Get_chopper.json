@@ -12,8 +12,8 @@
     "get_chopper_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -34,7 +34,7 @@
     },
     "get_chopper_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -78,7 +78,7 @@
     },
     "get_chopper_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,

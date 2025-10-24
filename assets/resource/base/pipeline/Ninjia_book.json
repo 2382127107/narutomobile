@@ -87,8 +87,8 @@
     "click_ninjia_book_share_x_single": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/green_masked_x.png",
-            "Share/x.png"
+            "SharedNode/green_masked_x.png",
+            "SharedNode/x.png"
         ],
         "action": "Swipe",
         "duration": 50,

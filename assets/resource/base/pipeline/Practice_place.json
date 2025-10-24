@@ -12,8 +12,8 @@
     "survival_challenge_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -34,7 +34,7 @@
     },
     "survival_challenge_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -74,7 +74,7 @@
     },
     "survival_challenge_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -89,8 +89,8 @@
     "practice_place_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -111,7 +111,7 @@
     },
     "practice_place_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -127,7 +127,7 @@
     },
     "practice_place_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -141,7 +141,7 @@
     },
     "Swipe_for_back_daily_award_top_survival_challenge": {
         "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -169,7 +169,7 @@
     },
     "Swipe_for_back_daily_award_top_survival_challenge_1": {
         "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -196,7 +196,7 @@
     },
     "Swipe_for_back_daily_award_top_survival_challenge_2": {
         "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,

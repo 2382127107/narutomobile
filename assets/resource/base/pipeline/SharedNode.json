@@ -36,8 +36,8 @@
   "close_announcement": {
     "recognition": "TemplateMatch",
     "template": [
-      "Startgame/green_masked_x.png",
-      "Startgame/headhunt_end_green_masked.png"
+      "SharedNode/green_masked_x.png",
+      "SharedNode/headhunt_end_green_masked.png"
     ],
     "action": "Click",
     "green_mask": true,
@@ -48,12 +48,12 @@
   "check_has_x": {
     "recognition": "TemplateMatch",
     "template": [
-      "Share/green_masked_x.png",
-      "Share/headhunt_end_green_masked.png",
-      "Share/ad_x_button.png",
-      "Share/right_up_x.png",
-      "Share/green_masked_x.png",
-      "Share/x.png"
+      "SharedNode/green_masked_x.png",
+      "SharedNode/headhunt_end_green_masked.png",
+      "SharedNode/ad_x_button.png",
+      "SharedNode/right_up_x.png",
+      "SharedNode/green_masked_x.png",
+      "SharedNode/x.png"
     ],
     "action": "Click",
     "green_mask": true,
@@ -77,7 +77,7 @@
   },
   "close_chat": {
     "recognition": "TemplateMatch",
-    "template": "Share/chat_close_button.png",
+    "template": "SharedNode/chat_close_button.png",
     "roi": [
       807,
       295,
@@ -89,7 +89,7 @@
   },
   "award_center_enter": {
     "recognition": "TemplateMatch",
-    "template": "Share/center_entry.png",
+    "template": "SharedNode/center_entry.png",
     "roi": [
       1200,
       348,
@@ -102,7 +102,7 @@
   },
   "Swipe_for_award_center_find": {
     "recognition": "TemplateMatch",
-    "template": "Share/check_in_daily_award.png",
+    "template": "SharedNode/check_in_daily_award.png",
     "roi": [
       37,
       172,
@@ -127,7 +127,7 @@
   },
   "Swipe_for_award_center_find_end": {
     "recognition": "TemplateMatch",
-    "template": "Share/center_entry_end.png",
+    "template": "SharedNode/center_entry_end.png",
     "roi": [
       180,
       384,
@@ -137,7 +137,7 @@
   },
   "check_in_daily_award": {
     "recognition": "TemplateMatch",
-    "template": "Share/check_in_daily_award.png",
+    "template": "SharedNode/check_in_daily_award.png",
     "roi": [
       37,
       172,
@@ -187,7 +187,7 @@
     "focus": "[color:DeepSkyBlue]点击领取礼物[/color]"
   },
   "direct_hit_quit": {
-    "template": "Share/direct_hit_quit.png",
+    "template": "SharedNode/direct_hit_quit.png",
     "roi": [
       506,
       649,
