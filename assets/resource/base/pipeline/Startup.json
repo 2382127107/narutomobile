@@ -16,7 +16,7 @@
             "close_before_game_notice",
             "close_teenager_page"
         ],
-        "timeout": 6000
+        "timeout": 60000
     },
     "before_game": {
         "recognition": "TemplateMatch",
