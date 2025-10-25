@@ -46,7 +46,6 @@
       1279,
       334
     ],
-    "next": "check_has_x",
     "order_by": "Score",
     "action": "Swipe",
     "duration": 1000,
