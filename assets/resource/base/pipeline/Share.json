@@ -94,7 +94,7 @@
     "share_entry": {
         "recognition": "TemplateMatch",
         "template": [
-            "Startgame/main_green_masked.png"
+            "Startup/main_green_masked.png"
         ],
         "roi": [
             11,
