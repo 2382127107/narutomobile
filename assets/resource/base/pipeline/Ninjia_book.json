@@ -477,6 +477,9 @@
         ],
         "threshold": 0.85,
         "next": [
+            "confirm_ninjia_book_award"
+        ],
+        "interrupt": [
             "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
@@ -505,6 +508,9 @@
         ],
         "threshold": 0.85,
         "action": "Click",
+        "next": [
+            "confirm_ninjia_book_award"
+        ],
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]领取忍法帖奖励[/color]"
     },
