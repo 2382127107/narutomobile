@@ -116,6 +116,9 @@ jobs:
           else
             echo "Skipping copy MFA for Android."
           fi
+          if [[ "${{ matrix.os }}" == "win" ]]; then
+            cp "tools/DependencySetup_依赖库安装.bat" install/
+          fi
 
       - uses: actions/upload-artifact@v4
         with:
