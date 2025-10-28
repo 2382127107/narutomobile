@@ -11,7 +11,7 @@
   "back_main_screen": {
     "recognition": "TemplateMatch",
     "template": [
-      "Startgame/main_green_masked.png"
+      "Startup/main_green_masked.png"
     ],
     "inverse": true,
     "threshold": 0.95,
@@ -26,45 +26,36 @@
       "weekly_sign",
       "close_chat",
       "close_friend_rank",
-      "close_announcement",
       "direct_hit_quit",
       "im_come_back",
       "im_come_back_award"
     ],
     "focus": "[color:darkgray]尝试返回主页面[/color]"
   },
-  "close_announcement": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "SharedNode/green_masked_x.png",
-      "SharedNode/headhunt_end_green_masked.png"
-    ],
-    "action": "Click",
-    "green_mask": true,
-    "threshold": 0.5,
-    "post_wait_freezes": 100,
-    "focus": "[color:DeepSkyBlue]关闭公告[/color]"
-  },
   "check_has_x": {
     "recognition": "TemplateMatch",
     "template": [
       "SharedNode/green_masked_x.png",
-      "SharedNode/headhunt_end_green_masked.png",
       "SharedNode/ad_x_button.png",
-      "SharedNode/right_up_x.png",
       "SharedNode/green_masked_x.png",
-      "SharedNode/x.png"
+      "SharedNode/x.png",
+      "SharedNode/announcement_x.png"
     ],
-    "action": "Click",
+    "roi": [
+      0,
+      0,
+      1279,
+      334
+    ],
+    "order_by": "Score",
+    "action": "Swipe",
+    "duration": 1000,
     "green_mask": true,
-    "threshold": 0.5,
-    "pre_delay": 500,
-    "post_delay": 500,
     "focus": "[color:darkgray]关闭当前窗口[/color]"
   },
   "close_friend_rank": {
     "recognition": "TemplateMatch",
-    "template": "Startgame/friend_rank.png",
+    "template": "Startup/friend_rank.png",
     "roi": [
       738,
       629,
@@ -187,6 +178,7 @@
     "focus": "[color:DeepSkyBlue]点击领取礼物[/color]"
   },
   "direct_hit_quit": {
+    "recognition": "TemplateMatch",
     "template": "SharedNode/direct_hit_quit.png",
     "roi": [
       506,
@@ -201,7 +193,7 @@
   "check_main_screen_and_stop": {
     "recognition": "TemplateMatch",
     "template": [
-      "Startgame/main_green_masked.png"
+      "Startup/main_green_masked.png"
     ],
     "roi": [
       11,
@@ -218,7 +210,7 @@
   "check_main_screen": {
     "recognition": "TemplateMatch",
     "template": [
-      "Startgame/main_green_masked.png"
+      "Startup/main_green_masked.png"
     ],
     "roi": [
       11,

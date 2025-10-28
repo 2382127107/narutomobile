@@ -11,7 +11,7 @@
     "swipe_for_left_entries": {
         "recognition": "TemplateMatch",
         "template": [
-            "Startgame/main_green_masked.png"
+            "Startup/main_green_masked.png"
         ],
         "threshold": 0.8,
         "green_mask": true,
@@ -47,7 +47,7 @@
     "leaderboard_check_in_main_screen": {
         "recognition": "TemplateMatch",
         "template": [
-            "Startgame/main_green_masked.png"
+            "Startup/main_green_masked.png"
         ],
         "roi": [
             11,
@@ -110,7 +110,6 @@
         ],
         "action": "Click",
         "next": [
-            "close_announcement",
             "check_main_screen_and_stop"
         ],
         "interrupt": [
