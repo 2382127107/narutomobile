@@ -239,6 +239,7 @@
         "next": [
             "ninja_station"
         ],
+        "threshold": 0.4,
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭卷轴[/color]"
     },
@@ -267,6 +268,7 @@
             115,
             55
         ],
+        "threshold": 0.4,
         "action": "Click",
         "next": [
             "village_entry"
