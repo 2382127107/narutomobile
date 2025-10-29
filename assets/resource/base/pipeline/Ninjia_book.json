@@ -3,15 +3,15 @@
         "next": [
             "ninjia_book_entry"
         ],
-        "interrupt": [
-            "back_main_screen"
-        ],
         "focus": "[color:DeepSkyBlue]进入忍法帖子任务[/color]"
     },
     "ninjia_book_entry": {
         "next": [
             "ninjia_book_undone",
             "ninjia_book_done"
+        ],
+        "interrupt": [
+            "back_main_screen"
         ]
     },
     "ninjia_book_done": {
@@ -54,7 +54,7 @@
             "好",
             "友"
         ],
-        "recommended roi": [
+        "roi": [
             1085,
             586,
             195,
@@ -477,6 +477,9 @@
         ],
         "threshold": 0.85,
         "next": [
+            "confirm_ninjia_book_award"
+        ],
+        "interrupt": [
             "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
@@ -505,6 +508,9 @@
         ],
         "threshold": 0.85,
         "action": "Click",
+        "next": [
+            "confirm_ninjia_book_award"
+        ],
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]领取忍法帖奖励[/color]"
     },

@@ -15,11 +15,12 @@
             "before_game",
             "close_before_game_notice",
             "close_teenager_page"
-        ]
+        ],
+        "timeout": 60000
     },
     "before_game": {
         "recognition": "TemplateMatch",
-        "template": "Startgame/naruto_logo.png",
+        "template": "Startup/naruto_logo.png",
         "threshold": 0.4,
         "recommended roi": [
             6,
