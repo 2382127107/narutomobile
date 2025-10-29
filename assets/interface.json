@@ -228,43 +228,6 @@
                 }
             ]
         },
-        "等待自动战斗时间选择": {
-            "cases": [
-                {
-                    "name": "等待60秒",
-                    "pipeline_override": {
-                        "team_dash_auto_fight1": {
-                            "post_delay": 60000
-                        },
-                        "team_dash_auto_fight2": {
-                            "post_delay": 60000
-                        }
-                    }
-                },
-                {
-                    "name": "等待45秒",
-                    "pipeline_override": {
-                        "team_dash_auto_fight1": {
-                            "post_delay": 45000
-                        },
-                        "team_dash_auto_fight2": {
-                            "post_delay": 45000
-                        }
-                    }
-                },
-                {
-                    "name": "等待90秒",
-                    "pipeline_override": {
-                        "team_dash_auto_fight1": {
-                            "post_delay": 90000
-                        },
-                        "team_dash_auto_fight2": {
-                            "post_delay": 90000
-                        }
-                    }
-                }
-            ]
-        },
         "勾选本周不再提醒": {
             "cases": [
                 {
