@@ -62,6 +62,7 @@
         ],
         "action": "Click",
         "next": [
+            "ninjia_book_share_to_friends",
             "close_ninjia_book_share"
         ],
         "pre_wait_freezes": 200,
@@ -69,14 +70,29 @@
         "post_delay": 1000
     },
     "close_ninjia_book_share": {
-        "action": "ClickKey",
-        "key": 4,
+        "action": "StopApp",
+        "package": "com.tencent.mobileqq",
         "next": [
-            "close_ninjia_book_leaderboard"
+            "click_ninjia_book_share_top_bar"
         ],
         "focus": "[color:DeepSkyBlue]关闭分享[/color]",
         "pre_delay": 1000,
         "post_delay": 1000
+    },
+    "click_ninjia_book_share_top_bar": {
+        "recognition": "DirectHit",
+        "target": [
+            1067,
+            0,
+            213,
+            143
+        ],
+        "action": "Click",
+        "pre_delay": 1000,
+        "focus": "[color:darkgray]点击触发页面更新[/color]",
+        "next": [
+            "close_ninjia_book_leaderboard"
+        ]
     },
     "ninjia_book_mission_done": {
         "recognition": "TemplateMatch",
@@ -433,16 +449,16 @@
         "threshold": 0.9,
         "action": "Swipe",
         "begin": [
-            238,
-            522,
-            84,
-            86
-        ],
-        "end": [
             416,
             525,
             84,
             81
+        ],
+        "end": [
+            238,
+            522,
+            84,
+            86
         ],
         "duration": 500,
         "focus": "[color:DeepSkyBlue]滑动领取忍法帖奖励[/color]"
@@ -482,7 +498,8 @@
             "Ninjia_book/soul_waiting.png",
             "Ninjia_book/box_waiting.png",
             "Ninjia_book/wooden_spike_roll_waiting.png",
-            "Ninjia_book/title_waiting.png"
+            "Ninjia_book/title_waiting.png",
+            "Ninjia_book/madara_wuyinghuitan.png"
         ],
         "roi": [
             98,
@@ -495,6 +512,7 @@
         "next": [
             "confirm_ninjia_book_award"
         ],
+        "timeout": 2000,
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]领取忍法帖奖励[/color]"
     },
