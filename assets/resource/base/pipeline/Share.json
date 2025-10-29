@@ -167,8 +167,8 @@
         "focus": "[color:DeepSkyBlue]发给好友[/color]"
     },
     "close_qq_app": {
-        "action": "StopApp",
-        "package": "com.tencent.mobileqq",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
             "close_share_top_bar"
         ],
