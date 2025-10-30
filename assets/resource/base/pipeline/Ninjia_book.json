@@ -449,16 +449,16 @@
         "threshold": 0.9,
         "action": "Swipe",
         "begin": [
-            238,
-            522,
-            84,
-            86
-        ],
-        "end": [
             416,
             525,
             84,
             81
+        ],
+        "end": [
+            238,
+            522,
+            84,
+            86
         ],
         "duration": 500,
         "focus": "[color:DeepSkyBlue]滑动领取忍法帖奖励[/color]"
