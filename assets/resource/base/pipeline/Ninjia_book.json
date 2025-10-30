@@ -358,15 +358,8 @@
         "focus": "[color:darkgray]进入分享页面[/color]"
     },
     "close_ninjia_book_leaderboard": {
-        "recognition": "TemplateMatch",
-        "template": "Ninjia_book/close_leaderboard.png",
-        "roi": [
-            1007,
-            133,
-            36,
-            44
-        ],
-        "action": "Click",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
             "ninjia_book_mission_undone",
             "ninjia_book_mission_done"

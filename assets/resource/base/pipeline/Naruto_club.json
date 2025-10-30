@@ -464,15 +464,8 @@
         "focus": "[color:DeepSkyBlue]确认喂豚豚[/color]"
     },
     "close_feed_pig": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/feed_pig_x.png",
-        "roi": [
-            631,
-            17,
-            72,
-            62
-        ],
-        "action": "Click",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
             "check_club_mission_done"
         ],
@@ -563,15 +556,8 @@
         "focus": "[color:DeepSkyBlue]金币助手已完成[/color]"
     },
     "close_gold_helper": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/gold_helper_x.png",
-        "roi": [
-            564,
-            0,
-            156,
-            154
-        ],
-        "action": "Click",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
             "swipe_for_club_submit"
         ],
