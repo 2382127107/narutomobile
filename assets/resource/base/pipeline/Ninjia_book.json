@@ -62,7 +62,6 @@
         ],
         "action": "Click",
         "next": [
-            "ninjia_book_share_to_friends",
             "close_ninjia_book_share"
         ],
         "pre_wait_freezes": 200,
@@ -70,29 +69,14 @@
         "post_delay": 1000
     },
     "close_ninjia_book_share": {
-        "action": "StopApp",
-        "package": "com.tencent.mobileqq",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
-            "click_ninjia_book_share_top_bar"
+            "close_ninjia_book_leaderboard"
         ],
         "focus": "[color:DeepSkyBlue]关闭分享[/color]",
         "pre_delay": 1000,
         "post_delay": 1000
-    },
-    "click_ninjia_book_share_top_bar": {
-        "recognition": "DirectHit",
-        "target": [
-            1067,
-            0,
-            213,
-            143
-        ],
-        "action": "Click",
-        "pre_delay": 1000,
-        "focus": "[color:darkgray]点击触发页面更新[/color]",
-        "next": [
-            "close_ninjia_book_leaderboard"
-        ]
     },
     "ninjia_book_mission_done": {
         "recognition": "TemplateMatch",
