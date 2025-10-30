@@ -298,8 +298,8 @@
             "check_in_team_dash_sweep"
         ],
         "interrupt": [
-            "team_dash_auto_fight",
-            "team_dash_do_not_remind_gold"
+            "team_dash_do_not_remind_gold",
+            "team_dash_auto_fight"
         ],
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]小队突袭自动战斗[/color]"
@@ -347,6 +347,7 @@
         ],
         "post_delay": 5000,
         "next": "check_not_in_team_dash_sweep",
+        "interrupt": "sleep_500ms",
         "focus": "[color:DeepSkyBlue]正在进行小队突袭战斗[/color]"
     },
     "check_not_in_team_dash_sweep": {
