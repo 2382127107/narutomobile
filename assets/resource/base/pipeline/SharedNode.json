@@ -17,7 +17,7 @@
     "threshold": 0.95,
     "action": "DoNothing",
     "green_mask": true,
-    "post_delay": 500,
+    "rate_limit": 2000,
     "next": [
       "check_main_screen"
     ],
