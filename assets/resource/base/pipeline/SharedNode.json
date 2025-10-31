@@ -11,7 +11,7 @@
   "back_main_screen": {
     "recognition": "TemplateMatch",
     "template": [
-      "Startgame/main_green_masked.png"
+      "Startup/main_green_masked.png"
     ],
     "inverse": true,
     "threshold": 0.95,
@@ -38,7 +38,8 @@
       "SharedNode/green_masked_x.png",
       "SharedNode/ad_x_button.png",
       "SharedNode/green_masked_x.png",
-      "SharedNode/x.png"
+      "SharedNode/x.png",
+      "SharedNode/announcement_x.png"
     ],
     "roi": [
       0,
@@ -48,13 +49,14 @@
     ],
     "order_by": "Score",
     "action": "Swipe",
-    "duration": 1000,
+    "threshold": 0.66,
+    "post_wait_freezes": 1000,
     "green_mask": true,
     "focus": "[color:darkgray]关闭当前窗口[/color]"
   },
   "close_friend_rank": {
     "recognition": "TemplateMatch",
-    "template": "Startgame/friend_rank.png",
+    "template": "Startup/friend_rank.png",
     "roi": [
       738,
       629,
@@ -94,10 +96,10 @@
     "recognition": "TemplateMatch",
     "template": "SharedNode/check_in_daily_award.png",
     "roi": [
-      37,
-      172,
-      130,
-      47
+      0,
+      106,
+      254,
+      156
     ],
     "action": "Swipe",
     "begin": [
@@ -107,7 +109,7 @@
       61
     ],
     "end": [
-      294,
+      580,
       169,
       56,
       61
@@ -192,7 +194,7 @@
   "check_main_screen_and_stop": {
     "recognition": "TemplateMatch",
     "template": [
-      "Startgame/main_green_masked.png"
+      "Startup/main_green_masked.png"
     ],
     "roi": [
       11,
@@ -209,7 +211,7 @@
   "check_main_screen": {
     "recognition": "TemplateMatch",
     "template": [
-      "Startgame/main_green_masked.png"
+      "Startup/main_green_masked.png"
     ],
     "roi": [
       11,
