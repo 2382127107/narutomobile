@@ -295,13 +295,13 @@
         ],
         "action": "Click",
         "next": [
-            "check_in_team_dash_sweep"
-        ],
-        "interrupt": [
-            "team_dash_do_not_remind_gold",
+            "check_in_team_dash_sweep",
             "team_dash_auto_fight"
         ],
-        "post_delay": 1000,
+        "interrupt": [
+            "team_dash_do_not_remind_gold"
+        ],
+        "rate_limit": 3000,
         "focus": "[color:DeepSkyBlue]小队突袭自动战斗[/color]"
     },
     "team_dash_keep_fight": {
@@ -337,35 +337,27 @@
         "focus": "[color:DeepSkyBlue]点击本周不再提醒[/color]"
     },
     "check_in_team_dash_sweep": {
-        "recognition": "TemplateMatch",
-        "template": "Team_dash/damage.png",
+        "recognition": "OCR",
+        "expected": "伤害占比",
         "roi": [
-            0,
-            288,
-            216,
-            129
+            10,
+            290,
+            186,
+            128
         ],
-        "post_delay": 5000,
-        "next": "check_not_in_team_dash_sweep",
-        "interrupt": "sleep_500ms",
+        "timeout": 60000,
+        "next": [
+            "check_not_in_team_dash_sweep"
+        ],
+        "rate_limit": 5000,
         "focus": "[color:DeepSkyBlue]正在进行小队突袭战斗[/color]"
     },
     "check_not_in_team_dash_sweep": {
-        "recognition": "OCR",
-        "expected": [
-            "0"
+        "recognition": "TemplateMatch",
+        "template": [
+            "Team_dash/auto_fight_end.png",
+            "Team_dash/team_dash_logo.png"
         ],
-        "roi": [
-            589,
-            21,
-            99,
-            38
-        ],
-        "inverse": true,
-        "next": [
-            "dash_or_exit"
-        ],
-        "post_delay": 4000,
         "focus": "[color:DeepSkyBlue]检测不在进行小队突袭战斗[/color]"
     },
     "team_dash_above_kage_sweep": {
