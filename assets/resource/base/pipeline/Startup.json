@@ -16,7 +16,8 @@
             "close_before_game_notice",
             "close_teenager_page"
         ],
-        "timeout": 60000
+        "rate_limit": 5000,
+        "timeout": 30000
     },
     "before_game": {
         "recognition": "TemplateMatch",
@@ -35,7 +36,9 @@
             "agreement",
             "unagreement",
             "agree_log_in"
-        ]
+        ],
+        "rate_limit": 3000,
+        "timeout": 60000
     },
     "close_teenager_page": {
         "recognition": "TemplateMatch",
@@ -108,6 +111,7 @@
             "android_qq",
             "agree_log_in"
         ],
+        "timeout": 3000,
         "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]安卓qq账号[/color]"
     },

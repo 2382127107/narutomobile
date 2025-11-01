@@ -759,10 +759,25 @@
         ],
         "action": "Click",
         "next": "wait_for_survival_challenge_sweep_complete",
+        "interrupt": [
+            "survival_challenge_sweep_ticket_used_up"
+        ],
         "post_wait_freezes": 200,
         "timeout": 60000,
         "on_error": "back_main_screen_and_stop",
         "focus": "[color:DeepSkyBlue]确认生存挑战挑战卷提示[/color]"
+    },
+    "survival_challenge_sweep_ticket_used_up": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            469,
+            219,
+            316,
+            217
+        ],
+        "template": "Practice_place/sweep_ticket_used_up.png",
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]生存挑战卷用完了[/color]"
     },
     "wait_for_survival_challenge_sweep_complete": {
         "recognition": "TemplateMatch",

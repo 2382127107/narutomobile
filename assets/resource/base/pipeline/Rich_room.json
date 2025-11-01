@@ -198,7 +198,8 @@
     },
     "fighting": {
         "next": [
-            "click_skill1"
+            "click_skill1",
+            "normal_attack"
         ],
         "interrupt": [
             "fighting"
@@ -269,11 +270,12 @@
         "recognition": "TemplateMatch",
         "template": "Rich_room/skill1_masked.png",
         "green_mask": true,
-        "threshold": 0.4,
+        "threshold": 0.3,
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "click_skill2"
+            "click_skill2",
+            "normal_attack"
         ],
         "interrupt": [
             "peace"
@@ -286,7 +288,7 @@
         "template": "Rich_room/skill2_masked.png",
         "green_mask": true,
         "action": "Swipe",
-        "threshold": 0.5,
+        "threshold": 0.3,
         "duration": 50,
         "next": [
             "normal_attack"
@@ -302,9 +304,10 @@
         "green_mask": true,
         "action": "Swipe",
         "threshold": 0.9,
-        "duration": 5000,
+        "duration": 1000,
         "next": [
-            "click_skill1"
+            "click_skill1",
+            "normal_attack"
         ],
         "interrupt": [
             "peace"
