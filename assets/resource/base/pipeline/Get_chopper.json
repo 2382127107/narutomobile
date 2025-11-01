@@ -105,9 +105,6 @@
             48
         ],
         "action": "Click",
-        "next": [
-            "start_chooper"
-        ],
         "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]进行招财[/color]"
     },
