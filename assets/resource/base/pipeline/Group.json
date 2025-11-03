@@ -9,102 +9,38 @@
         ],
         "focus": "[color:DeepSkyBlue]进入组织子任务[/color]"
     },
-    "group_award_in_center_enter": {
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/check_in_daily_award.png",
-        "roi": [
-            37,
-            172,
-            130,
-            47
-        ],
-        "next": [
-            "group_ac_undone",
-            "group_ac_done"
-        ],
-        "interrupt": [
-            "Swipe_for_award_center_find"
-        ],
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]检测是否在奖励中心[/color]"
-    },
-    "group_award_center_enter": {
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry.png",
-        "roi": [
-            1200,
-            348,
-            42,
-            39
-        ],
-        "action": "Click",
-        "next": [
-            "group_ac_undone",
-            "group_ac_done"
-        ],
-        "interrupt": [
-            "Swipe_for_award_center_find"
-        ],
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
-    },
-    "group_ac_undone": {
-        "recognition": "TemplateMatch",
-        "template": "Group/group_ac_undone.png",
-        "roi": [
-            180,
-            288,
-            1100,
-            225
-        ],
-        "threshold": 0.9,
-        "action": "Click",
-        "target_offset": [
-            14,
-            116,
-            -35,
-            -44
-        ],
-        "next": [
-            "chopper_group_pray"
-        ],
-        "interrupt": [],
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]组织祈福未完成[/color]"
-    },
-    "group_ac_done": {
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry_end.png",
-        "roi": [
-            180,
-            384,
-            1100,
-            118
-        ],
-        "next": [
-            "back_main_screen_and_stop"
-        ],
-        "focus": "[color:DeepSkyBlue]组织祈福已完成[/color]"
-    },
     "group_entry": {
         "recognition": "TemplateMatch",
         "template": [
-            "Group/group.png"
+            "Group/group_entry_white.png",
+            "Group/group.png",
         ],
-        "threshold": 0.8,
+        "threshold": 0.7,
         "action": "Swipe",
         "duration": 100,
         "next": [
             "group_gameplay_undone",
-            "group_gameplay_done"
+            "group_gameplay_done",
+            "no_group"
         ],
         "interrupt": [
             "group_entry",
             "back_main_screen"
         ],
-        "green_mask": true,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]组织主界面入口[/color]"
+    },
+    "no_group": {
+        "recognition": "TemplateMatch",
+        "template": "Group/group_list.png",
+        "recommended roi": [
+            94,
+            30,
+            474,
+            173
+        ],
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]没有加入组织[/color]"
     },
     "group_gameplay_undone": {
         "recognition": "TemplateMatch",
@@ -197,8 +133,7 @@
     "above_kage_group_pray": {
         "recognition": "TemplateMatch",
         "template": "Group/above_kage_pray.png",
-        "action": "Swipe",
-        "duration": 50,
+        "action": "Click",
         "roi": [
             753,
             550,
@@ -206,8 +141,7 @@
             42
         ],
         "next": [
-            "confirm_chopper_group_pray",
-            "group_pray_remain_1"
+            "confirm_chopper_group_pray"
         ],
         "interrupt": [
             "close_chopper_group_pray",
@@ -228,8 +162,7 @@
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "confirm_chopper_group_pray",
-            "group_pray_remain_1"
+            "confirm_chopper_group_pray"
         ],
         "interrupt": [
             "close_chopper_group_pray",
@@ -237,22 +170,6 @@
         ],
         "post_delay": 3000,
         "focus": "[color:DeepSkyBlue]铜币签到[/color]"
-    },
-    "group_pray_remain_1": {
-        "recognition": "OCR",
-        "expected": "1",
-        "roi": [
-            980,
-            120,
-            24,
-            37
-        ],
-        "next": [
-            "above_kage_group_pray",
-            "chopper_group_pray"
-        ],
-        "post_wait_freezes": 600,
-        "focus": "[color:DeepSkyBlue]可以组织签到[/color]"
     },
     "close_chopper_group_pray": {
         "recognition": "TemplateMatch",
@@ -264,9 +181,6 @@
             77
         ],
         "action": "Click",
-        "next": [
-            "group_award"
-        ],
         "pre_wait_freezes": 300,
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭铜币签到[/color]"
@@ -673,9 +587,6 @@
         "next": [
             "to_pursuit_dawn_organization_award_1"
         ],
-        "interrupt": [
-            "back_main_screen_and_stop"
-        ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]下滑寻找追击晓组织奖励[/color]"
     },
@@ -730,9 +641,6 @@
         "recognition": "TemplateMatch",
         "template": "Group/dawn_organization_entry_group_button.png",
         "action": "Click",
-        "next": [
-            "pursuit_dawn_organization"
-        ],
         "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]进入组织[/color]"
     },
@@ -789,9 +697,6 @@
         "template": "Group/yesterday_award_done.png",
         "action": "Click",
         "post_wait_freezes": 500,
-        "next": [
-            "check_no_yesterday_award"
-        ],
         "focus": "[color:DeepSkyBlue]关闭昨日奖励界面[/color]"
     }
 }
