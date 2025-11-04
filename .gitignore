@@ -469,3 +469,4 @@ install/debug/maa.log
 .nicegui/storage-general.json
 
 config
+assets/resource/model/ocr
