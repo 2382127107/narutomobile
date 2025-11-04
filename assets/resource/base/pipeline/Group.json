@@ -13,7 +13,7 @@
         "recognition": "TemplateMatch",
         "template": [
             "Group/group_entry_white.png",
-            "Group/group.png",
+            "Group/group.png"
         ],
         "threshold": 0.7,
         "action": "Swipe",
@@ -141,9 +141,7 @@
             42
         ],
         "next": [
-            "confirm_chopper_group_pray"
-        ],
-        "interrupt": [
+            "confirm_chopper_group_pray",
             "close_chopper_group_pray",
             "above_kage_group_pray"
         ],
@@ -162,9 +160,7 @@
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "confirm_chopper_group_pray"
-        ],
-        "interrupt": [
+            "confirm_chopper_group_pray",
             "close_chopper_group_pray",
             "chopper_group_pray"
         ],
@@ -183,6 +179,9 @@
         "action": "Click",
         "pre_wait_freezes": 300,
         "post_wait_freezes": 500,
+        "next": [
+            "group_reward_has_been_claimed"
+        ],
         "focus": "[color:DeepSkyBlue]关闭铜币签到[/color]"
     },
     "confirm_chopper_group_pray": {
@@ -195,12 +194,12 @@
             58
         ],
         "action": "Click",
-        "next": "group_award",
+        "next": "group_reward_has_been_claimed",
         "pre_wait_freezes": 300,
         "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]确认铜币签到[/color]"
+        "focus": "[color:DeepSkyBlue]签到已完成[/color]"
     },
-    "group_award": {
+    "group_reward_has_been_claimed": {
         "next": [
             "check_no_yesterday_award"
         ],
@@ -288,8 +287,8 @@
         "threshold": 0.7,
         "action": "Swipe",
         "duration": 50,
-        "next": "second_group_award_box",
-        "interrupt": [
+        "next": [
+            "second_group_award_box",
             "second_group_award_box_done"
         ],
         "post_wait_freezes": 700,
