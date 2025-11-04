@@ -55,28 +55,29 @@
             "友"
         ],
         "roi": [
-            1085,
-            586,
-            195,
-            132
+            1717,
+            867,
+            110,
+            125
         ],
         "action": "Click",
         "next": [
             "close_ninjia_book_share"
         ],
-        "pre_wait_freezes": 200,
-        "post_wait_freezes": 400,
+        "pre_wait_freezes": 1000,
+        "post_wait_freezes": 1000,
         "post_delay": 2000
     },
-    "close_ninjia_book_share": {
+    "close_ninjia_book_share": {  
+        "pre_wait_freezes": 1000,
+        "post_wait_freezes": 1000,
+        "post_delay": 2000,
         "action": "ClickKey",
         "key": 4,
         "next": [
             "close_ninjia_book_leaderboard"
         ],
-        "focus": "[color:DeepSkyBlue]关闭分享[/color]",
-        "pre_delay": 1000,
-        "post_delay": 1000
+        "focus": "[color:DeepSkyBlue]关闭分享[/color]"
     },
     "ninjia_book_mission_done": {
         "recognition": "TemplateMatch",
