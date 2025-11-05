@@ -398,12 +398,7 @@
     "feed_pig": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/feed_pig.png",
-        "roi": [
-            1053,
-            320,
-            80,
-            42
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "weekly_feed_pig"
@@ -417,12 +412,7 @@
     "weekly_feed_pig": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/feed.png",
-        "roi": [
-            543,
-            1137,
-            117,
-            77
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "confirm_feed_pig"
@@ -434,12 +424,7 @@
     "feed_pig_done": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/feed_pig_done.png",
-        "roi": [
-            544,
-            1138,
-            120,
-            77
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "close_feed_pig"
@@ -450,12 +435,7 @@
     "confirm_feed_pig": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/comfirm_feed_pig.png",
-        "roi": [
-            263,
-            693,
-            189,
-            62
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "close_feed_pig"
@@ -464,15 +444,8 @@
         "focus": "[color:DeepSkyBlue]确认喂豚豚[/color]"
     },
     "close_feed_pig": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/feed_pig_x.png",
-        "roi": [
-            631,
-            17,
-            72,
-            62
-        ],
-        "action": "Click",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
             "check_club_mission_done"
         ],
@@ -542,7 +515,7 @@
             "close_gold_helper"
         ],
         "post_wait_freezes": 1000,
-        "focus": "[color:DeepSkyBlue]金币助手已完成[/color]"
+        "focus": "[color:DeepSkyBlue]金币助手未完成[/color]"
     },
     "gold_helper_wait": {
         "recognition": "TemplateMatch",
@@ -551,7 +524,7 @@
             "swipe_for_club_submit"
         ],
         "threshold": 0.95,
-        "focus": "[color:DeepSkyBlue]可以进行金币助手任务[/color]"
+        "focus": "[color:DeepSkyBlue]可以领取金币助手活跃度奖励[/color]"
     },
     "gold_helper_done": {
         "recognition": "TemplateMatch",
@@ -563,15 +536,8 @@
         "focus": "[color:DeepSkyBlue]金币助手已完成[/color]"
     },
     "close_gold_helper": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/gold_helper_x.png",
-        "roi": [
-            564,
-            0,
-            156,
-            154
-        ],
-        "action": "Click",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
             "swipe_for_club_submit"
         ],

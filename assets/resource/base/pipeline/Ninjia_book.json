@@ -46,38 +46,82 @@
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]忍法帖未完成[/color]"
     },
-    "ninjia_book_share_to_friends": {
-        "recognition": "OCR",
-        "expected": [
-            "发",
-            "给",
-            "好",
-            "友"
-        ],
+    "ninjia_book_share_to_qq": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/qq_share_icon.png",
         "roi": [
-            1717,
-            867,
-            110,
-            125
+            1043,
+            419,
+            237,
+            301
         ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
-            "close_ninjia_book_share"
+            "close_ninjia_book_qq_share"
         ],
         "pre_wait_freezes": 1000,
         "post_wait_freezes": 1000,
         "post_delay": 2000
     },
-    "close_ninjia_book_share": {
+    "close_ninjia_book_qq_share": {
+        "action": "StopApp",
+        "package": "com.tencent.mobileqq",
+        "next": [
+            "ninjia_book_close_share_top_bar"
+        ],
         "pre_wait_freezes": 1000,
         "post_wait_freezes": 1000,
         "post_delay": 2000,
-        "action": "ClickKey",
-        "key": 4,
+        "focus": "[color:DeepSkyBlue]关闭分享[/color]"
+    },
+    "ninjia_book_share_to_wechat": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/wechat_share_icon.png",
+        "roi": [
+            1043,
+            419,
+            237,
+            301
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "next": [
+            "close_ninjia_book_wechat_share"
+        ],
+        "pre_wait_freezes": 1000,
+        "post_wait_freezes": 1000,
+        "post_delay": 2000
+    },
+    "close_ninjia_book_wechat_share": {
+        "action": "StopApp",
+        "package": "com.tencent.mm",
+        "next": [
+            "ninjia_book_close_share_top_bar"
+        ],
+        "pre_wait_freezes": 1000,
+        "post_wait_freezes": 1000,
+        "post_delay": 2000,
+        "focus": "[color:DeepSkyBlue]关闭分享[/color]"
+    },
+    "ninjia_book_close_share_top_bar": {
+        "recognition": "DirectHit",
+        "target": [
+            1067,
+            0,
+            213,
+            143
+        ],
+        "action": "Click",
         "next": [
             "close_ninjia_book_leaderboard"
         ],
-        "focus": "[color:DeepSkyBlue]关闭分享[/color]"
+        "interrupt": [
+            "ninjia_book_mission_undone",
+            "ninjia_book_mission_done",
+            "ninjia_book_close_share_top_bar"
+        ],
+        "focus": "[color:DeepSkyBlue]关闭QQ[/color]"
     },
     "ninjia_book_mission_done": {
         "recognition": "TemplateMatch",
@@ -363,7 +407,8 @@
         ],
         "action": "Click",
         "next": [
-            "ninjia_book_share_to_friends"
+            "ninjia_book_share_to_qq",
+            "ninjia_book_share_to_wechat"
         ],
         "interrupt": [
             "ninjia_book_share"

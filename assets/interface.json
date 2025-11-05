@@ -145,9 +145,6 @@
                         "account_type": {
                             "next": "android_qq"
                         },
-                        "try_share": {
-                            "next": "share_to_qq_friend"
-                        },
                         "naruto_club_entry": {
                             "next": "start_qq"
                         },
@@ -156,6 +153,17 @@
                         },
                         "shut_wechat": {
                             "package": "com.tencent.mm"
+                        }
+                    }
+                },
+                {
+                    "name": "苹果",
+                    "pipeline_override": {
+                        "close_ninjia_book_wechat_share": {
+                            "package": "com.tencent.xin"
+                        },
+                        "close_wechat_app": {
+                            "package": "com.tencent.xin"
                         }
                     }
                 }

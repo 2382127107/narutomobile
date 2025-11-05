@@ -72,7 +72,7 @@
             "share_close_weekly_ninjia_title_next_step",
             "share_close_weekly_ninjia_title",
             "share_entry",
-            "share_to_qq_friend"
+            "share_to_qq"
         ],
         "action": "Click",
         "post_wait_freezes": 600,
@@ -118,7 +118,7 @@
             "share_close_weekly_ninjia_title_next_step",
             "share_close_weekly_ninjia_title",
             "share_entry",
-            "share_to_qq_friend"
+            "share_to_qq"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:darkgray]尝试进入用户主页[/color]"
@@ -134,7 +134,8 @@
         ],
         "action": "Click",
         "next": [
-            "share_to_qq_friend"
+            "share_to_qq",
+            "share_to_wechat"
         ],
         "interrupt": [
             "share_close_weekly_ninjia_title_next_step",
@@ -144,20 +145,16 @@
         "post_delay": 1200,
         "focus": "[color:DeepSkyBlue]点击分享按钮[/color]"
     },
-    "share_to_qq_friend": {
-        "recognition": "OCR",
-        "expected": [
-            "发",
-            "给",
-            "好",
-            "友"
-        ],
+    "share_to_qq": {
+        "recognition": "TemplateMatch",
+        "template": "Share/qq.png",
         "roi": [
-            1161,
-            670,
-            93,
-            39
+            1042,
+            475,
+            238,
+            245
         ],
+        "threshold": 0.8,
         "next": [
             "close_qq_app"
         ],
@@ -168,15 +165,47 @@
         "action": "Click",
         "pre_wait_freezes": 200,
         "post_wait_freezes": 400,
-        "focus": "[color:DeepSkyBlue]发给好友[/color]"
+        "focus": "[color:DeepSkyBlue]qq分享[/color]"
+    },
+    "share_to_wechat": {
+        "recognition": "TemplateMatch",
+        "template": "Share/wechat.png",
+        "roi": [
+            1042,
+            475,
+            238,
+            245
+        ],
+        "threshold": 0.8,
+        "next": [
+            "close_wechat_app"
+        ],
+        "interrupt": [
+            "share_close_weekly_ninjia_title_next_step",
+            "share_close_weekly_ninjia_title"
+        ],
+        "action": "Click",
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]微信分享[/color]"
     },
     "close_qq_app": {
-        "action": "ClickKey",
-        "key": 4,
+        "action": "StopApp",
+        "package": "com.tencent.mobileqq",
         "next": [
             "close_share_top_bar"
         ],
         "focus": "[color:DeepSkyBlue]关闭QQ[/color]",
+        "pre_delay": 1000,
+        "post_delay": 1000
+    },
+    "close_wechat_app": {
+        "action": "StopApp",
+        "package": "com.tencent.mm",
+        "next": [
+            "close_share_top_bar"
+        ],
+        "focus": "[color:DeepSkyBlue]关闭微信[/color]",
         "pre_delay": 1000,
         "post_delay": 1000
     },
