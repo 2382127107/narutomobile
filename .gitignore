@@ -468,3 +468,6 @@ install/debug/maa.log
 /debug
 .nicegui/storage-general.json
 .venv
+
+config
+assets/resource/model/ocr

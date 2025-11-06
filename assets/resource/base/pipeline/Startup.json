@@ -23,7 +23,7 @@
         "recognition": "TemplateMatch",
         "template": "Startup/naruto_logo.png",
         "threshold": 0.4,
-        "recommended roi": [
+        "roi": [
             6,
             0,
             348,
@@ -119,13 +119,16 @@
         "recognition": "OCR",
         "expected": "同意",
         "roi": [
-            612,
-            531,
-            58,
-            37
+            454,
+            382,
+            385,
+            281
         ],
         "action": "Click",
         "next": "agree_info",
+        "interrupt": [
+            "agree_log_in"
+        ],
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]确认登录[/color]"
     },
@@ -133,12 +136,19 @@
         "recognition": "OCR",
         "expected": "同意",
         "roi": [
-            615,
-            512,
-            50,
-            34
+            465,
+            459,
+            365,
+            234
         ],
         "action": "Click",
+        "next": [
+            "click_start_game"
+        ],
+        "interrupt": [
+            "agree_log_in",
+            "agree_info"
+        ],
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
     },

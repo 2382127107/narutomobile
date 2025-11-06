@@ -319,9 +319,7 @@
         ],
         "action": "Click",
         "next": [
-            "naruto_club_sign"
-        ],
-        "interrupt": [
+            "naruto_club_sign",
             "sign_done"
         ],
         "post_wait_freezes": 500,
@@ -398,17 +396,10 @@
     "feed_pig": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/feed_pig.png",
-        "roi": [
-            1053,
-            320,
-            80,
-            42
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
-            "weekly_feed_pig"
-        ],
-        "interrupt": [
+            "weekly_feed_pig",
             "feed_pig_done"
         ],
         "post_wait_freezes": 500,
@@ -417,29 +408,19 @@
     "weekly_feed_pig": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/feed.png",
-        "roi": [
-            543,
-            1137,
-            117,
-            77
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
-            "confirm_feed_pig"
+            "confirm_feed_pig",
+            "close_feed_pig"
         ],
-        "interrupt": "close_feed_pig",
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]每周喂豚豚[/color]"
     },
     "feed_pig_done": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/feed_pig_done.png",
-        "roi": [
-            544,
-            1138,
-            120,
-            77
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "close_feed_pig"
@@ -450,12 +431,7 @@
     "confirm_feed_pig": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/comfirm_feed_pig.png",
-        "roi": [
-            263,
-            693,
-            189,
-            62
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "close_feed_pig"
@@ -464,15 +440,8 @@
         "focus": "[color:DeepSkyBlue]确认喂豚豚[/color]"
     },
     "close_feed_pig": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/feed_pig_x.png",
-        "roi": [
-            631,
-            17,
-            72,
-            62
-        ],
-        "action": "Click",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
             "check_club_mission_done"
         ],
@@ -510,22 +479,13 @@
             50
         ],
         "next": [
-            "gold_helper"
-        ],
-        "pre_wait_freezes": 1000,
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]上滑动提交任务[/color]"
-    },
-    "gold_helper": {
-        "next": [
             "gold_helper_undone",
             "gold_helper_wait",
             "gold_helper_done"
         ],
-        "interrupt": [
-            "swipe_for_mission"
-        ],
-        "focus": "[color:DeepSkyBlue]金币助手任务[/color]"
+        "pre_wait_freezes": 1000,
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]上滑动提交任务[/color]"
     },
     "gold_helper_undone": {
         "recognition": "TemplateMatch",
@@ -542,7 +502,7 @@
             "close_gold_helper"
         ],
         "post_wait_freezes": 1000,
-        "focus": "[color:DeepSkyBlue]金币助手已完成[/color]"
+        "focus": "[color:DeepSkyBlue]金币助手未完成[/color]"
     },
     "gold_helper_wait": {
         "recognition": "TemplateMatch",
@@ -551,7 +511,7 @@
             "swipe_for_club_submit"
         ],
         "threshold": 0.95,
-        "focus": "[color:DeepSkyBlue]可以进行金币助手任务[/color]"
+        "focus": "[color:DeepSkyBlue]可以领取金币助手活跃度奖励[/color]"
     },
     "gold_helper_done": {
         "recognition": "TemplateMatch",
@@ -563,19 +523,12 @@
         "focus": "[color:DeepSkyBlue]金币助手已完成[/color]"
     },
     "close_gold_helper": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/gold_helper_x.png",
-        "roi": [
-            564,
-            0,
-            156,
-            154
-        ],
-        "action": "Click",
+        "action": "ClickKey",
+        "key": 4,
         "next": [
-            "swipe_for_club_submit"
+            "swipe_for_club_submit",
+            "close_gold_helper"
         ],
-        "interrupt": "close_gold_helper",
         "focus": "[color:DeepSkyBlue]关闭金币助手[/color]"
     },
     "swipe_for_club_submit": {
@@ -737,12 +690,10 @@
             52
         ],
         "action": "Click",
-        "next": [
+        "interrupt": [
             "roger_club_second_award"
         ],
-        "interrupt": [
-            "club_second_award_done"
-        ],
+        "timeout": 2000,
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]确认领取第二个奖励[/color]"
     },
@@ -768,15 +719,21 @@
             69,
             48
         ],
+        "timeout": 2000,
         "next": [
-            "club_third_award_done"
-        ],
-        "interrupt": [
             "club_third_award"
+        ],
+        "on_error": [
+            "no_third_award"
         ],
         "threshold": 0.9,
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]第二个奖励已领取[/color]"
+    },
+    "no_third_award": {
+        "recognition": "DirectHit",
+        "next": "close_naruto_club",
+        "focus": "[color:red]无法领取第三奖励[/color]"
     },
     "club_third_award": {
         "recognition": "TemplateMatch",
@@ -854,81 +811,11 @@
         ],
         "focus": "[color:DeepSkyBlue]关闭情报社[/color]"
     },
-    "check_in_qq": {
-        "recognition": "OCR",
-        "expected": [
-            "QQ",
-            "Q"
-        ],
-        "roi": [
-            810,
-            314,
-            151,
-            90
-        ],
-        "next": [
-            "swipe_for_naruto_club"
-        ]
-    },
-    "swipe_for_naruto_club": {
-        "recognition": "DirectHit",
-        "action": "Swipe",
-        "begin": [
-            150,
-            113,
-            50,
-            50
-        ],
-        "end": [
-            150,
-            550,
-            50,
-            50
-        ],
-        "next": [
-            "click_naruto_club_icon"
-        ],
-        "pre_wait_freezes": 200,
-        "post_wait_freezes": 500
-    },
-    "click_naruto_club_icon": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/naruto_club_icon.png",
-        "action": "Click",
-        "next": [
-            "close_naruto_club_AD"
-        ],
-        "post_delay": 4000
-    },
-    "close_naruto_club_AD": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/ad_x_masked.png",
-        "action": "Click",
-        "green_mask": true
-    },
-    "click_qq_icon": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/qq_icon.png",
-        "action": "Click",
-        "pre_wait_freezes": 200,
-        "post_wait_freezes": 500
-    },
-    "shut_naruto": {
-        "action": "StopApp",
-        "package": "com.tencent.KiHan"
-    },
     "shut_qq": {
         "action": "StopApp",
         "package": "com.tencent.mobileqq",
         "pre_delay": 1000,
         "post_delay": 1000
-    },
-    "restart_qq": {
-        "action": "StopApp",
-        "package": "com.tencent.mobileqq",
-        "next": [
-            "start_qq"
-        ]
     },
     "shut_wechat": {
         "action": "StopApp",

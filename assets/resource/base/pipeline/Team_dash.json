@@ -206,7 +206,7 @@
     "team_dash_invite_page": {
         "recognition": "TemplateMatch",
         "template": "Team_dash/team_dash_group.png",
-        "recommended roi": [
+        "roi": [
             0,
             50,
             200,
@@ -296,11 +296,10 @@
         "action": "Click",
         "next": [
             "check_in_team_dash_sweep",
+            "team_dash_do_not_remind_gold",
             "team_dash_auto_fight"
         ],
-        "interrupt": [
-            "team_dash_do_not_remind_gold"
-        ],
+        "post_wait_freezes": 500,
         "rate_limit": 3000,
         "focus": "[color:DeepSkyBlue]小队突袭自动战斗[/color]"
     },

@@ -3,6 +3,7 @@ from pathlib import Path
 import shutil
 import sys
 import json
+from maa.resource import Resource
 
 from configure import configure_ocr_model
 

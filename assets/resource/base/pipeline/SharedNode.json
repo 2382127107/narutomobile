@@ -39,7 +39,8 @@
       "SharedNode/ad_x_button.png",
       "SharedNode/green_masked_x.png",
       "SharedNode/x.png",
-      "SharedNode/announcement_x.png"
+      "SharedNode/announcement_x.png",
+      "SharedNode/rich_room_x.png"
     ],
     "roi": [
       0,
