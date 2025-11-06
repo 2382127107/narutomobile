@@ -62,13 +62,30 @@ jobs:
 
   install:
     needs: meta
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        
-        os: [win, macos, linux]
-        arch: [aarch64, x86_64]
+        include:
+          - os: win
+            arch: x86_64
+            runner: windows-latest
+          - os: win
+            arch: aarch64
+            runner: windows-11-arm
+          - os: macos
+            arch: x86_64
+            runner: macos-15-intel
+          - os: macos
+            arch: aarch64
+            runner: macos-latest
+          - os: linux
+            arch: x86_64
+            runner: ubuntu-latest
+          - os: linux
+            arch: aarch64
+            runner: ubuntu-24.04-arm
       fail-fast: false
+    runs-on: ${{ matrix.runner }}
+
 
     steps:
       - uses: actions/checkout@v4
