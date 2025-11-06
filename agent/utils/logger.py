@@ -1,9 +1,8 @@
 from pathlib import Path
 import sys
 
-from loguru import logger as _logger
-
 try:
+    from loguru import logger as _logger
     def setup_logger(log_dir: Path = Path("debug/custom"), console_level: str = "INFO"):
         """
         Set up the logger with optional file logging.
@@ -22,7 +21,7 @@ try:
         )
 
         _logger.add(
-            f"{log_dir.resolve().__str__}/{{time:YYYY-MM-DD}}.log",
+            f"{(log_dir.resolve().__str__())}/{{time:YYYY-MM-DD}}.log",
             rotation="00:00",  # Rotate at midnight
             retention="2 weeks",  # Keep logs for 2 weeks
             compression="zip",  # Compress old logs

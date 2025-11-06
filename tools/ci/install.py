@@ -7,8 +7,8 @@ from maa.resource import Resource
 
 from configure import configure_ocr_model
 
+from utils import working_dir
 
-working_dir = Path(__file__).parent
 install_path = working_dir / Path("install")
 version = len(sys.argv) > 1 and sys.argv[1] or "v0.0.1"
 
