@@ -217,9 +217,7 @@
         ],
         "threshold": 0.9,
         "next": [
-            "ninjia_book_award_undone"
-        ],
-        "interrupt": [
+            "ninjia_book_award_undone",
             "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
@@ -282,12 +280,10 @@
         "threshold": 0.8,
         "action": "Click",
         "post_delay": 3000,
+        "timeout": 1000,
         "next": [
             "close_ninjia_book_level_up_page_when_liveness",
             "ninjia_book_liveness_award"
-        ],
-        "interrupt": [
-            "check_no_ninjia_book_liveness_award"
         ],
         "focus": "[color:DeepSkyBlue]领取活跃度奖励[/color]"
     },
@@ -306,9 +302,7 @@
         "threshold": 0.8,
         "action": "Click",
         "next": [
-            "ninjia_book_award_undone"
-        ],
-        "interrupt": [
+            "ninjia_book_award_undone",
             "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
@@ -491,7 +485,6 @@
         ],
         "interrupt": [
             "get_ninjia_book_award",
-            "confirm_ninjia_book_award",
             "ninjia_book_award_swip_to_right"
         ],
         "focus": "[color:DeepSkyBlue]滑动领取忍法帖奖励[/color]"
@@ -578,6 +571,7 @@
         ],
         "threshold": 0.85,
         "action": "Click",
+        "timeout": 1000,
         "next": [
             "confirm_ninjia_book_award"
         ],
