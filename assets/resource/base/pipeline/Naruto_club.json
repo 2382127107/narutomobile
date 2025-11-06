@@ -733,7 +733,7 @@
     "no_third_award": {
         "recognition": "DirectHit",
         "next": "close_naruto_club",
-        "focus": "无法领取第三奖励"
+        "focus": "[color:red]无法领取第三奖励[/color]"
     },
     "club_third_award": {
         "recognition": "TemplateMatch",
