@@ -4,6 +4,14 @@
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": false,
     "url": "https://github.com/duorua/narutomobile",
+    "message": "你现在使用的是一个测试版本，她并不稳定",
+    "agent": {
+        "child_exec": "python",
+        "child_args": [
+            "-u",
+            "{PROJECT_DIR}/../agent/main.py"
+        ]
+    },
     "controller": [
         {
             "name": "安卓端",
@@ -131,6 +139,10 @@
         {
             "name": "百忍大战",
             "entry": "hundred_ninjia"
+        },
+        {
+            "name": "agent Debug",
+            "entry": "use_agent"
         }
     ],
     "option": {

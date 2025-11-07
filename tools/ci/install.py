@@ -7,8 +7,8 @@ from maa.resource import Resource
 
 from configure import configure_ocr_model
 
+from utils import working_dir
 
-working_dir = Path(__file__).parent
 install_path = working_dir / Path("install")
 version = len(sys.argv) > 1 and sys.argv[1] or "v0.0.1"
 
@@ -61,13 +61,16 @@ def install_resource():
 
 
 def install_chores():
-    shutil.copy2(
-        working_dir / "README.md",
-        install_path,
-    )
-    shutil.copy2(
-        working_dir / "LICENSE",
-        install_path,
+    for file in ["README.md", "LICENSE", "requirements.txt"]:
+        shutil.copy2(
+            working_dir / file,
+            install_path,
+        )
+    shutil.copytree(
+        working_dir / "docs",
+        install_path / "docs",
+        dirs_exist_ok=True,
+        ignore=shutil.ignore_patterns("*.yaml"),
     )
 
 def install_agent():
@@ -76,6 +79,21 @@ def install_agent():
         install_path / "agent",
         dirs_exist_ok=True,
     )
+
+    with open(install_path / "interface.json", "r", encoding="utf-8") as f:
+        interface = json.load(f)
+
+    if sys.platform.startswith("win"):
+        interface["agent"]["child_exec"] = r"{PROJECT_DIR}/python/python.exe"
+    elif sys.platform.startswith("darwin"):
+        interface["agent"]["child_exec"] = r"{PROJECT_DIR}/python/bin/python3"
+    elif sys.platform.startswith("linux"):
+        interface["agent"]["child_exec"] = r"python3"
+
+    interface["agent"]["child_args"] = ["-u", r"{PROJECT_DIR}/agent/main.py"]
+
+    with open(install_path / "interface.json", "w", encoding="utf-8") as f:
+        json.dump(interface, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
     install_deps()

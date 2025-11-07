@@ -2,8 +2,7 @@ from pathlib import Path
 
 import shutil
 
-assets_dir = Path(__file__).parent / "assets"
-
+from utils import assets_dir
 
 def configure_ocr_model():
     if not (assets_dir / "MaaCommonAssets" / "OCR").exists():

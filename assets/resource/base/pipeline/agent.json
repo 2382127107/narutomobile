@@ -1,0 +1,13 @@
+{
+  "use_agent": {
+    "action": "Custom",
+    "custom_action": "MyAction111",
+    "next": [
+      "stop_task_list"
+    ]
+  },
+  "stop_task_list": {
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  }
+}
