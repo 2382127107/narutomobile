@@ -181,7 +181,7 @@
   },
   "direct_hit_quit": {
     "recognition": "TemplateMatch",
-    "template": "SharedNode/direct_hit_quit.png",
+    "template": "SharedNode/click_anywhere_to_quit.png",
     "roi": [
       506,
       649,
