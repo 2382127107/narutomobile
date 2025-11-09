@@ -1,6 +1,161 @@
 {
-  "in_battle": {
+  "is_in_battle_scene": {
+    "next": "not_in_battle_scene",
+    "interrupt": "has_attack"
+  },
+  "not_in_battle_scene": {
     "recognition": "TemplateMatch",
-    "template": ""
+    "template": [
+      "auto_battle/normal_attack.png",
+      "auto_battle/normal_attack_1.png",
+      "auto_battle/normal_attack_pressed.png"
+    ],
+    "method": 1,
+    "roi": [
+      1063,
+      513,
+      158,
+      161
+    ],
+    "threshold": 0.7,
+    "inverse": true
+  },
+  "has_attack": {
+    "next": [
+      "skill_1_not_ready",
+      "click_skill_1"
+    ]
+  },
+  "skill_1_not_ready": {
+    "recognition": "OCR",
+    "expected": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "roi": [
+      970,
+      613,
+      62,
+      54
+    ],
+    "post_delay": 0,
+    "next": [
+      "skill_2_not_ready",
+      "click_skill_2"
+    ]
+  },
+  "skill_2_not_ready": {
+    "recognition": "OCR",
+    "expected": "1",
+    "replace": [
+      [
+        "2",
+        "1"
+      ],
+      [
+        "3",
+        "1"
+      ],
+      [
+        "4",
+        "1"
+      ],
+      [
+        "5",
+        "1"
+      ],
+      [
+        "6",
+        "1"
+      ],
+      [
+        "7",
+        "1"
+      ],
+      [
+        "8",
+        "1"
+      ],
+      [
+        "9",
+        "1"
+      ]
+    ],
+    "roi": [
+      985,
+      471,
+      65,
+      59
+    ],
+    "post_delay": 0,
+    "next": "click_Ult_and_attack"
+  },
+  "click_skill_1": {
+    "target": [
+      970,
+      613,
+      62,
+      54
+    ],
+    "post_delay": 0,
+    "action": "Click"
+  },
+  "click_skill_2": {
+    "target": [
+      985,
+      471,
+      65,
+      59
+    ],
+    "post_delay": 0,
+    "action": "Click"
+  },
+  "click_Ult_and_attack": {
+    "recognition": "DirectHit",
+    "action": "MultiSwipe",
+    "swipes": [
+      {
+        "$doc": "attack",
+        "begin": [
+          1099,
+          548,
+          92,
+          92
+        ],
+        "end": [
+          1099,
+          548,
+          92,
+          92
+        ],
+        "duration": 1500
+      },
+      {
+        "$doc": "ultimate",
+        "begin": [
+          1120,
+          400,
+          71,
+          65
+        ],
+        "end": [
+          1120,
+          400,
+          71,
+          65
+        ]
+      }
+    ],
+    "post_delay": 0
+  },
+  "auto_battle_debug": {
+    "next": "is_in_battle_scene"
   }
 }
