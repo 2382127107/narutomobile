@@ -156,8 +156,8 @@
     "focus": "[color:DeepSkyBlue]进行周度签到[/color]"
   },
   "im_come_back": {
-    "recognition": "ocr",
-    "text": "我回来了",
+    "recognition": "OCR",
+    "expected": "我回来了",
     "action": "Click",
     "roi": [
       496,
@@ -168,8 +168,8 @@
     "focus": "[color:DeepSkyBlue]点击我回来了[/color]"
   },
   "im_come_back_award": {
-    "recognition": "ocr",
-    "text": "领取礼物",
+    "recognition": "OCR",
+    "expected": "领取礼物",
     "action": "Click",
     "roi": [
       470,
@@ -225,5 +225,47 @@
     "green_mask": true,
     "post_delay": 500,
     "focus": "[color:tomato]检查在主界面[/color]"
+  },
+  "main_screen_swipe_to_right": {
+    "recognition": "TemplateMatch",
+    "template": [
+      "Startup/main_green_masked.png"
+    ],
+    "action": "Swipe",
+    "begin": [
+      1015,
+      334,
+      1,
+      1
+    ],
+    "end": [
+      273,
+      336,
+      1,
+      1
+    ],
+    "green_mask": true,
+    "focus": "[color:darkgray]在主界面向右滑动[/color]"
+  },
+  "main_screen_swipe_to_left": {
+    "recognition": "TemplateMatch",
+    "template": [
+      "Startup/main_green_masked.png"
+    ],
+    "action": "Swipe",
+    "begin": [
+      273,
+      336,
+      1,
+      1
+    ],
+    "end": [
+      1015,
+      334,
+      1,
+      1
+    ],
+    "green_mask": true,
+    "focus": "[color:darkgray]在主界面向右滑动[/color]"
   }
 }

@@ -486,7 +486,7 @@
             "survival_challenge_entry"
         ],
         "interrupt": [
-            "swipe_for_right_entries",
+            "main_screen_swipe_to_right",
             "back_main_screen"
         ]
     },
