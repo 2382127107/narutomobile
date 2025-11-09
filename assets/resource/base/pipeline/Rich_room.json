@@ -177,8 +177,8 @@
     "peace": {
         "recognition": "TemplateMatch",
         "template": [
-            "Rich_room/normal_attack.png",
-            "Rich_room/normal_attack_1.png"
+            "auto_battle/normal_attack.png",
+            "auto_battle/normal_attack_1.png"
         ],
         "action": "Swipe",
         "threshold": 0.7,
@@ -300,7 +300,10 @@
     },
     "normal_attack": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/normal_attack_masked.png",
+        "template": [
+            "auto_battle/normal_attack.png",
+            "auto_battle/normal_attack_1.png"
+        ],
         "green_mask": true,
         "action": "Swipe",
         "threshold": 0.9,

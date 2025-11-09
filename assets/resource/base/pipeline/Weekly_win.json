@@ -138,7 +138,10 @@
     },
     "weekly_win_match_fighting": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/normal_attack_masked.png",
+        "template": [
+            "auto_battle/normal_attack.png",
+            "auto_battle/normal_attack_1.png"
+        ],
         "green_mask": true,
         "action": "Swipe",
         "duration": 50,
@@ -181,7 +184,10 @@
     },
     "weekly_win_normal_attack": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/normal_attack_masked.png",
+        "template": [
+            "auto_battle/normal_attack.png",
+            "auto_battle/normal_attack_1.png"
+        ],
         "green_mask": true,
         "action": "Swipe",
         "threshold": 0.9,
@@ -268,8 +274,8 @@
     "weekly_win_peace": {
         "recognition": "TemplateMatch",
         "template": [
-            "Rich_room/normal_attack.png",
-            "Rich_room/normal_attack_1.png"
+            "auto_battle/normal_attack.png",
+            "auto_battle/normal_attack_1.png"
         ],
         "action": "Swipe",
         "threshold": 0.7,
