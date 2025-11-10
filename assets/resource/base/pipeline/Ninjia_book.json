@@ -548,8 +548,7 @@
     "ninjia_book_award_undone": {
         "recognition": "TemplateMatch",
         "template": [
-            "Ninjia_book/has_award.png",
-            "Ninjia_book/liveness_undone_selected.png"
+            "Ninjia_book/has_award.png"
         ],
         "roi": [
             89,
@@ -558,6 +557,7 @@
             108
         ],
         "next": [
+            "ninjia_book_award_undone",
             "ninjia_book_award_swip_to_left"
         ],
         "interrupt": [

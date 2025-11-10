@@ -183,6 +183,7 @@
         "action": "Swipe",
         "threshold": 0.7,
         "inverse": true,
+        "post_delay": 1500,
         "next": [
             "back_main_screen_and_stop"
         ],
