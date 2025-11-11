@@ -740,6 +740,9 @@
         "next": [
             "confirm_club_third_award"
         ],
+        "on_error": [
+            "no_third_award"
+        ],
         "post_wait_freezes": 800,
         "focus": "[color:DeepSkyBlue]领取第三个奖励[/color]"
     },
