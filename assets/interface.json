@@ -1,10 +1,12 @@
 {
     "name": "MaaAutoNaruto",
-    "version": "v0.1.10",
+    "version": "v0.2.0-beta",
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": false,
     "url": "https://github.com/duorua/narutomobile",
     "message": "你现在使用的是一个测试版本，她并不稳定",
+    "mfa_max_version": "v1.7.0",
+    "mfa_min_version": "v1.7.0",
     "agent": {
         "child_exec": "python",
         "child_args": [
