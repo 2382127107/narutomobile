@@ -1,21 +1,12 @@
 {
     "use_energy": {
         "next": [
-            "use_energy_entry"
+            "use_energy_by_ninjia_piece"
         ],
         "interrupt": [
             "back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入使用体力子任务[/color]"
-    },
-    "use_energy_entry": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/main_green_masked.png",
-        "green_mask": true,
-        "next": [
-            "use_energy_by_ninjia_piece"
-        ],
-        "focus": "[color:DeepSkyBlue]检测是否在主界面[/color]"
     },
     "use_energy_by_ninjia_piece": {
         "recognition": "TemplateMatch",
