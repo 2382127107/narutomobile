@@ -116,7 +116,7 @@
       61
     ],
     "duration": 700,
-    "post_delay": 500,
+    "post_delay": 400,
     "focus": "[color:DeepSkyBlue]寻找奖励中心功能入口[/color]"
   },
   "Swipe_for_award_center_find_end": {
