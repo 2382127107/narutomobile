@@ -53,9 +53,6 @@
             50,
             50
         ],
-        "next": [
-            "surf_post"
-        ],
         "interrupt": [
             "swipe_for_comments"
         ],
@@ -99,11 +96,6 @@
             662
         ],
         "action": "Click",
-        "next": "check_surf_post",
-        "interrupt": [
-            "surf_post",
-            "swipe_for_comments"
-        ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]选择有评论话题[/color]"
     },
@@ -402,8 +394,14 @@
             "weekly_feed_pig",
             "feed_pig_done"
         ],
+        "timeout": 10000,
+        "on_error": "feed_pig_not_found",
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]喂豚豚[/color]"
+    },
+    "feed_pig_not_found": {
+        "next": "close_feed_pig",
+        "focus": "[color:DeepSkyBlue]无法找到喂豚豚按钮[/color]"
     },
     "weekly_feed_pig": {
         "recognition": "TemplateMatch",
@@ -747,6 +745,9 @@
         "action": "Click",
         "next": [
             "confirm_club_third_award"
+        ],
+        "on_error": [
+            "no_third_award"
         ],
         "post_wait_freezes": 800,
         "focus": "[color:DeepSkyBlue]领取第三个奖励[/color]"

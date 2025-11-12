@@ -193,6 +193,9 @@
         ],
         "action": "Swipe",
         "duration": 100,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
         "post_delay": 700,
         "focus": "[color:DeepSkyBlue]领取绝密宝匣铜币[/color]"
     }

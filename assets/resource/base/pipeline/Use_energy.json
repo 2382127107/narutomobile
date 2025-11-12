@@ -1,50 +1,26 @@
 {
     "use_energy": {
         "next": [
-            "use_energy_entry"
+            "use_energy_by_ninjia_piece"
         ],
         "interrupt": [
             "back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入使用体力子任务[/color]"
     },
-    "use_energy_entry": {
-        "recognition": "OCR",
-        "expected": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"
-        ],
-        "roi": [
-            411,
-            23,
-            58,
-            37
-        ],
-        "next": [
-            "use_energy_by_ninjia_piece"
-        ],
-        "focus": "[color:DeepSkyBlue]检测是否可以使用体力[/color]"
-    },
     "use_energy_by_ninjia_piece": {
         "recognition": "TemplateMatch",
         "template": [
             "Use_energy/adventure.png",
             "Use_energy/adventure_undone.png",
-            "Use_energy/adventure_undone_1.png"
+            "Use_energy/adventure_undone_1.png",
+            "Use_energy/adventure_cloud.png"
         ],
         "roi": [
-            1111,
-            586,
-            107,
-            91
+            1083,
+            541,
+            199,
+            180
         ],
         "next": [
             "elite_entry"

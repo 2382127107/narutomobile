@@ -138,7 +138,10 @@
         },
         {
             "name": "百忍大战",
-            "entry": "hundred_ninjia"
+            "entry": "hundred_ninjia",
+            "option": [
+                "战斗时是否点击普攻"
+            ]
         },
         {
             "name": "agent Debug",
@@ -274,6 +277,26 @@
                             "next": [
                                 "weekly_win_rank"
                             ]
+                        }
+                    }
+                }
+            ]
+        },
+        "战斗时是否点击普攻": {
+            "cases": [
+                {
+                    "name": "否",
+                    "pipeline_override": {
+                        "hundred_ninjia_check_fight": {
+                            "action": "DoNothing"
+                        }
+                    }
+                },
+                {
+                    "name": "是",
+                    "pipeline_override": {
+                        "hundred_ninjia_check_fight": {
+                            "action": "Click"
                         }
                     }
                 }

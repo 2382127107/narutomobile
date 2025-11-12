@@ -217,6 +217,7 @@
         ],
         "threshold": 0.9,
         "next": [
+            "mechanical_treasure_box_undone",
             "ninjia_book_award_undone",
             "back_main_screen_and_stop"
         ],
@@ -249,10 +250,10 @@
             "Ninjia_book/liveness_undone_selected.png"
         ],
         "roi": [
-            118,
-            298,
-            79,
-            56
+            101,
+            315,
+            83,
+            74
         ],
         "threshold": 0.8,
         "action": "Click",
@@ -293,20 +294,135 @@
             "Ninjia_book/liveness_undone_selected.png"
         ],
         "roi": [
-            118,
-            298,
-            79,
-            56
+            41,
+            311,
+            170,
+            168
         ],
         "inverse": true,
         "threshold": 0.8,
         "action": "Click",
         "next": [
+            "mechanical_treasure_box_undone",
             "ninjia_book_award_undone",
             "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]没有可领取的活跃度奖励[/color]"
+    },
+    "mechanical_treasure_box_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/mechanical_treasure_box_undone.png",
+        "roi": [
+            96,
+            402,
+            95,
+            133
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "next": [
+            "mechanical_treasure_box_access_method_undone",
+            "mechanical_treasure_box_access_method_done"
+        ],
+        "interrupt": [
+            "mechanical_treasure_box_undone"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]机械宝盒未领取[/color]"
+    },
+    "mechanical_treasure_box_access_method_done": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/mechanical_treasure_box_access_method_undone.png",
+        "roi": [
+            903,
+            619,
+            212,
+            101
+        ],
+        "inverse": true,
+        "next": [
+            "ninjia_book_award_undone",
+            "back_main_screen_and_stop"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]机械宝盒可抽奖[/color]"
+    },
+    "mechanical_treasure_box_access_method_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/mechanical_treasure_box_access_method_undone.png",
+        "roi": [
+            903,
+            619,
+            212,
+            101
+        ],
+        "action": "Click",
+        "next": [
+            "get_mechanical_treasure_box_award"
+        ],
+        "interrupt": [
+            "mechanical_treasure_box_access_method_undone"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]机械宝盒可领取[/color]"
+    },
+    "get_mechanical_treasure_box_award": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/get_mechanical_treasure_box_award.png",
+        "roi": [
+            730,
+            88,
+            158,
+            570
+        ],
+        "action": "Click",
+        "next": [
+            "get_mechanical_treasure_box_award_one_key",
+            "check_no_mechanical_treasure_box_award"
+        ],
+        "interrupt": [
+            "get_mechanical_treasure_box_award"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]领取机械宝盒奖励[/color]"
+    },
+    "check_no_mechanical_treasure_box_award": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/get_mechanical_treasure_box_award.png",
+        "roi": [
+            730,
+            88,
+            158,
+            570
+        ],
+        "inverse": true,
+        "next": [
+            "ninjia_book_award_undone",
+            "back_main_screen_and_stop"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]检查还有没有机械宝盒奖励[/color]"
+    },
+    "get_mechanical_treasure_box_award_one_key": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/get_mechanical_treasure_box_award_one_key.png",
+        "roi": [
+            363,
+            335,
+            404,
+            234
+        ],
+        "action": "Click",
+        "next": [
+            "ninjia_book_award_undone",
+            "back_main_screen_and_stop"
+        ],
+        "interrupt": [
+            "get_mechanical_treasure_box_award_one_key"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]一键领取机械宝盒奖励[/color]"
     },
     "close_ninjia_book_level_up_page_when_liveness": {
         "recognition": "TemplateMatch",
@@ -433,8 +549,7 @@
     "ninjia_book_award_undone": {
         "recognition": "TemplateMatch",
         "template": [
-            "Ninjia_book/has_award.png",
-            "Ninjia_book/liveness_undone_selected.png"
+            "Ninjia_book/has_award.png"
         ],
         "roi": [
             89,
@@ -443,6 +558,7 @@
             108
         ],
         "next": [
+            "ninjia_book_award_undone",
             "ninjia_book_award_swip_to_left"
         ],
         "interrupt": [
