@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [win]
+        os: [win, linux]
         arch: [x86_64]
     steps:
       - id: uploading
