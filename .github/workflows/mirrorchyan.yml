@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [win]
+        os: [win, linux]
         arch: [x86_64]
     steps:
       - id: uploading
@@ -34,7 +34,7 @@ jobs:
         with:
           filetype: latest-release
           filename: "MaaAutoNaruto-win-x86_64-*.zip"
-          pick_files: '["resource", "interface.json"]'
+          pick_files: '["resource", "interface.json", "agent"]'
           exclude_files: '["resource/model/ocr/**"]'
           mirrorchyan_rid: MaaAutoNaruto
 
