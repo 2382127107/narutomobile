@@ -1,4 +1,4 @@
-maafw==4.5.6
+maafw
 loguru
 json-with-comments
 Pillow
