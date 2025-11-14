@@ -1,6 +1,328 @@
 {
-  "in_battle": {
+  "is_in_battle_scene": {
+    "next": "battle_detail",
+    "interrupt": [
+      "has_attack_button"
+    ],
+    "on_error": "debug_stop",
+    "timeout": 3000,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "has_attack_button": {
     "recognition": "TemplateMatch",
-    "template": ""
+    "template": [
+      "auto_battle/normal_attack.png",
+      "auto_battle/normal_attack_1.png",
+      "auto_battle/normal_attack_pressed.png",
+      "auto_battle/normal_attack_left.png"
+    ],
+    "roi": [
+      1063,
+      513,
+      158,
+      161
+    ],
+    "threshold": 0.4,
+    "next": [
+      "tishen",
+      "combo"
+    ]
+  },
+  "combo": {
+    "post_delay": 0,
+    "next": [
+      "skill_1_not_ready",
+      "click_skill_1"
+    ]
+  },
+  "skill_1_not_ready": {
+    "recognition": "OCR",
+    "expected": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "roi": [
+      970,
+      613,
+      62,
+      54
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "skill_2_not_ready",
+      "click_skill_2"
+    ]
+  },
+  "skill_2_not_ready": {
+    "recognition": "OCR",
+    "expected": "1",
+    "replace": [
+      [
+        "2",
+        "1"
+      ],
+      [
+        "3",
+        "1"
+      ],
+      [
+        "4",
+        "1"
+      ],
+      [
+        "5",
+        "1"
+      ],
+      [
+        "6",
+        "1"
+      ],
+      [
+        "7",
+        "1"
+      ],
+      [
+        "8",
+        "1"
+      ],
+      [
+        "9",
+        "1"
+      ]
+    ],
+    "roi": [
+      985,
+      471,
+      65,
+      59
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": "click_Ult_and_attack_3s"
+  },
+  "click_skill_1": {
+    "target": [
+      970,
+      613,
+      62,
+      54
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "action": "Click",
+    "next": "click_attack_3s"
+  },
+  "click_skill_2": {
+    "target": [
+      985,
+      471,
+      65,
+      59
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "action": "Click",
+    "next": "click_attack_3s"
+  },
+  "click_Ult_and_attack_3s": {
+    "recognition": "DirectHit",
+    "action": "MultiSwipe",
+    "swipes": [
+      {
+        "$doc": "attack",
+        "begin": [
+          1099,
+          548,
+          92,
+          92
+        ],
+        "end": [
+          1099,
+          548,
+          92,
+          92
+        ],
+        "duration": 2500
+      },
+      {
+        "$doc": "ultimate",
+        "begin": [
+          1120,
+          400,
+          71,
+          65
+        ],
+        "end": [
+          1120,
+          400,
+          71,
+          65
+        ]
+      }
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": "summon_and_roll"
+  },
+  "click_attack_3s": {
+    "recognition": "DirectHit",
+    "action": "Swipe",
+    "$doc": "attack",
+    "begin": [
+      1099,
+      548,
+      92,
+      92
+    ],
+    "end": [
+      1099,
+      548,
+      92,
+      92
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "duration": 2500
+  },
+  "move_to_left": {
+    "recognition": "DirectHit",
+    "action": "Swipe",
+    "begin": [
+      127,
+      538,
+      28,
+      26
+    ],
+    "end": [
+      127,
+      538,
+      28,
+      26
+    ],
+    "duration": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "move_to_right": {
+    "recognition": "DirectHit",
+    "action": "Swipe",
+    "begin": [
+      283,
+      537,
+      23,
+      28
+    ],
+    "end": [
+      283,
+      537,
+      23,
+      28
+    ],
+    "duration": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "move_to_up": {
+    "recognition": "DirectHit",
+    "action": "Swipe",
+    "begin": [
+      205,
+      462,
+      26,
+      27
+    ],
+    "end": [
+      205,
+      462,
+      26,
+      27
+    ],
+    "duration": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "move_to_down": {
+    "recognition": "DirectHit",
+    "action": "Swipe",
+    "begin": [
+      207,
+      612,
+      22,
+      25
+    ],
+    "end": [
+      207,
+      612,
+      22,
+      25
+    ],
+    "duration": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "summon_and_roll": {
+    "recognition": "DirectHit",
+    "action": "MultiSwipe",
+    "swipes": [
+      {
+        "$doc": "summon",
+        "begin": [
+          1128,
+          153,
+          54,
+          51
+        ],
+        "end": [
+          1128,
+          153,
+          54,
+          51
+        ]
+      },
+      {
+        "$doc": "roll",
+        "begin": [
+          1127,
+          268,
+          56,
+          55
+        ],
+        "end": [
+          1127,
+          268,
+          56,
+          55
+        ],
+        "duration": 500
+      }
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "tishen": {
+    "recognition": "TemplateMatch",
+    "template": "auto_battle/tishen.png",
+    "roi": [
+      793,
+      564,
+      142,
+      154
+    ],
+    "action": "Click",
+    "pre_delay": 0,
+    "post_delay": 500,
+    "next": "combo"
+  },
+  "auto_battle_debug": {
+    "next": "is_in_battle_scene"
   }
 }

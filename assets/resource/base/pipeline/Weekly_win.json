@@ -339,5 +339,17 @@
             "weekly_win_match_fighting"
         ],
         "post_delay": 3000
+    },
+    "battle_detail": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/battle_detail.png",
+        "roi": [
+            1060,
+            0,
+            220,
+            103
+        ],
+        "threshold": 0.8,
+        "focus": "[color:DeepSkyBlue]战斗结束[/color]"
     }
 }
