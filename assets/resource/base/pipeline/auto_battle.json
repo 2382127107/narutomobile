@@ -14,7 +14,8 @@
     "template": [
       "auto_battle/normal_attack.png",
       "auto_battle/normal_attack_1.png",
-      "auto_battle/normal_attack_pressed.png"
+      "auto_battle/normal_attack_pressed.png",
+      "auto_battle/normal_attack_left.png"
     ],
     "roi": [
       1063,

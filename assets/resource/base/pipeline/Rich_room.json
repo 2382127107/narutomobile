@@ -150,7 +150,8 @@
         "recognition": "TemplateMatch",
         "template": [
             "auto_battle/normal_attack.png",
-            "auto_battle/normal_attack_1.png"
+            "auto_battle/normal_attack_1.png",
+            "auto_battle/normal_attack_left.png"
         ],
         "action": "Swipe",
         "threshold": 0.7,
