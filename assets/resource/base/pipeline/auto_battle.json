@@ -191,7 +191,7 @@
     "pre_delay": 0,
     "post_delay": 0,
     "next": "summon_and_roll",
-    "focus": "[color:DeepSkyBlue]奥义或普攻[/color]"
+    "focus": "[color:DeepSkyBlue]奥义和普攻[/color]"
   },
   "click_attack_3s": {
     "recognition": "DirectHit",

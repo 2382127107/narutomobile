@@ -71,7 +71,7 @@
             "check": true
         },
         {
-            "name": "积分赛",
+            "name": "积分赛(只会领奖励)",
             "entry": "point_race",
             "check": true
         },
@@ -130,7 +130,7 @@
             "check": true
         },
         {
-            "name": "周胜(没做好别用)",
+            "name": "周胜(只能刷人机)",
             "entry": "weekly_win",
             "option": [
                 "匹配还是排位"
