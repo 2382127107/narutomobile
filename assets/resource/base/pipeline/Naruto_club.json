@@ -147,8 +147,24 @@
             100,
             50
         ],
+        "next": [
+            "no_comment_now"
+        ],
+        "timeout": 1000,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]滑动点赞[/color]"
+    },
+    "no_comment_now": {
+        "recognition": "OCR",
+        "expected": "暂无评论",
+        "roi": [
+            1282,
+            134,
+            311,
+            205
+        ],
+        "next": "close_surf_post",
+        "focus": "[color:red]暂无评论可供点赞[/color]"
     },
     "second_like": {
         "recognition": "TemplateMatch",
@@ -780,6 +796,7 @@
         "on_error": [
             "no_third_award"
         ],
+        "timeout": 3000,
         "post_wait_freezes": 800,
         "focus": "[color:DeepSkyBlue]领取第三个奖励[/color]"
     },
