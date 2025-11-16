@@ -346,10 +346,11 @@
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 500,
-    "next": "combo"
+    "next": "combo",
+    "focus": "[color:DeepSkyBlue]替身[/color]"
   },
   "auto_battle_debug": {
-    "next": "is_in_battle_scene"
-  },
-  "focus": "[color:DeepSkyBlue]替身[/color]"
+    "next": "is_in_battle_scene",
+    "focus": "[color:tomato]等待时间过长[/color]"
+  }
 }

@@ -715,7 +715,11 @@
             52
         ],
         "action": "Click",
+        "next": [
+            "club_second_award_done"
+        ],
         "interrupt": [
+            "confirm_club_second_award",
             "roger_club_second_award"
         ],
         "timeout": 2000,
