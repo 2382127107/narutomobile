@@ -49,7 +49,7 @@
       334
     ],
     "order_by": "Score",
-    "action": "Swipe",
+    "action": "Click",
     "threshold": 0.66,
     "post_wait_freezes": 1000,
     "green_mask": true,
@@ -64,7 +64,7 @@
       93,
       56
     ],
-    "action": "Swipe",
+    "action": "Click",
     "duration": 50,
     "focus": "[color:DeepSkyBlue]关闭好友排名[/color]"
   },
