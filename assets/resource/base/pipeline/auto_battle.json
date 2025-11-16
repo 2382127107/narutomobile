@@ -20,7 +20,8 @@
     "on_error": "debug_stop",
     "timeout": 3000,
     "pre_delay": 0,
-    "post_delay": 0
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]进入战斗画面[/color]"
   },
   "has_attack_button": {
     "recognition": "TemplateMatch",
@@ -47,7 +48,8 @@
     "next": [
       "skill_1_not_ready",
       "click_skill_1"
-    ]
+    ],
+    "focus": "[color:DeepSkyBlue]连招[/color]"
   },
   "skill_1_not_ready": {
     "recognition": "OCR",
@@ -73,7 +75,8 @@
     "next": [
       "skill_2_not_ready",
       "click_skill_2"
-    ]
+    ],
+    "focus": "[color:DeepSkyBlue]技能1cd[/color]"
   },
   "skill_2_not_ready": {
     "recognition": "OCR",
@@ -120,7 +123,8 @@
     ],
     "pre_delay": 0,
     "post_delay": 0,
-    "next": "click_Ult_and_attack_3s"
+    "next": "click_Ult_and_attack_3s",
+    "focus": "[color:DeepSkyBlue]技能2cd[/color]"
   },
   "click_skill_1": {
     "target": [
@@ -132,7 +136,8 @@
     "pre_delay": 0,
     "post_delay": 0,
     "action": "Click",
-    "next": "click_attack_3s"
+    "next": "click_attack_3s",
+    "focus": "[color:DeepSkyBlue]一技能[/color]"
   },
   "click_skill_2": {
     "target": [
@@ -144,7 +149,8 @@
     "pre_delay": 0,
     "post_delay": 0,
     "action": "Click",
-    "next": "click_attack_3s"
+    "next": "click_attack_3s",
+    "focus": "[color:DeepSkyBlue]二技能[/color]"
   },
   "click_Ult_and_attack_3s": {
     "recognition": "DirectHit",
@@ -184,7 +190,8 @@
     ],
     "pre_delay": 0,
     "post_delay": 0,
-    "next": "summon_and_roll"
+    "next": "summon_and_roll",
+    "focus": "[color:DeepSkyBlue]奥义或普攻[/color]"
   },
   "click_attack_3s": {
     "recognition": "DirectHit",
@@ -204,7 +211,8 @@
     ],
     "pre_delay": 0,
     "post_delay": 0,
-    "duration": 2500
+    "duration": 2500,
+    "focus": "[color:DeepSkyBlue]普攻三秒[/color]"
   },
   "move_to_left": {
     "recognition": "DirectHit",
@@ -223,7 +231,8 @@
     ],
     "duration": 500,
     "pre_delay": 0,
-    "post_delay": 0
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]向左走[/color]"
   },
   "move_to_right": {
     "recognition": "DirectHit",
@@ -242,7 +251,8 @@
     ],
     "duration": 500,
     "pre_delay": 0,
-    "post_delay": 0
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]向右走[/color]"
   },
   "move_to_up": {
     "recognition": "DirectHit",
@@ -261,7 +271,8 @@
     ],
     "duration": 500,
     "pre_delay": 0,
-    "post_delay": 0
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]向上走[/color]"
   },
   "move_to_down": {
     "recognition": "DirectHit",
@@ -280,7 +291,8 @@
     ],
     "duration": 500,
     "pre_delay": 0,
-    "post_delay": 0
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]向下走[/color]"
   },
   "summon_and_roll": {
     "recognition": "DirectHit",
@@ -319,7 +331,8 @@
       }
     ],
     "pre_delay": 0,
-    "post_delay": 0
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]通灵或密卷[/color]"
   },
   "tishen": {
     "recognition": "TemplateMatch",
@@ -337,5 +350,6 @@
   },
   "auto_battle_debug": {
     "next": "is_in_battle_scene"
-  }
+  },
+  "focus": "[color:DeepSkyBlue]替身[/color]"
 }
