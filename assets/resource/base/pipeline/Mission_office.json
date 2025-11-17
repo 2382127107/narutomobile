@@ -269,13 +269,38 @@
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "take_mission_office_mission"
+            "mission_office_recommended_team_check"
         ],
         "interrupt": [
-            "mission_office_get_mission"
+            "mission_office_recommended_team"
         ],
-        "post_wait_freezes": 200,
+        "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]使用推荐配队[/color]"
+    },
+    "mission_office_recommended_team_check": {
+        "recognition": "OCR",
+        "expected": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "需要"
+        ],
+        "roi": [
+            20,
+            505,
+            390,
+            165
+        ],
+        "next": [
+            "take_mission_office_mission"
+        ],
+        "post_wait_freezes": 400
     },
     "mission_office_3_mission": {
         "recognition": "TemplateMatch",

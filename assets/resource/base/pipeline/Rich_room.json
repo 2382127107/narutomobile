@@ -66,8 +66,7 @@
             -114
         ],
         "next": [
-            "challenge_rich_room",
-            "rich_room_finished"
+            "challenge_rich_room"
         ],
         "action": "Click",
         "post_wait_freezes": 500,
@@ -82,19 +81,6 @@
             1100,
             118
         ],
-        "next": [
-            "back_main_screen_and_stop"
-        ],
-        "focus": "[color:DeepSkyBlue]丰饶之间已完成[/color]"
-    },
-    "rich_room_done": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Rich_room/rich_room_done_night.png",
-            "Rich_room/rich_room_done_day.png"
-        ],
-        "green_mask": true,
-        "threshold": 0.5,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -119,7 +105,11 @@
         "template": "Rich_room/challenge.png",
         "action": "Click",
         "next": [
-            "fighting",
+            "rich_room_ac_done",
+            "rich_room_finished"
+        ],
+        "interrupt": [
+            "is_in_battle_scene",
             "challenge_rich_room"
         ],
         "focus": "[color:DeepSkyBlue]挑战丰饶之间[/color]"
@@ -148,36 +138,19 @@
     },
     "peace": {
         "recognition": "TemplateMatch",
-        "template": [
-            "auto_battle/normal_attack.png",
-            "auto_battle/normal_attack_1.png",
-            "auto_battle/normal_attack_left.png"
+        "template": "Rich_room/hp.png",
+        "roi": [
+            121,
+            0,
+            432,
+            118
         ],
-        "action": "Swipe",
         "threshold": 0.7,
         "inverse": true,
-        "post_delay": 1500,
+        "post_delay": 500,
         "next": [
             "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]检查是否和平[/color]"
-    },
-    "fight": {
-        "next": [
-            "peace"
-        ],
-        "interrupt": [
-            "fighting"
-        ]
-    },
-    "fighting": {
-        "next": [
-            "is_in_battle_scene"
-        ],
-        "interrupt": [
-            "sleep_500ms"
-        ],
-        "post_delay": 1500,
-        "focus": "[color:DeepSkyBlue]进入战斗[/color]"
     }
 }

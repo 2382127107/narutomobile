@@ -13,7 +13,10 @@
       158,
       161
     ],
-    "next": "battle_detail",
+    "next": [
+      "battle_detail",
+      "peace"
+    ],
     "interrupt": [
       "has_attack_button"
     ],
@@ -37,6 +40,8 @@
       158,
       161
     ],
+    "pre_delay": 0,
+    "post_delay": 0,
     "threshold": 0.4,
     "next": [
       "tishen",
@@ -44,12 +49,12 @@
     ]
   },
   "combo": {
+    "pre_delay": 0,
     "post_delay": 0,
     "next": [
       "skill_1_not_ready",
       "click_skill_1"
-    ],
-    "focus": "[color:DeepSkyBlue]连招[/color]"
+    ]
   },
   "skill_1_not_ready": {
     "recognition": "OCR",
@@ -64,6 +69,7 @@
       "8",
       "9"
     ],
+    "threshold": 0.8,
     "roi": [
       970,
       613,
@@ -75,46 +81,22 @@
     "next": [
       "skill_2_not_ready",
       "click_skill_2"
-    ],
-    "focus": "[color:DeepSkyBlue]技能1cd[/color]"
+    ]
   },
   "skill_2_not_ready": {
     "recognition": "OCR",
-    "expected": "1",
-    "replace": [
-      [
-        "2",
-        "1"
-      ],
-      [
-        "3",
-        "1"
-      ],
-      [
-        "4",
-        "1"
-      ],
-      [
-        "5",
-        "1"
-      ],
-      [
-        "6",
-        "1"
-      ],
-      [
-        "7",
-        "1"
-      ],
-      [
-        "8",
-        "1"
-      ],
-      [
-        "9",
-        "1"
-      ]
+    "expected": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
     ],
+    "threshold": 0.8,
     "roi": [
       985,
       471,
@@ -123,8 +105,7 @@
     ],
     "pre_delay": 0,
     "post_delay": 0,
-    "next": "click_Ult_and_attack_3s",
-    "focus": "[color:DeepSkyBlue]技能2cd[/color]"
+    "next": "click_Ult_and_attack_3s"
   },
   "click_skill_1": {
     "target": [
@@ -136,8 +117,8 @@
     "pre_delay": 0,
     "post_delay": 0,
     "action": "Click",
-    "next": "click_attack_3s",
-    "focus": "[color:DeepSkyBlue]一技能[/color]"
+    "next": "click_attack_2.5s",
+    "focus": "[color:darkgray]使用一技能[/color]"
   },
   "click_skill_2": {
     "target": [
@@ -149,8 +130,8 @@
     "pre_delay": 0,
     "post_delay": 0,
     "action": "Click",
-    "next": "click_attack_3s",
-    "focus": "[color:DeepSkyBlue]二技能[/color]"
+    "next": "click_attack_2.5s",
+    "focus": "[color:darkgray]使用二技能[/color]"
   },
   "click_Ult_and_attack_3s": {
     "recognition": "DirectHit",
@@ -191,9 +172,9 @@
     "pre_delay": 0,
     "post_delay": 0,
     "next": "summon_and_roll",
-    "focus": "[color:DeepSkyBlue]奥义和普攻[/color]"
+    "focus": "[color:darkgray]奥义和普攻[/color]"
   },
-  "click_attack_3s": {
+  "click_attack_2.5s": {
     "recognition": "DirectHit",
     "action": "Swipe",
     "$doc": "attack",
@@ -212,7 +193,7 @@
     "pre_delay": 0,
     "post_delay": 0,
     "duration": 2500,
-    "focus": "[color:DeepSkyBlue]普攻三秒[/color]"
+    "focus": "[color:darkgray]普攻[/color]"
   },
   "move_to_left": {
     "recognition": "DirectHit",
@@ -232,7 +213,7 @@
     "duration": 500,
     "pre_delay": 0,
     "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]向左走[/color]"
+    "focus": "[color:darkgray]向左走[/color]"
   },
   "move_to_right": {
     "recognition": "DirectHit",
@@ -252,7 +233,7 @@
     "duration": 500,
     "pre_delay": 0,
     "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]向右走[/color]"
+    "focus": "[color:darkgray]向右走[/color]"
   },
   "move_to_up": {
     "recognition": "DirectHit",
@@ -272,7 +253,7 @@
     "duration": 500,
     "pre_delay": 0,
     "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]向上走[/color]"
+    "focus": "[color:darkgray]向上走[/color]"
   },
   "move_to_down": {
     "recognition": "DirectHit",
@@ -292,7 +273,7 @@
     "duration": 500,
     "pre_delay": 0,
     "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]向下走[/color]"
+    "focus": "[color:darkgray]向下走[/color]"
   },
   "summon_and_roll": {
     "recognition": "DirectHit",
@@ -332,7 +313,7 @@
     ],
     "pre_delay": 0,
     "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]通灵或密卷[/color]"
+    "focus": "[color:darkgray]通灵或密卷[/color]"
   },
   "tishen": {
     "recognition": "TemplateMatch",
@@ -345,9 +326,9 @@
     ],
     "action": "Click",
     "pre_delay": 0,
-    "post_delay": 500,
+    "post_delay": 200,
     "next": "combo",
-    "focus": "[color:DeepSkyBlue]替身[/color]"
+    "focus": "[color:darkgray]替身[/color]"
   },
   "auto_battle_debug": {
     "next": "is_in_battle_scene",
