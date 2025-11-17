@@ -138,15 +138,16 @@
     },
     "peace": {
         "recognition": "TemplateMatch",
-        "template": [
-            "auto_battle/normal_attack.png",
-            "auto_battle/normal_attack_1.png",
-            "auto_battle/normal_attack_left.png"
+        "template": "Rich_room/hp.png",
+        "roi": [
+            121,
+            0,
+            432,
+            118
         ],
-        "action": "Swipe",
         "threshold": 0.7,
         "inverse": true,
-        "post_delay": 1500,
+        "post_delay": 500,
         "next": [
             "back_main_screen_and_stop"
         ],
