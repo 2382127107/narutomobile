@@ -249,7 +249,7 @@
             85,
             80
         ],
-        "threshold": 0.98,
+        "threshold": 0.92,
         "action": "Click",
         "next": [
             "second_group_award_entry",
