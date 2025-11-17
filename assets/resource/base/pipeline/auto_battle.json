@@ -15,7 +15,7 @@
     ],
     "next": [
       "battle_detail",
-      "peace"
+      "rich_room_peace"
     ],
     "interrupt": [
       "has_attack_button"

@@ -136,14 +136,12 @@
         ],
         "focus": "[color:DeepSkyBlue]滑动寻找右边的功能入口[/color]"
     },
-    "peace": {
+    "rich_room_peace": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/hp.png",
-        "roi": [
-            121,
-            0,
-            432,
-            118
+        "template": [
+            "Rich_room/rich_room_finish.png",
+            "SharedNode/click_anywhere_to_quit.png",
+            "Activity/headhunt.png"
         ],
         "threshold": 0.7,
         "inverse": true,
