@@ -135,5 +135,21 @@
             50
         ],
         "focus": "[color:DeepSkyBlue]滑动寻找右边的功能入口[/color]"
+    },
+    "peace": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "auto_battle/normal_attack.png",
+            "auto_battle/normal_attack_1.png",
+            "auto_battle/normal_attack_left.png"
+        ],
+        "action": "Swipe",
+        "threshold": 0.7,
+        "inverse": true,
+        "post_delay": 1500,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]检查是否和平[/color]"
     }
 }

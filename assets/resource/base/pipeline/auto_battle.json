@@ -13,7 +13,10 @@
       158,
       161
     ],
-    "next": "battle_detail",
+    "next": [
+      "battle_detail",
+      "peace"
+    ],
     "interrupt": [
       "has_attack_button"
     ],
