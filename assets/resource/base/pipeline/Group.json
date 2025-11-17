@@ -299,6 +299,9 @@
             "second_group_award_box",
             "second_group_award_box_done"
         ],
+        "interrupt": [
+            "second_group_award"
+        ],
         "post_wait_freezes": 700,
         "focus": "[color:DeepSkyBlue]领取20人签到奖励[/color]"
     },
@@ -413,10 +416,29 @@
         ],
         "action": "Click",
         "next": [
-            "close_group_pray"
+            "group_pray_to_pursuit_dawn_organization"
         ],
         "post_wait_freezes": 600,
         "focus": "[color:DeepSkyBlue]关闭25人签到奖励[/color]"
+    },
+    "group_pray_to_pursuit_dawn_organization": {
+        "recognition": "TemplateMatch",
+        "template": "Group/group_pray_to_pursuit_dawn_organization.png",
+        "roi": [
+            9,
+            335,
+            414,
+            247
+        ],
+        "action": "Click",
+        "next": [
+            "pursuit_dawn_organization_award"
+        ],
+        "interrupt": [
+            "group_pray_to_pursuit_dawn_organization"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]前往追击晓组织[/color]"
     },
     "close_group_pray": {
         "recognition": "TemplateMatch",
@@ -477,6 +499,9 @@
         "focus": "[color:DeepSkyBlue]追击晓组织未完成[/color]"
     },
     "pursuit_dawn_organization_award": {
+        "recognition": "TemplateMatch",
+        "template": "Group/dawn_organization_award_check.png",
+        "post_delay": 400,
         "next": [
             "pursuit_dawn_organization_award_done",
             "pursuit_dawn_organization_award_undone"
