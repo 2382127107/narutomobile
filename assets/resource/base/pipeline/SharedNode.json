@@ -28,7 +28,8 @@
       "close_friend_rank",
       "direct_hit_quit",
       "im_come_back",
-      "im_come_back_award"
+      "im_come_back_award",
+      "click_next_step"
     ],
     "focus": "[color:darkgray]尝试返回主页面[/color]"
   },
@@ -39,7 +40,8 @@
       "SharedNode/green_masked_x.png",
       "SharedNode/ad_x_button.png",
       "SharedNode/x.png",
-      "SharedNode/rich_room_x.png"
+      "SharedNode/rich_room_x.png",
+      "SharedNode/big_is_coming_x.png"
     ],
     "roi": [
       0,
@@ -178,6 +180,20 @@
       191
     ],
     "focus": "[color:DeepSkyBlue]点击领取礼物[/color]"
+  },
+  "click_next_step": {
+    "recognition": "OCR",
+    "expected": [
+      "下一步"
+    ],
+    "action": "Click",
+    "roi": [
+      349,
+      497,
+      640,
+      222
+    ],
+    "focus": "[color:DeepSkyBlue]点击下一步[/color]"
   },
   "direct_hit_quit": {
     "recognition": "TemplateMatch",
