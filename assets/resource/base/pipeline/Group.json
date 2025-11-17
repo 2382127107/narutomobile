@@ -158,7 +158,7 @@
             200,
             80
         ],
-        "action": "Swipe",
+        "action": "Click",
         "duration": 50,
         "next": [
             "confirm_chopper_group_pray",

@@ -462,6 +462,7 @@
         "next": [
             "close_train_road"
         ],
+        "post_delay": 1000,
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]修行之路已完成[/color]"
     },
@@ -786,6 +787,7 @@
             "Practice_place/final_reward.png"
         ],
         "next": "back_main_screen_and_stop",
+        "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]生存挑战扫荡完成[/color]"
     }
 }
