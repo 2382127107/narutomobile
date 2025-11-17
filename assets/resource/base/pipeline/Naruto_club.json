@@ -439,7 +439,7 @@
         ],
         "timeout": 10000,
         "on_error": "feed_pig_not_found",
-        "post_wait_freezes": 500,
+        "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]喂豚豚[/color]"
     },
     "feed_pig_not_found": {
