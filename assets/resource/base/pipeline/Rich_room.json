@@ -143,8 +143,7 @@
             "SharedNode/click_anywhere_to_quit.png",
             "Activity/headhunt.png"
         ],
-        "threshold": 0.7,
-        "inverse": true,
+        "threshold": 0.9,
         "post_delay": 500,
         "next": [
             "back_main_screen_and_stop"

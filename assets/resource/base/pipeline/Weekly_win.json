@@ -25,6 +25,9 @@
         "next": [
             "weekly_win_match"
         ],
+        "interrupt": [
+            "weekly_win"
+        ],
         "post_delay": 1000
     },
     "weekly_win_entry": {
@@ -36,7 +39,9 @@
         "next": [
             "weekly_win_match"
         ],
-        "interrupt": [],
+        "interrupt": [
+            "weekly_win"
+        ],
         "green_mask": true,
         "post_delay": 1500
     },
@@ -91,6 +96,9 @@
         "duration": 100,
         "next": [
             "weekly_win_matching"
+        ],
+        "interrupt": [
+            "weekly_win_match_fight"
         ],
         "post_delay": 1000
     },
@@ -282,7 +290,8 @@
             "weekly_win_substitution",
             "weekly_win_fail",
             "weekly_win_success",
-            "weekly_win_match_fight"
+            "weekly_win_match_fight",
+            "weekly_win_match_fighting"
         ],
         "interrupt": [
             "sleep_500ms"
@@ -290,7 +299,10 @@
     },
     "weekly_win_success": {
         "recognition": "TemplateMatch",
-        "template": "Weekly_win/success.png",
+        "template": [
+            "Weekly_win/success.png",
+            "Weekly_win/annihilate.png"
+        ],
         "roi": [
             469,
             328,
