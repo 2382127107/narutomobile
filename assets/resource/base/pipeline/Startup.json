@@ -33,8 +33,6 @@
             "click_start_game"
         ],
         "interrupt": [
-            "agreement",
-            "unagreement",
             "agree_log_in"
         ],
         "rate_limit": 3000,
@@ -65,33 +63,6 @@
         "action": "Click",
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]关闭游戏前公告[/color]"
-    },
-    "unagreement": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/uncheck.png",
-        "roi": [
-            70,
-            583,
-            72,
-            69
-        ],
-        "green_mask": true,
-        "action": "Click",
-        "next": "account_type",
-        "focus": "[color:DeepSkyBlue]确认协议[/color]"
-    },
-    "agreement": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/check.png",
-        "roi": [
-            70,
-            583,
-            72,
-            69
-        ],
-        "action": "DoNothing",
-        "next": "account_type",
-        "focus": "[color:DeepSkyBlue]已确认协议[/color]"
     },
     "account_type": {
         "timeout": 3000,
