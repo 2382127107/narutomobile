@@ -522,11 +522,16 @@
         "next": [
             "gold_helper_undone",
             "gold_helper_wait",
-            "gold_helper_done"
+            "gold_helper_done",
+            "glod_helper_not_found"
         ],
         "pre_wait_freezes": 1000,
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]上滑动提交任务[/color]"
+    },
+    "glod_helper_not_found": {
+        "next": "close_naruto_club",
+        "focus": "[color:red]没有找到金币助手任务[/color]"
     },
     "gold_helper_undone": {
         "recognition": "TemplateMatch",
