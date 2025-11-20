@@ -29,7 +29,8 @@
       "direct_hit_quit",
       "im_come_back",
       "im_come_back_award",
-      "click_next_step"
+      "click_next_step",
+      "naruto_club_x"
     ],
     "focus": "[color:darkgray]尝试返回主页面[/color]"
   },
@@ -283,6 +284,19 @@
     ],
     "green_mask": true,
     "focus": "[color:darkgray]在主界面向右滑动[/color]"
+  },
+  "naruto_club_x": {
+    "recognition": "TemplateMatch",
+    "template": "Naruto_club/close_club_button.png",
+    "roi": [
+      1142,
+      0,
+      77,
+      58
+    ],
+    "action": "Click",
+    "post_delay": 700,
+    "focus": "[color:DeepSkyBlue]关闭情报社[/color]"
   },
   "debug_stop": {
     "action": "StopTask"
