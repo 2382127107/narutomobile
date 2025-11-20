@@ -60,10 +60,6 @@
             "entry": "group"
         },
         {
-            "name": "邮箱",
-            "entry": "mail"
-        },
-        {
             "name": "领取积分赛奖励",
             "entry": "point_race",
             "doc": "[size:15][color:tomato]该功能不会进行战斗，仅领取奖励[/color][/size]"
@@ -112,6 +108,10 @@
         {
             "name": "火影情报社",
             "entry": "naruto_club"
+        },
+        {
+            "name": "邮箱",
+            "entry": "mail"
         },
         {
             "name": "活跃宝箱",
