@@ -95,7 +95,7 @@
     "post_wait_freezes": 300,
     "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
   },
-  "Swipe_for_award_center_find": {
+  "swipe_for_award_center_find": {
     "recognition": "TemplateMatch",
     "template": "SharedNode/check_in_daily_award.png",
     "roi": [
@@ -121,7 +121,7 @@
     "post_delay": 500,
     "focus": "[color:DeepSkyBlue]寻找奖励中心功能入口[/color]"
   },
-  "Swipe_for_award_center_find_end": {
+  "swipe_for_award_center_find_end": {
     "recognition": "TemplateMatch",
     "template": "SharedNode/center_entry_end.png",
     "roi": [

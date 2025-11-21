@@ -60,7 +60,7 @@
             47
         ],
         "action": "Swipe",
-        "duration": 100,
+        "duration": 50,
         "next": [
             "weekly_win_match_fight"
         ],
@@ -80,7 +80,7 @@
             49
         ],
         "action": "Swipe",
-        "duration": 100,
+        "duration": 50,
         "post_delay": 1000
     },
     "weekly_win_match_fight": {
@@ -93,7 +93,7 @@
             69
         ],
         "action": "Swipe",
-        "duration": 100,
+        "duration": 50,
         "next": [
             "weekly_win_matching"
         ],
@@ -284,6 +284,7 @@
             "auto_battle/normal_attack_1.png"
         ],
         "action": "Swipe",
+        "duration": 50,
         "threshold": 0.7,
         "inverse": true,
         "next": [
@@ -331,7 +332,7 @@
             37
         ],
         "action": "Swipe",
-        "duration": 100,
+        "duration": 50,
         "threshold": 0.9,
         "next": [
             "weekly_win_match_fight"
@@ -351,7 +352,7 @@
             36
         ],
         "action": "Swipe",
-        "duration": 100,
+        "duration": 50,
         "threshold": 0.9,
         "next": [
             "weekly_win_match_fighting"

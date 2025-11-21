@@ -23,7 +23,7 @@
             36
         ],
         "action": "Swipe",
-        "duration": 100,
+        "duration": 50,
         "next": [
             "check_surf_post"
         ],
@@ -815,12 +815,13 @@
             75
         ],
         "action": "Click",
+        "threshold": 0.85,
         "next": [
             "confirm_club_third_award"
         ],
         "interrupt": [
-            "club_third_award",
-            "club_third_award_done"
+            "club_third_award_done",
+            "club_third_award"
         ],
         "on_error": [
             "no_third_award"

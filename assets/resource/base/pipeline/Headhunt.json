@@ -136,11 +136,13 @@
             523
         ],
         "threshold": 0.9,
-        "action": "Swipe",
-        "duration": 100,
+        "action": "Click",
         "post_delay": 2000,
         "next": [
             "top_secret_treasure_box_log"
+        ],
+        "interrupt": [
+            "top_secret_treasure_box_undone"
         ],
         "timeout": 2000,
         "focus": "[color:DeepSkyBlue]绝密宝匣未完成[/color]"

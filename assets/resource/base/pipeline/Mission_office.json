@@ -27,7 +27,7 @@
             "mission_office_ac_done"
         ],
         "interrupt": [
-            "Swipe_for_award_center_find"
+            "swipe_for_award_center_find"
         ],
         "post_delay": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -266,7 +266,7 @@
             155,
             37
         ],
-        "action": "Swipe",
+        "action": "Click",
         "duration": 50,
         "next": [
             "mission_office_recommended_team_check"

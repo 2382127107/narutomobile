@@ -28,7 +28,7 @@
             "point_race_ac_done"
         ],
         "interrupt": [
-            "Swipe_for_award_center_find"
+            "swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
