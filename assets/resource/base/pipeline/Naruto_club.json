@@ -598,25 +598,23 @@
             50
         ],
         "next": [
-            "keep_club_submit"
-        ],
-        "post_wait_freezes": 1000,
-        "focus": "[color:DeepSkyBlue]滑动提交任务[/color]"
-    },
-    "keep_club_submit": {
-        "next": [
             "check_club_all_submit"
         ],
         "interrupt": [
             "club_submit"
-        ]
+        ],
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]滑动提交任务[/color]"
     },
     "check_club_all_submit": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/mission_submit.png",
         "threshold": 0.7,
         "next": [
-            "club_award"
+            "club_first_award"
+        ],
+        "interrupt": [
+            "club_first_award_done"
         ],
         "inverse": true,
         "focus": "[color:DeepSkyBlue]检测任务是否已经全部提交[/color]"
@@ -634,14 +632,6 @@
         "post_delay": 1000,
         "pre_delay": 1000,
         "focus": "[color:DeepSkyBlue]打开qq[/color]"
-    },
-    "club_award": {
-        "next": [
-            "club_first_award"
-        ],
-        "interrupt": [
-            "club_first_award_done"
-        ]
     },
     "club_first_award_done": {
         "recognition": "TemplateMatch",
@@ -673,8 +663,13 @@
             75
         ],
         "action": "Click",
+        "threshold": 0.9,
         "next": [
             "confirm_club_first_award"
+        ],
+        "interrupt": [
+            "club_first_award_done",
+            "roger_club_first_award"
         ],
         "pre_wait_freezes": 300,
         "post_wait_freezes": 300,
@@ -692,6 +687,9 @@
         "action": "Click",
         "next": [
             "roger_club_first_award"
+        ],
+        "interrupt": [
+            "club_first_award_done"
         ],
         "post_wait_freezes": 300,
         "post_delay": 5000,
@@ -729,6 +727,10 @@
         "next": [
             "confirm_club_second_award"
         ],
+        "interrupt": [
+            "club_second_award_done",
+            "roger_club_second_award"
+        ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]领取第二个奖励[/color]"
     },
@@ -746,6 +748,7 @@
             "roger_club_second_award"
         ],
         "interrupt": [
+            "club_second_award_done",
             "confirm_club_second_award"
         ],
         "timeout": 2000,
@@ -860,7 +863,8 @@
             "club_third_award_done"
         ],
         "interrupt": [
-            "roger_club_third_award"
+            "roger_club_third_award",
+            "confirm_club_third_award"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]收到第三个奖励领取通知[/color]"
