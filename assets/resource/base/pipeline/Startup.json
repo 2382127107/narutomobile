@@ -64,28 +64,6 @@
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]关闭游戏前公告[/color]"
     },
-    "account_type": {
-        "timeout": 3000,
-        "next": "android_qq"
-    },
-    "android_qq": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/android_qq.png",
-        "roi": [
-            946,
-            507,
-            248,
-            71
-        ],
-        "action": "Click",
-        "next": [
-            "android_qq",
-            "agree_log_in"
-        ],
-        "timeout": 3000,
-        "post_wait_freezes": 100,
-        "focus": "[color:DeepSkyBlue]安卓qq账号[/color]"
-    },
     "agree_log_in": {
         "recognition": "OCR",
         "expected": "同意",
