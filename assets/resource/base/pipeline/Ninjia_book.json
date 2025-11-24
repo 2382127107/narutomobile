@@ -278,14 +278,10 @@
             846,
             170
         ],
-        "threshold": 0.8,
+        "threshold": 0.9,
         "action": "Click",
         "post_delay": 3000,
         "timeout": 1000,
-        "next": [
-            "close_ninjia_book_level_up_page_when_liveness",
-            "ninjia_book_liveness_award"
-        ],
         "focus": "[color:DeepSkyBlue]领取活跃度奖励[/color]"
     },
     "check_no_ninjia_book_liveness_award": {
@@ -300,7 +296,7 @@
             168
         ],
         "inverse": true,
-        "threshold": 0.8,
+        "threshold": 0.9,
         "action": "Click",
         "next": [
             "mechanical_treasure_box_undone",

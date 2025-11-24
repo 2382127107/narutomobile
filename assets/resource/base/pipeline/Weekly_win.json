@@ -1,12 +1,13 @@
 {
     "weekly_win": {
         "next": [
-            "weekly_win_entry"
+            "weekly_win_entry",
+            "weekly_win_in_duel_field"
         ],
         "interrupt": [
-            "weekly_win_in_duel_field",
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入使用周胜子任务[/color]"
     },
     "weekly_win_in_duel_field": {
         "recognition": "OCR",
@@ -28,7 +29,8 @@
         "interrupt": [
             "weekly_win"
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]已在决斗场界面[/color]"
     },
     "weekly_win_entry": {
         "recognition": "TemplateMatch",
@@ -43,7 +45,8 @@
             "weekly_win"
         ],
         "green_mask": true,
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]进入决斗场[/color]"
     },
     "weekly_win_match": {
         "recognition": "OCR",
@@ -64,7 +67,11 @@
         "next": [
             "weekly_win_match_fight"
         ],
-        "post_delay": 1000
+        "interrupt": [
+            "weekly_win_match"
+        ],
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]匹配模式[/color]"
     },
     "weekly_win_rank": {
         "recognition": "OCR",
@@ -81,7 +88,8 @@
         ],
         "action": "Swipe",
         "duration": 50,
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]排位模式[/color]"
     },
     "weekly_win_match_fight": {
         "recognition": "TemplateMatch",
@@ -100,7 +108,8 @@
         "interrupt": [
             "weekly_win_match_fight"
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]周胜开始匹配[/color]"
     },
     "weekly_win_matching": {
         "recognition": "OCR",
@@ -119,7 +128,8 @@
         ],
         "interrupt": [
             "sleep_500ms"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]匹配中[/color]"
     },
     "sleep_500ms": {
         "post_delay": 500
@@ -142,7 +152,8 @@
         ],
         "interrupt": [
             "sleep_500ms"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]匹配完成[/color]"
     },
     "weekly_win_match_fighting": {
         "recognition": "TemplateMatch",
@@ -159,7 +170,8 @@
         ],
         "interrupt": [
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]开始战斗[/color]"
     },
     "weekly_win_click_skill_1": {
         "recognition": "TemplateMatch",
@@ -174,7 +186,8 @@
         "interrupt": [
             "weekly_win_peace"
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]1技能[/color]"
     },
     "weekly_win_click_skill_2": {
         "recognition": "TemplateMatch",
@@ -188,7 +201,8 @@
         ],
         "interrupt": [
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]2技能[/color]"
     },
     "weekly_win_normal_attack": {
         "recognition": "TemplateMatch",
@@ -205,7 +219,8 @@
         ],
         "interrupt": [
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]普攻[/color]"
     },
     "weekly_win_replace_0": {
         "recognition": "TemplateMatch",
@@ -220,7 +235,8 @@
         "interrupt": [
             "weekly_win_replace_1",
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]替身[/color]"
     },
     "weekly_win_roll": {
         "recognition": "TemplateMatch",
@@ -233,7 +249,8 @@
         ],
         "interrupt": [
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]密卷[/color]"
     },
     "weekly_win_replace_1": {
         "recognition": "TemplateMatch",
@@ -248,7 +265,8 @@
         "interrupt": [
             "weekly_win_replace_2",
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]替身[/color]"
     },
     "weekly_win_summon": {
         "recognition": "TemplateMatch",
@@ -261,7 +279,8 @@
         ],
         "interrupt": [
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]通灵[/color]"
     },
     "weekly_win_replace_2": {
         "recognition": "TemplateMatch",
@@ -275,7 +294,8 @@
         ],
         "interrupt": [
             "weekly_win_peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]替身[/color]"
     },
     "weekly_win_peace": {
         "recognition": "TemplateMatch",
@@ -296,7 +316,8 @@
         ],
         "interrupt": [
             "sleep_500ms"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]识别不到普攻按钮,开始识别状态[/color]"
     },
     "weekly_win_success": {
         "recognition": "TemplateMatch",
@@ -320,7 +341,8 @@
             "weekly_win_success",
             "sleep_500ms"
         ],
-        "post_delay": 3000
+        "post_delay": 3000,
+        "focus": "[color:DeepSkyBlue]识别到胜利[/color]"
     },
     "weekly_win_fail": {
         "recognition": "TemplateMatch",
@@ -340,7 +362,8 @@
         "interrupt": [
             "sleep_500ms"
         ],
-        "post_delay": 3000
+        "post_delay": 3000,
+        "focus": "[color:DeepSkyBlue]识别到失败[/color]"
     },
     "weekly_win_substitution": {
         "recognition": "TemplateMatch",
@@ -357,7 +380,8 @@
         "next": [
             "weekly_win_match_fighting"
         ],
-        "post_delay": 3000
+        "post_delay": 3000,
+        "focus": "[color:DeepSkyBlue]识别到中场休息[/color]"
     },
     "battle_detail": {
         "recognition": "TemplateMatch",
