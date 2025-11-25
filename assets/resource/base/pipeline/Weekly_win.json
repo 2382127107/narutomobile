@@ -6,7 +6,7 @@
         "interrupt": [
             "weekly_win_entry"
         ],
-        "focus": "[color:DeepSkyBlue]进入使用周胜子任务[/color]"
+        "focus": "[color:DeepSkyBlue]开始周胜任务[/color]"
     },
     "weekly_win_in_duel_field": {
         "recognition": "OCR",
