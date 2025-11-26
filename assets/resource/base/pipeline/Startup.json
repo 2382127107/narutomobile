@@ -33,7 +33,8 @@
             "click_start_game"
         ],
         "interrupt": [
-            "agree_log_in"
+            "agree_log_in",
+            "agree_info"
         ],
         "rate_limit": 3000,
         "timeout": 60000
@@ -64,28 +65,6 @@
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]关闭游戏前公告[/color]"
     },
-    "account_type": {
-        "timeout": 3000,
-        "next": "android_qq"
-    },
-    "android_qq": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/android_qq.png",
-        "roi": [
-            946,
-            507,
-            248,
-            71
-        ],
-        "action": "Click",
-        "next": [
-            "android_qq",
-            "agree_log_in"
-        ],
-        "timeout": 3000,
-        "post_wait_freezes": 100,
-        "focus": "[color:DeepSkyBlue]安卓qq账号[/color]"
-    },
     "agree_log_in": {
         "recognition": "OCR",
         "expected": "同意",
@@ -96,10 +75,6 @@
             281
         ],
         "action": "Click",
-        "next": "agree_info",
-        "interrupt": [
-            "agree_log_in"
-        ],
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]确认登录[/color]"
     },
@@ -113,13 +88,6 @@
             234
         ],
         "action": "Click",
-        "next": [
-            "click_start_game"
-        ],
-        "interrupt": [
-            "agree_log_in",
-            "agree_info"
-        ],
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
     },
