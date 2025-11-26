@@ -125,6 +125,14 @@
             ]
         },
         {
+            "name": "冒险副本(beta)",
+            "entry": "advanture"
+        },
+        {
+            "name": "精英副本(beta)",
+            "entry": "elite_instance"
+        },
+        {
             "name": "百忍大战",
             "entry": "hundred_ninjia",
             "option": [
