@@ -223,10 +223,10 @@
         "recognition": "TemplateMatch",
         "template": "SharedNode/click_anywhere_to_quit.png",
         "roi": [
-            506,
-            649,
-            66,
-            56
+            486,
+            574,
+            298,
+            121
         ],
         "action": "Click",
         "post_wait_freezes": 500,

@@ -133,6 +133,10 @@
             "entry": "elite_instance"
         },
         {
+            "name": "修罗副本(beta)",
+            "entry": "asura_instance"
+        },
+        {
             "name": "百忍大战",
             "entry": "hundred_ninjia",
             "option": [
