@@ -164,12 +164,6 @@
                         "start_naruto": {
                             "package": "com.tencent.KiHan"
                         },
-                        "account_type": {
-                            "next": "android_qq"
-                        },
-                        "naruto_club_entry": {
-                            "next": "start_qq"
-                        },
                         "shut_qq": {
                             "package": "com.tencent.mobileqq"
                         },
