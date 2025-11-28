@@ -11,7 +11,7 @@ import subprocess
 from pathlib import Path
 
 # utf-8
-sys.stdout.reconfigure(encoding="utf-8") # type: ignore
+sys.stdout.reconfigure(encoding="utf-8")  # type: ignore
 
 # 获取当前main.py路径并设置上级目录为工作目录
 current_file_path = Path(__file__).resolve()  # 当前脚本的绝对路径
@@ -27,7 +27,7 @@ print(f"set cwd: {Path.cwd()}")
 if current_script_dir.__str__() not in sys.path:
     sys.path.insert(0, current_script_dir.__str__())
 
-from utils.logger import logger
+from utils.logger import logger  # type: ignore
 
 VENV_NAME = ".venv"  # 虚拟环境目录的名称
 VENV_DIR = Path(project_root_dir) / VENV_NAME
@@ -167,7 +167,7 @@ def read_pip_config() -> dict:
         with open(config_path, "w", encoding="utf-8") as f:
             json.dump(default_config, f, indent=4, ensure_ascii=False)
         return default_config
-    
+
     try:
         with open(config_path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -214,7 +214,7 @@ def _run_pip_command(cmd_args: list, operation_name: str) -> bool:
         all_output = []
 
         # 实时读取并显示输出
-        for line in iter(process.stdout.readline, ""): # type: ignore
+        for line in iter(process.stdout.readline, ""):  # type: ignore
             line = line.rstrip("\n\r")
             if line.strip():  # 只显示非空行
                 print(line)  # 实时显示到终端
@@ -240,7 +240,7 @@ def _run_pip_command(cmd_args: list, operation_name: str) -> bool:
         return False
 
 
-def install_requirements(pip_config: dict,req_file="requirements.txt") -> bool:
+def install_requirements(pip_config: dict, req_file="requirements.txt") -> bool:
     req_path = Path(project_root_dir) / req_file  # 确保相对于项目根目录
     if not req_path.exists():
         logger.error(f"{req_file} 文件不存在于 {req_path.resolve()}")
@@ -354,7 +354,7 @@ def agent(is_dev_mode=False):
             del sys.modules[module_name]
 
         # 动态导入 utils 的所有内容
-        import utils
+        import utils  # type: ignore
         import importlib
 
         importlib.reload(utils)
@@ -365,7 +365,7 @@ def agent(is_dev_mode=False):
                 globals()[attr_name] = getattr(utils, attr_name)
 
         if is_dev_mode:
-            from utils.logger import change_console_level
+            from utils.logger import change_console_level  # type: ignore
 
             change_console_level("DEBUG")
             logger.info("开发模式：日志等级已设置为DEBUG")
@@ -373,8 +373,8 @@ def agent(is_dev_mode=False):
         from maa.agent.agent_server import AgentServer
         from maa.toolkit import Toolkit
 
-        import custom        
-        
+        import custom  # type: ignore
+
         Toolkit.init_option("./")
 
         if len(sys.argv) < 2:
