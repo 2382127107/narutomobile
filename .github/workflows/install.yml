@@ -102,6 +102,12 @@ jobs:
           out-file-path: "MFA"
           extract: true
 
+      - name: Remove MFA runtimes
+        if: matrix.os != 'android'
+        shell: bash
+        run: |
+          rm -rf MFA/runtimes
+
       - name: Download MaaFramework
         uses: robinraju/release-downloader@v1
         with:
