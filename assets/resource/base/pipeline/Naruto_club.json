@@ -659,7 +659,7 @@
         ],
         "action": "Click",
         "next": [
-            "roger_club_first_award",
+            "roger_club_first_award"
         ],
         "post_wait_freezes": 300,
         "post_delay": 5000,

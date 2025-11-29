@@ -53,7 +53,7 @@
         "action": "Swipe",
         "begin": [
             80,
-            700,
+            300,
             10,
             10
         ],
@@ -67,7 +67,10 @@
             "mouthly_sign_done",
             "mouthly_sign_undone"
         ],
-        "duration": 100,
+        "interrupt": [
+            "swipes_for_monthly_sign"
+        ],
+        "duration": 200,
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]前往月度签到[/color]"
     },
@@ -96,7 +99,7 @@
             523
         ],
         "threshold": 0.9,
-        "action":"Click",
+        "action": "Click",
         "next": [
             "mouthly_signature",
             "check_mouthly_signature_title"
@@ -145,7 +148,7 @@
     "check_mouthly_signature_title": {
         "recognition": "TemplateMatch",
         "template": "Activity/title.png",
-        "roi" : [
+        "roi": [
             508,
             523,
             135,
