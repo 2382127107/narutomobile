@@ -5,9 +5,9 @@ import sys
 import json
 from maa.resource import Resource
 
-from configure import configure_ocr_model
+from configure import configure_ocr_model  # type: ignore
 
-from utils import working_dir
+from utils import working_dir  # type: ignore
 
 install_path = working_dir / Path("install")
 version = len(sys.argv) > 1 and sys.argv[1] or "v0.0.1"
@@ -15,8 +15,8 @@ version = len(sys.argv) > 1 and sys.argv[1] or "v0.0.1"
 
 def install_deps():
     if not (working_dir / "deps" / "bin").exists():
-        print("Please download the MaaFramework to \"deps\" first.")
-        print("请先下载 MaaFramework 到 \"deps\"。")
+        print('Please download the MaaFramework to "deps" first.')
+        print('请先下载 MaaFramework 到 "deps"。')
         sys.exit(1)
 
     shutil.copytree(
@@ -73,6 +73,7 @@ def install_chores():
         ignore=shutil.ignore_patterns("*.yaml"),
     )
 
+
 def install_agent():
     shutil.copytree(
         working_dir / "agent",
@@ -94,6 +95,7 @@ def install_agent():
 
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         json.dump(interface, f, ensure_ascii=False, indent=4)
+
 
 if __name__ == "__main__":
     install_deps()
