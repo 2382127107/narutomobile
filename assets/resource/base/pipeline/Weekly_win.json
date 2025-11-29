@@ -328,6 +328,7 @@
         "interrupt": [
             "sleep_500ms"
         ],
+        "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]识别不到普攻按钮,开始识别状态[/color]"
     },
     "weekly_win_success": {
