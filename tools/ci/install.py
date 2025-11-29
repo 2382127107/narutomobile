@@ -19,6 +19,9 @@ def install_deps():
         print('请先下载 MaaFramework 到 "deps"。')
         sys.exit(1)
 
+    # 移除MFA自带的MAAFW，MFA会尝试自动链接到当前目录下的dll
+    shutil.rmtree(install_path / "runtimes")
+
     shutil.copytree(
         working_dir / "deps" / "bin",
         install_path,
