@@ -161,9 +161,6 @@ jobs:
         if: runner.os == 'Windows'
         shell: bash
         run: |
-          python -m pip install -r ./requirements.txt
-          python ./tools/ci/install.py ${{ needs.meta.outputs.tag }}
-
           if [ -d "MFA" ]; then
             echo "Copying MFA files to install directory..."
             mkdir -p install
@@ -171,6 +168,9 @@ jobs:
           else
             echo "MFA directory not found, skipping copy."
           fi
+
+          python -m pip install -r ./requirements.txt
+          python ./tools/ci/install.py ${{ needs.meta.outputs.tag }}
 
       - name: Install on Unix (macOS/Linux)
         if: runner.os != 'Windows'
