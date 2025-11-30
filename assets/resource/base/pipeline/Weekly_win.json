@@ -86,8 +86,13 @@
             111,
             49
         ],
-        "action": "Swipe",
-        "duration": 50,
+        "action": "Click",
+        "next": [
+            "weekly_win_check_in_rank"
+        ],
+        "interrupt": [
+            "weekly_win_rank"
+        ],
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]排位模式[/color]"
     },
@@ -406,5 +411,127 @@
         ],
         "threshold": 0.8,
         "focus": "[color:DeepSkyBlue]战斗结束[/color]"
+    },
+    "weekly_win_check_in_rank": {
+        "recognition": "OCR",
+        "expected": [
+            "段",
+            "位"
+        ],
+        "roi": [
+            516,
+            577,
+            441,
+            143
+        ],
+        "next": [
+            "weekly_win_rank_fight"
+        ],
+        "interrupt": [
+            "weekly_win_check_in_rank"
+        ],
+        "post_delay": 500
+    },
+    "weekly_win_rank_fight": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/fight.png",
+        "roi": [
+            1150,
+            574,
+            69,
+            69
+        ],
+        "action": "Swipe",
+        "duration": 50,
+        "next": [
+            "weekly_win_rank_matching"
+        ],
+        "interrupt": [
+            "weekly_win_rank_fight"
+        ],
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]周胜开始匹配[/color]"
+    },
+    "weekly_win_rank_matching": {
+        "recognition": "OCR",
+        "expected": [
+            "时",
+            "间"
+        ],
+        "roi": [
+            593,
+            424,
+            66,
+            46
+        ],
+        "next": [
+            "weekly_win_check_rank_matching_done"
+        ],
+        "interrupt": [
+            "sleep_500ms"
+        ],
+        "focus": "[color:DeepSkyBlue]匹配中[/color]"
+    },
+    "weekly_win_check_rank_matching_done": {
+        "recognition": "OCR",
+        "expected": [
+            "时",
+            "间"
+        ],
+        "roi": [
+            593,
+            424,
+            66,
+            46
+        ],
+        "inverse": true,
+        "post_delay": 400,
+        "next": [
+            "weekly_win_rank_confirm_ninjia"
+        ],
+        "interrupt": [
+            "weekly_win_rank_ban",
+            "sleep_500ms"
+        ],
+        "focus": "[color:DeepSkyBlue]匹配完成[/color]"
+    },
+    "weekly_win_rank_ban": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Weekly_win/ban.png"
+        ],
+        "roi": [
+            353,
+            449,
+            587,
+            271
+        ],
+        "threshold": 0.6,
+        "action": "Click",
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]ban忍者[/color]"
+    },
+    "weekly_win_rank_confirm_ninjia": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Weekly_win/ban.png"
+        ],
+        "roi": [
+            788,
+            520,
+            492,
+            200
+        ],
+        "threshold": 0.6,
+        "next": [
+            "weekly_win_match_fighting"
+        ],
+        "interrupt": [
+            "weekly_win_rank_ban",
+            "sleep_500ms"
+        ],
+        "action": "Click",
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]确认忍者[/color]"
     }
 }

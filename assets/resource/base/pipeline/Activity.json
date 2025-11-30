@@ -64,8 +64,8 @@
             10
         ],
         "next": [
-            "mouthly_sign_done",
-            "mouthly_sign_undone"
+            "mouthly_sign_undone",
+            "mouthly_sign_done"
         ],
         "interrupt": [
             "swipes_for_monthly_sign"
@@ -94,11 +94,11 @@
         ],
         "roi": [
             0,
-            197,
-            176,
-            523
+            100,
+            210,
+            620
         ],
-        "threshold": 0.9,
+        "threshold": 0.85,
         "action": "Click",
         "next": [
             "mouthly_signature",
@@ -119,9 +119,9 @@
         ],
         "roi": [
             0,
-            201,
-            178,
-            519
+            100,
+            210,
+            620
         ],
         "threshold": 0.9,
         "next": [
@@ -143,6 +143,7 @@
             "check_mouthly_signature_title",
             "back_main_screen_and_stop"
         ],
+        "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]进行月度签到[/color]"
     },
     "check_mouthly_signature_title": {
@@ -165,6 +166,6 @@
         "next": [
             "back_main_screen_and_stop"
         ],
-        "focus": "[color:DeepSkyBlue]检查月度签到称号是否可以领取[/color]"
+        "focus": "[color:DeepSkyBlue]检查月度签到称号是否可以领取,这个节点可能因为页面更新问题而领取不到[/color]"
     }
 }
