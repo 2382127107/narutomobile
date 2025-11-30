@@ -298,11 +298,6 @@
                             "next": [
                                 "weekly_win_rank"
                             ]
-                        },
-                        "weekly_win_entry": {
-                            "next": [
-                                "weekly_win_rank"
-                            ]
                         }
                     }
                 }
@@ -410,13 +405,7 @@
             "cases": [
                 {
                     "name": "不开启,无限打",
-                    "pipeline_override": {
-                        "weekly_win_success": {
-                            "next": [
-                                "weekly_win_match_fight"
-                            ]
-                        }
-                    }
+                    "pipeline_override": {}
                 },
                 {
                     "name": "开启,胜利一次就退出任务",

@@ -300,5 +300,8 @@
   },
   "debug_stop": {
     "action": "StopTask"
-  }
+  },
+  "sleep_500ms": {
+    "post_delay": 500
+  },
 }
