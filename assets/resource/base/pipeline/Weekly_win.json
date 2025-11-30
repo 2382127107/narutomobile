@@ -34,9 +34,6 @@
         "threshold": 0.7,
         "action": "Swipe",
         "duration": 30,
-        "next": [
-            "weekly_win_match"
-        ],
         "green_mask": true,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]进入决斗场[/color]"
@@ -150,11 +147,7 @@
     },
     "weekly_win_match_fighting": {
         "recognition": "TemplateMatch",
-        "template": [
-            "auto_battle/normal_attack.png",
-            "auto_battle/normal_attack_1.png"
-        ],
-        "green_mask": true,
+        "template": "auto_battle/normal_attack",
         "action": "Swipe",
         "duration": 50,
         "threshold": 0.9,
@@ -165,130 +158,6 @@
             "weekly_win_peace"
         ],
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"
-    },
-    "weekly_win_click_skill_1": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/skill1_masked.png",
-        "green_mask": true,
-        "threshold": 0.2,
-        "action": "Swipe",
-        "duration": 50,
-        "next": [
-            "weekly_win_click_skill_2"
-        ],
-        "interrupt": [
-            "weekly_win_peace"
-        ],
-        "post_delay": 1000,
-        "focus": "[color:DeepSkyBlue]1技能[/color]"
-    },
-    "weekly_win_click_skill_2": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/skill2_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.2,
-        "duration": 50,
-        "next": [
-            "weekly_win_normal_attack"
-        ],
-        "interrupt": [
-            "weekly_win_peace"
-        ],
-        "focus": "[color:DeepSkyBlue]2技能[/color]"
-    },
-    "weekly_win_normal_attack": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "auto_battle/normal_attack.png",
-            "auto_battle/normal_attack_1.png"
-        ],
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.9,
-        "duration": 6000,
-        "next": [
-            "weekly_win_replace_0"
-        ],
-        "interrupt": [
-            "weekly_win_peace"
-        ],
-        "focus": "[color:DeepSkyBlue]普攻[/color]"
-    },
-    "weekly_win_replace_0": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/replace_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.6,
-        "duration": 30,
-        "next": [
-            "weekly_win_roll"
-        ],
-        "interrupt": [
-            "weekly_win_replace_1",
-            "weekly_win_peace"
-        ],
-        "focus": "[color:DeepSkyBlue]替身[/color]"
-    },
-    "weekly_win_roll": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/roll_masked.png",
-        "green_mask": true,
-        "action": "Click",
-        "threshold": 0.4,
-        "next": [
-            "weekly_win_replace_1"
-        ],
-        "interrupt": [
-            "weekly_win_peace"
-        ],
-        "focus": "[color:DeepSkyBlue]密卷[/color]"
-    },
-    "weekly_win_replace_1": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/replace_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.6,
-        "duration": 30,
-        "next": [
-            "weekly_win_summon"
-        ],
-        "interrupt": [
-            "weekly_win_replace_2",
-            "weekly_win_peace"
-        ],
-        "focus": "[color:DeepSkyBlue]替身[/color]"
-    },
-    "weekly_win_summon": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/summon_masked.png",
-        "green_mask": true,
-        "action": "Click",
-        "threshold": 0.4,
-        "next": [
-            "weekly_win_replace_2"
-        ],
-        "interrupt": [
-            "weekly_win_peace"
-        ],
-        "focus": "[color:DeepSkyBlue]通灵[/color]"
-    },
-    "weekly_win_replace_2": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/replace_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.6,
-        "duration": 30,
-        "next": [
-            "weekly_win_click_skill_1"
-        ],
-        "interrupt": [
-            "weekly_win_peace"
-        ],
-        "focus": "[color:DeepSkyBlue]替身[/color]"
     },
     "weekly_win_peace": {
         "recognition": "OCR",

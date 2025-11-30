@@ -1,12 +1,7 @@
 {
   "is_in_battle_scene": {
     "recognition": "TemplateMatch",
-    "template": [
-      "auto_battle/normal_attack.png",
-      "auto_battle/normal_attack_1.png",
-      "auto_battle/normal_attack_pressed.png",
-      "auto_battle/normal_attack_left.png"
-    ],
+    "template": "auto_battle/normal_attack",
     "roi": [
       1063,
       513,
@@ -28,12 +23,7 @@
   },
   "has_attack_button": {
     "recognition": "TemplateMatch",
-    "template": [
-      "auto_battle/normal_attack.png",
-      "auto_battle/normal_attack_1.png",
-      "auto_battle/normal_attack_pressed.png",
-      "auto_battle/normal_attack_left.png"
-    ],
+    "template": "auto_battle/normal_attack",
     "roi": [
       1063,
       513,
@@ -335,7 +325,14 @@
     "focus": "[color:tomato]等待时间过长[/color]"
   },
   "click_All_skill": {
-    "recognition": "DirectHit",
+    "recognition": "TemplateMatch",
+    "template": "auto_battle/normal_attack",
+    "roi": [
+      1063,
+      513,
+      158,
+      161
+    ],
     "action": "MultiSwipe",
     "swipes": [
       {
@@ -452,13 +449,6 @@
       }
     ],
     "pre_delay": 0,
-    "post_delay": 0,
-    "next": [
-      "weekly_win_peace"
-    ],
-    "interrupt": [
-      "click_All_skill"
-    ],
-    "focus": "[color:darkgray]连点器[/color]"
+    "post_delay": 0
   }
 }
