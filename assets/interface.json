@@ -4,8 +4,8 @@
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": false,
     "url": "https://github.com/duorua/narutomobile",
-    "mfa_max_version": "v2.0.2",
-    "mfa_min_version": "v2.0.2",
+    "mfa_max_version": "v2.0.3",
+    "mfa_min_version": "v2.0.3",
     "agent": {
         "child_exec": "python",
         "child_args": [
