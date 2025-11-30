@@ -71,7 +71,7 @@
             "swipes_for_monthly_sign"
         ],
         "duration": 200,
-        "post_delay": 500,
+        "post_delay": 900,
         "focus": "[color:DeepSkyBlue]前往月度签到[/color]"
     },
     "get_ramen": {
@@ -107,7 +107,7 @@
         "interrupt": [
             "mouthly_sign_undone"
         ],
-        "post_wait_freezes": 500,
+        "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]月度签到未完成[/color]"
     },
     "mouthly_sign_done": {
@@ -125,7 +125,7 @@
         ],
         "threshold": 0.9,
         "next": [
-            "back_main_screen"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]月度签到已完成[/color]"
     },
@@ -141,7 +141,7 @@
         "action": "Click",
         "next": [
             "check_mouthly_signature_title",
-            "back_main_screen"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]进行月度签到[/color]"
     },
@@ -163,7 +163,7 @@
             98
         ],
         "next": [
-            "back_main_screen"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]检查月度签到称号是否可以领取[/color]"
     }

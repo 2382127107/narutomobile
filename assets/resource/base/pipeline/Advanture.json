@@ -117,7 +117,8 @@
         "next": [
             "advanture_in_fight",
             "advanture_anime",
-            "advanture_confirm_advanced_option"
+            "advanture_confirm_advanced_option",
+            "use_energy_not_enough_sign"
         ],
         "interrupt": [
             "sleep_500ms"

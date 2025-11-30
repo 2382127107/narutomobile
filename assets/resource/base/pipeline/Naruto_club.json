@@ -511,7 +511,7 @@
         "focus": "[color:DeepSkyBlue]上滑动提交任务[/color]"
     },
     "glod_helper_not_found": {
-        "next": "close_naruto_club",
+        "next": "swipe_for_club_submit",
         "focus": "[color:red]没有找到金币助手任务[/color]"
     },
     "gold_helper_undone": {
@@ -553,7 +553,9 @@
         "action": "ClickKey",
         "key": 4,
         "next": [
-            "swipe_for_club_submit",
+            "swipe_for_club_submit"
+        ],
+        "interrupt": [
             "close_gold_helper"
         ],
         "focus": "[color:DeepSkyBlue]关闭金币助手[/color]"
