@@ -11,7 +11,8 @@
         "child_args": [
             "-u",
             "{PROJECT_DIR}/../agent/main.py"
-        ]
+        ],
+        "identifier": "3be2c931-9c0d-4d69-9ebd-eed2263e06fd"
     },
     "controller": [
         {
@@ -49,7 +50,7 @@
         {
             "name": "排行榜",
             "entry": "leaderboard",
-            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,使用默认主题[/color][/size]",
+            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
             "check": true
         },
         {
@@ -65,13 +66,12 @@
         {
             "name": "组织",
             "entry": "group",
-            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,使用默认主题[/color][/size]",
+            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
             "check": true
         },
         {
-            "name": "领取积分赛奖励",
+            "name": "积分赛",
             "entry": "point_race",
-            "doc": "[size:15][color:tomato]该功能不会进行战斗，仅领取奖励[/color][/size]",
             "check": true
         },
         {
