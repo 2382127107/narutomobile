@@ -86,20 +86,30 @@
     "weekly_win_match_fighting": {
         "recognition": "TemplateMatch",
         "template": "auto_battle/normal_attack",
-        "action": "Swipe",
-        "duration": 50,
-        "threshold": 0.9,
         "next": [
-            "weekly_win_success",
-            "weekly_win_fail"
+            "not_in_battle"
         ],
         "interrupt": [
-            "click_All_skill",
-            "weekly_win_substitution"
+            "click_All_skill"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"
+    },
+    "not_in_battle": {
+        "recognition": "TemplateMatch",
+        "template": "auto_battle/normal_attack",
+        "roi": [
+            1063,
+            513,
+            158,
+            161
+        ],
+        "inverse": true,
+        "next": [
+            "weekly_win_success",
+            "weekly_win_fail"
+        ]
     },
     "weekly_win_success": {
         "recognition": "TemplateMatch",
