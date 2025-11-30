@@ -140,13 +140,13 @@
             "check": true
         },
         {
-            "name": "周胜(没做完)",
+            "name": "周胜(beta)",
             "entry": "weekly_win",
             "option": [
                 "匹配还是排位",
                 "胜利一次就退出任务"
             ],
-            "doc": "[size:15][color:tomato]可以重复添加一个周胜任务,两个都打开胜利一次就退出任务选项。这样可以自动完成周胜任务并退出[/color][/size]",
+            "doc": "[size:15][color:tomato]目前胜利一次就退出功能还不稳定,可能点掉胜利界面继续战斗[/color][/size]",
             "check": true
         },
         {
@@ -292,7 +292,7 @@
                     }
                 },
                 {
-                    "name": "排位(没做完)",
+                    "name": "排位(beta)",
                     "pipeline_override": {
                         "weekly_win_in_duel_field": {
                             "next": [
@@ -417,9 +417,7 @@
                             ]
                         }
                     }
-                }
-            ],
-            "cases": [
+                },
                 {
                     "name": "开启,胜利一次就退出任务",
                     "pipeline_override": {
