@@ -40,18 +40,20 @@
         "next": [
             "elite_instance_to_elite_instance"
         ],
+        "post_delay": 400,
         "focus": "[color:DeepSkyBlue]已经在冒险副本[/color]"
     },
     "elite_instance_to_elite_instance": {
         "recognition": "TemplateMatch",
         "template": "Elite_instance/entry.png",
         "roi": [
+            17,
             0,
-            0,
-            298,
-            174
+            357,
+            234
         ],
         "action": "Click",
+        "threshold": 0.5,
         "next": [
             "elite_instance_in_elite_instance"
         ],
@@ -69,7 +71,7 @@
             370,
             251
         ],
-        "threshold": 0.9,
+        "threshold": 0.7,
         "next": [
             "elite_instance_new_level_undone"
         ]
@@ -100,7 +102,8 @@
         ],
         "action": "Click",
         "next": [
-            "elite_instance_in_fight"
+            "elite_instance_in_fight",
+            "use_energy_not_enough_sign"
         ],
         "interrupt": [
             "sleep_500ms"
@@ -211,7 +214,8 @@
         ],
         "action": "Click",
         "next": [
-            "elite_instance_new_level_undone"
+            "elite_instance_new_level_undone",
+            "elite_instance_lock"
         ],
         "interrupt": [
             "elite_instance_win"
