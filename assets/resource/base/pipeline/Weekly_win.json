@@ -9,6 +9,38 @@
         ],
         "focus": "[color:DeepSkyBlue]开始周胜任务[/color]"
     },
+    "weekly_win_mouthly_award": {
+        "recognition": "OCR",
+        "expected": [
+            "继",
+            "续"
+        ],
+        "roi": [
+            439,
+            552,
+            382,
+            168
+        ],
+        "action": "Click",
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]月度段位结算奖励[/color]"
+    },
+    "weekly_win_mouthly_reset_award": {
+        "recognition": "OCR",
+        "expected": [
+            "升",
+            "段"
+        ],
+        "roi": [
+            439,
+            552,
+            382,
+            168
+        ],
+        "action": "Click",
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]月度段位重置奖励[/color]"
+    },
     "weekly_win_in_duel_field": {
         "recognition": "OCR",
         "expected": [
@@ -26,6 +58,11 @@
         "next": [
             "weekly_win_match"
         ],
+        "interrupt": [
+            "weekly_win_mouthly_award",
+            "weekly_win_mouthly_reset_award",
+            "weekly_win"
+        ],
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]已在决斗场界面[/color]"
     },
@@ -35,6 +72,14 @@
         "threshold": 0.7,
         "action": "Swipe",
         "duration": 30,
+        "next": [
+            "weekly_win_match"
+        ],
+        "interrupt": [
+            "weekly_win_mouthly_award",
+            "weekly_win_mouthly_reset_award",
+            "weekly_win"
+        ],
         "green_mask": true,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]进入决斗场[/color]"
