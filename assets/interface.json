@@ -104,7 +104,7 @@
         {
             "name": "任务集会所(beta)",
             "entry": "mission_office",
-            "doc": "[size:15][color:tomato]有超影的时候,依旧只会接显示的三个人物,不会刷新。要拿满奖励记得关[/color][/size]",
+            "doc": "[size:15][color:tomato]有超影的时候,依旧只会接当前显示的三个任务,不会刷新。要拿满奖励记得关[/color][/size]",
             "check": true
         },
         {
