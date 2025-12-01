@@ -17,7 +17,6 @@
     "threshold": 0.95,
     "action": "DoNothing",
     "green_mask": true,
-    "rate_limit": 2000,
     "next": [
       "check_main_screen"
     ],
@@ -52,8 +51,8 @@
     ],
     "order_by": "Score",
     "action": "Click",
-    "threshold": 0.66,
-    "post_wait_freezes": 1000,
+    "threshold": 0.7,
+    "post_wait_freezes": 500,
     "green_mask": true,
     "focus": "[color:darkgray]关闭当前窗口[/color]"
   },
@@ -304,4 +303,12 @@
   "sleep_500ms": {
     "post_delay": 500
   },
+  "GetSenryokuText": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "[\\d]+万?"
+      }
+    }
+  }
 }

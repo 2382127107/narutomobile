@@ -200,6 +200,9 @@
         "next": [
             "team_dash_invite_page"
         ],
+        "interrupt": [
+            "close_my_help"
+        ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭我的助战[/color]"
     },
@@ -217,10 +220,6 @@
         ],
         "interrupt": [
             "can_not_invite"
-        ],
-        "timeout": 5000,
-        "on_error": [
-            "dash_or_exit"
         ],
         "focus": "[color:DeepSkyBlue]进入助战邀请界面[/color]"
     },

@@ -11,7 +11,8 @@
         "child_args": [
             "-u",
             "{PROJECT_DIR}/../agent/main.py"
-        ]
+        ],
+        "identifier": "3be2c931-9c0d-4d69-9ebd-eed2263e06fd"
     },
     "controller": [
         {
@@ -49,7 +50,7 @@
         {
             "name": "排行榜",
             "entry": "leaderboard",
-            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,使用默认主题[/color][/size]",
+            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
             "check": true
         },
         {
@@ -65,13 +66,12 @@
         {
             "name": "组织",
             "entry": "group",
-            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,使用默认主题[/color][/size]",
+            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
             "check": true
         },
         {
-            "name": "领取积分赛奖励",
+            "name": "积分赛",
             "entry": "point_race",
-            "doc": "[size:15][color:tomato]该功能不会进行战斗，仅领取奖励[/color][/size]",
             "check": true
         },
         {
@@ -86,6 +86,9 @@
         {
             "name": "小队突袭",
             "entry": "team_dash",
+            "option": [
+                "借组织助战"
+            ],
             "check": true
         },
         {
@@ -101,6 +104,7 @@
         {
             "name": "任务集会所(beta)",
             "entry": "mission_office",
+            "doc": "[size:15][color:tomato]有超影的时候,依旧只会接当前显示的三个任务,不会刷新。要拿满奖励记得关[/color][/size]",
             "check": true
         },
         {
@@ -413,6 +417,30 @@
                         "weekly_win_success": {
                             "next": [
                                 "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "借组织助战": {
+            "cases": [
+                {
+                    "name": "开,借人",
+                    "pipeline_override": {
+                        "team_dash_invite_page": {
+                            "next": [
+                                "team_dash_invite_ninjia"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "关,不借人",
+                    "pipeline_override": {
+                        "team_dash_invite_page": {
+                            "next": [
+                                "dash_or_exit"
                             ]
                         }
                     }

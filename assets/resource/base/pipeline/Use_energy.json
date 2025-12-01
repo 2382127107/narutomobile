@@ -58,7 +58,10 @@
         "next": [
             "use_energy_ez_sweep"
         ],
-        "post_wait_freezes": 300,
+        "interrupt": [
+            "use_energy_ez_sweep_entry"
+        ],
+        "post_delay": 700,
         "focus": "[color:DeepSkyBlue]便捷扫荡[/color]"
     },
     "use_energy_ez_sweep": {
@@ -76,9 +79,11 @@
         ],
         "interrupt": [
             "use_energy_finish",
-            "use_energy_not_enough_sign"
+            "use_energy_not_enough_sign",
+            "use_energy_ez_sweep"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确定便捷扫荡[/color]"
     },
     "use_energy_confirm_ez_sweep": {
         "recognition": "TemplateMatch",
@@ -90,13 +95,16 @@
             72
         ],
         "action": "Click",
-        "post_delay": 5000,
         "rate_limit": 5000,
         "next": [
             "use_energy_not_enough_sign",
             "use_energy_finish"
         ],
-        "timeout": 60000,
+        "interrupt": [
+            "use_energy_confirm_ez_sweep",
+            "sleep_500ms"
+        ],
+        "post_delay": 5000,
         "focus": "[color:DeepSkyBlue]确认便捷扫荡[/color]"
     },
     "use_energy_not_enough_sign": {
