@@ -326,12 +326,12 @@
   },
   "click_All_skill": {
     "recognition": "TemplateMatch",
-    "template": "auto_battle/normal_attack",
+    "template": "Weekly_win/battle_emoji.png",
     "roi": [
-      1063,
-      513,
-      158,
-      161
+      5,
+      267,
+      79,
+      68
     ],
     "action": "MultiSwipe",
     "swipes": [

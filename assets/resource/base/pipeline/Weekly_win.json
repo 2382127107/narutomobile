@@ -85,34 +85,61 @@
     },
     "weekly_win_match_fighting": {
         "recognition": "TemplateMatch",
-        "template": "auto_battle/normal_attack",
+        "template": "Weekly_win/battle_emoji.png",
+        "roi": [
+            0,
+            224,
+            127,
+            154
+        ],
+        "threshold": 0.45,
         "next": [
-            "not_in_battle"
+            "battle_end",
+            "battle_tips"
         ],
         "interrupt": [
+            "winner_decided",
             "click_All_skill"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"
     },
-    "not_in_battle": {
+    "winner_decided": {
         "recognition": "TemplateMatch",
-        "template": "auto_battle/normal_attack",
-        "roi": [
-            1063,
-            513,
-            158,
-            161
+        "template": [
+            "Weekly_win/winner.png",
+            "Weekly_win/winner_decided.png"
         ],
-        "inverse": true,
+        "roi": [
+            185,
+            231,
+            927,
+            348
+        ],
+        "green_mask": true,
+        "next": [
+            "battle_end",
+            "weekly_win_substitution"
+        ]
+    },
+    "battle_end": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/battle_detail.png",
+        "roi": [
+            1061,
+            0,
+            219,
+            98
+        ],
         "next": [
             "weekly_win_success",
             "weekly_win_fail"
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "timeout": 2000
+        "timeout": 2000,
+        "focus": "[color:DeepSkyBlue]对局结束[/color]"
     },
     "weekly_win_success": {
         "recognition": "TemplateMatch",
@@ -209,6 +236,7 @@
             "weekly_win_rank_ban",
             "battle_tips",
             "battle_again",
+            "weekly_win_substitution",
             "go_to_war"
         ],
         "post_delay": 1000,
@@ -303,7 +331,7 @@
         ],
         "threshold": 0.6,
         "action": "Click",
-        "post_delay": 400,
+        "post_delay": 3000,
         "focus": "[color:DeepSkyBlue]ban忍者[/color]"
     },
     "weekly_win_rank_confirm_ninjia": {
@@ -319,7 +347,7 @@
         ],
         "threshold": 0.6,
         "action": "Click",
-        "post_delay": 400,
+        "post_delay": 5000,
         "focus": "[color:DeepSkyBlue]确认忍者[/color]"
     }
 }
