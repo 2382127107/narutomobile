@@ -86,6 +86,9 @@
         {
             "name": "小队突袭",
             "entry": "team_dash",
+            "option": [
+                "借组织助战"
+            ],
             "check": true
         },
         {
@@ -424,6 +427,30 @@
                         "weekly_win_success": {
                             "next": [
                                 "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "借组织助战": {
+            "cases": [
+                {
+                    "name": "开,借人",
+                    "pipeline_override": {
+                        "team_dash_invite_page": {
+                            "next": [
+                                "team_dash_invite_ninjia"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "关,不借人",
+                    "pipeline_override": {
+                        "team_dash_invite_page": {
+                            "next": [
+                                "dash_or_exit"
                             ]
                         }
                     }
