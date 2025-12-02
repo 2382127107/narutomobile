@@ -82,13 +82,7 @@
     },
     "leaderboard_entry": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Leaderboard/board.png",
-            "Leaderboard/board_night_undone.png",
-            "Leaderboard/board_night_done.png",
-            "Leaderboard/board_konoha_autumn.png",
-            "Leaderboard/board_HanFengZhuiYu.png"
-        ],
+        "template": "home/排行榜",
         "threshold": 0.8,
         "green_mask": true,
         "action": "Click",

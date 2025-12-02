@@ -28,6 +28,7 @@
             "liveness_award_in_center_enter"
         ],
         "interrupt": [
+            "liveness_award_undone",
             "get_liveness_award"
         ],
         "post_wait_freezes": 1000,

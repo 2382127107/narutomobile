@@ -1,20 +1,22 @@
 {
     "name": "MaaAutoNaruto",
-    "version": "v0.1.10",
+    "version": "v0.2.7",
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": false,
     "url": "https://github.com/duorua/narutomobile",
-    "message": "你现在使用的是一个测试版本，她并不稳定",
+    "mfa_max_version": "v2.0.3",
+    "mfa_min_version": "v2.0.3",
     "agent": {
         "child_exec": "python",
         "child_args": [
             "-u",
             "{PROJECT_DIR}/../agent/main.py"
-        ]
+        ],
+        "identifier": "3be2c931-9c0d-4d69-9ebd-eed2263e06fd"
     },
     "controller": [
         {
-            "name": "安卓端",
+            "name": "连接模拟器",
             "type": "Adb"
         }
     ],
@@ -30,10 +32,10 @@
         {
             "name": "进入火影",
             "entry": "start_up",
-            "check": true,
             "option": [
                 "账号属性"
-            ]
+            ],
+            "check": true
         },
         {
             "name": "轻松助手",
@@ -48,6 +50,7 @@
         {
             "name": "排行榜",
             "entry": "leaderboard",
+            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
             "check": true
         },
         {
@@ -61,18 +64,9 @@
             "check": true
         },
         {
-            "name": "火影情报社",
-            "entry": "naruto_club",
-            "check": true
-        },
-        {
             "name": "组织",
             "entry": "group",
-            "check": true
-        },
-        {
-            "name": "邮箱",
-            "entry": "mail",
+            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
             "check": true
         },
         {
@@ -92,11 +86,9 @@
         {
             "name": "小队突袭",
             "entry": "team_dash",
-            "check": true
-        },
-        {
-            "name": "忍法帖",
-            "entry": "ninjia_book",
+            "option": [
+                "借组织助战"
+            ],
             "check": true
         },
         {
@@ -112,6 +104,7 @@
         {
             "name": "任务集会所(beta)",
             "entry": "mission_office",
+            "doc": "[size:15][color:tomato]有超影的时候,依旧只会接当前显示的三个任务,不会刷新。要拿满奖励记得关[/color][/size]",
             "check": true
         },
         {
@@ -120,21 +113,57 @@
             "check": true
         },
         {
-            "name": "丰饶",
+            "name": "丰饶之间",
             "entry": "rich_room",
             "check": true
         },
         {
-            "name": "活跃宝箱(beta)",
+            "name": "忍法帖",
+            "entry": "ninjia_book",
+            "doc": "[size:15]开启后会领取忍法帖升级的[color:red]全部奖励[/color]，需要攒体验卡的不要用！[/size]",
+            "option": [
+                "是否领取体验卡宝箱",
+                "是否领取奖励"
+            ],
+            "check": true
+        },
+        {
+            "name": "火影情报社",
+            "entry": "naruto_club",
+            "check": true
+        },
+        {
+            "name": "邮箱",
+            "entry": "mail",
+            "doc": "[size:15][color:tomato]最近由于十周年情报社容易出bug,可以关闭这个功能用于检查情报社是否正常完成[/color][/size]",
+            "check": true
+        },
+        {
+            "name": "活跃宝箱",
             "entry": "liveness_award",
             "check": true
         },
         {
-            "name": "周胜(没做好别用)",
+            "name": "周胜(beta)",
             "entry": "weekly_win",
             "option": [
-                "匹配还是排位"
-            ]
+                "匹配还是排位",
+                "胜利一次就退出任务"
+            ],
+            "doc": "[size:15][color:tomato]目前胜利一次就退出功能还不稳定,可能点掉胜利界面继续战斗[/color][/size]",
+            "check": true
+        },
+        {
+            "name": "冒险副本(beta)",
+            "entry": "advanture"
+        },
+        {
+            "name": "精英副本(beta)",
+            "entry": "elite_instance"
+        },
+        {
+            "name": "修罗副本(beta)",
+            "entry": "asura_instance"
         },
         {
             "name": "百忍大战",
@@ -146,6 +175,13 @@
         {
             "name": "agent Debug",
             "entry": "use_agent"
+        },
+        {
+            "name": "小游戏",
+            "entry": "mini_game",
+            "option": [
+                "选择小游戏"
+            ]
         }
     ],
     "option": {
@@ -156,12 +192,6 @@
                     "pipeline_override": {
                         "start_naruto": {
                             "package": "com.tencent.KiHan"
-                        },
-                        "account_type": {
-                            "next": "android_qq"
-                        },
-                        "naruto_club_entry": {
-                            "next": "start_qq"
                         },
                         "shut_qq": {
                             "package": "com.tencent.mobileqq"
@@ -266,7 +296,7 @@
                     }
                 },
                 {
-                    "name": "排位(没做完)",
+                    "name": "排位(beta)",
                     "pipeline_override": {
                         "weekly_win_in_duel_field": {
                             "next": [
@@ -297,6 +327,132 @@
                     "pipeline_override": {
                         "hundred_ninjia_check_fight": {
                             "action": "Click"
+                        }
+                    }
+                }
+            ]
+        },
+        "是否领取体验卡宝箱": {
+            "cases": [
+                {
+                    "name": "是",
+                    "pipeline_override": {
+                        "get_ninjia_book_award": {
+                            "template": [
+                                "Ninjia_book/seal_roll_waiting.png",
+                                "Ninjia_book/chopper_60_waiting.png",
+                                "Ninjia_book/fame_waiting.png",
+                                "Ninjia_book/gold_waiting.png",
+                                "Ninjia_book/star_waiting.png",
+                                "Ninjia_book/energe_waiting.png",
+                                "Ninjia_book/soul_waiting.png",
+                                "Ninjia_book/box_waiting.png",
+                                "Ninjia_book/wooden_spike_roll_waiting.png",
+                                "Ninjia_book/title_waiting.png"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "否",
+                    "pipeline_override": {
+                        "get_ninjia_book_award": {
+                            "template": [
+                                "Ninjia_book/seal_roll_waiting.png",
+                                "Ninjia_book/chopper_60_waiting.png",
+                                "Ninjia_book/fame_waiting.png",
+                                "Ninjia_book/gold_waiting.png",
+                                "Ninjia_book/star_waiting.png",
+                                "Ninjia_book/energe_waiting.png",
+                                "Ninjia_book/soul_waiting.png",
+                                "Ninjia_book/wooden_spike_roll_waiting.png",
+                                "Ninjia_book/title_waiting.png"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "是否领取奖励": {
+            "cases": [
+                {
+                    "name": "是",
+                    "pipeline_override": {
+                        "ninjia_book_award_undone": {
+                            "next": [
+                                "ninjia_book_award_undone",
+                                "ninjia_book_award_swip_to_left"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "否",
+                    "pipeline_override": {
+                        "ninjia_book_award_undone": {
+                            "next": [
+                                "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "选择小游戏": {
+            "cases": [
+                {
+                    "name": "聚宝试炼领取奖励",
+                    "pipeline_override": {
+                        "mini_game": {
+                            "next": "treasure_gathering_trial_award"
+                        }
+                    }
+                }
+            ]
+        },
+        "胜利一次就退出任务": {
+            "cases": [
+                {
+                    "name": "不开启,无限打",
+                    "pipeline_override": {
+                        "weekly_win_success": {
+                            "next": [
+                                "weekly_win_match_fight"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "开启,胜利一次就退出任务",
+                    "pipeline_override": {
+                        "weekly_win_success": {
+                            "next": [
+                                "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "借组织助战": {
+            "cases": [
+                {
+                    "name": "开,借人",
+                    "pipeline_override": {
+                        "team_dash_invite_page": {
+                            "next": [
+                                "team_dash_invite_ninjia"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "关,不借人",
+                    "pipeline_override": {
+                        "team_dash_invite_page": {
+                            "next": [
+                                "dash_or_exit"
+                            ]
                         }
                     }
                 }

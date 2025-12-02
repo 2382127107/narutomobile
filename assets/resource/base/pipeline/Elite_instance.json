@@ -1,0 +1,261 @@
+{
+    "elite_instance": {
+        "next": [
+            "elite_instance_entry",
+            "elite_instance_in_level_roll"
+        ],
+        "interrupt": [
+            "back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入精英副本子任务[/color]"
+    },
+    "elite_instance_entry": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/advanture_entry.png",
+        "roi": [
+            1076,
+            543,
+            204,
+            177
+        ],
+        "action": "Click",
+        "next": [
+            "elite_instance_in_level_roll"
+        ],
+        "interrupt": [
+            "elite_instance_entry"
+        ],
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]进入冒险副本入口[/color]"
+    },
+    "elite_instance_in_level_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/level_roll.png",
+        "roi": [
+            0,
+            0,
+            363,
+            258
+        ],
+        "next": [
+            "elite_instance_to_elite_instance"
+        ],
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]已经在冒险副本[/color]"
+    },
+    "elite_instance_to_elite_instance": {
+        "recognition": "TemplateMatch",
+        "template": "Elite_instance/entry.png",
+        "roi": [
+            17,
+            0,
+            357,
+            234
+        ],
+        "action": "Click",
+        "threshold": 0.5,
+        "next": [
+            "elite_instance_in_elite_instance"
+        ],
+        "interrupt": [
+            "elite_instance_to_elite_instance"
+        ],
+        "post_delay": 900
+    },
+    "elite_instance_in_elite_instance": {
+        "recognition": "TemplateMatch",
+        "template": "Elite_instance/in_elite_instance.png",
+        "roi": [
+            0,
+            0,
+            370,
+            251
+        ],
+        "threshold": 0.7,
+        "next": [
+            "elite_instance_new_level_undone"
+        ]
+    },
+    "elite_instance_new_level_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Elite_instance/new_level.png",
+        "roi": [
+            772,
+            311,
+            39,
+            47
+        ],
+        "next": [
+            "elite_instance_go_fight"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]进入精英副本新关卡[/color]"
+    },
+    "elite_instance_go_fight": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/go_fight.png",
+        "roi": [
+            955,
+            488,
+            325,
+            232
+        ],
+        "action": "Click",
+        "next": [
+            "elite_instance_in_fight",
+            "use_energy_not_enough_sign"
+        ],
+        "interrupt": [
+            "sleep_500ms"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]开始战斗[/color]"
+    },
+    "elite_instance_in_fight": {
+        "recognition": "OCR",
+        "expected": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "roi": [
+            491,
+            0,
+            306,
+            133
+        ],
+        "next": [
+            "elite_instance_auto_fight"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]战斗中[/color]"
+    },
+    "elite_instance_auto_fight": {
+        "recognition": "OCR",
+        "expected": [
+            "自",
+            "动"
+        ],
+        "roi": [
+            0,
+            0,
+            150,
+            130
+        ],
+        "action": "Click",
+        "next": [
+            "elite_instance_not_in_fight"
+        ],
+        "interrupt": [
+            "elite_instance_not_in_auto_fight",
+            "wait_5_second"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]打开自动战斗[/color]"
+    },
+    "elite_instance_not_in_fight": {
+        "recognition": "OCR",
+        "expected": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "roi": [
+            491,
+            0,
+            306,
+            133
+        ],
+        "inverse": true,
+        "next": [
+            "elite_instance_win",
+            "elite_instance_lost",
+            "elite_instance_lock"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]不在战斗[/color]"
+    },
+    "elite_instance_not_in_auto_fight": {
+        "recognition": "OCR",
+        "template": "Advanture/normal_attack.png",
+        "roi": [
+            958,
+            438,
+            322,
+            282
+        ],
+        "next": [
+            "elite_instance_auto_fight"
+        ],
+        "focus": "[color:DeepSkyBlue]不在自动战斗[/color]"
+    },
+    "elite_instance_win": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/win.png",
+        "roi": [
+            669,
+            24,
+            128,
+            103
+        ],
+        "action": "Click",
+        "next": [
+            "elite_instance_new_level_undone",
+            "elite_instance_lock"
+        ],
+        "interrupt": [
+            "elite_instance_win"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]胜利啦[/color]"
+    },
+    "elite_instance_lost": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/click_anywhere_to_quit.png",
+        "roi": [
+            486,
+            574,
+            298,
+            121
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:tomato]胜败乃兵家常事[/color]"
+    },
+    "elite_instance_lock": {
+        "recognition": "OCR",
+        "expected": [
+            "通",
+            "关",
+            "解",
+            "锁"
+        ],
+        "roi": [
+            846,
+            377,
+            177,
+            61
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:tomato]下一关未解锁[/color]"
+    }
+}

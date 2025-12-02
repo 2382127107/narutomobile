@@ -27,7 +27,7 @@
             "team_dash_ac_done"
         ],
         "interrupt": [
-            "Swipe_for_award_center_find"
+            "swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -102,7 +102,7 @@
             "team_dash_my_help_done"
         ],
         "interrupt": [
-            "not_in_group"
+            "dash_or_exit"
         ],
         "post_wait_freezes": 600,
         "focus": "[color:DeepSkyBlue]进入组织助战[/color]"
@@ -200,6 +200,9 @@
         "next": [
             "team_dash_invite_page"
         ],
+        "interrupt": [
+            "close_my_help"
+        ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭我的助战[/color]"
     },
@@ -217,10 +220,6 @@
         ],
         "interrupt": [
             "can_not_invite"
-        ],
-        "timeout": 5000,
-        "on_error": [
-            "dash_or_exit"
         ],
         "focus": "[color:DeepSkyBlue]进入助战邀请界面[/color]"
     },
@@ -371,6 +370,11 @@
         "threshold": 0.8,
         "action": "Swipe",
         "duration": 50,
+        "next": [
+            "team_dash_do_not_remind_gold",
+            "team_dash_above_kage_sweep",
+            "back_main_screen_and_stop"
+        ],
         "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]超影扫荡[/color]"
     },

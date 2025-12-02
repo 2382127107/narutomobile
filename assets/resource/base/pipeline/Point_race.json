@@ -1,11 +1,10 @@
 {
     "point_race": {
         "next": [
-            "point_race_in_center_enter",
-            "point_race_ac_entry"
+            "point_race_in_center_enter"
         ],
         "interrupt": [
-            "swipe_for_left_entries",
+            "award_center_enter",
             "back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入积分赛子任务[/color]"
@@ -28,26 +27,10 @@
             "point_race_ac_done"
         ],
         "interrupt": [
-            "Swipe_for_award_center_find"
+            "swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
-    },
-    "point_race_ac_entry": {
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry.png",
-        "roi": [
-            1200,
-            348,
-            42,
-            39
-        ],
-        "action": "Click",
-        "next": [
-            "point_race_in_center_enter"
-        ],
-        "post_wait_freezes": 1000,
-        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "point_race_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -67,7 +50,7 @@
             -114
         ],
         "next": [
-            "back_main_screen_and_stop"
+            "point_race_chanllenge_enter"
         ],
         "action": "Click",
         "post_wait_freezes": 500,
@@ -87,68 +70,65 @@
         ],
         "focus": "[color:DeepSkyBlue]积分赛已完成[/color]"
     },
-    "point_race_entry": {
+    "point_race_chanllenge_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/chanllenge_rhombus.png",
+        "action": "Click",
+        "post_wait_freezes": 500,
         "next": [
-            "point_race_undone",
-            "point_race_done"
-        ],
-        "interrupt": [
-            "swipe_for_left_entries"
+            "point_race_chanllenge_enter",
+            "wait_for_select_opponent"
         ]
     },
-    "point_race_done": {
+    "wait_for_select_opponent": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Point_race/point_race_done.png"
-        ],
-        "green_mask": true,
-        "threshold": 0.8,
-        "action": "Click",
-        "next": [
-            "check_main_screen_and_stop"
-        ]
-    },
-    "point_race_undone": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Point_race/point_race_undone.png"
-        ],
-        "green_mask": true,
-        "threshold": 0.8,
-        "action": "Click",
-        "next": [
-            "get_point_race_award"
-        ],
-        "post_wait_freezes": 300
-    },
-    "get_point_race_award": {
-        "recognition": "TemplateMatch",
-        "template": "Point_race/get_award.png",
+        "template": "Point_race/select_opponent.png",
         "roi": [
-            668,
+            68,
             23,
-            131,
-            66
+            418,
+            185
         ],
-        "action": "Click",
         "next": [
-            "get_point_race_award1"
-        ],
-        "post_wait_freezes": 300
-    },
-    "get_point_race_award1": {
-        "recognition": "TemplateMatch",
-        "template": "Point_race/get_award.png",
-        "roi": [
-            668,
-            23,
-            131,
-            66
-        ],
-        "action": "Click",
-        "post_wait_freezes": 300,
-        "next": [
+            "point_race_chanllenge",
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]开始选择对手[/color]"
+    },
+    "point_race_chanllenge": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "FindToChallenge"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": "point_race_chanllenge_finished"
+    },
+    "point_race_chanllenge_finished": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            615,
+            543,
+            301,
+            170
+        ],
+        "action": "Click",
+        "next": "back_main_screen_and_stop"
+    },
+    "point_race_get_chanllenge_button": {
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi": [
+            958,
+            168,
+            154,
+            452
+        ],
+        "index": 0,
+        "order_by": "Vertical"
     }
 }

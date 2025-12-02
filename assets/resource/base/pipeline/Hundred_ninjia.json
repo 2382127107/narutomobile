@@ -11,9 +11,7 @@
     },
     "hundred_ninjia_entry": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Hundred_ninjia/deul_entry_night.png"
-        ],
+        "template": "home/决斗场",
         "roi": [
             90,
             254,

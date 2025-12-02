@@ -27,7 +27,7 @@
             "mission_office_ac_done"
         ],
         "interrupt": [
-            "Swipe_for_award_center_find"
+            "swipe_for_award_center_find"
         ],
         "post_delay": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -266,16 +266,41 @@
             155,
             37
         ],
-        "action": "Swipe",
+        "action": "Click",
         "duration": 50,
+        "next": [
+            "mission_office_recommended_team_check"
+        ],
+        "interrupt": [
+            "mission_office_recommended_team"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]使用推荐配队[/color]"
+    },
+    "mission_office_recommended_team_check": {
+        "recognition": "OCR",
+        "expected": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "需要"
+        ],
+        "roi": [
+            20,
+            505,
+            390,
+            165
+        ],
         "next": [
             "take_mission_office_mission"
         ],
-        "interrupt": [
-            "mission_office_get_mission"
-        ],
-        "post_wait_freezes": 200,
-        "focus": "[color:DeepSkyBlue]使用推荐配队[/color]"
+        "post_wait_freezes": 400
     },
     "mission_office_3_mission": {
         "recognition": "TemplateMatch",

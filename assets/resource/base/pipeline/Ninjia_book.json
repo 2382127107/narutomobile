@@ -137,6 +137,9 @@
             "ninjia_book_liveness_undone",
             "ninjia_book_liveness_done"
         ],
+        "interrupt": [
+            "close_ninjia_book_liveness_detail"
+        ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]忍法帖任务已完成[/color]"
     },
@@ -191,6 +194,9 @@
             "ninjia_book_liveness_undone",
             "ninjia_book_liveness_done"
         ],
+        "interrupt": [
+            "close_ninjia_book_liveness_detail"
+        ],
         "focus": "[color:DeepSkyBlue]检查有没有任务奖励[/color]"
     },
     "get_ninjia_book_mission_award": {
@@ -208,14 +214,15 @@
     },
     "ninjia_book_liveness_done": {
         "recognition": "TemplateMatch",
-        "template": "Ninjia_book/liveness_done_v2.png",
+        "template": "Ninjia_book/liveness_undone_v2.png",
         "roi": [
-            135,
-            330,
-            37,
-            26
+            113,
+            323,
+            66,
+            71
         ],
         "threshold": 0.9,
+        "inverse": true,
         "next": [
             "mechanical_treasure_box_undone",
             "ninjia_book_award_undone",
@@ -262,10 +269,30 @@
         ],
         "interrupt": [
             "ninjia_book_liveness_award",
-            "close_ninjia_book_level_up_page_when_liveness"
+            "close_ninjia_book_level_up_page_when_liveness",
+            "close_ninjia_book_liveness_detail"
         ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]确认已经选中活跃度奖励[/color]"
+    },
+    "close_ninjia_book_liveness_detail": {
+        "recognition": "TemplateMatch",
+        "template": "Ninjia_book/liveness_detail.png",
+        "roi": [
+            254,
+            85,
+            997,
+            368
+        ],
+        "action": "Click",
+        "target": [
+            662,
+            527,
+            106,
+            86
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]关闭活跃度详情[/color]"
     },
     "ninjia_book_liveness_award": {
         "recognition": "TemplateMatch",
@@ -282,10 +309,6 @@
         "action": "Click",
         "post_delay": 3000,
         "timeout": 1000,
-        "next": [
-            "close_ninjia_book_level_up_page_when_liveness",
-            "ninjia_book_liveness_award"
-        ],
         "focus": "[color:DeepSkyBlue]领取活跃度奖励[/color]"
     },
     "check_no_ninjia_book_liveness_award": {
@@ -300,7 +323,7 @@
             168
         ],
         "inverse": true,
-        "threshold": 0.8,
+        "threshold": 0.9,
         "action": "Click",
         "next": [
             "mechanical_treasure_box_undone",

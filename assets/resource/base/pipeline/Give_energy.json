@@ -21,10 +21,13 @@
             55
         ],
         "green_mask": true,
-        "action": "Swipe",
+        "action": "Click",
         "duration": 100,
         "next": [
             "sent_energy"
+        ],
+        "interrupt": [
+            "energy_entry"
         ],
         "post_delay": 700,
         "focus": "[color:DeepSkyBlue]进入送体力界面[/color]"

@@ -1,0 +1,315 @@
+{
+    "advanture": {
+        "next": [
+            "advanture_entry",
+            "advanture_in_level_roll"
+        ],
+        "interrupt": [
+            "back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入冒险副本子任务[/color]"
+    },
+    "advanture_entry": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/advanture_entry.png",
+        "roi": [
+            1076,
+            543,
+            204,
+            177
+        ],
+        "action": "Click",
+        "next": [
+            "advanture_in_level_roll"
+        ],
+        "interrupt": [
+            "advanture_entry"
+        ],
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]进入冒险副本入口[/color]"
+    },
+    "advanture_in_level_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/level_roll.png",
+        "roi": [
+            0,
+            0,
+            363,
+            258
+        ],
+        "threshold": 0.9,
+        "next": [
+            "advanture_check_no_next_roll"
+        ],
+        "interrupt": [
+            "advanture_to_next_roll"
+        ],
+        "focus": "[color:DeepSkyBlue]已经在冒险副本[/color]"
+    },
+    "advanture_check_no_next_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/next_roll.png",
+        "roi": [
+            886,
+            515,
+            165,
+            83
+        ],
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            593,
+            318,
+            81,
+            88
+        ],
+        "next": [
+            "advanture_new_level_undone"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]确定没有下一个章节[/color]"
+    },
+    "advanture_to_next_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/next_roll.png",
+        "roi": [
+            886,
+            515,
+            165,
+            83
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            330,
+            81,
+            82
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]进入冒险副本下一个章节[/color]"
+    },
+    "advanture_new_level_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/new_level_undone.png",
+        "roi": [
+            158,
+            338,
+            264,
+            204
+        ],
+        "action": "Click",
+        "next": [
+            "advanture_go_fight"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]进入冒险副本新关卡[/color]"
+    },
+    "advanture_go_fight": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/go_fight.png",
+        "roi": [
+            975,
+            419,
+            305,
+            301
+        ],
+        "action": "Click",
+        "next": [
+            "advanture_in_fight",
+            "advanture_anime",
+            "advanture_confirm_advanced_option",
+            "use_energy_not_enough_sign"
+        ],
+        "interrupt": [
+            "sleep_500ms"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]开始战斗[/color]"
+    },
+    "advanture_confirm_advanced_option": {
+        "recognition": "OCR",
+        "expected": [
+            "确",
+            "任"
+        ],
+        "roi": [
+            483,
+            370,
+            323,
+            170
+        ],
+        "action": "Click",
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:tomato]高级任务无法自动战斗[/color]"
+    },
+    "advanture_anime": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/anime.png",
+        "roi": [
+            0,
+            0,
+            239,
+            105
+        ],
+        "action": "Click",
+        "next": [
+            "advanture_skip",
+            "advanture_in_fight"
+        ],
+        "interrupt": [
+            "advanture_anime"
+        ],
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]剧情动画[/color]"
+    },
+    "advanture_skip": {
+        "recognition": "OCR",
+        "expected": [
+            "跳",
+            "过"
+        ],
+        "roi": [
+            1052,
+            0,
+            228,
+            119
+        ],
+        "action": "Click",
+        "next": [
+            "advanture_in_fight"
+        ],
+        "interrupt": [
+            "advanture_skip"
+        ],
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]跳过[/color]"
+    },
+    "advanture_in_fight": {
+        "recognition": "OCR",
+        "expected": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "roi": [
+            491,
+            0,
+            306,
+            133
+        ],
+        "next": [
+            "advanture_auto_fight"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]战斗中[/color]"
+    },
+    "advanture_auto_fight": {
+        "recognition": "OCR",
+        "expected": [
+            "自",
+            "动"
+        ],
+        "roi": [
+            0,
+            0,
+            150,
+            130
+        ],
+        "action": "Click",
+        "next": [
+            "advanture_not_in_fight"
+        ],
+        "interrupt": [
+            "advanture_not_in_auto_fight",
+            "wait_5_second"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]打开自动战斗[/color]"
+    },
+    "advanture_not_in_fight": {
+        "recognition": "OCR",
+        "expected": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "roi": [
+            491,
+            0,
+            306,
+            133
+        ],
+        "inverse": true,
+        "next": [
+            "advanture_win",
+            "advanture_lost"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]不在战斗[/color]"
+    },
+    "advanture_not_in_auto_fight": {
+        "recognition": "OCR",
+        "template": "Advanture/normal_attack.png",
+        "roi": [
+            958,
+            438,
+            322,
+            282
+        ],
+        "next": [
+            "advanture_auto_fight"
+        ],
+        "focus": "[color:DeepSkyBlue]不在自动战斗[/color]"
+    },
+    "advanture_win": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/win.png",
+        "roi": [
+            669,
+            24,
+            128,
+            103
+        ],
+        "action": "Click",
+        "next": [
+            "advanture_new_level_undone"
+        ],
+        "interrupt": [
+            "advanture_win"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]胜利啦[/color]"
+    },
+    "advanture_lost": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/click_anywhere_to_quit.png",
+        "roi": [
+            486,
+            574,
+            298,
+            121
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:tomato]胜败乃兵家常事[/color]"
+    }
+}
