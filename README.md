@@ -5,8 +5,7 @@
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white">
-  <!-- 咱们有全平台支持吗？ -->
-  <!-- <img alt="platform" src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-blueviolet"> -->
+  <img alt="platform" src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-blueviolet">
   <img alt="license" src="https://img.shields.io/github/license/duorua/narutomobile">
   <br>
   <img alt="commit" src="https://img.shields.io/github/commit-activity/w/duorua/narutomobile">
@@ -37,9 +36,11 @@
 
 ## TODO
 
-- [ ] 重写登录处理流程。
+- [x] 重写登录处理流程。
 
-- [ ] 不能刷周胜和副本（短期内不会考虑做任何与战斗有关的功能（非战斗的功能都有一堆bug没修呢））
+- [x] 刷周胜
+
+- [ ] 刷秘境副本
 
 ## 如何参与开发
 
