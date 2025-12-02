@@ -86,7 +86,6 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.runner }}
 
-
     steps:
       - uses: actions/checkout@v4
         with:
@@ -125,8 +124,7 @@ jobs:
         shell: bash
         run: |
           python tools/ci/setup_embed_python.py
-          cp "tools/DependencySetup_依赖库安装.bat" install/
-          
+
       - name: Setup Embed Python on macOS
         if: matrix.os == 'macos'
         shell: bash
@@ -151,7 +149,7 @@ jobs:
         shell: bash
         run: |
           ./install/python/bin/python3 tools/ci/download_deps.py --deps-dir deps
-      
+
       - name: Download Python dependencies on Linux
         if: runner.os == 'Linux'
         shell: bash
@@ -172,7 +170,7 @@ jobs:
           else
             echo "MFA directory not found, skipping copy."
           fi
-      
+
       - name: Install on Unix (macOS/Linux)
         if: runner.os != 'Windows'
         shell: bash
@@ -228,7 +226,7 @@ jobs:
           for f in *; do
             (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
           done
-          
+
       - uses: softprops/action-gh-release@v2
         with:
           files: assets/*
