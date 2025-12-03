@@ -413,9 +413,7 @@
                     "name": "开启,胜利一次就退出任务",
                     "pipeline_override": {
                         "weekly_win_success": {
-                            "next": [
-                                "back_main_screen_and_stop"
-                            ]
+                            "next": "back_main_screen_and_stop"
                         }
                     }
                 }

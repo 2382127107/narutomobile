@@ -199,7 +199,7 @@
     "winner_decided": {
         "recognition": "TemplateMatch",
         "template": [
-            "Weekly_win/winner.png",
+            "Weekly_win/winner.png"
         ],
         "roi": [
             412,
