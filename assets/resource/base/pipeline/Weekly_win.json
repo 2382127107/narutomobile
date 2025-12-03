@@ -9,6 +9,59 @@
         ],
         "focus": "[color:DeepSkyBlue]开始周胜任务[/color]"
     },
+    "swipe_to_left_to_find": {
+        "recognition": "TemplateMatch",
+        "template": "Startup/main_green_masked.png",
+        "action": "Swipe",
+        "begin": [
+            218,
+            288,
+            82,
+            81
+        ],
+        "end": [
+            589,
+            305,
+            93,
+            85
+        ],
+        "next": [
+            "weekly_win_entry",
+            "swipe_to_right_to_find"
+        ],
+        "green_mask": true,
+        "post_delay": 500,
+        "focus": "[color:darkgray]往左滑找决斗场[/color]"
+    },
+    "swipe_to_right_to_find": {
+        "recognition": "TemplateMatch",
+        "template": "Startup/main_green_masked.png",
+        "action": "Swipe",
+        "begin": [
+            589,
+            305,
+            93,
+            85
+        ],
+        "end": [
+            218,
+            288,
+            82,
+            81
+        ],
+        "next": [
+            "weekly_win_entry"
+        ],
+        "timeout": 3000,
+        "on_error": "abattoir_not_found",
+        "green_mask": true,
+        "post_delay": 500,
+        "focus": "[color:darkgray]往右滑找决斗场[/color]"
+    },
+    "abattoir_not_found": {
+        "action": "StopTask",
+        "focus": "[color:tomato]无法找到角斗场！[/color]"
+    },
     "weekly_win_mouthly_award": {
         "recognition": "OCR",
         "expected": [
