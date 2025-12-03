@@ -1,6 +1,6 @@
 {
     "name": "MaaAutoNaruto",
-    "version": "v0.2.7",
+    "version": "v0.2.11",
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": false,
     "url": "https://github.com/duorua/narutomobile",
@@ -35,44 +35,43 @@
             "option": [
                 "账号属性"
             ],
-            "check": true
+            "default_check": true
         },
         {
             "name": "轻松助手",
-            "entry": "easy_helper",
-            "check": true
+            "entry": "easy_helper"
         },
         {
             "name": "招财",
             "entry": "get_chopper",
-            "check": true
+            "default_check": true
         },
         {
             "name": "排行榜",
             "entry": "leaderboard",
             "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
-            "check": true
+            "default_check": true
         },
         {
             "name": "送体力",
             "entry": "give_energy",
-            "check": true
+            "default_check": true
         },
         {
             "name": "每日分享",
             "entry": "share",
-            "check": true
+            "default_check": true
         },
         {
             "name": "组织",
             "entry": "group",
             "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
-            "check": true
+            "default_check": true
         },
         {
             "name": "积分赛",
             "entry": "point_race",
-            "check": true
+            "default_check": true
         },
         {
             "name": "试炼",
@@ -81,7 +80,7 @@
                 "不做修行",
                 "等待生存扫荡时间选择"
             ],
-            "check": true
+            "default_check": true
         },
         {
             "name": "小队突袭",
@@ -89,33 +88,33 @@
             "option": [
                 "借组织助战"
             ],
-            "check": true
+            "default_check": true
         },
         {
             "name": "免费招募",
             "entry": "headhunt",
-            "check": true
+            "default_check": true
         },
         {
             "name": "月签到和活动",
             "entry": "activity",
-            "check": true
+            "default_check": true
         },
         {
             "name": "任务集会所(beta)",
             "entry": "mission_office",
             "doc": "[size:15][color:tomato]有超影的时候,依旧只会接当前显示的三个任务,不会刷新。要拿满奖励记得关[/color][/size]",
-            "check": true
+            "default_check": true
         },
         {
             "name": "刷体力(beta)",
             "entry": "use_energy",
-            "check": true
+            "default_check": true
         },
         {
             "name": "丰饶之间",
             "entry": "rich_room",
-            "check": true
+            "default_check": true
         },
         {
             "name": "忍法帖",
@@ -125,23 +124,23 @@
                 "是否领取体验卡宝箱",
                 "是否领取奖励"
             ],
-            "check": true
+            "default_check": true
         },
         {
             "name": "火影情报社",
             "entry": "naruto_club",
-            "check": true
+            "default_check": true
         },
         {
             "name": "邮箱",
             "entry": "mail",
             "doc": "[size:15][color:tomato]最近由于十周年情报社容易出bug,可以关闭这个功能用于检查情报社是否正常完成[/color][/size]",
-            "check": true
+            "default_check": true
         },
         {
             "name": "活跃宝箱",
             "entry": "liveness_award",
-            "check": true
+            "default_check": true
         },
         {
             "name": "周胜(beta)",
@@ -151,7 +150,6 @@
                 "胜利一次就退出任务"
             ],
             "doc": "[size:15][color:tomato]目前胜利一次就退出功能还不稳定,可能点掉胜利界面继续战斗[/color][/size]",
-            "check": true
         },
         {
             "name": "冒险副本(beta)",
