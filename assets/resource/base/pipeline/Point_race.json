@@ -85,10 +85,10 @@
         "recognition": "TemplateMatch",
         "template": "Point_race/tip_of_buy.png",
         "roi": [
-            180,
-            288,
-            1100,
-            225
+            541,
+            124,
+            195,
+            155
         ],
         "next": [
             "back_main_screen_and_stop"
