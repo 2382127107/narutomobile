@@ -71,6 +71,10 @@
         {
             "name": "积分赛",
             "entry": "point_race",
+            "doc": "[size:15][color:tomato]打开战斗会从主页进入,需要使用已适配主题。战斗会打比自己战力低的对手[/color][/size]",
+            "option": [
+                "积分赛战斗选项"
+            ],
             "default_check": true
         },
         {
@@ -437,6 +441,38 @@
                         "team_dash_invite_page": {
                             "next": [
                                 "dash_or_exit"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "积分赛战斗选项": {
+            "cases": [
+                {
+                    "name": "开启战斗",
+                    "pipeline_override": {
+                        "point_race": {
+                            "next": [
+                                "point_race_check_in_main_screen"
+                            ],
+                            "interrupt": [
+                                "back_main_screen"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "关闭战斗",
+                    "pipeline_override": {
+                        "point_race": {
+                            "next": [
+                                "point_race_in_center_enter"
+                            ]
+                        },
+                        "point_race_ac_entry_undone": {
+                            "next": [
+                                "back_main_screen_and_stop"
                             ]
                         }
                     }
