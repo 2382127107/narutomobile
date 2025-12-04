@@ -1,10 +1,8 @@
 {
     "use_energy": {
         "next": [
-            "use_energy_by_ninjia_piece"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "use_energy_by_ninjia_piece",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入使用体力子任务[/color]"
     },
@@ -56,10 +54,8 @@
         ],
         "action": "Click",
         "next": [
-            "use_energy_ez_sweep"
-        ],
-        "interrupt": [
-            "use_energy_ez_sweep_entry"
+            "use_energy_ez_sweep",
+            "[JumpBack]use_energy_ez_sweep_entry"
         ],
         "post_delay": 700,
         "focus": "[color:DeepSkyBlue]便捷扫荡[/color]"
@@ -75,12 +71,10 @@
         ],
         "action": "Click",
         "next": [
-            "use_energy_confirm_ez_sweep"
-        ],
-        "interrupt": [
-            "use_energy_finish",
-            "use_energy_not_enough_sign",
-            "use_energy_ez_sweep"
+            "use_energy_confirm_ez_sweep",
+            "[JumpBack]use_energy_finish",
+            "[JumpBack]use_energy_not_enough_sign",
+            "[JumpBack]use_energy_ez_sweep"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]确定便捷扫荡[/color]"
@@ -98,11 +92,9 @@
         "rate_limit": 5000,
         "next": [
             "use_energy_not_enough_sign",
-            "use_energy_finish"
-        ],
-        "interrupt": [
-            "use_energy_confirm_ez_sweep",
-            "sleep_500ms"
+            "use_energy_finish",
+            "[JumpBack]use_energy_confirm_ez_sweep",
+            "[JumpBack]sleep_500ms"
         ],
         "post_delay": 5000,
         "focus": "[color:DeepSkyBlue]确认便捷扫荡[/color]"
@@ -124,10 +116,8 @@
             69
         ],
         "next": [
-            "back_main_screen_and_stop"
-        ],
-        "interrupt": [
-            "use_energy_not_enough_sign"
+            "back_main_screen_and_stop",
+            "[JumpBack]use_energy_not_enough_sign"
         ],
         "focus": "[color:DeepSkyBlue]体力不足[/color]"
     },
@@ -142,10 +132,8 @@
         ],
         "action": "Click",
         "next": [
-            "back_main_screen_and_stop"
-        ],
-        "interrupt": [
-            "use_energy_finish"
+            "back_main_screen_and_stop",
+            "[JumpBack]use_energy_finish"
         ],
         "focus": "[color:DeepSkyBlue]扫荡完成[/color]"
     }

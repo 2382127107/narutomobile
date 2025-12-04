@@ -2,10 +2,8 @@
     "get_chopper": {
         "next": [
             "get_chopper_in_center_enter",
-            "get_chopper_ac_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "get_chopper_ac_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入铜币招财子任务[/color]"
     },
@@ -24,10 +22,8 @@
         "action": "Click",
         "next": [
             "get_chopper_ac_entry_undone",
-            "get_chopper_ac_done"
-        ],
-        "interrupt": [
-            "swipe_for_award_center_find"
+            "get_chopper_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
         ],
         "post_wait_freezes": 700,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -66,11 +62,9 @@
             -114
         ],
         "next": [
-            "check_chopper_done"
-        ],
-        "interrupt": [
-            "start_chooper",
-            "get_chopper_ac_entry_undone"
+            "check_chopper_done",
+            "[JumpBack]start_chooper",
+            "[JumpBack]get_chopper_ac_entry_undone"
         ],
         "action": "Click",
         "post_wait_freezes": 1000,

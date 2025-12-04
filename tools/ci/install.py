@@ -1,14 +1,14 @@
 import platform
 from pathlib import Path
-
 import os
 import shutil
 import sys
+
 import json
+
 from maa.resource import Resource
 
 from configure import configure_ocr_model  # type: ignore
-
 from utils import working_dir  # type: ignore
 
 install_path = working_dir / Path("install")
@@ -19,12 +19,14 @@ sys.stdout.reconfigure(encoding="utf-8")  # type: ignore
 
 def get_dotnet_platform_tag():
     """自动检测当前平台并返回对应的平台标签"""
+
     os_type = platform.system()
     os_arch = platform.machine()
 
     print(f"检测到操作系统: {os_type}, 架构: {os_arch}")
 
     if os_type == "Windows":
+
         # 在Windows ARM64环境中，platform.machine()可能错误返回AMD64
         # 我们需要检查处理器标识符来确定真实架构
         processor_identifier = os.environ.get("PROCESSOR_IDENTIFIER", "")
@@ -41,6 +43,7 @@ def get_dotnet_platform_tag():
             "ARM64": "win-arm64",
             "aarch64": "win-arm64",
         }
+
         platform_tag = arch_mapping.get(os_arch, f"win-{os_arch.lower()}")
 
     elif os_type == "Darwin":  # macOS
@@ -50,6 +53,7 @@ def get_dotnet_platform_tag():
             "arm64": "osx-arm64",
             "aarch64": "osx-arm64",
         }
+
         platform_tag = arch_mapping.get(os_arch, f"osx-{os_arch.lower()}")
 
     elif os_type == "Linux":
@@ -59,6 +63,7 @@ def get_dotnet_platform_tag():
             "aarch64": "linux-arm64",
             "arm64": "linux-arm64",
         }
+
         platform_tag = arch_mapping.get(os_arch, f"linux-{os_arch.lower()}")
 
     else:
@@ -68,7 +73,7 @@ def get_dotnet_platform_tag():
     return platform_tag
 
 
-def install_deps():
+def install_maafw():
     if not (working_dir / "deps" / "bin").exists():
         print('Please download the MaaFramework to "deps" first.')
         print('请先下载 MaaFramework 到 "deps"。')
@@ -85,6 +90,7 @@ def install_deps():
         ),
         dirs_exist_ok=True,
     )
+
     shutil.copytree(
         working_dir / "deps" / "share" / "MaaAgentBinary",
         install_path / "MaaAgentBinary",
@@ -93,14 +99,13 @@ def install_deps():
 
 
 def install_resource():
-
     configure_ocr_model()
-
     shutil.copytree(
         working_dir / "assets" / "resource",
         install_path / "resource",
         dirs_exist_ok=True,
     )
+
     shutil.copy2(
         working_dir / "assets" / "interface.json",
         install_path,
@@ -110,23 +115,38 @@ def install_resource():
         interface = json.load(f)
 
     interface["version"] = version
+    if "beta" in version:
+        interface["welcome"] = "你正在使用的是公测版，这不是一个稳定版本！"
+    if "ci" in version:
+        interface["welcome"] = "欢迎使用内部测试版本，包含最不稳定但是最新的功能。"
 
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         json.dump(interface, f, ensure_ascii=False, indent=4)
 
 
 def install_chores():
-    for file in ["README.md", "LICENSE", "requirements.txt"]:
+    for file in ["README.md", "LICENSE", "requirements.txt", "CONTACT"]:
         shutil.copy2(
             working_dir / file,
             install_path,
         )
+
     shutil.copytree(
         working_dir / "docs",
         install_path / "docs",
         dirs_exist_ok=True,
         ignore=shutil.ignore_patterns("*.yaml"),
     )
+
+    shutil.copy2(
+        working_dir / "docs" / "cover.ico", install_path / "Assets" / "logo.ico"
+    )
+
+    if platform.system() == "Linux":
+        shutil.copy2(
+            working_dir / "tools" / "ci" / "deploy_python_env_linux.sh",
+            install_path / "deploy_python_env_linux.sh",
+        )
 
 
 def install_agent():
@@ -153,7 +173,7 @@ def install_agent():
 
 
 if __name__ == "__main__":
-    install_deps()
+    install_maafw()
     install_resource()
     install_chores()
     install_agent()

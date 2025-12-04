@@ -370,10 +370,19 @@ def agent(is_dev_mode=False):
             change_console_level("DEBUG")
             logger.info("开发模式：日志等级已设置为DEBUG")
 
-        from maa.agent.agent_server import AgentServer
-        from maa.toolkit import Toolkit
+        try:
+            from maa.agent.agent_server import AgentServer
+            from maa.toolkit import Toolkit
 
-        import custom  # type: ignore
+            import custom  # type: ignore
+        except ImportError as e:
+            logger.error(e)
+            logger.error("Failed to import modules")
+            logger.error("Please try to run dependency deployment script first")
+            logger.error("导入模块失败！")
+            logger.error("请先尝试运行依赖部署脚本")
+
+            return
 
         Toolkit.init_option("./")
 
@@ -405,11 +414,11 @@ def main():
     current_version = read_interface_version()
     is_dev_mode = current_version == "DEBUG"
 
-    # 如果是Linux系统或开发模式，启动虚拟环境
-    if sys.platform.startswith("linux") or is_dev_mode:
+    # 如果是Linux系统，启动虚拟环境
+    if sys.platform.startswith("linux"):
         ensure_venv_and_relaunch_if_needed()
 
-    check_and_install_dependencies()
+        # check_and_install_dependencies()
 
     if is_dev_mode:
         os.chdir(Path("./assets"))

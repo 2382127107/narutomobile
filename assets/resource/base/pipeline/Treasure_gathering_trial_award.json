@@ -3,10 +3,8 @@
         "next": [
             "Treasure_gathering_trial_icon",
             "treasure_gathering_trial_award",
-            "treasure_gathering_trial_box"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "treasure_gathering_trial_box",
+            "[JumpBack]back_main_screen"
         ]
     },
     "Treasure_gathering_trial_icon": {
@@ -14,10 +12,8 @@
         "template": "Treasure_gathering_trial_award/icon.png",
         "action": "Click",
         "next": [
-            "treasure_gathering_trial_award"
-        ],
-        "interrupt": [
-            "Treasure_gathering_trial_icon"
+            "treasure_gathering_trial_award",
+            "[JumpBack]Treasure_gathering_trial_icon"
         ],
         "post_delay": 500
     },
@@ -32,11 +28,9 @@
         ],
         "action": "Click",
         "next": [
-            "treasure_gathering_trial_box"
-        ],
-        "interrupt": [
-            "treasure_gathering_trial_award",
-            "treasure_gathering_trial_back"
+            "treasure_gathering_trial_box",
+            "[JumpBack]treasure_gathering_trial_award",
+            "[JumpBack]treasure_gathering_trial_back"
         ],
         "post_delay": 500
     },
@@ -49,7 +43,7 @@
             143,
             101
         ],
-        "next": "back_main_screen_and_stop",
+        "next": ["back_main_screen_and_stop"],
         "focus": "[color:DeepSkyBlue]聚宝试炼奖励已领取[/color]"
     },
     "treasure_gathering_trial_box": {
@@ -69,10 +63,8 @@
             91
         ],
         "next": [
-            "treasure_gathering_trial_level"
-        ],
-        "interrupt": [
-            "treasure_gathering_trial_box"
+            "treasure_gathering_trial_level",
+            "[JumpBack]treasure_gathering_trial_box"
         ],
         "post_delay": 500
     },
@@ -87,10 +79,8 @@
         ],
         "action": "Click",
         "next": [
-            "treasure_gathering_trial_in_level_select"
-        ],
-        "interrupt": [
-            "treasure_gathering_trial_level"
+            "treasure_gathering_trial_in_level_select",
+            "[JumpBack]treasure_gathering_trial_level"
         ],
         "post_delay": 500
     },
@@ -104,14 +94,12 @@
             61
         ],
         "next": [
-            "treasure_gathering_trial_find_red_point"
-        ],
-        "interrupt": [
-            "treasure_gathering_trial_end_level",
-            "swipe_for_treasure_gathering_trial_find_red_point"
+            "treasure_gathering_trial_find_red_point",
+            "[JumpBack]treasure_gathering_trial_end_level",
+            "[JumpBack]swipe_for_treasure_gathering_trial_find_red_point"
         ],
         "timeout": 20000,
-        "on_error": "back_main_screen_and_stop",
+        "on_error": ["back_main_screen_and_stop"],
         "post_delay": 500
     },
     "treasure_gathering_trial_end_level": {
@@ -145,10 +133,8 @@
             20
         ],
         "next": [
-            "treasure_gathering_trial_check_award_red_point"
-        ],
-        "interrupt": [
-            "treasure_gathering_trial_find_red_point"
+            "treasure_gathering_trial_check_award_red_point",
+            "[JumpBack]treasure_gathering_trial_find_red_point"
         ],
         "post_delay": 500
     },
@@ -167,10 +153,8 @@
             "treasure_gathering_trial_check_award_red_point_1",
             "treasure_gathering_trial_check_award_red_point_2",
             "treasure_gathering_trial_check_award_red_point_3",
-            "treasure_gathering_trial_check_award_red_point_4"
-        ],
-        "interrupt": [
-            "swipe_for_treasure_gathering_trial_award"
+            "treasure_gathering_trial_check_award_red_point_4",
+            "[JumpBack]swipe_for_treasure_gathering_trial_award"
         ],
         "post_delay": 500
     },
@@ -193,10 +177,8 @@
             -45
         ],
         "next": [
-            "treasure_gathering_trial_check_get_award"
-        ],
-        "interrupt": [
-            "swipe_for_treasure_gathering_trial_award"
+            "treasure_gathering_trial_check_get_award",
+            "[JumpBack]swipe_for_treasure_gathering_trial_award"
         ],
         "post_delay": 500
     },
@@ -219,10 +201,8 @@
             -45
         ],
         "next": [
-            "treasure_gathering_trial_check_get_award"
-        ],
-        "interrupt": [
-            "swipe_for_treasure_gathering_trial_award"
+            "treasure_gathering_trial_check_get_award",
+            "[JumpBack]swipe_for_treasure_gathering_trial_award"
         ],
         "post_delay": 500
     },
@@ -245,10 +225,8 @@
             -45
         ],
         "next": [
-            "treasure_gathering_trial_check_get_award"
-        ],
-        "interrupt": [
-            "swipe_for_treasure_gathering_trial_award"
+            "treasure_gathering_trial_check_get_award",
+            "[JumpBack]swipe_for_treasure_gathering_trial_award"
         ],
         "post_delay": 500
     },
@@ -271,10 +249,8 @@
             -45
         ],
         "next": [
-            "treasure_gathering_trial_check_get_award"
-        ],
-        "interrupt": [
-            "swipe_for_treasure_gathering_trial_award"
+            "treasure_gathering_trial_check_get_award",
+            "[JumpBack]swipe_for_treasure_gathering_trial_award"
         ],
         "post_delay": 500
     },
@@ -295,7 +271,7 @@
         "duration": 300,
         "post_delay": 500,
         "timeout": 10000,
-        "on_error": "treasure_gathering_trial_level"
+        "on_error": ["treasure_gathering_trial_level"]
     },
     "treasure_gathering_trial_check_get_award": {
         "recognition": "TemplateMatch",
@@ -308,10 +284,8 @@
         ],
         "action": "Click",
         "next": [
-            "treasure_gathering_trial_check_award_red_point"
-        ],
-        "interrupt": [
-            "treasure_gathering_trial_level"
+            "treasure_gathering_trial_check_award_red_point",
+            "[JumpBack]treasure_gathering_trial_level"
         ],
         "post_delay": 500
     },

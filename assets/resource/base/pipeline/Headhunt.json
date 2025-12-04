@@ -1,10 +1,8 @@
 {
     "headhunt": {
         "next": [
-            "headhunt_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "headhunt_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入招募子任务[/color]"
     },
@@ -19,10 +17,8 @@
         ],
         "action": "Click",
         "next": [
-            "no_free_headhunt"
-        ],
-        "interrupt": [
-            "free_headhunt_waiting"
+            "no_free_headhunt",
+            "[JumpBack]free_headhunt_waiting"
         ],
         "post_delay": 3000,
         "focus": "[color:DeepSkyBlue]进入招募[/color]"
@@ -73,9 +69,9 @@
         "threshold": 0.85,
         "post_delay": 3000,
         "next": [
-            "headhunt_recruit_no_free"
+            "headhunt_recruit_no_free",
+            "[JumpBack]headhunt_recruit"
         ],
-        "interrupt": "headhunt_recruit",
         "focus": "[color:DeepSkyBlue]进入普通招募[/color]"
     },
     "headhunt_recruit_no_free": {
@@ -88,10 +84,10 @@
             138
         ],
         "next": [
-            "top_secret_treasure_box_done"
+            "top_secret_treasure_box_done",
+            "[JumpBack]top_secret_treasure_box_undone"
         ],
         "threshold": 0.5,
-        "interrupt": "top_secret_treasure_box_undone",
         "focus": "[color:DeepSkyBlue]免费普通招募已使用[/color]"
     },
     "headhunt_recruit": {
@@ -105,7 +101,7 @@
         ],
         "threshold": 0.6,
         "action": "Click",
-        "next": "confrim_headhunt_recruit",
+        "next": ["confrim_headhunt_recruit"],
         "post_delay": 700,
         "focus": "[color:DeepSkyBlue]进行免费普通招募[/color]"
     },
@@ -139,10 +135,8 @@
         "action": "Click",
         "post_delay": 2000,
         "next": [
-            "top_secret_treasure_box_log"
-        ],
-        "interrupt": [
-            "top_secret_treasure_box_undone"
+            "top_secret_treasure_box_log",
+            "[JumpBack]top_secret_treasure_box_undone"
         ],
         "timeout": 2000,
         "focus": "[color:DeepSkyBlue]绝密宝匣未完成[/color]"
@@ -159,7 +153,7 @@
         "threshold": 0.9,
         "inverse": true,
         "post_delay": 300,
-        "next": "back_main_screen_and_stop",
+        "next": ["back_main_screen_and_stop"],
         "focus": "[color:DeepSkyBlue]绝密宝匣已完成[/color]"
     },
     "top_secret_treasure_box_log": {

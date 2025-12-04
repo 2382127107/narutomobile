@@ -1,10 +1,8 @@
 {
     "leaderboard": {
         "next": [
-            "leaderboard_check_in_main_screen"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "leaderboard_check_in_main_screen",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入排行榜子任务[/color]"
     },
@@ -72,10 +70,8 @@
         "green_mask": true,
         "next": [
             "leaderboard_entry",
-            "leaderboard_entry_by_ocr"
-        ],
-        "interrupt": [
-            "swipe_for_left_entries"
+            "leaderboard_entry_by_ocr",
+            "[JumpBack]swipe_for_left_entries"
         ],
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]检测是否在主页面[/color]"

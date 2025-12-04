@@ -1,11 +1,9 @@
 {
     "sky_ground": {
         "next": [
-            "sky_ground_entry"
-        ],
-        "interrupt": [
-            "swipe_for_left_entries",
-            "back_main_screen"
+            "sky_ground_entry",
+            "[JumpBack]swipe_for_left_entries",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入天地子任务[/color]"
     },
@@ -18,11 +16,9 @@
         "action": "Click",
         "next": [
             "sky_ground_gameplay",
-            "no_group"
-        ],
-        "interrupt": [
-            "group_entry",
-            "back_main_screen"
+            "no_group",
+            "[JumpBack]group_entry",
+            "[JumpBack]back_main_screen"
         ],
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]组织主界面入口[/color]"
@@ -32,10 +28,8 @@
         "template": "Sky_ground/gameplay.png",
         "action": "Click",
         "next": [
-            "sky_ground_gameplay_slected"
-        ],
-        "interrupt": [
-            "sky_ground_gameplay"
+            "sky_ground_gameplay_slected",
+            "[JumpBack]sky_ground_gameplay"
         ],
         "post_delay": 500
     },
@@ -50,10 +44,8 @@
         ],
         "action": "DoNothing",
         "next": [
-            "sky_ground_mode"
-        ],
-        "interrupt": [
-            "swipe_for_sky_ground_mode"
+            "sky_ground_mode",
+            "[JumpBack]swipe_for_sky_ground_mode"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]确认选中组织玩法按钮[/color]"
@@ -75,10 +67,8 @@
             -5
         ],
         "next": [
-            "sky_ground_battlefield_selection"
-        ],
-        "interrupt": [
-            "sky_ground_mode"
+            "sky_ground_battlefield_selection",
+            "[JumpBack]sky_ground_mode"
         ],
         "post_wait_freezes": 400
     },
@@ -137,10 +127,8 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_confrim_battlefield_selection"
-        ],
-        "interrupt": [
-            "sky_battlefield"
+            "sky_ground_confrim_battlefield_selection",
+            "[JumpBack]sky_battlefield"
         ],
         "post_wait_freezes": 400
     },
@@ -155,10 +143,8 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_confrim_battlefield_selection"
-        ],
-        "interrupt": [
-            "ground_battlefield"
+            "sky_ground_confrim_battlefield_selection",
+            "[JumpBack]ground_battlefield"
         ],
         "post_wait_freezes": 400
     },
@@ -173,10 +159,8 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_recommended_ninja"
-        ],
-        "interrupt": [
-            "sky_ground_confrim_battlefield_selection"
+            "sky_ground_recommended_ninja",
+            "[JumpBack]sky_ground_confrim_battlefield_selection"
         ],
         "post_wait_freezes": 800
     },
@@ -191,10 +175,8 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_selected_ninjia"
-        ],
-        "interrupt": [
-            "sky_ground_recommended_ninja"
+            "sky_ground_selected_ninjia",
+            "[JumpBack]sky_ground_recommended_ninja"
         ],
         "post_wait_freezes": 400
     },

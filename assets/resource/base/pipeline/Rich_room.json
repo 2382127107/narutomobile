@@ -2,10 +2,8 @@
     "rich_room": {
         "next": [
             "rich_room_in_center_enter",
-            "rich_room_ac_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "rich_room_ac_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入丰饶子任务[/color]"
     },
@@ -24,10 +22,8 @@
         "action": "Click",
         "next": [
             "rich_room_ac_entry_undone",
-            "rich_room_ac_done"
-        ],
-        "interrupt": [
-            "swipe_for_award_center_find"
+            "rich_room_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -106,11 +102,9 @@
         "action": "Click",
         "next": [
             "rich_room_ac_done",
-            "rich_room_finished"
-        ],
-        "interrupt": [
-            "is_in_battle_scene",
-            "challenge_rich_room"
+            "rich_room_finished",
+            "[JumpBack]is_in_battle_scene",
+            "[JumpBack]challenge_rich_room"
         ],
         "focus": "[color:DeepSkyBlue]挑战丰饶之间[/color]"
     },

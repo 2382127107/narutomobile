@@ -1,10 +1,8 @@
 {
     "activity": {
         "next": [
-            "activity_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "activity_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入活动子任务[/color]"
     },
@@ -25,10 +23,8 @@
             45
         ],
         "next": [
-            "check_no_energy"
-        ],
-        "interrupt": [
-            "get_ramen"
+            "check_no_energy",
+            "[JumpBack]get_ramen"
         ],
         "post_wait_freezes": 700,
         "focus": "[color:DeepSkyBlue]进入活动[/color]"
@@ -65,10 +61,8 @@
         ],
         "next": [
             "mouthly_sign_undone",
-            "mouthly_sign_done"
-        ],
-        "interrupt": [
-            "swipes_for_monthly_sign"
+            "mouthly_sign_done",
+            "[JumpBack]swipes_for_monthly_sign"
         ],
         "duration": 200,
         "post_delay": 900,
@@ -102,10 +96,8 @@
         "action": "Click",
         "next": [
             "mouthly_signature",
-            "check_mouthly_signature_title"
-        ],
-        "interrupt": [
-            "mouthly_sign_undone"
+            "check_mouthly_signature_title",
+            "[JumpBack]mouthly_sign_undone"
         ],
         "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]月度签到未完成[/color]"

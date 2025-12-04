@@ -2,10 +2,8 @@
     "practice_place": {
         "next": [
             "practice_place_in_center_enter",
-            "practice_place_ac_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "practice_place_ac_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入试炼之地子任务[/color]"
     },
@@ -24,10 +22,8 @@
         "action": "Click",
         "next": [
             "survival_challenge_ac_entry_undone",
-            "survival_challenge_ac_done"
-        ],
-        "interrupt": [
-            "swipe_for_award_center_find"
+            "survival_challenge_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -101,10 +97,8 @@
         "action": "Click",
         "next": [
             "practice_place_ac_entry_undone",
-            "practice_place_ac_done"
-        ],
-        "interrupt": [
-            "swipe_for_award_center_find"
+            "practice_place_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -295,10 +289,8 @@
         "next": [
             "train_road_award",
             "train_road_unreset",
-            "train_road_done"
-        ],
-        "interrupt": [
-            "train_road_sweeping"
+            "train_road_done",
+            "[JumpBack]train_road_sweeping"
         ]
     },
     "train_road_sweeping": {
@@ -484,11 +476,9 @@
     },
     "survival_challenge": {
         "next": [
-            "survival_challenge_entry"
-        ],
-        "interrupt": [
-            "main_screen_swipe_to_right",
-            "back_main_screen"
+            "survival_challenge_entry",
+            "[JumpBack]main_screen_swipe_to_right",
+            "[JumpBack]back_main_screen"
         ]
     },
     "survival_challenge_entry": {
@@ -496,8 +486,7 @@
             "survival_challenge_undone",
             "practice_place_done",
             "to_survival_challenge"
-        ],
-        "interrupt": []
+        ]
     },
     "survival_challenge_undone": {
         "recognition": "TemplateMatch",
@@ -525,10 +514,8 @@
         ],
         "action": "Click",
         "next": [
-            "survival_challenge_yesterday_award"
-        ],
-        "interrupt": [
-            "survival_challenge_reset"
+            "survival_challenge_yesterday_award",
+            "[JumpBack]survival_challenge_reset"
         ],
         "post_wait_freezes": 500
     },
@@ -565,10 +552,8 @@
     },
     "survival_challenge_reset": {
         "next": [
-            "survival_challenge_reset_undone"
-        ],
-        "interrupt": [
-            "survival_challenge_reset_done"
+            "survival_challenge_reset_undone",
+            "[JumpBack]survival_challenge_reset_done"
         ]
     },
     "survival_challenge_reset_done": {
@@ -674,12 +659,10 @@
         ],
         "action": "Click",
         "next": [
-            "survival_challenge_sweep_ready"
-        ],
-        "interrupt": [
-            "check_survival_challenge_done",
-            "start_survival_challenge_sweep",
-            "survival_challenge_done"
+            "survival_challenge_sweep_ready",
+            "[JumpBack]check_survival_challenge_done",
+            "[JumpBack]start_survival_challenge_sweep",
+            "[JumpBack]survival_challenge_done"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]进入生存挑战扫荡任务[/color]"
@@ -759,13 +742,13 @@
             75
         ],
         "action": "Click",
-        "next": "wait_for_survival_challenge_sweep_complete",
-        "interrupt": [
-            "survival_challenge_sweep_ticket_used_up"
+        "next": [
+            "wait_for_survival_challenge_sweep_complete",
+            "[JumpBack]survival_challenge_sweep_ticket_used_up"
         ],
         "post_wait_freezes": 200,
         "timeout": 60000,
-        "on_error": "back_main_screen_and_stop",
+        "on_error": ["back_main_screen_and_stop"],
         "focus": "[color:DeepSkyBlue]确认生存挑战挑战卷提示[/color]"
     },
     "survival_challenge_sweep_ticket_used_up": {
@@ -777,7 +760,7 @@
             217
         ],
         "template": "Practice_place/sweep_ticket_used_up.png",
-        "next": "back_main_screen_and_stop",
+        "next": ["back_main_screen_and_stop"],
         "focus": "[color:DeepSkyBlue]生存挑战卷用完了[/color]"
     },
     "wait_for_survival_challenge_sweep_complete": {
@@ -786,7 +769,7 @@
             "Practice_place/survival_no_ninjia.png",
             "Practice_place/final_reward.png"
         ],
-        "next": "back_main_screen_and_stop",
+        "next": ["back_main_screen_and_stop"],
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]生存挑战扫荡完成[/color]"
     }

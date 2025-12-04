@@ -2,10 +2,8 @@
     "share": {
         "next": [
             "share_in_center_enter",
-            "share_ac_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "share_ac_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入分享子任务[/color]"
     },
@@ -24,10 +22,8 @@
         "action": "Click",
         "next": [
             "share_ac_entry_undone",
-            "share_ac_done"
-        ],
-        "interrupt": [
-            "swipe_for_award_center_find"
+            "share_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -66,13 +62,11 @@
             -114
         ],
         "next": [
-            "try_share"
-        ],
-        "interrupt": [
-            "share_close_weekly_ninjia_title_next_step",
-            "share_close_weekly_ninjia_title",
-            "share_entry",
-            "share_to_qq"
+            "try_share",
+            "[JumpBack]share_close_weekly_ninjia_title_next_step",
+            "[JumpBack]share_close_weekly_ninjia_title",
+            "[JumpBack]share_entry",
+            "[JumpBack]share_to_qq"
         ],
         "action": "Click",
         "post_wait_freezes": 600,
@@ -112,13 +106,11 @@
         ],
         "green_mask": true,
         "next": [
-            "try_share"
-        ],
-        "interrupt": [
-            "share_close_weekly_ninjia_title_next_step",
-            "share_close_weekly_ninjia_title",
-            "share_entry",
-            "share_to_qq"
+            "try_share",
+            "[JumpBack]share_close_weekly_ninjia_title_next_step",
+            "[JumpBack]share_close_weekly_ninjia_title",
+            "[JumpBack]share_entry",
+            "[JumpBack]share_to_qq"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:darkgray]尝试进入用户主页[/color]"
@@ -135,11 +127,9 @@
         "action": "Click",
         "next": [
             "share_to_qq",
-            "share_to_wechat"
-        ],
-        "interrupt": [
-            "share_close_weekly_ninjia_title_next_step",
-            "share_close_weekly_ninjia_title"
+            "share_to_wechat",
+            "[JumpBack]share_close_weekly_ninjia_title_next_step",
+            "[JumpBack]share_close_weekly_ninjia_title"
         ],
         "pre_wait_freezes": 200,
         "post_delay": 1200,
@@ -156,11 +146,9 @@
         ],
         "threshold": 0.8,
         "next": [
-            "close_qq_app"
-        ],
-        "interrupt": [
-            "share_close_weekly_ninjia_title_next_step",
-            "share_close_weekly_ninjia_title"
+            "close_qq_app",
+            "[JumpBack]share_close_weekly_ninjia_title_next_step",
+            "[JumpBack]share_close_weekly_ninjia_title"
         ],
         "action": "Click",
         "pre_wait_freezes": 200,
@@ -179,11 +167,9 @@
         ],
         "threshold": 0.8,
         "next": [
-            "close_wechat_app"
-        ],
-        "interrupt": [
-            "share_close_weekly_ninjia_title_next_step",
-            "share_close_weekly_ninjia_title"
+            "close_wechat_app",
+            "[JumpBack]share_close_weekly_ninjia_title_next_step",
+            "[JumpBack]share_close_weekly_ninjia_title"
         ],
         "action": "Click",
         "pre_wait_freezes": 200,

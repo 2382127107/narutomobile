@@ -1,11 +1,9 @@
 {
     "point_race": {
         "next": [
-            "point_race_in_center_enter"
-        ],
-        "interrupt": [
-            "award_center_enter",
-            "back_main_screen"
+            "point_race_in_center_enter",
+            "[JumpBack]award_center_enter",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入积分赛子任务[/color]"
     },
@@ -36,10 +34,8 @@
         "threshold": 0.95,
         "green_mask": true,
         "next": [
-            "point_race_main_screen_entry"
-        ],
-        "interrupt": [
-            "swipe_for_left_entries"
+            "point_race_main_screen_entry",
+            "[JumpBack]swipe_for_left_entries"
         ],
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]检测是否在主页面[/color]"
@@ -52,10 +48,8 @@
         "threshold": 0.7,
         "action": "Click",
         "next": [
-            "point_race_chanllenge_enter"
-        ],
-        "interrupt": [
-            "point_race_main_screen_entry"
+            "point_race_chanllenge_enter",
+            "[JumpBack]point_race_main_screen_entry"
         ],
         "post_delay": 800,
         "focus": "[color:DeepSkyBlue]积分赛主界面入口[/color]"
@@ -75,10 +69,8 @@
         "action": "Click",
         "next": [
             "point_race_ac_entry_undone",
-            "point_race_ac_done"
-        ],
-        "interrupt": [
-            "swipe_for_award_center_find"
+            "point_race_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -171,7 +163,9 @@
         "action": {
             "type": "Click"
         },
-        "next": "point_race_chanllenge_finished",
+        "next": [
+            "point_race_chanllenge_finished"
+        ],
         "timeout": 60000,
         "focus": "[color:DeepSkyBlue]进入积分赛战斗[/color]"
     },

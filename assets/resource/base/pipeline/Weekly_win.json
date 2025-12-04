@@ -1,11 +1,9 @@
 {
     "weekly_win": {
         "next": [
-            "weekly_win_in_duel_field"
-        ],
-        "interrupt": [
-            "weekly_win_entry",
-            "back_main_screen"
+            "weekly_win_in_duel_field",
+            "[JumpBack]weekly_win_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]开始周胜任务[/color]"
     },
@@ -53,7 +51,7 @@
             "weekly_win_entry"
         ],
         "timeout": 3000,
-        "on_error": "abattoir_not_found",
+        "on_error": ["abattoir_not_found"],
         "green_mask": true,
         "post_delay": 500,
         "focus": "[color:darkgray]往右滑找决斗场[/color]"
@@ -106,12 +104,10 @@
             47
         ],
         "next": [
-            "weekly_win_match"
-        ],
-        "interrupt": [
-            "weekly_win_mouthly_award",
-            "weekly_win_mouthly_reset_award",
-            "weekly_win"
+            "weekly_win_match",
+            "[JumpBack]weekly_win_mouthly_award",
+            "[JumpBack]weekly_win_mouthly_reset_award",
+            "[JumpBack]weekly_win"
         ],
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]已在决斗场界面[/color]"
@@ -123,12 +119,10 @@
         "action": "Swipe",
         "duration": 30,
         "next": [
-            "weekly_win_match"
-        ],
-        "interrupt": [
-            "weekly_win_mouthly_award",
-            "weekly_win_mouthly_reset_award",
-            "weekly_win"
+            "weekly_win_match",
+            "[JumpBack]weekly_win_mouthly_award",
+            "[JumpBack]weekly_win_mouthly_reset_award",
+            "[JumpBack]weekly_win"
         ],
         "green_mask": true,
         "post_delay": 1500,
@@ -185,11 +179,9 @@
         ],
         "green_mask": true,
         "next": [
-            "battle_tips"
-        ],
-        "interrupt": [
-            "winner_decided",
-            "click_All_skill"
+            "battle_tips",
+            "[JumpBack]winner_decided",
+            "[JumpBack]click_All_skill"
         ],
         "timeout": 3000,
         "pre_delay": 0,
@@ -318,17 +310,17 @@
         ],
         "action": "Swipe",
         "duration": 50,
-        "next": "cannot_go_to_war",
-        "interrupt": [
-            "weekly_win_match_fighting",
-            "weekly_win_rank_matching",
-            "weekly_win_rank_confirm_ninjia",
-            "weekly_win_rank_ban",
-            "battle_tips",
-            "battle_again",
-            "weekly_win_substitution",
-            "battle_end",
-            "go_to_war"
+        "next": [
+            "cannot_go_to_war",
+            "[JumpBack]weekly_win_match_fighting",
+            "[JumpBack]weekly_win_rank_matching",
+            "[JumpBack]weekly_win_rank_confirm_ninjia",
+            "[JumpBack]weekly_win_rank_ban",
+            "[JumpBack]battle_tips",
+            "[JumpBack]battle_again",
+            "[JumpBack]weekly_win_substitution",
+            "[JumpBack]battle_end",
+            "[JumpBack]go_to_war"
         ],
         "post_delay": 1000,
         "timeout": 40000,
@@ -347,7 +339,7 @@
         ],
         "action": "Click",
         "post_delay": 1000,
-        "next": "back_main_screen_and_stop",
+        "next": ["back_main_screen_and_stop"],
         "focus": "[color:tomato]无法进入战斗[/color]"
     },
     "battle_again": {
@@ -359,7 +351,7 @@
             264,
             539
         ],
-        "next": "refuse_battle_again",
+        "next": ["refuse_battle_again"],
         "focus": "[color:DeepSkyBlue]收到再战邀请[/color]"
     },
     "refuse_battle_again": {
@@ -382,7 +374,7 @@
             225,
             157
         ],
-        "next": "tips_confirm",
+        "next": ["tips_confirm"],
         "focus": "[color:DeepSkyBlue]战斗异常提示[/color]"
     },
     "tips_confirm": {
@@ -462,10 +454,8 @@
             74
         ],
         "next": [
-            "weekly_win_in_duel_field"
-        ],
-        "interrupt": [
-            "weekly_win_in_seasonal_awards"
+            "weekly_win_in_duel_field",
+            "[JumpBack]weekly_win_in_seasonal_awards"
         ],
         "post_delay": 1000
     }

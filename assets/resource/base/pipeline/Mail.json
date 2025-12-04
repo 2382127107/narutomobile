@@ -1,20 +1,16 @@
 {
     "mail": {
         "next": [
-            "mail_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "mail_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入领取邮箱奖励子任务[/color]"
     },
     "mail_entry": {
         "next": [
-            "mail_done"
-        ],
-        "interrupt": [
-            "open_mail",
-            "back_main_screen"
+            "mail_done",
+            "[JumpBack]open_mail",
+            "[JumpBack]back_main_screen"
         ]
     },
     "mail_done": {

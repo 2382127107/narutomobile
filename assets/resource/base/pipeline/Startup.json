@@ -9,12 +9,10 @@
     },
     "start_naruto": {
         "next": [
-            "check_main_screen_and_stop"
-        ],
-        "interrupt": [
-            "before_game",
-            "close_before_game_notice",
-            "close_teenager_page"
+            "check_main_screen_and_stop",
+            "[JumpBack]before_game",
+            "[JumpBack]close_before_game_notice",
+            "[JumpBack]close_teenager_page"
         ],
         "rate_limit": 5000,
         "timeout": 30000
@@ -30,11 +28,9 @@
             218
         ],
         "next": [
-            "click_start_game"
-        ],
-        "interrupt": [
-            "agree_log_in",
-            "agree_info"
+            "click_start_game",
+            "[JumpBack]agree_log_in",
+            "[JumpBack]agree_info"
         ],
         "rate_limit": 3000,
         "timeout": 60000

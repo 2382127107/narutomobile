@@ -7,10 +7,8 @@
     },
     "liveness_award_entry": {
         "next": [
-            "liveness_award_undone"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "liveness_award_undone",
+            "[JumpBack]back_main_screen"
         ]
     },
     "liveness_award_undone": {
@@ -25,11 +23,9 @@
         "action": "Click",
         "green_mask": true,
         "next": [
-            "liveness_award_in_center_enter"
-        ],
-        "interrupt": [
-            "liveness_award_undone",
-            "get_liveness_award"
+            "liveness_award_in_center_enter",
+            "[JumpBack]liveness_award_undone",
+            "[JumpBack]get_liveness_award"
         ],
         "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]活跃度宝箱未领取[/color]"
@@ -49,10 +45,8 @@
         "action": "Click",
         "next": [
             "liveness_award_done",
-            "check_no_liveness_award"
-        ],
-        "interrupt": [
-            "get_liveness_award"
+            "check_no_liveness_award",
+            "[JumpBack]get_liveness_award"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -126,10 +120,8 @@
         ],
         "action": "Click",
         "next": [
-            "confirm_weekly_liveness_award"
-        ],
-        "interrupt": [
-            "weekly_liveness_award_undone"
+            "confirm_weekly_liveness_award",
+            "[JumpBack]weekly_liveness_award_undone"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]周度500活跃奖励可领取[/color]"

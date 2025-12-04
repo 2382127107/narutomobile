@@ -1,11 +1,9 @@
 {
     "hundred_ninjia": {
         "next": [
-            "hundred_ninjia_entry"
-        ],
-        "interrupt": [
-            "hundred_ninjia_match",
-            "back_main_screen"
+            "hundred_ninjia_entry",
+            "[JumpBack]hundred_ninjia_match",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入百忍子任务[/color]"
     },
@@ -70,10 +68,8 @@
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "hundred_ninjia_in_match"
-        ],
-        "interrupt": [
-            "hundred_ninjia_match"
+            "hundred_ninjia_in_match",
+            "[JumpBack]hundred_ninjia_match"
         ],
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]百忍对决匹配[/color]"
@@ -91,10 +87,8 @@
         ],
         "post_delay": 900,
         "next": [
-            "hundred_ninjia_not_in_match"
-        ],
-        "interrupt": [
-            "sleep_500ms"
+            "hundred_ninjia_not_in_match",
+            "[JumpBack]sleep_500ms"
         ],
         "focus": "[color:DeepSkyBlue]匹配中[/color]"
     },
@@ -112,10 +106,8 @@
         "inverse": true,
         "post_delay": 900,
         "next": [
-            "hundred_ninjia_entrance_animation"
-        ],
-        "interrupt": [
-            "sleep_500ms"
+            "hundred_ninjia_entrance_animation",
+            "[JumpBack]sleep_500ms"
         ],
         "focus": "[color:DeepSkyBlue]匹配结束[/color]"
     },
@@ -134,10 +126,8 @@
         ],
         "post_delay": 900,
         "next": [
-            "hundred_ninjia_out_entrance_animation"
-        ],
-        "interrupt": [
-            "sleep_500ms"
+            "hundred_ninjia_out_entrance_animation",
+            "[JumpBack]sleep_500ms"
         ],
         "focus": "[color:DeepSkyBlue]百忍进场动画[/color]"
     },
@@ -192,10 +182,8 @@
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "hundred_ninjia_check_fight"
-        ],
-        "interrupt": [
-            "sleep_500ms"
+            "hundred_ninjia_check_fight",
+            "[JumpBack]sleep_500ms"
         ],
         "focus": "[color:DeepSkyBlue]百忍对决确定选忍者[/color]"
     },
@@ -211,11 +199,9 @@
         "threshold": 0.8,
         "action": "DoNothing",
         "next": [
-            "hundred_ninjia_check_no_fight"
-        ],
-        "interrupt": [
-            "hundred_ninjia_check_fight",
-            "wait_5_second"
+            "hundred_ninjia_check_no_fight",
+            "[JumpBack]hundred_ninjia_check_fight",
+            "[JumpBack]wait_5_second"
         ],
         "focus": "[color:DeepSkyBlue]百忍对决战斗[/color]"
     },
@@ -235,10 +221,8 @@
         "inverse": true,
         "next": [
             "hundred_ninjia_confirm_game_over",
-            "hundred_ninjia_windfall"
-        ],
-        "interrupt": [
-            "wait_5_second"
+            "hundred_ninjia_windfall",
+            "[JumpBack]wait_5_second"
         ],
         "focus": "[color:DeepSkyBlue]检测百忍对决不在战斗[/color]"
     },
@@ -256,11 +240,9 @@
         ],
         "action": "Click",
         "next": [
-            "hundred_ninjia_entrance_animation"
-        ],
-        "interrupt": [
-            "hundred_ninjia_windfall",
-            "sleep_500ms"
+            "hundred_ninjia_entrance_animation",
+            "[JumpBack]hundred_ninjia_windfall",
+            "[JumpBack]sleep_500ms"
         ],
         "focus": "[color:DeepSkyBlue]赢了![/color]"
     },
@@ -276,11 +258,9 @@
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "hundred_ninjia_match"
-        ],
-        "interrupt": [
-            "hundred_ninjia_confirm_game_over",
-            "sleep_500ms"
+            "hundred_ninjia_match",
+            "[JumpBack]hundred_ninjia_confirm_game_over",
+            "[JumpBack]sleep_500ms"
         ],
         "post_delay": 4000,
         "focus": "[color:DeepSkyBlue]百忍对决战斗结束[/color]"

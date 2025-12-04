@@ -1,11 +1,9 @@
 {
     "give_energy": {
         "next": [
-            "energy_entry"
-        ],
-        "interrupt": [
-            "give_energy_done",
-            "back_main_screen"
+            "energy_entry",
+            "[JumpBack]give_energy_done",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入送体力子任务[/color]"
     },

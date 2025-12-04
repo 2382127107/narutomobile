@@ -2,10 +2,8 @@
     "elite_instance": {
         "next": [
             "elite_instance_entry",
-            "elite_instance_in_level_roll"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "elite_instance_in_level_roll",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入精英副本子任务[/color]"
     },
@@ -20,10 +18,8 @@
         ],
         "action": "Click",
         "next": [
-            "elite_instance_in_level_roll"
-        ],
-        "interrupt": [
-            "elite_instance_entry"
+            "elite_instance_in_level_roll",
+            "[JumpBack]elite_instance_entry"
         ],
         "post_delay": 400,
         "focus": "[color:DeepSkyBlue]进入冒险副本入口[/color]"
@@ -55,10 +51,8 @@
         "action": "Click",
         "threshold": 0.5,
         "next": [
-            "elite_instance_in_elite_instance"
-        ],
-        "interrupt": [
-            "elite_instance_to_elite_instance"
+            "elite_instance_in_elite_instance",
+            "[JumpBack]elite_instance_to_elite_instance"
         ],
         "post_delay": 900
     },
@@ -103,10 +97,8 @@
         "action": "Click",
         "next": [
             "elite_instance_in_fight",
-            "use_energy_not_enough_sign"
-        ],
-        "interrupt": [
-            "sleep_500ms"
+            "use_energy_not_enough_sign",
+            "[JumpBack]sleep_500ms"
         ],
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"
@@ -151,11 +143,9 @@
         ],
         "action": "Click",
         "next": [
-            "elite_instance_not_in_fight"
-        ],
-        "interrupt": [
-            "elite_instance_not_in_auto_fight",
-            "wait_5_second"
+            "elite_instance_not_in_fight",
+            "[JumpBack]elite_instance_not_in_auto_fight",
+            "[JumpBack]wait_5_second"
         ],
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]打开自动战斗[/color]"
@@ -215,10 +205,8 @@
         "action": "Click",
         "next": [
             "elite_instance_new_level_undone",
-            "elite_instance_lock"
-        ],
-        "interrupt": [
-            "elite_instance_win"
+            "elite_instance_lock",
+            "[JumpBack]elite_instance_win"
         ],
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]胜利啦[/color]"

@@ -1,10 +1,8 @@
 {
   "back_main_screen_and_stop": {
     "next": [
-      "check_main_screen_and_stop"
-    ],
-    "interrupt": [
-      "back_main_screen"
+      "check_main_screen_and_stop",
+      "[JumpBack]back_main_screen"
     ],
     "focus": "[color:DeepSkyBlue]退回主界面并停止当前任务[/color]"
   },
@@ -18,18 +16,16 @@
     "action": "DoNothing",
     "green_mask": true,
     "next": [
-      "check_main_screen"
-    ],
-    "interrupt": [
-      "check_has_x",
-      "weekly_sign",
-      "close_chat",
-      "close_friend_rank",
-      "direct_hit_quit",
-      "im_come_back",
-      "im_come_back_award",
-      "click_next_step",
-      "naruto_club_x"
+      "check_main_screen",
+      "[JumpBack]check_has_x",
+      "[JumpBack]weekly_sign",
+      "[JumpBack]close_chat",
+      "[JumpBack]close_friend_rank",
+      "[JumpBack]direct_hit_quit",
+      "[JumpBack]im_come_back",
+      "[JumpBack]im_come_back_award",
+      "[JumpBack]click_next_step",
+      "[JumpBack]naruto_club_x"
     ],
     "focus": "[color:darkgray]尝试返回主页面[/color]"
   },

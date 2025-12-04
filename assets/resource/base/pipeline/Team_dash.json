@@ -2,10 +2,8 @@
     "team_dash": {
         "next": [
             "team_dash_in_center_enter",
-            "team_dash_ac_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "team_dash_ac_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入小队突袭子任务[/color]"
     },
@@ -24,10 +22,8 @@
         "action": "Click",
         "next": [
             "team_dash_ac_entry_undone",
-            "team_dash_ac_done"
-        ],
-        "interrupt": [
-            "swipe_for_award_center_find"
+            "team_dash_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
@@ -99,10 +95,8 @@
         "action": "Click",
         "next": [
             "team_dash_my_help_undone",
-            "team_dash_my_help_done"
-        ],
-        "interrupt": [
-            "dash_or_exit"
+            "team_dash_my_help_done",
+            "[JumpBack]dash_or_exit"
         ],
         "post_wait_freezes": 600,
         "focus": "[color:DeepSkyBlue]进入组织助战[/color]"
@@ -166,7 +160,6 @@
             "team_dash_my_help_award",
             "team_dash_my_help_undone"
         ],
-        "interrupt": [],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]我的助战未完成[/color]"
     },
@@ -198,10 +191,8 @@
         "threshold": 0.6,
         "action": "Click",
         "next": [
-            "team_dash_invite_page"
-        ],
-        "interrupt": [
-            "close_my_help"
+            "team_dash_invite_page",
+            "[JumpBack]close_my_help"
         ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭我的助战[/color]"
@@ -216,10 +207,8 @@
             146
         ],
         "next": [
-            "team_dash_invite_ninjia"
-        ],
-        "interrupt": [
-            "can_not_invite"
+            "team_dash_invite_ninjia",
+            "[JumpBack]can_not_invite"
         ],
         "focus": "[color:DeepSkyBlue]进入助战邀请界面[/color]"
     },
@@ -262,10 +251,10 @@
         "focus": "[color:darkgray]当前页面没有可邀请的助战忍者[/color]"
     },
     "dash_or_exit": {
-        "next": "team_dash_reach_the_upper_limit",
-        "interrupt": [
-            "team_dash_above_kage_sweep",
-            "team_dash_auto_fight"
+        "next": [
+            "team_dash_reach_the_upper_limit",
+            "[JumpBack]team_dash_above_kage_sweep",
+            "[JumpBack]team_dash_auto_fight"
         ]
     },
     "team_dash_reach_the_upper_limit": {
@@ -277,7 +266,7 @@
             360,
             111
         ],
-        "next": "close_team_desh",
+        "next": ["close_team_desh"],
         "focus": "[color:darkgray]达到今日收益上限[/color]"
     },
     "team_dash_auto_fight": {
@@ -313,7 +302,7 @@
         ],
         "action": "Click",
         "threshold": 0.5,
-        "next": "check_in_team_dash_sweep",
+        "next": ["check_in_team_dash_sweep"],
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]点击继续战斗[/color]"
     },
