@@ -115,13 +115,17 @@ def install_resource():
         interface = json.load(f)
 
     interface["version"] = version
+    if "beta" in version:
+        interface["welcome"] = "你正在使用的是公测版，这不是一个稳定版本！"
+    if "ci" in version:
+        interface["welcome"] = "欢迎使用内部测试版本，包含最不稳定但是最新的功能。"
 
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         json.dump(interface, f, ensure_ascii=False, indent=4)
 
 
 def install_chores():
-    for file in ["README.md", "LICENSE", "requirements.txt"]:
+    for file in ["README.md", "LICENSE", "requirements.txt", "CONTACT"]:
         shutil.copy2(
             working_dir / file,
             install_path,
@@ -132,6 +136,10 @@ def install_chores():
         install_path / "docs",
         dirs_exist_ok=True,
         ignore=shutil.ignore_patterns("*.yaml"),
+    )
+
+    shutil.copy2(
+        working_dir / "docs" / "cover.ico", install_path / "Assets" / "logo.ico"
     )
 
     if platform.system() == "Linux":

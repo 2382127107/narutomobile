@@ -1,10 +1,11 @@
 {
+    "interface_version": 2,
     "name": "MaaAutoNaruto",
+    "github": "https://github.com/duorua/narutomobile",
+    "description": "本软件开源免费，受AGPL v3协议保护。",
+    "license": "LICENSE",
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": false,
-    "url": "https://github.com/duorua/narutomobile",
-    "mfa_max_version": "v2.0.3",
-    "mfa_min_version": "v2.0.3",
     "agent": {
         "child_exec": "python",
         "child_args": [
@@ -43,13 +44,14 @@
         {
             "name": "招财",
             "entry": "get_chopper",
-            "default_check": true
+            "default_check": true,
+            "description": "使用每日免费招财次数。"
         },
         {
             "name": "排行榜",
             "entry": "leaderboard",
-            "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
-            "default_check": true
+            "default_check": true,
+            "description": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]"
         },
         {
             "name": "送体力",
@@ -65,19 +67,20 @@
             "name": "组织",
             "entry": "group",
             "doc": "[size:15][color:tomato]该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]",
-            "default_check": true
+            "default_check": true,
+            "description": "包含祈福签到和领奖，追击晓组织领奖。"
         },
         {
             "name": "积分赛",
             "entry": "point_race",
-            "default_check": true
+            "default_check": true,
+            "description": "领取当日奖励并尝试进行一次挑战。"
         },
         {
             "name": "试炼",
             "entry": "practice_place",
             "option": [
-                "不做修行",
-                "等待生存扫荡时间选择"
+                "不做修行"
             ],
             "default_check": true
         },
@@ -102,11 +105,11 @@
         {
             "name": "任务集会所(beta)",
             "entry": "mission_office",
-            "doc": "[size:15][color:tomato]有超影的时候,依旧只会接当前显示的三个任务,不会刷新。要拿满奖励记得关[/color][/size]",
+            "description": "[size:15][color:tomato]目前仅能接三个任务,不会刷新。要拿满奖励请手动完成[/color][/size]",
             "default_check": true
         },
         {
-            "name": "刷体力(beta)",
+            "name": "刷体力(精英副本)",
             "entry": "use_energy",
             "default_check": true
         },
@@ -126,9 +129,10 @@
             "default_check": true
         },
         {
-            "name": "火影情报社",
+            "name": "火影情报社（beta）",
             "entry": "naruto_club",
-            "default_check": true
+            "default_check": true,
+            "description": "该任务并不稳定，如遇卡顿可能需要人工接管。"
         },
         {
             "name": "邮箱",
@@ -146,9 +150,8 @@
             "entry": "weekly_win",
             "option": [
                 "匹配还是排位",
-                "胜利一次就退出任务"
-            ],
-            "doc": "[size:15][color:tomato]目前胜利一次就退出功能还不稳定,可能点掉胜利界面继续战斗[/color][/size]"
+                "胜利一次就退出"
+            ]
         },
         {
             "name": "冒险副本(beta)",
@@ -183,6 +186,8 @@
     ],
     "option": {
         "账号属性": {
+            "type": "select",
+            "default_case": "安卓QQ",
             "cases": [
                 {
                     "name": "安卓QQ",
@@ -212,6 +217,8 @@
             ]
         },
         "不做修行": {
+            "type": "select",
+            "default_case": "做修行",
             "cases": [
                 {
                     "name": "做修行",
@@ -247,35 +254,9 @@
                 }
             ]
         },
-        "等待生存扫荡时间选择": {
-            "cases": [
-                {
-                    "name": "等待20秒",
-                    "pipeline_override": {
-                        "survival_challenge_sweep_ticket_confirm": {
-                            "post_delay": 20000
-                        }
-                    }
-                },
-                {
-                    "name": "等待30秒",
-                    "pipeline_override": {
-                        "survival_challenge_sweep_ticket_confirm": {
-                            "post_delay": 30000
-                        }
-                    }
-                },
-                {
-                    "name": "等待40秒",
-                    "pipeline_override": {
-                        "survival_challenge_sweep_ticket_confirm": {
-                            "post_delay": 40000
-                        }
-                    }
-                }
-            ]
-        },
         "匹配还是排位": {
+            "type": "switch",
+            "default_case": "匹配",
             "cases": [
                 {
                     "name": "匹配",
@@ -305,6 +286,7 @@
             ]
         },
         "战斗时是否点击普攻": {
+            "type": "select",
             "cases": [
                 {
                     "name": "否",
@@ -325,6 +307,8 @@
             ]
         },
         "是否领取体验卡宝箱": {
+            "type": "select",
+            "default_case": "否",
             "cases": [
                 {
                     "name": "是",
@@ -366,6 +350,8 @@
             ]
         },
         "是否领取奖励": {
+            "type": "select",
+            "default_case": "否",
             "cases": [
                 {
                     "name": "是",
@@ -402,14 +388,15 @@
                 }
             ]
         },
-        "胜利一次就退出任务": {
+        "胜利一次就退出": {
+            "type": "select",
             "cases": [
                 {
-                    "name": "不开启,无限打",
+                    "name": "No",
                     "pipeline_override": {}
                 },
                 {
-                    "name": "开启,胜利一次就退出任务",
+                    "name": "Yes",
                     "pipeline_override": {
                         "weekly_win_success": {
                             "next": [
