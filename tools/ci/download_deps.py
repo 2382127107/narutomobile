@@ -80,9 +80,9 @@ def download_dependencies(deps_dir, platform_tag):
         print("错误: requirements.txt 文件不存在")
         return False
 
-    # 首先尝试下载平台特定的wheel文件
+    # 通用下载策略（不指定平台）
     try:
-        cmd = [
+        cmd_fallback = [
             sys.executable,
             "-m",
             "pip",
@@ -91,12 +91,12 @@ def download_dependencies(deps_dir, platform_tag):
             str(requirements_file),
             "-d",
             str(deps_path),
-            "--platform",
-            platform_tag,
         ]
 
-        print(f"执行命令: {' '.join(cmd)}")
-        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        print(f"执行下载命令: {' '.join(cmd_fallback)}")
+        result = subprocess.run(
+            cmd_fallback, check=True, capture_output=True, text=True
+        )
         print(result.stdout)
 
         if result.stderr:
@@ -109,62 +109,16 @@ def download_dependencies(deps_dir, platform_tag):
         for whl_file in whl_files:
             print(f"  {whl_file.name}")
 
-        print(f"依赖下载完成到: {deps_path}")
+        print(f"通用策略下载完成到: {deps_path}")
         return True
 
-    except subprocess.CalledProcessError as e:
-        print(f"平台特定下载失败: {e}")
-        if e.stderr and (
-            "Could not find a version" in e.stderr
-            or "No matching distribution" in e.stderr
-        ):
-            print("某些包可能不支持当前平台，尝试通用下载策略...")
-
-            # 回退到通用下载策略（不指定平台）
-            try:
-                cmd_fallback = [
-                    sys.executable,
-                    "-m",
-                    "pip",
-                    "download",
-                    "-r",
-                    str(requirements_file),
-                    "-d",
-                    str(deps_path),
-                ]
-
-                print(f"执行回退命令: {' '.join(cmd_fallback)}")
-                result = subprocess.run(
-                    cmd_fallback, check=True, capture_output=True, text=True
-                )
-                print(result.stdout)
-
-                if result.stderr:
-                    print("警告信息:")
-                    print(result.stderr)
-
-                # 列出下载的文件
-                whl_files = list(deps_path.glob("*.whl"))
-                print(f"\n下载的wheel文件 ({len(whl_files)} 个):")
-                for whl_file in whl_files:
-                    print(f"  {whl_file.name}")
-
-                print(f"通用策略下载完成到: {deps_path}")
-                return True
-
-            except subprocess.CalledProcessError as e2:
-                print(f"通用策略也失败: {e2}")
-                if e2.stdout:
-                    print("stdout:", e2.stdout)
-                if e2.stderr:
-                    print("stderr:", e2.stderr)
-                return False
-        else:
-            if e.stdout:
-                print("stdout:", e.stdout)
-            if e.stderr:
-                print("stderr:", e.stderr)
-            return False
+    except subprocess.CalledProcessError as e2:
+        print(f"通用策略也失败: {e2}")
+        if e2.stdout:
+            print("stdout:", e2.stdout)
+        if e2.stderr:
+            print("stderr:", e2.stderr)
+        return False
 
 
 def main():
