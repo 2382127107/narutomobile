@@ -23,9 +23,9 @@
             130
         ],
         "next": [
-            "more_gameplay_to_select_gameplay",
+            "[JumpBack]weekly_win_mouthly_reset_award",
             "[JumpBack]weekly_win_mouthly_award",
-            "[JumpBack]weekly_win_mouthly_reset_award"
+            "more_gameplay_to_select_gameplay"
         ],
         "pre_delay": 0,
         "post_delay": 1000,
