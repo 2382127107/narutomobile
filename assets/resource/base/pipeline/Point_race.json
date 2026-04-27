@@ -93,7 +93,8 @@
         "action": "Click",
         "next": [
             "point_race_loading",
-            "point_race_unchallengeable"
+            "point_race_unchallengeable",
+            "point_race_challenge_limit"
         ],
         "on_error": [
             "back_main_screen_and_stop"
@@ -176,7 +177,30 @@
         "action": "Click",
         "next": [
             "point_race_challenge_finished",
+            "point_race_counter",
             "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "point_race_counter": {
+        "action": "Custom",
+        "custom_action": "CounterIncrement",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "point_race_check_overflow",
+            "back_main_screen_and_stop"
+        ]
+    },
+    "point_race_check_overflow": {
+        "recognition": "Custom",
+        "custom_recognition": "IsCounterOverflow",
+        "custom_recognition_param": {
+            "max_hit": 1
+        },
+        "next": [
+            "point_race_challenge_enter"
         ],
         "pre_delay": 0,
         "post_delay": 0
