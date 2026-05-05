@@ -390,8 +390,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]检测出现返回图标[/color]"
+        "post_wait_freezes": 300
     },
     "easy_helper_back_to_sweep": {
         "recognition": "TemplateMatch",
