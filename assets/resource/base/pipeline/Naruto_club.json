@@ -610,7 +610,8 @@
         ],
         "action": "Click",
         "next": [
-            "roger_naruto_club_sign"
+            "roger_naruto_club_sign",
+            "confirm_naruto_club_sign"
         ],
         "pre_wait_freezes": 800,
         "post_wait_freezes": 500,
@@ -631,6 +632,7 @@
         "next": [
             "feed_pig",
             "without_feed_pig",
+            "roger_naruto_club_sign",
             "check_club_mission_done"
         ],
         "post_wait_freezes": 500,
