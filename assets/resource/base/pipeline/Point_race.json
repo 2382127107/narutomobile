@@ -80,6 +80,59 @@
         ],
         "focus": "[color:DeepSkyBlue]开始选择对手[/color]"
     },
+    "point_race_cross_server": {
+        "recognition": "TemplateMatch",
+        "template": "Point_race/cross_server.png",
+        "roi": [
+            83,
+            295,
+            91,
+            177
+        ],
+        "action": "Click",
+        "next": [
+            "point_race_cross_server_not_open",
+            "point_race_in_cross_server",
+            "point_race_cross_server"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "point_race_cross_server_not_open": {
+        "recognition": "OCR",
+        "expected": [
+            "未开启"
+        ],
+        "roi": [
+            427,
+            293,
+            429,
+            145
+        ],
+        "next": [
+            "point_race_challenge",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "rate_limit": 500
+    },
+    "point_race_in_cross_server": {
+        "recognition": "TemplateMatch",
+        "template": "Point_race/cross_server_gold_reflash.png",
+        "roi": [
+            180,
+            488,
+            256,
+            153
+        ],
+        "next": [
+            "point_race_challenge",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
     "point_race_challenge": {
         "recognition": {
             "type": "Custom",
