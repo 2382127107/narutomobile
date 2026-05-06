@@ -114,6 +114,7 @@
             "description": "领取当日奖励,挑战逻辑是挑战战力比自己低的,并不保证取胜",
             "option": [
                 "积分赛强制战斗",
+                "积分赛跨服",
                 "积分赛挑战次数",
                 "从奖励中心进入",
                 "忍界指引寻找积分赛"
@@ -210,6 +211,7 @@
             "name": "火影情报社(beta)",
             "entry": "naruto_club",
             "option": [
+                "跳过情报社点赞",
                 "喂豚豚",
                 "金币助手"
             ],
@@ -1528,6 +1530,28 @@
                 }
             ]
         },
+        "跳过情报社点赞": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "click_club_icon": {
+                            "next": [
+                                "scroll",
+                                "click_club_icon",
+                                "naruto_club_too_many_people",
+                                "[JumpBack]without_naruto_club",
+                                "unknow_error"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
         "喂豚豚": {
             "type": "switch",
             "description": "确认MFA不会在喂豚豚闪退后开启,闪退bug成因还在寻找",
@@ -1902,6 +1926,19 @@
                             }
                         }
                     }
+                }
+            ]
+        },
+        "积分赛跨服": {
+            "description": "进行积分赛跨服挑战",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
                 }
             ]
         },
