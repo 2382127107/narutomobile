@@ -157,14 +157,16 @@
         ],
         "green_mask": true,
         "next": [
-            "battle_end",
             "weekly_win_substitution",
+            "battle_end"
+        ],
+        "on_error": [
             "weekly_win_match_fighting"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "$doc": "有一部分忍者会复活,这时候可能会直接进战斗,所以提前JumpBack",
-        "timeout": 10000
+        "post_delay": 2000,
+        "$doc": "有一部分忍者会复活,这时候可能会直接进战斗,所以提前JumpBack;容易卡时间卡bug的忍者太多加一个on_error",
+        "timeout": 13000
     },
     "battle_end": {
         "recognition": "OCR",
@@ -181,6 +183,7 @@
             "weekly_win_success",
             "weekly_win_fail"
         ],
+        "rate_limit": 2000,
         "pre_delay": 0,
         "post_delay": 0,
         "timeout": 2000,

@@ -447,7 +447,6 @@
             42
         ],
         "threshold": 0.9,
-        "action": "Click",
         "inverse": true,
         "next": [
             "back_main_screen_and_stop"
