@@ -299,7 +299,13 @@
             127
         ],
         "next": [
-            "check_not_in_auto_fight"
+            "check_not_in_auto_fight",
+            "[JumpBack]advanture_anime_skip",
+            "[JumpBack]advanture_end_anime",
+            "advanture_win",
+            "advanture_lost",
+            "advanture_skip_revive",
+            "[JumpBack]advanture_in_level_roll"
         ],
         "pre_delay": 0,
         "post_delay": 0

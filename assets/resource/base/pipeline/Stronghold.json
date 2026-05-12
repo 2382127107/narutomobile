@@ -218,7 +218,7 @@
         "next": [
             "stronghold_in_match",
             "[JumpBack]stronghold_in_stronghold",
-            "stronghold_fighting",
+            "[JumpBack]stronghold_fighting",
             "[JumpBack]stronghold_match_win",
             "stronghold_finished"
         ]
@@ -236,7 +236,7 @@
             153
         ],
         "next": [
-            "stronghold_fighting",
+            "[JumpBack]stronghold_fighting",
             "stronghold_end",
             "[JumpBack]stronghold_in_stronghold",
             "[JumpBack]stronghold_in_match",
@@ -306,7 +306,6 @@
             "[JumpBack]stronghold_match_win",
             "stronghold_finished"
         ],
-        "timeout": 3000,
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"

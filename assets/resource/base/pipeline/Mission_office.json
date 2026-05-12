@@ -676,7 +676,7 @@
         "green_mask": true,
         "next": [
             "select_ninja_for_solo_mission_by_frame",
-            "[JumpBack]mission_office_get_mission"
+            "[JumpBack]mission_office_solo_mission"
         ],
         "pre_delay": 0,
         "post_delay": 0,
