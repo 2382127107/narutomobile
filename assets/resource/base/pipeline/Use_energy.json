@@ -114,10 +114,8 @@
             "use_energy_finish_1",
             "use_energy_not_enough_sign",
             "use_energy_finish",
-            "use_energy_ez_sweep"
-        ],
-        "on_error": [
-            "retry_failed"
+            "use_energy_ez_sweep",
+            "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]继续扫荡[/color]"
