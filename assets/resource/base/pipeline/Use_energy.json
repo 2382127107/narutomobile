@@ -100,8 +100,7 @@
     "use_energy_keep_sweep": {
         "recognition": "OCR",
         "expected": [
-            "继续",
-            "扫荡"
+            "继续扫荡"
         ],
         "roi": [
             356,
@@ -115,9 +114,12 @@
             "use_energy_finish_1",
             "use_energy_not_enough_sign",
             "use_energy_finish",
-            "use_energy_ez_sweep",
+            "use_energy_ez_sweep"
+        ],
+        "on_error": [
             "retry_failed"
         ],
+        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]继续扫荡[/color]"
     },
     "use_energy_not_enough_sign": {
