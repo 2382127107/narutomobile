@@ -446,7 +446,10 @@
             "win_in_shugyou_no_michi",
             "fail_in_shugyou_no_michi",
             "[JumpBack]not_in_auto_battle",
-            "shugyou_no_michi_in_fight"
+            "shugyou_no_michi_in_fight",
+            "shugyou_no_michi_post_loading",
+            "wait_for_battle_again",
+            "shugyou_no_michi_quit"
         ]
     },
     "not_in_auto_battle": {
@@ -462,7 +465,10 @@
         "next": [
             "click_auto_battle",
             "win_in_shugyou_no_michi",
-            "fail_in_shugyou_no_michi"
+            "fail_in_shugyou_no_michi",
+            "shugyou_no_michi_post_loading",
+            "wait_for_battle_again",
+            "shugyou_no_michi_quit"
         ],
         "focus": "没有检测到自动战斗"
     },
@@ -504,9 +510,12 @@
         "next": [
             "win_in_shugyou_no_michi",
             "fail_in_shugyou_no_michi",
-            "shugyou_no_michi_in_fight"
+            "shugyou_no_michi_in_fight",
+            "shugyou_no_michi_post_loading",
+            "wait_for_battle_again",
+            "shugyou_no_michi_quit"
         ],
-        "pre_delay": 0,
+        "pre_delay": 200,
         "post_delay": 500,
         "focus": "开启自动战斗"
     },
@@ -522,11 +531,30 @@
         "green_mask": true,
         "threshold": 0.9,
         "next": [
-            "back_main_screen_and_stop"
+            "shugyou_no_michi_quit"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "战斗失败"
+    },
+    "shugyou_no_michi_quit": {
+        "recognition": "OCR",
+        "expected": [
+            "点击"
+        ],
+        "roi": [
+            480,
+            572,
+            316,
+            135
+        ],
+        "action": "Click",
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500
     },
     "win_in_shugyou_no_michi": {
         "recognition": "TemplateMatch",
@@ -562,7 +590,8 @@
         ],
         "next": [
             "shugyou_no_michi_post_loading",
-            "wait_for_battle_again"
+            "wait_for_battle_again",
+            "shugyou_no_michi_quit"
         ],
         "pre_delay": 0,
         "post_delay": 1000
