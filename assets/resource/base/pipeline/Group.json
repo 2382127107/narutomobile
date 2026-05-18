@@ -416,7 +416,7 @@
     },
     "close_third_group_award": {
         "recognition": "TemplateMatch",
-        "template": "Group/close_third_group_award.png",
+        "template": "Group/yesterday_award_done.png",
         "roi": [
             1052,
             172,

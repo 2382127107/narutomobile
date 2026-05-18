@@ -467,22 +467,46 @@
         "focus": "没有检测到自动战斗"
     },
     "click_auto_battle": {
-        "recognition": "OCR",
-        "expected": "自动",
-        "roi": [
-            44,
-            56,
-            72,
-            42
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "文字",
+                "recognition": "OCR",
+                "expected": "自动",
+                "roi": [
+                    44,
+                    56,
+                    72,
+                    42
+                ]
+            },
+            {
+                "sub_name": "图像",
+                "recognition": "TemplateMatch",
+                "template": "Practice_place/auto_battle.png",
+                "green_mask": true,
+                "roi": [
+                    0,
+                    0,
+                    140,
+                    103
+                ]
+            }
         ],
-        "pre_delay": 0,
-        "post_delay": 500,
         "action": "Click",
+        "target": [
+            69,
+            41,
+            17,
+            14
+        ],
         "next": [
             "win_in_shugyou_no_michi",
             "fail_in_shugyou_no_michi",
             "shugyou_no_michi_in_fight"
         ],
+        "pre_delay": 0,
+        "post_delay": 500,
         "focus": "开启自动战斗"
     },
     "fail_in_shugyou_no_michi": {
