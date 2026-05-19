@@ -309,6 +309,7 @@
     "dash_or_exit": {
         "next": [
             "team_dash_reach_the_upper_limit",
+            "team_dash_above_kage_quit",
             "[JumpBack]team_dash_above_kage_sweep",
             "[JumpBack]team_dash_auto_fight",
             "[JumpBack]team_dash_in_loading"
@@ -675,7 +676,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 300,
+        "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]超影扫荡[/color]"
     },
     "team_dash_above_kage_quit": {
