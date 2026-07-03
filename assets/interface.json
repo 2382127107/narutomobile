@@ -274,6 +274,14 @@
             "description": "[size:15][color:tomato]需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
         {
+            "name": "购买体力[二级密码](beta)",
+            "entry": "buy_energy",
+            "option": [
+                "购买体力次数"
+            ],
+            "description": "[size:15][color:tomato]需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
+        },
+        {
             "name": "切换账号(beta)",
             "entry": "switch_account",
             "option": [
@@ -380,7 +388,7 @@
             "description": "只会领取游戏内的周度礼包"
         },
         {
-            "name": "黑市商人(beta)",
+            "name": "黑市商人[二级密码](beta)",
             "entry": "black_market_merchant",
             "option": [
                 "黑市忍具之尘购买数量",
@@ -849,6 +857,27 @@
                 "check_get_copper_by_count": {
                     "custom_recognition_param": {
                         "count": "{招财次数}"
+                    }
+                }
+            }
+        },
+        "购买体力次数": {
+            "type": "input",
+            "description": "购买体力次数设置",
+            "inputs": [
+                {
+                    "name": "购买次数",
+                    "label": "购买次数",
+                    "description": "输入需要的购买体力次数,最大20",
+                    "pipeline_type": "string",
+                    "default": "1",
+                    "verify": "^([1-9]|1[0-9]|20)$"
+                }
+            ],
+            "pipeline_override": {
+                "check_buy_energy": {
+                    "custom_recognition_param": {
+                        "count": "{购买次数}"
                     }
                 }
             }

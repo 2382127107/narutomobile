@@ -1,6 +1,5 @@
 import urllib.request
 import zipfile
-import shutil
 
 from utils import assets_dir
 

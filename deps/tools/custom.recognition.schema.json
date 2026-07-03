@@ -15,7 +15,8 @@
                 "SecretRealmTicket",
                 "MissionOfficeStrategy",
                 "CheckGetCopperRoll",
-                "CheckGetCopperCount"
+                "CheckGetCopperCount",
+                "CheckBuyEnergyCount"
             ]
         },
         "custom_recognition_param": {
@@ -55,6 +56,9 @@
                 },
                 {
                     "$ref": "#/$defs/CheckGetCopperCountParam"
+                },
+                {
+                    "$ref": "#/$defs/CheckBuyEnergyCountParam"
                 }
             ]
         }
@@ -140,14 +144,20 @@
         },
         "CheckGetCopperRollParam": {
             "type": "object",
-            "description": "检测招财轮次,识别轮次大于设定轮次+1则通过",
-            "markdownDescription": "检测招财轮次:取固定ROI招财轮次数,识别失败视为78;当前轮次 > count + 1 时通过,否则失败.",
+            "description": "检测招财轮次",
+            "markdownDescription": "检测招财轮次:取固定ROI招财轮次数,识别失败视为66;当前轮次 > count + 1 时通过,否则失败.",
             "properties": {}
         },
         "CheckGetCopperCountParam": {
             "type": "object",
-            "description": "检测招财次数,识别次数大于设定次数则通过",
-            "markdownDescription": "检测招财次数:读取固定ROI招财次数,识别失败视为78;当前轮次 > count 时通过,否则失败.",
+            "description": "检测招财次数",
+            "markdownDescription": "检测招财次数:读取固定ROI招财次数,识别失败视为66;当前轮次 > count 时通过,否则失败.",
+            "properties": {}
+        },
+        "CheckBuyEnergyCountParam": {
+            "type": "object",
+            "description": "检测购买体力次数",
+            "markdownDescription": "检测购买体力次数,读取固定ROI招财次数,识别失败视为66;第一次识别次数-目前识别次数>=传入次数时通过,否则失败.",
             "properties": {}
         }
     }

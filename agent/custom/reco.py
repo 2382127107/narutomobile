@@ -1028,6 +1028,42 @@ class MissionOfficeStrategy(CustomRecognition):
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
+def get_digit_count(context: Context, image: ndarray, roi: list[int]) -> int | None:
+    """
+    独立读取指定ROI的纯数字(小数点和正负号也会去除)
+    :param context: MAA上下文
+    :param image: 屏幕图像
+    :param roi: 识别区域 [x, y, w, h]
+    :return: 解析后的整型数字,失败返回None
+    """
+    # 调用custom_ocr
+    reco_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
+    )
+
+    if reco_detail is None or not reco_detail.hit:
+        logger.warning(f"ROI{roi} 未识别到任何文本")
+        return None
+
+    # 提取并清洗识别文本,仅保留数字
+    source_text = str(reco_detail.best_result.text).strip()
+    logger.debug(f"ROI{roi} 原始识别文本：{source_text}")
+
+    # 正则提取纯数字,过滤所有非数字字符
+    num_match = re.search(r"\d+", source_text)
+    if not num_match:
+        logger.warning(f"ROI{roi} 未提取到有效数字，原始文本：{source_text}")
+        return None
+
+    try:
+        token_count = int(num_match.group())
+        logger.info(f" ROI{roi} 解析到token数量:{token_count}")
+        return token_count
+    except ValueError:
+        logger.warning(f"ROI{roi} 数字转换失败，提取字符串：{num_match.group()}")
+        return None
+
+
 @AgentServer.custom_recognition("CheckGetCopperRoll")
 class CheckGetCopperRoll(CustomRecognition):
     """
@@ -1040,15 +1076,15 @@ class CheckGetCopperRoll(CustomRecognition):
         roi = [98, 468, 46, 32]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
-        now_count = get_token_count(context, argv.image, roi)
+        now_count = get_digit_count(context, argv.image, roi)
         if now_count is None:
-            now_count = 78
+            now_count = 66
 
         if now_count >= count + 1:
             logger.info(f"当前值: {now_count},达到最大执行次数{count}")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
-        logger.debug(f"计数器状态： 最大值: {count} 当前值: {now_count} ")
+        logger.debug(f"招财轮次计数器状态： 最大值: {count} 当前值: {now_count} ")
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
@@ -1064,13 +1100,50 @@ class CheckGetCopperCount(CustomRecognition):
         roi = [309, 468, 27, 30]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
-        now_count = get_token_count(context, argv.image, roi)
+        now_count = get_digit_count(context, argv.image, roi)
         if now_count is None:
-            now_count = 78
+            now_count = 66
 
         if now_count >= count:
             logger.info(f"当前值: {now_count},达到最大执行次数{count}")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
-        logger.debug(f"计数器状态： 最大值: {count} 当前值: {now_count} ")
+        logger.debug(f"招财次数计数器状态： 最大值: {count} 当前值: {now_count} ")
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("CheckBuyEnergyCount")
+class CheckBuyEnergyCount(CustomRecognition):
+    """
+    检测购买体力次数,第一次识别次数-目前识别次数>=传入次数则通过
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.start_count = -1
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        roi = [499, 374, 251, 59]
+        param = json.loads(argv.custom_recognition_param)
+        count = int(param.get("count", "1"))
+        if self.start_count == -1:
+            self.start_count = get_digit_count(context, argv.image, roi)
+            if self.start_count is None:
+                self.start_count = 66
+
+        now_count = get_digit_count(context, argv.image, roi)
+        if now_count is None:
+            now_count = 0
+
+        if self.start_count - now_count >= count:
+            logger.info(
+                f"当前值:{self.start_count - now_count},达到最大执行次数{count},初始值{self.start_count},识别值{now_count}"
+            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.debug(
+            f"购买体力计数器状态: 最大值:{count} 当前值: {self.start_count - now_count},初始值{self.start_count},识别值{now_count}"
+        )
         return CustomRecognition.AnalyzeResult(box=None, detail={})

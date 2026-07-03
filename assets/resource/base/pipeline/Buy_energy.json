@@ -1,0 +1,106 @@
+{
+    "buy_energy": {
+        "next": [
+            "buy_energy_in_main_screen",
+            "[JumpBack]back_main_screen_before_task"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入购买体力任务[/color]"
+    },
+    "buy_energy_in_main_screen": {
+        "recognition": "TemplateMatch",
+        "template": "Buy_energy/energy.png",
+        "roi": [
+            358,
+            4,
+            79,
+            71
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "target_offset": [
+            151,
+            3,
+            -5,
+            -2
+        ],
+        "next": [
+            "buy_energy_in_buy_energy",
+            "buy_energy_in_main_screen"
+        ],
+        "rate_limit": 500,
+        "pre_delay": 0,
+        "post_delay": 500
+    },
+    "buy_energy_in_buy_energy": {
+        "recognition": "TemplateMatch",
+        "template": "Buy_energy/buy_button.png",
+        "roi": [
+            627,
+            431,
+            125,
+            96
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "next": [
+            "[JumpBack]energy_upper_limit",
+            "[JumpBack]secondary_password",
+            "check_buy_energy",
+            "[JumpBack]try_buy_energy",
+            "[JumpBack]pay_to_stronger_tip",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "energy_upper_limit": {
+        "recognition": "OCR",
+        "expected": [
+            "当前体力",
+            "到达上限"
+        ],
+        "roi": [
+            486,
+            333,
+            308,
+            51
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "check_buy_energy": {
+        "recognition": "Custom",
+        "custom_recognition": "CheckBuyEnergyCount",
+        "custom_recognition_param": {
+            "count": 1
+        },
+        "next": [
+            "[JumpBack]pay_to_stronger_tip",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "try_buy_energy": {
+        "recognition": "TemplateMatch",
+        "template": "Buy_energy/buy_button.png",
+        "roi": [
+            627,
+            431,
+            125,
+            96
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 500,
+        "post_wait_freezes": 500
+    }
+}
