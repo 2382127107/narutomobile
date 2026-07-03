@@ -440,9 +440,13 @@
         ],
         "action": "Click",
         "next": [
-            "rebel_ninja_secondary_password",
-            "[JumpBack]rebel_ninja_confirm_open",
-            "rebel_ninja_summon_member"
+            "rebel_ninja_confirm_open",
+            "[JumpBack]secondary_password",
+            "rebel_ninja_summon_member",
+            "rebel_ninja_group_to_rebel_ninja"
+        ],
+        "on_error": [
+            "rebel_ninja"
         ],
         "pre_delay": 0,
         "post_delay": 300
@@ -543,7 +547,7 @@
         "next": [
             "rebel_ninja_incorrect_secondary_password",
             "rebel_ninja_without_confirm_secondary_password",
-            "[JumpBack]rebel_ninja_confirm_secondary_password"
+            "rebel_ninja_confirm_secondary_password"
         ],
         "pre_delay": 0,
         "post_delay": 300
@@ -563,7 +567,7 @@
         "next": [
             "rebel_ninja_group_to_rebel_ninja",
             "rebel_ninja",
-            "[JumpBack]rebel_ninja_without_confirm_secondary_password"
+            "rebel_ninja_without_confirm_secondary_password"
         ],
         "pre_delay": 0,
         "post_delay": 300

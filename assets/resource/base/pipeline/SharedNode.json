@@ -1183,5 +1183,121 @@
   "shell_enter": {
     "action": "Shell",
     "cmd": "input keyevent 66"
+  },
+  "secondary_password": {
+    "recognition": "TemplateMatch",
+    "template": [
+      "SharedNode/secondary_password.png"
+    ],
+    "roi": [
+      387,
+      251,
+      241,
+      160
+    ],
+    "action": "Click",
+    "target": [
+      567,
+      355,
+      54,
+      39
+    ],
+    "next": [
+      "input_secondary_password",
+      "incorrect_secondary_password",
+      "secondary_password"
+    ],
+    "pre_delay": 0,
+    "post_delay": 300
+  },
+  "input_secondary_password": {
+    "recognition": "OCR",
+    "expected": [
+      "确定"
+    ],
+    "roi": [
+      1205,
+      649,
+      74,
+      59
+    ],
+    "action": "InputText",
+    "input_text": "0",
+    "next": [
+      "incorrect_secondary_password",
+      "confirm_secondary_password"
+    ],
+    "pre_delay": 0,
+    "post_delay": 300
+  },
+  "check_secondary_password": {
+    "recognition": "OCR",
+    "expected": [
+      "0"
+    ],
+    "roi": [
+      0,
+      651,
+      116,
+      68
+    ],
+    "next": [
+      "confirm_secondary_password"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "incorrect_secondary_password": {
+    "recognition": "OCR",
+    "expected": [
+      "长度不足",
+      "错误"
+    ],
+    "roi": [
+      486,
+      290,
+      325,
+      138
+    ],
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0,
+    "focus": "[color:tomato]密码有误[/color]"
+  },
+  "confirm_secondary_password": {
+    "recognition": "OCR",
+    "expected": [
+      "确定"
+    ],
+    "roi": [
+      562,
+      431,
+      143,
+      64
+    ],
+    "action": "Click",
+    "max_hit": 5,
+    "next": [
+      "incorrect_secondary_password",
+      "without_confirm_secondary_password",
+      "confirm_secondary_password"
+    ],
+    "pre_delay": 0,
+    "post_delay": 300
+  },
+  "without_confirm_secondary_password": {
+    "recognition": "OCR",
+    "expected": [
+      "确定"
+    ],
+    "roi": [
+      562,
+      431,
+      143,
+      64
+    ],
+    "inverse": true,
+    "pre_delay": 0,
+    "post_delay": 0
   }
 }

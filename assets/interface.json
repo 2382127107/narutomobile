@@ -310,7 +310,7 @@
                 "叛忍只显示自己",
                 "叛忍难度",
                 "叛忍开双倍",
-                "叛忍二级密码",
+                "二级密码",
                 "叛忍玩法未开启时退出",
                 "忍界指引寻找叛忍"
             ],
@@ -372,7 +372,7 @@
             "entry": "black_market_merchant",
             "option": [
                 "黑市忍具之尘购买数量",
-                "黑市二级密码",
+                "二级密码",
                 "忍界指引寻找黑市商人",
                 "从奖励中心进入"
             ],
@@ -2613,9 +2613,9 @@
                 }
             ]
         },
-        "黑市二级密码": {
+        "二级密码": {
             "type": "input",
-            "description": "开启二级密码之后可能出现误使用金币的情况,请自己注意避免",
+            "description": "开启二级密码之后可能出现误使用金币的情况,请自己注意避免,建议将需要二级密码的任务放到最后执行",
             "inputs": [
                 {
                     "name": "二级密码",
@@ -2626,10 +2626,10 @@
                 }
             ],
             "pipeline_override": {
-                "black_market_merchant_input_secondary_password": {
+                "input_secondary_password": {
                     "input_text": "{二级密码}"
                 },
-                "black_market_merchant_check_secondary_password": {
+                "check_secondary_password": {
                     "expected": [
                         "{二级密码}"
                     ]

@@ -139,6 +139,8 @@
             1215,
             138
         ],
+        "method": 10001,
+        "threshold": 0.95,
         "order_by": "Score",
         "action": "Click",
         "next": [
@@ -293,10 +295,28 @@
         "action": "Click",
         "next": [
             "black_market_merchant_insufficient_items",
-            "black_market_merchant_secondary_password",
+            "black_market_merchant_without_buy_gear_dust_quantity",
             "black_market_merchant_buy_gear_dust_quantity_end"
         ],
         "pre_delay": 0,
+        "post_delay": 300
+    },
+    "black_market_merchant_without_buy_gear_dust_quantity": {
+        "recognition": "TemplateMatch",
+        "template": "Black_market_merchant/buy.png",
+        "roi": [
+            543,
+            456,
+            179,
+            83
+        ],
+        "inverse": true,
+        "next": [
+            "[JumpBack]secondary_password",
+            "black_market_merchant_buy_gear_dust_quantity"
+        ],
+        "pre_wait_freezes": 300,
+        "pre_delay": 300,
         "post_delay": 0
     },
     "black_market_merchant_buy_gear_dust_quantity_end": {
