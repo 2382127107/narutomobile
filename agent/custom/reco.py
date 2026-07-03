@@ -69,7 +69,7 @@ class IsCounterOverflow(CustomRecognition):
 
         now_count = counter.get_count(argv.task_detail.task_id)
         logger.info(
-            f"当前节点名：{argv.node_name} 当前任务ID：{argv.task_detail.task_id}"
+            f"当前节点名:{argv.node_name};当前任务入口:{argv.task_detail.entry};任务id:{argv.task_detail.task_id}"
         )
         if now_count >= max_hit:
             logger.debug(f"计数器溢出！最大值: {max_hit} 当前值: {now_count} ")
@@ -726,6 +726,7 @@ class FlipCard(CustomRecognition):
 
 def get_token_count(context: Context, image: ndarray, roi: list[int]) -> int | None:
     """
+    羁绊追寻
     独立读取指定ROI的纯数字(调用custom_ocr)
     :param context: MAA上下文
     :param image: 屏幕图像
@@ -771,9 +772,10 @@ def get_token_count(context: Context, image: ndarray, roi: list[int]) -> int | N
 @AgentServer.custom_recognition("find_bonds_without_enough_token")
 class FindBondsWithoutEnoughToken(CustomRecognition):
     """
+    羁绊追寻
     固定读取ROI的纯数字
-    数字 < 5 → 返回识别通过(非空box)
-    数字 ≥ 5 或识别失败 → 返回识别未通过(空box)
+    数字 < 5 ,返回识别通过(非空box)
+    数字 ≥ 5 或识别失败,返回识别未通过(空box)
     """
 
     TOKEN_CHECK_ROI = [846, 639, 111, 80]
@@ -786,7 +788,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         # 读取token数量
         token_count = get_token_count(context, argv.image, self.TOKEN_CHECK_ROI)
 
-        # 逻辑1：识别失败 → 返回未通过（空box）
+        # 识别失败
         if token_count is None:
             logger.warning(
                 "[find_bonds_without_enough_token] token数量识别失败,返回未通过"
@@ -795,7 +797,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
                 box=None, detail={"token_count": None, "passed": False}
             )
 
-        # 逻辑2：数字 < 5 → 返回通过（非空box，用无效Rect表示）
+        # 数字 < 5
         if token_count < 5:
             logger.info(
                 f"[find_bonds_without_enough_token] token数量{token_count}<5,返回识别通过"
@@ -806,9 +808,9 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
                 box=pass_box, detail={"token_count": token_count, "passed": True}
             )
 
-        # 逻辑3：数字 ≥ 5 → 返回未通过（空box）
+        # 数字 ≥ 5
         logger.info(
-            f"[find_bonds_without_enough_token] token数量{token_count}≥5，返回识别未通过"
+            f"[find_bonds_without_enough_token] token数量{token_count}≥5,返回识别未通过"
         )
         return CustomRecognition.AnalyzeResult(
             box=None, detail={"token_count": token_count, "passed": False}
@@ -886,17 +888,14 @@ class FindAccessoryFlipTicket(CustomRecognition):
             text_modifier=lambda x: x,
         )
 
-        # 逻辑1：识别失败 → 返回未通过（空box）
         if ticket_count is None:
             logger.warning("饰品翻牌卷数量识别失败,返回未通过")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
-        # 逻辑2：数量>0 → 返回通过（非空无效Rect）
         if ticket_count > 0:
             logger.info(f"饰品翻牌卷数量{ticket_count}>0,返回识别通过")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
-        # 逻辑3：数量≤0 → 返回未通过（空box）
         logger.info(f"饰品翻牌卷数量{ticket_count}≤0,返回识别未通过")
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
@@ -1027,3 +1026,51 @@ class MissionOfficeStrategy(CustomRecognition):
                 "[MissionOfficeStrategy] 公式条件不成立，返回识别未通过(安全策略)"
             )
             return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("CheckGetCopperRoll")
+class CheckGetCopperRoll(CustomRecognition):
+    """
+    检测招财轮次,识别轮次大于设定轮次+1则通过
+    """
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        roi = [98, 468, 46, 32]
+        param = json.loads(argv.custom_recognition_param)
+        count = int(param.get("count", "1"))
+        now_count = get_token_count(context, argv.image, roi)
+        if now_count is None:
+            now_count = 78
+
+        if now_count >= count + 1:
+            logger.info(f"当前值: {now_count},达到最大执行次数{count}")
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.debug(f"计数器状态： 最大值: {count} 当前值: {now_count} ")
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("CheckGetCopperCount")
+class CheckGetCopperCount(CustomRecognition):
+    """
+    检测招财次数,识别次数大于设定次数则通过
+    """
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        roi = [309, 468, 27, 30]
+        param = json.loads(argv.custom_recognition_param)
+        count = int(param.get("count", "1"))
+        now_count = get_token_count(context, argv.image, roi)
+        if now_count is None:
+            now_count = 78
+
+        if now_count >= count:
+            logger.info(f"当前值: {now_count},达到最大执行次数{count}")
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.debug(f"计数器状态： 最大值: {count} 当前值: {now_count} ")
+        return CustomRecognition.AnalyzeResult(box=None, detail={})

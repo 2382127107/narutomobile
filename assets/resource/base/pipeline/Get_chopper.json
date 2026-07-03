@@ -108,7 +108,7 @@
             296
         ],
         "next": [
-            "check_copper_done",
+            "check_free_copper_done",
             "[JumpBack]start_copper"
         ],
         "pre_delay": 0,
@@ -146,7 +146,7 @@
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]进行招财[/color]"
     },
-    "check_copper_done": {
+    "check_free_copper_done": {
         "recognition": "OCR",
         "expected": [
             "招财"
@@ -160,6 +160,171 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": "back_main_screen_and_stop",
-        "focus": "[color:DeepSkyBlue]铜币招财完成[/color]"
+        "focus": "[color:DeepSkyBlue]免费铜币招财完成[/color]"
+    },
+    "get_copper_with_secondary_password": {
+        "next": [
+            "get_copper_by_roll",
+            "get_copper_by_count",
+            "free_copper_close_secondary_password",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入二级密码功能[/color]"
+    },
+    "free_copper_close_secondary_password": {
+        "recognition": "OCR",
+        "expected": [
+            "招财"
+        ],
+        "roi": [
+            743,
+            534,
+            181,
+            58
+        ],
+        "max_hit": 1,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300
+    },
+    "get_copper_by_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Get_copper/get.png",
+        "roi": [
+            743,
+            534,
+            181,
+            58
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "next": [
+            "check_get_copper_by_roll",
+            "check_get_copper_by_roll_1",
+            "[JumpBack]secondary_password",
+            "[JumpBack]try_get_copper_by_roll",
+            "[JumpBack]pay_to_stronger_tip",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "check_get_copper_by_roll": {
+        "recognition": "Custom",
+        "custom_recognition": "CheckGetCopperRoll",
+        "custom_recognition_param": {
+            "count": 1
+        },
+        "next": [
+            "get_copper_by_count",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "check_get_copper_by_roll_1": {
+        "recognition": "TemplateMatch",
+        "template": "Get_copper/check_get_roll.png",
+        "roi": [
+            980,
+            520,
+            54,
+            86
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "next": [
+            "get_copper_by_count",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "try_get_copper_by_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Get_copper/get_roll.png",
+        "roi": [
+            1032,
+            518,
+            150,
+            93
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 500,
+        "post_wait_freezes": 300
+    },
+    "get_copper_by_count": {
+        "recognition": "TemplateMatch",
+        "template": "Get_copper/get.png",
+        "roi": [
+            743,
+            534,
+            181,
+            58
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "next": [
+            "check_get_copper_by_count",
+            "[JumpBack]try_get_copper_by_count",
+            "[JumpBack]secondary_password",
+            "[JumpBack]pay_to_stronger_tip",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "check_get_copper_by_count": {
+        "recognition": "Custom",
+        "custom_recognition": "CheckGetCopperCount",
+        "custom_recognition_param": {
+            "count": 1
+        },
+        "next": [
+            "[JumpBack]pay_to_stronger_tip",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "try_get_copper_by_count": {
+        "recognition": "TemplateMatch",
+        "template": "Get_copper/get.png",
+        "roi": [
+            743,
+            534,
+            181,
+            58
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 500,
+        "post_wait_freezes": 300
+    },
+    "get_copper_in_main_screen": {
+        "recognition": "TemplateMatch",
+        "template": "Get_copper/copper.png",
+        "roi": [
+            585,
+            12,
+            61,
+            56
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "next": [
+            "get_copper_in_get_copper",
+            "get_copper_in_main_screen"
+        ],
+        "pre_delay": 0,
+        "post_delay": 400
     }
 }

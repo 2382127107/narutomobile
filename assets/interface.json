@@ -30,6 +30,9 @@
             "name": "官服",
             "path": [
                 "resource/base"
+            ],
+            "option": [
+                "二级密码"
             ]
         }
     ],
@@ -261,6 +264,16 @@
             "description": "请在主页开始任务,连点器任务可能不兼容**雷电模拟器**"
         },
         {
+            "name": "铜币招财[二级密码](beta)",
+            "entry": "get_copper",
+            "option": [
+                "金币招财",
+                "按轮招财",
+                "按次招财"
+            ],
+            "description": "[size:15][color:tomato]需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
+        },
+        {
             "name": "切换账号(beta)",
             "entry": "switch_account",
             "option": [
@@ -310,11 +323,10 @@
                 "叛忍只显示自己",
                 "叛忍难度",
                 "叛忍开双倍",
-                "二级密码",
                 "叛忍玩法未开启时退出",
                 "忍界指引寻找叛忍"
             ],
-            "description": "尽量开启只显示自己,防止目标被遮挡,可以在叛忍地图打开,选项是首领功能,二级密码仅作为测试,不要填自己的"
+            "description": "尽量开启只显示自己,防止目标被遮挡,可以在叛忍地图打开;部分选项是首领功能,[size:15][color:tomato]需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
         {
             "name": "冒险副本",
@@ -372,11 +384,10 @@
             "entry": "black_market_merchant",
             "option": [
                 "黑市忍具之尘购买数量",
-                "二级密码",
                 "忍界指引寻找黑市商人",
                 "从奖励中心进入"
             ],
-            "description": "这个黑市商人是奸商,你需要在战力指导的陪同下使用这个功能;可以调一下只显示自己,关闭称号等,防止黑市商人被遮挡;[size:15][color:tomato]开启功能需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
+            "description": "这个黑市商人是奸商,你需要在战力指导的陪同下使用这个功能;可以调一下只显示自己,关闭称号等,防止黑市商人被遮挡;[size:15][color:tomato]需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
         {
             "name": "Debug",
@@ -478,7 +489,7 @@
         },
         "拒绝qq获取火影信息": {
             "type": "switch",
-            "description": "开启允许MAN管理qq和火影信息才会生效;在qq申请界面,拒绝qq获取火影信息;在1280x720分辨率下不生效",
+            "description": "开启允许MAN管理qq和火影信息才会生效;在qq申请界面,拒绝qq获取火影信息;在低分辨率,卡顿等情况下不生效",
             "default_case": "No",
             "cases": [
                 {
@@ -739,9 +750,112 @@
                 }
             ]
         },
+        "金币招财": {
+            "type": "select",
+            "description": "这个选项不需要选择;选项需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "check_free_copper_done": {
+                            "next": "get_copper_with_secondary_password"
+                        },
+                        "get_copper": {
+                            "next": [
+                                "get_copper_in_main_screen",
+                                "[JumpBack]back_main_screen_before_task"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "按轮招财": {
+            "type": "switch",
+            "description": "会先执行按轮招财,再执行按次招财",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "招财轮次"
+                    ],
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "get_copper_by_roll": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "招财轮次": {
+            "type": "input",
+            "description": "招财轮次设置",
+            "inputs": [
+                {
+                    "name": "招财轮次",
+                    "label": "招财轮次",
+                    "description": "输入需要的招财轮数,最大10",
+                    "pipeline_type": "string",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "check_get_copper_by_roll": {
+                    "custom_recognition_param": {
+                        "count": "{招财轮次}"
+                    }
+                }
+            }
+        },
+        "按次招财": {
+            "type": "switch",
+            "description": "会先执行按轮招财,再执行按次招财",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "招财次数"
+                    ]
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "get_copper_by_count": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "招财次数": {
+            "type": "input",
+            "description": "招财轮次设置",
+            "inputs": [
+                {
+                    "name": "招财次数",
+                    "label": "招财次数",
+                    "description": "输入需要的最后一轮的招财次数,最大10",
+                    "pipeline_type": "string",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "check_get_copper_by_count": {
+                    "custom_recognition_param": {
+                        "count": "{招财次数}"
+                    }
+                }
+            }
+        },
         "忍界指引寻找排行榜": {
             "type": "select",
-            "description": "注意这个选项你没法选择",
+            "description": "这个选项不需要选择",
             "cases": [
                 {
                     "name": "开",
@@ -784,7 +898,7 @@
         },
         "忍界指引寻找任务集会所": {
             "type": "select",
-            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "description": "这个选项不需要选择,开启从奖励中心进入之后会改变进入方式",
             "cases": [
                 {
                     "name": "开",
@@ -827,7 +941,7 @@
         },
         "忍界指引寻找积分赛": {
             "type": "select",
-            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "description": "这个选项不需要选择,开启从奖励中心进入之后会改变进入方式",
             "cases": [
                 {
                     "name": "开",
@@ -870,7 +984,7 @@
         },
         "忍界指引寻找修行之路": {
             "type": "select",
-            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "description": "这个选项不需要选择,开启从奖励中心进入之后会改变进入方式",
             "cases": [
                 {
                     "name": "开",
@@ -917,7 +1031,7 @@
         },
         "忍界指引寻找秘境": {
             "type": "select",
-            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "description": "这个选项不需要选择,开启从奖励中心进入之后会改变进入方式",
             "cases": [
                 {
                     "name": "开",
@@ -980,7 +1094,7 @@
         },
         "忍界指引寻找黑市商人": {
             "type": "select",
-            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "description": "这个选项不需要选择,开启从奖励中心进入之后会改变进入方式",
             "cases": [
                 {
                     "name": "开",
@@ -1043,7 +1157,7 @@
         },
         "忍界指引寻找周胜": {
             "type": "select",
-            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "description": "这个选项不需要选择,开启从奖励中心进入之后会改变进入方式",
             "cases": [
                 {
                     "name": "开",
@@ -1150,7 +1264,7 @@
         },
         "忍界指引寻找组织": {
             "type": "select",
-            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "description": "这个选项不需要选择,开启从奖励中心进入之后会改变进入方式",
             "cases": [
                 {
                     "name": "开",
@@ -1209,7 +1323,7 @@
         },
         "忍界指引寻找要塞": {
             "type": "select",
-            "description": "注意这个选项你没法选择",
+            "description": "这个选项不需要选择",
             "cases": [
                 {
                     "name": "开",
@@ -1268,7 +1382,7 @@
         },
         "忍界指引寻找天地": {
             "type": "select",
-            "description": "注意这个选项你没法选择",
+            "description": "这个选项不需要选择",
             "cases": [
                 {
                     "name": "开",
@@ -1327,7 +1441,7 @@
         },
         "忍界指引寻找叛忍": {
             "type": "select",
-            "description": "注意这个选项你没法选择",
+            "description": "这个选项不需要选择",
             "cases": [
                 {
                     "name": "开",
@@ -1849,7 +1963,7 @@
                 {
                     "name": "周胜胜利次数",
                     "label": "周胜胜利次数",
-                    "description": "打赢输入次数,最大999",
+                    "description": "输入需要的打赢次数,最大999",
                     "pipeline_type": "int",
                     "default": "999",
                     "verify": "^[1-9]\\d{0,2}$"
@@ -3219,6 +3333,7 @@
         },
         "叛忍难度": {
             "type": "select",
+            "description": "首领功能",
             "cases": [
                 {
                     "name": "困难",
@@ -3245,6 +3360,7 @@
         },
         "叛忍开双倍": {
             "type": "switch",
+            "description": "首领功能",
             "cases": [
                 {
                     "name": "Yes",
