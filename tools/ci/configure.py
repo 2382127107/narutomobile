@@ -32,10 +32,10 @@ def configure_ocr_model():
     small_dir = ocr_dir / "small"
     if small_dir.exists() and small_dir.is_dir():
         print("Moving contents from 'small' subdirectory up to OCR root...")
-    for item in small_dir.iterdir():
-        target = ocr_dir / item.name
-        shutil.move(str(item), str(target))
-    small_dir.rmdir()
+        for item in small_dir.iterdir():
+            target = ocr_dir / item.name
+            shutil.move(str(item), str(target))
+        small_dir.rmdir()
 
     print("OCR model configured successfully.")
 
