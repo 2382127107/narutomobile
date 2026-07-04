@@ -476,9 +476,22 @@
         "recognition": "Or",
         "any_of": [
             {
-                "sub_name": "图像",
+                "sub_name": "初始图像",
                 "recognition": "TemplateMatch",
                 "template": "Practice_place/auto_battle.png",
+                "green_mask": true,
+                "roi": [
+                    0,
+                    0,
+                    140,
+                    103
+                ],
+                "threshold": 0.6
+            },
+            {
+                "sub_name": "图像",
+                "recognition": "TemplateMatch",
+                "template": "SharedNode/auto_fight_button.png",
                 "green_mask": true,
                 "roi": [
                     0,
