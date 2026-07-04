@@ -1073,7 +1073,7 @@ class CheckGetCopperRoll(CustomRecognition):
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
-        roi = [98, 468, 46, 32]
+        roi = [104, 468, 40, 31]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
         now_count = get_digit_count(context, argv.image, roi)
