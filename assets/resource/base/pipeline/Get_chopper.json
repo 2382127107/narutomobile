@@ -171,7 +171,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入二级密码功能[/color]"
+        "focus": "[color:pink]进入二级密码功能[/color]"
     },
     "free_copper_close_secondary_password": {
         "recognition": "OCR",

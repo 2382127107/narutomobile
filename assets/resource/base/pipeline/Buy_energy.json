@@ -122,7 +122,8 @@
             "back_main_screen_and_stop"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "focus": "[color:pink]检查购买体力次数[/color]"
     },
     "try_buy_energy": {
         "recognition": "TemplateMatch",

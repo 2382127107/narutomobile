@@ -373,7 +373,7 @@
             "unknow_error"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "post_delay": 300,
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]小队突袭自动战斗[/color]"
     },
@@ -675,7 +675,7 @@
             "back_main_screen_and_stop"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "post_delay": 300,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]超影扫荡[/color]"
     },
@@ -777,5 +777,61 @@
         "next": [
             "back_main_screen_and_stop"
         ]
+    },
+    "team_dash_check_4x_reward": {
+        "recognition": "TemplateMatch",
+        "template": "Team_dash/check.png",
+        "roi": [
+            439,
+            637,
+            118,
+            81
+        ],
+        "method": 10001,
+        "threshold": 0.9,
+        "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:pink]勾选4倍奖励[/color]"
+    },
+    "team_dash_check_not_4x_reward": {
+        "recognition": "TemplateMatch",
+        "template": "Team_dash/not_check.png",
+        "roi": [
+            439,
+            637,
+            118,
+            81
+        ],
+        "method": 10001,
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "team_dash_check_4x_reward",
+            "team_dash_check_not_4x_reward"
+        ],
+        "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 500
+    },
+    "team_dash_confrim_4x_select": {
+        "recognition": "TemplateMatch",
+        "template": "Team_dash/confrim_4x_select.png",
+        "roi": [
+            654,
+            357,
+            214,
+            106
+        ],
+        "action": "Click",
+        "next": [
+            "team_dash_loading",
+            "check_in_team_dash_sweep",
+            "dash_or_exit",
+            "team_dash_confrim_4x_select"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "focus": "[color:pink]点击确认勾选4倍奖励[/color]"
     }
 }
