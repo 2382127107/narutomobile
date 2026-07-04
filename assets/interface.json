@@ -3257,8 +3257,8 @@
                     "pipeline_override": {
                         "use_energy_ez_sweep_entry": {
                             "next": [
-                                "check_one_key_select",
-                                "check_not_one_key_select",
+                                "use_energy_check_one_key_select",
+                                "use_energy_check_not_one_key_select",
                                 "[JumpBack]use_energy_ez_sweep_entry"
                             ]
                         }

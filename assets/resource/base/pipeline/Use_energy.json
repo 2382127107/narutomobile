@@ -189,7 +189,7 @@
         ],
         "focus": "[color:DeepSkyBlue]扫荡完成或者没有选中扫荡副本[/color]"
     },
-    "check_one_key_select": {
+    "use_energy_check_one_key_select": {
         "recognition": "TemplateMatch",
         "template": "Use_energy/check.png",
         "roi": [
@@ -205,7 +205,7 @@
         "pre_delay": 0,
         "post_delay": 0
     },
-    "check_not_one_key_select": {
+    "use_energy_check_not_one_key_select": {
         "recognition": "TemplateMatch",
         "template": "Use_energy/not_check.png",
         "roi": [
@@ -217,8 +217,8 @@
         "action": "Click",
         "threshold": 0.9,
         "next": [
-            "check_one_key_select",
-            "check_not_one_key_select"
+            "use_energy_check_one_key_select",
+            "use_energy_check_not_one_key_select"
         ],
         "pre_delay": 0,
         "post_delay": 300
