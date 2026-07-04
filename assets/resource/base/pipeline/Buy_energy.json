@@ -48,6 +48,7 @@
         "next": [
             "[JumpBack]energy_upper_limit",
             "[JumpBack]secondary_password",
+            "[JumpBack]check_not_in_buy_energy",
             "check_buy_energy",
             "[JumpBack]try_buy_energy",
             "[JumpBack]pay_to_stronger_tip",
@@ -71,6 +72,44 @@
         "next": [
             "back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "check_not_in_buy_energy": {
+        "recognition": "TemplateMatch",
+        "template": "Buy_energy/in_buy_energy.png",
+        "roi": [
+            565,
+            276,
+            150,
+            111
+        ],
+        "inverse": true,
+        "next": [
+            "[JumpBack]energy_upper_limit",
+            "[JumpBack]secondary_password",
+            "[JumpBack]pay_to_stronger_tip",
+            "check_in_buy_energy"
+        ],
+        "on_error": [
+            "back_main_screen_and_stop"
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "check_in_buy_energy": {
+        "recognition": "TemplateMatch",
+        "template": "Buy_energy/in_buy_energy.png",
+        "roi": [
+            565,
+            276,
+            150,
+            111
+        ],
+        "method": 10001,
+        "threshold": 0.95,
         "pre_delay": 0,
         "post_delay": 0
     },
