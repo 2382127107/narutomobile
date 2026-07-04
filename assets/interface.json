@@ -166,6 +166,9 @@
         {
             "name": "刷体力(精英副本)",
             "entry": "use_energy",
+            "option": [
+                "精英副本一键全选"
+            ],
             "default_check": true
         },
         {
@@ -3236,6 +3239,27 @@
                                 "ground_battlefield",
                                 "sky_ground_settlement",
                                 "sky_ground_not_open"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "精英副本一键全选": {
+            "type": "switch",
+            "description": "开启后会勾选一键全选后再扫荡",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "use_energy_ez_sweep_entry": {
+                            "next": [
+                                "check_one_key_select",
+                                "check_not_one_key_select",
+                                "[JumpBack]use_energy_ez_sweep_entry"
                             ]
                         }
                     }

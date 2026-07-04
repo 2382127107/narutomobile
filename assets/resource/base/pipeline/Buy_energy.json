@@ -89,9 +89,7 @@
             "[JumpBack]energy_upper_limit",
             "[JumpBack]secondary_password",
             "[JumpBack]pay_to_stronger_tip",
-            "check_in_buy_energy"
-        ],
-        "on_error": [
+            "check_in_buy_energy",
             "back_main_screen_and_stop"
         ],
         "method": 10001,
