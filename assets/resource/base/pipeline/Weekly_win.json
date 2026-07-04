@@ -157,6 +157,7 @@
         ],
         "green_mask": true,
         "next": [
+            "winner_decided",
             "weekly_win_substitution",
             "battle_end"
         ],
@@ -165,7 +166,11 @@
             "weekly_win_success",
             "weekly_win_fail",
             "[JumpBack]game_resource_loading",
-            "weekly_win"
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
+            "[JumpBack]go_to_war",
+            "[JumpBack]check_has_x"
         ],
         "pre_delay": 0,
         "post_delay": 2000,
@@ -368,6 +373,7 @@
         ],
         "threshold": 0.9,
         "next": [
+            "weekly_win_substitution",
             "weekly_win_match_fighting",
             "[JumpBack]battle_tips",
             "battle_end"
