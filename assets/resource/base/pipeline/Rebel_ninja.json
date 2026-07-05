@@ -219,7 +219,7 @@
     "rebel_ninja_confirm_tip": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             407,
@@ -845,7 +845,7 @@
     "rebel_ninja_confirm_enemy": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             516,
@@ -864,7 +864,7 @@
     "rebel_ninja_without_confirm_enemy": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             516,

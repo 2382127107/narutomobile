@@ -231,7 +231,7 @@
                 "金币助手"
             ],
             "default_check": true,
-            "description": "该任务并不稳定，如遇卡顿可能需要人工接管。"
+            "description": "该任务并不稳定,如遇卡顿可能需要人工接管"
         },
         {
             "name": "邮箱",
@@ -242,6 +242,14 @@
             "name": "活跃宝箱",
             "entry": "liveness_award",
             "default_check": true
+        },
+        {
+            "name": "商店兑换",
+            "entry": "shop",
+            "option": [
+                "玉石商店"
+            ],
+            "description": "进行商店日常兑换[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
         {
             "name": "秘境",
@@ -838,18 +846,18 @@
             "description": "会先执行按轮招财,再执行按次招财",
             "cases": [
                 {
-                    "name": "Yes",
-                    "option": [
-                        "招财次数"
-                    ]
-                },
-                {
                     "name": "No",
                     "pipeline_override": {
                         "get_copper_by_count": {
                             "enabled": false
                         }
                     }
+                },
+                {
+                    "name": "Yes",
+                    "option": [
+                        "招财次数"
+                    ]
                 }
             ]
         },
@@ -935,7 +943,7 @@
                         "team_dash_do_not_remind_gold": {
                             "next": [
                                 "team_dash_do_not_remind_gold",
-                                "team_dash_confrim_4x_select"
+                                "team_dash_confirm_4x_select"
                             ]
                         }
                     }
@@ -1842,6 +1850,442 @@
                     "pipeline_override": {}
                 }
             ]
+        },
+        "玉石商店": {
+            "type": "switch",
+            "description": "不想代码太乱,只做两个兑换位",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "shop_to_shop_parent_shop": {
+                            "enabled": true
+                        },
+                        "shop_to_jade_child_shop": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "玉石商店兑换",
+                        "兑换玉石"
+                    ]
+                }
+            ]
+        },
+        "玉石商店兑换": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "一个兑换位",
+                    "option": [
+                        "玉石一号兑换位",
+                        "玉石一号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "不兑换"
+                },
+                {
+                    "name": "两个兑换位",
+                    "option": [
+                        "玉石一号兑换位",
+                        "玉石一号位兑换数量",
+                        "玉石二号兑换位",
+                        "玉石二号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "enabled": true
+                        },
+                        "shop_jade_child_shop_shot_2": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "兑换玉石": {
+            "type": "switch",
+            "description": "将多余的碎片兑换成玉石,只有批量兑换;需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "option": [
+                        "兑换玉石规则"
+                    ],
+                    "pipeline_override": {
+                        "shop_exchange_jade": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "兑换玉石规则": {
+            "type": "select",
+            "description": "设置玉石商店兑换玉石的规则;只会勾选,不会取消",
+            "cases": [
+                {
+                    "name": "按忍者等级",
+                    "option": [
+                        "分级兑换玉石"
+                    ]
+                },
+                {
+                    "name": "自由选择",
+                    "option": [
+                        "自由兑换玉石"
+                    ]
+                }
+            ]
+        },
+        "分级兑换玉石": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "A忍及以下",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_A": {
+                            "enabled": true
+                        },
+                        "shop_exchange_jade_not_check_B": {
+                            "enabled": true
+                        },
+                        "shop_exchange_jade_not_check_C": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "S忍及以下",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_S": {
+                            "enabled": true
+                        },
+                        "shop_exchange_jade_not_check_A": {
+                            "enabled": true
+                        },
+                        "shop_exchange_jade_not_check_B": {
+                            "enabled": true
+                        },
+                        "shop_exchange_jade_not_check_C": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "B忍及以下",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_B": {
+                            "enabled": true
+                        },
+                        "shop_exchange_jade_not_check_C": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "C忍",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_C": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "自由兑换玉石": {
+            "type": "checkbox",
+            "cases": [
+                {
+                    "name": "兑换S忍",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_S": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "兑换A忍",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_B": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "兑换B忍",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_C": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "兑换C忍",
+                    "pipeline_override": {
+                        "shop_exchange_jade_not_check_C": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "玉石一号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "old蛇"
+                },
+                {
+                    "name": "百战蛇",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_fight_snake"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "old水",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_old_water"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "百战水",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_fight_water"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "old自",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_the_oldest"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "一尾鸣人",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_one_tail_naruto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6级红勾玉",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_red_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6级青勾玉",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_cyan_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "奥秘精华",
+                    "description": "你真要换这个吗",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_mystery_essence"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "玉石二号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "old蛇"
+                },
+                {
+                    "name": "百战蛇",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_fight_snake"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "old水",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_old_water"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "百战水",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_fight_water"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "old自",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_the_oldest"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "一尾鸣人",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_one_tail_naruto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6级红勾玉",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_red_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6级青勾玉",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_cyan_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "奥秘精华",
+                    "description": "你真要换这个吗",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_mystery_essence"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "玉石一号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "一号数量",
+                    "label": "一号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "jade_good_slot_1_set": {
+                    "max_hit": "{一号数量}"
+                }
+            }
+        },
+        "玉石二号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "二号数量",
+                    "label": "二号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "jade_good_slot_2_set": {
+                    "max_hit": "{二号数量}"
+                }
+            }
         },
         "选择小游戏": {
             "type": "select",

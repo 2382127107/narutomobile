@@ -15,7 +15,9 @@
                 "CleanupOnErrorImg",
                 "CleanupVisionImg",
                 "CleanupCustomImg",
-                "CleanupCustomLog"
+                "CleanupCustomLog",
+                "ShopSwipeBack",
+                "SecondaryPasswordAction"
             ]
         },
         "custom_action_param": {
@@ -55,6 +57,12 @@
                 },
                 {
                     "$ref": "#/$defs/CleanupCustomLogParam"
+                },
+                {
+                    "$ref": "#/$defs/ShopSwipeBackParam"
+                },
+                {
+                    "$ref": "#/$defs/SecondaryPasswordAction"
                 }
             ]
         }
@@ -181,6 +189,18 @@
             "type": "object",
             "description": "清理 debug/custom 目录下的过期日志文件",
             "markdownDescription": "清理 debug/custom 目录下的过期日志文件\n\n**功能说明：**\n- 删除所有日志日期早于全局基准日期的文件(日志格式 YYYY-MM-DD.log)\n\n**返回值：**\n- `success` 正常时返回 true",
+            "properties": {}
+        },
+        "ShopSwipeBackParam": {
+            "type": "object",
+            "description": "清零swipe_for_goods节点的max_hit计数器,并且滑回商店头部",
+            "markdownDescription": "",
+            "properties": {}
+        },
+        "SecondaryPasswordAction": {
+            "type": "object",
+            "description": "协助处理二级密码相关事务",
+            "markdownDescription": "",
             "properties": {}
         }
     }

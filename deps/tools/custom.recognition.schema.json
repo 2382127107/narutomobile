@@ -16,7 +16,8 @@
                 "MissionOfficeStrategy",
                 "CheckGetCopperRoll",
                 "CheckGetCopperCount",
-                "CheckBuyEnergyCount"
+                "CheckBuyEnergyCount",
+                "Shopping"
             ]
         },
         "custom_recognition_param": {

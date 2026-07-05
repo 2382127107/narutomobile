@@ -442,7 +442,7 @@
         ],
         "action": "Click",
         "next": [
-            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confrim",
+            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confirm",
             "get_aoyi_picture_challenge_quit_back_to_icon",
             "get_aoyi_picture_challenge_quit_back"
         ],
@@ -450,10 +450,10 @@
         "post_delay": 0,
         "post_wait_freezes": 500
     },
-    "get_aoyi_picture_challenge_dice_quit_confrim": {
+    "get_aoyi_picture_challenge_dice_quit_confirm": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             634,
@@ -479,7 +479,7 @@
         ],
         "action": "Click",
         "next": [
-            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confrim",
+            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confirm",
             "get_aoyi_picture_challenge_lag_back_to_icon",
             "get_aoyi_picture_challenge_lag_back"
         ],
@@ -500,7 +500,7 @@
         ],
         "action": "Click",
         "next": [
-            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confrim",
+            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confirm",
             "get_aoyi_picture_challenge_quit_in_icon",
             "get_aoyi_picture_challenge_quit_back_to_icon"
         ],

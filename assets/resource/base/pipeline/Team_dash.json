@@ -215,7 +215,7 @@
             {
                 "sub_name": "in_my_help",
                 "recognition": "TemplateMatch",
-                "template": "SharedNode/confrim_small_1.png",
+                "template": "SharedNode/confirm_small_1.png",
                 "roi": [
                     972,
                     564,
@@ -434,7 +434,7 @@
     },
     "team_dash_quit_group_team": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim_small.png",
+        "template": "SharedNode/confirm_small.png",
         "roi": [
             560,
             397,
@@ -828,9 +828,9 @@
         "pre_delay": 0,
         "post_delay": 500
     },
-    "team_dash_confrim_4x_select": {
+    "team_dash_confirm_4x_select": {
         "recognition": "TemplateMatch",
-        "template": "Team_dash/confrim_4x_select.png",
+        "template": "Team_dash/confirm_4x_select.png",
         "roi": [
             654,
             357,
@@ -842,7 +842,7 @@
             "team_dash_loading",
             "check_in_team_dash_sweep",
             "dash_or_exit",
-            "team_dash_confrim_4x_select"
+            "team_dash_confirm_4x_select"
         ],
         "pre_delay": 0,
         "post_delay": 500,

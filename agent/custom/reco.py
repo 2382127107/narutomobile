@@ -1057,7 +1057,7 @@ def get_digit_count(context: Context, image: ndarray, roi: list[int]) -> int | N
 
     try:
         token_count = int(num_match.group())
-        logger.info(f" ROI{roi} 解析到token数量:{token_count}")
+        logger.info(f" ROI{roi} 解析到的纯数字:{token_count}")
         return token_count
     except ValueError:
         logger.warning(f"ROI{roi} 数字转换失败，提取字符串：{num_match.group()}")
@@ -1147,3 +1147,205 @@ class CheckBuyEnergyCount(CustomRecognition):
             f"购买体力计数器状态: 最大值:{count} 当前值: {self.start_count - now_count},初始值{self.start_count},识别值{now_count}"
         )
         return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("Shopping")
+class Shopping(CustomRecognition):
+    """
+    商店兑换
+    """
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        context.clear_hit_count("shop_swipe_back_for_good")
+        context.override_next(
+            "shop_jade_child_shopping",
+            [
+                "[JumpBack]secondary_password",
+                "shop_jade_child_shopping_interface",
+                "shop_swipe_back_for_good",
+            ],
+        )
+        param = json.loads(argv.custom_recognition_param)
+        shop_type = param.get("shop_type", "root_shop")
+        logger.info(f"商店类型: {shop_type}")
+        if (
+            shop_type == "jade_child_shop"
+            or "survival_child_shop"
+            or "point_race_child_shop"
+        ):
+            total_roi = [1019, 17, 128, 37]
+        elif shop_type == "group_child_shop":
+            total_roi = [646, 16, 130, 37]
+        else:
+            logger.info("暂不支持")
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        box = get_child_shop_info(context, argv.image, total_roi)
+        if box is None:
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+        x, y, w, h = box
+        logger.info(f"点击位置[{x},{y},{w},{h}]")
+
+        return CustomRecognition.AnalyzeResult(box=Rect(x, y, w, h), detail={})
+
+
+def get_child_shop_info(
+    context: Context, image: ndarray, total_roi: list[int]
+) -> Optional[List[int]]:
+    """
+    获取商店信息,返回可购买商品的价格区域坐标[x, y, w, h],否则返回 None;
+    """
+    slot_1 = context.get_anchor("jade_child_shop_slot_1")
+    slot_2 = context.get_anchor("jade_child_shop_slot_2")
+    if slot_1 is not None:
+        slot = slot_1
+        node_data_key = "jade_good_slot_1_set"
+    elif slot_2 is not None:
+        slot = slot_2
+        node_data_key = "jade_good_slot_2_set"
+    else:
+        logger.error("未找到任何玉石商店锚点配置")
+        return None
+
+    node_data = context.get_node_data(node_data_key)
+    if not node_data or "max_hit" not in node_data:
+        logger.error(f"节点数据 {node_data_key} 缺失或无效")
+        return None
+
+    count = node_data["max_hit"]
+    logger.info(f"购买数量: {count}")
+    context.override_pipeline(
+        {"shop_jade_child_check_shopping_count": {"expected": str(count)}}
+    )
+
+    reco_detail = context.run_recognition(slot, image)
+    if not reco_detail or not reco_detail.hit:
+        logger.warning("商品图标识别未命中")
+        return None
+
+    best_box = reco_detail.best_result.box
+
+    # 解析限购文本
+    limit_roi = [
+        best_box[0] + 10,
+        best_box[1] + 87,
+        192,
+        138,
+    ]
+    limit_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": limit_roi}}
+    )
+    limit_text = (
+        str(limit_detail.best_result.text).strip()
+        if limit_detail and limit_detail.hit
+        else ""
+    )
+    logger.info(f"限购文本: '{limit_text}'")
+    if not parse_limit_text(limit_text, count):
+        logger.info("限购条件不满足，不可购买")
+        return None
+
+    # 解析总货币数量
+    total_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": total_roi}}
+    )
+    total_text = (
+        str(total_detail.best_result.text).strip()
+        if total_detail and total_detail.hit
+        else ""
+    )
+    try:
+        total_value = _extract_number(total_text)
+    except (ValueError, TypeError):
+        logger.error(f"货币总数解析失败: '{total_text}'")
+        return None
+
+    # 解析价格
+    price_roi = [
+        best_box[0] + 42,
+        best_box[1] + 179,
+        123,
+        54,
+    ]
+    price_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": price_roi}}
+    )
+    price_text = (
+        str(price_detail.best_result.text).strip()
+        if price_detail and price_detail.hit
+        else ""
+    )
+    try:
+        price_value = _extract_number(price_text)
+    except (ValueError, TypeError):
+        logger.error(f"价格解析失败: '{price_text}'")
+        return None
+
+    if price_value <= 0:
+        logger.warning("价格识别为0或负数,跳过购买")
+        return None
+
+    if total_value >= price_value * count:
+        if count > 1:
+            context.override_next(
+                "shop_jade_child_shopping",
+                [
+                    "[JumpBack]secondary_password",
+                    "shop_jade_child_shopping_interface",
+                    "shop_jade_child_follow_up_shopping",
+                    "shop_swipe_back_for_good",
+                ],
+            )
+            count -= 1
+            context.override_pipeline(
+                {
+                    "shop_jade_child_follow_up_shopping": {
+                        "target": price_roi,
+                        "repeat": count,
+                    }
+                }
+            )
+        return price_roi
+    logger.info(f"货币不足: 需要{price_value * count}, 拥有{total_value}")
+    return None
+
+
+def parse_limit_text(limit_text: str, buy_count: int) -> bool:
+    """
+    根据限购文本判断是否可以购买
+    """
+    if not limit_text:
+        logger.warning("限购文本为空,拒绝购买")
+        return False
+    if "已拥有" in limit_text or "售罄" in limit_text or "售馨" in limit_text:
+        return False
+
+    nums = re.findall(r"\d+", limit_text)
+    if len(nums) >= 2:
+        try:
+            bought = int(nums[0])
+            total = int(nums[1])
+        except ValueError:
+            return False
+        if bought + buy_count > total:
+            logger.info(f"限购不足:已购{bought}/{total},需要购买{buy_count}")
+            return False
+        return True
+    # 仅有一个数字或无法识别的格式,保守处理
+    logger.warning(f"限购文本格式无法明确判断: '{limit_text}'")
+    return False
+
+
+def _extract_number(text: str) -> Optional[int]:
+    """从文本中提取第一个连续数字并返回整数，失败返回 None"""
+    if not text:
+        return None
+    nums = re.findall(r"\d+", text)
+    if nums:
+        try:
+            return int(nums[0])
+        except ValueError:
+            pass
+    return None

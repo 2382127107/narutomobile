@@ -215,7 +215,7 @@
     },
     "confirm_train_road_reset": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             532,
             409,
