@@ -244,14 +244,6 @@
             "default_check": true
         },
         {
-            "name": "商店兑换",
-            "entry": "shop",
-            "option": [
-                "玉石商店"
-            ],
-            "description": "进行商店日常兑换[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
-        },
-        {
             "name": "秘境",
             "entry": "secret_realm",
             "option": [
@@ -273,6 +265,14 @@
             ],
             "default_check": true,
             "description": "请在主页开始任务,连点器任务可能不兼容**雷电模拟器**"
+        },
+        {
+            "name": "商店兑换",
+            "entry": "shop",
+            "option": [
+                "玉石商店"
+            ],
+            "description": "进行商店日常兑换[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
         {
             "name": "铜币招财[二级密码](beta)",

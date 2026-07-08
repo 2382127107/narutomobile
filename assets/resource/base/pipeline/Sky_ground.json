@@ -821,7 +821,8 @@
     "sky_ground_end": {
         "recognition": "OCR",
         "expected": [
-            "天地战场活动已结束"
+            "天地战场活动已结束",
+            "提前结束"
         ],
         "roi": [
             459,
