@@ -701,6 +701,7 @@
         "action": "Click",
         "next": [
             "shop_jade_child_shopping_interface",
+            "[JumpBack]shop_confirm_exchange",
             "shop_swipe_back_for_good"
         ],
         "repeat": 1,
@@ -716,6 +717,35 @@
                 150
             ]
         }
+    },
+    "shop_confirm_exchange": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confirm_small.png",
+        "roi": [
+            597,
+            431,
+            79,
+            66
+        ],
+        "action": "Click",
+        "next": [
+            "shop_witnout_confirm_exchange",
+            "shop_confirm_exchange"
+        ],
+        "pre_delay": 0,
+        "post_delay": 400
+    },
+    "shop_witnout_confirm_exchange": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confirm_small.png",
+        "roi": [
+            597,
+            431,
+            79,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "shop_jade_child_follow_up_shopping": {
         "action": "Click",
@@ -814,6 +844,8 @@
             180,
             118
         ],
+        "method": 10001,
+        "threshold": 0.9,
         "max_hit": 1,
         "next": [
             "shop_jade_child_shop_shot_2",

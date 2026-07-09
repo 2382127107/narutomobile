@@ -493,11 +493,4 @@ class CleanupCustomLog(CustomAction):
     def run(
         self, context: Context, argv: CustomAction.RunArg
     ) -> CustomAction.RunResult:
-        context.override_next(
-            "shop_jade_child_shopping",
-            [
-                "shop_jade_child_shopping",
-                "shop_swipe_back_for_good",
-            ],
-        )
         return CustomAction.RunResult(success=True)

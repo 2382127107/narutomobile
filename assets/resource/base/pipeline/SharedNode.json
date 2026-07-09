@@ -1295,8 +1295,6 @@
       64
     ],
     "inverse": true,
-    "action": "Custom",
-    "custom_action": "SecondaryPasswordAction",
     "next": "back_main_screen_and_stop",
     "pre_delay": 0,
     "post_delay": 0

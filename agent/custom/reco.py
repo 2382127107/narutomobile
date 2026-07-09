@@ -1159,13 +1159,6 @@ class Shopping(CustomRecognition):
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
         context.clear_hit_count("shop_swipe_back_for_good")
-        context.override_next(
-            "shop_jade_child_shopping",
-            [
-                "shop_jade_child_shopping_interface",
-                "shop_swipe_back_for_good",
-            ],
-        )
         param = json.loads(argv.custom_recognition_param)
         shop_type = param.get("shop_type", "root_shop")
         logger.info(f"商店类型: {shop_type}")
@@ -1292,6 +1285,7 @@ def get_child_shop_info(
                 "shop_jade_child_shopping",
                 [
                     "shop_jade_child_shopping_interface",
+                    "[JumpBack]shop_confirm_exchange",
                     "shop_jade_child_follow_up_shopping",
                     "shop_swipe_back_for_good",
                 ],
