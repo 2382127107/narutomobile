@@ -926,24 +926,6 @@
                                 "[JumpBack]team_dash_in_loading"
                             ]
                         },
-                        "team_dash_auto_fight": {
-                            "next": [
-                                "[JumpBack]team_dash_same_ninja",
-                                "team_dash_loading",
-                                "check_in_team_dash_sweep",
-                                "team_dash_do_not_remind_gold",
-                                "team_dash_auto_fight",
-                                "[JumpBack]team_dash_in_loading"
-                            ]
-                        },
-                        "team_dash_above_kage_sweep": {
-                            "next": [
-                                "[JumpBack]team_dash_above_kage_quit",
-                                "team_dash_do_not_remind_gold",
-                                "team_dash_above_kage_sweep",
-                                "back_main_screen_and_stop"
-                            ]
-                        },
                         "team_dash_do_not_remind_gold": {
                             "next": [
                                 "team_dash_do_not_remind_gold",
