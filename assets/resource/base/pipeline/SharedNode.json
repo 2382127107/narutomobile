@@ -892,8 +892,7 @@
   "ninja_guide_to_funtion_entry": {
     "recognition": "OCR",
     "expected": [
-      "即刻",
-      "前往"
+      "即刻"
     ],
     "roi": [
       852,
@@ -1115,8 +1114,7 @@
   "ninja_guide_returning_player_to_funtion_entry": {
     "recognition": "OCR",
     "expected": [
-      "即刻",
-      "前往"
+      "即刻"
     ],
     "roi": [
       916,
