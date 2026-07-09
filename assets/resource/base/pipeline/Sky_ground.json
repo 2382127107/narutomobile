@@ -253,13 +253,13 @@
         "action": "Click",
         "next": [
             "sky_ground_recommended_ninja",
-            "sky_ground_select_nijia",
+            "sky_ground_select_ninja",
             "[JumpBack]sky_ground_confirm_battlefield_selection"
         ],
         "post_wait_freezes": 800,
         "focus": "[color:DeepSkyBlue]确认战场选择[/color]"
     },
-    "sky_ground_select_nijia": {
+    "sky_ground_select_ninja": {
         "recognition": "TemplateMatch",
         "template": "Sky_ground/ninja_star.png",
         "roi": [
@@ -271,7 +271,7 @@
         "action": "Click",
         "next": [
             "sky_ground_selected_ninja",
-            "[JumpBack]sky_ground_select_nijia"
+            "[JumpBack]sky_ground_select_ninja"
         ],
         "post_wait_freezes": 800,
         "focus": "[color:DeepSkyBlue]选择忍者[/color]"

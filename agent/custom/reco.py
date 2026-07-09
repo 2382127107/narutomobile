@@ -1162,7 +1162,6 @@ class Shopping(CustomRecognition):
         context.override_next(
             "shop_jade_child_shopping",
             [
-                "[JumpBack]secondary_password",
                 "shop_jade_child_shopping_interface",
                 "shop_swipe_back_for_good",
             ],
@@ -1292,7 +1291,6 @@ def get_child_shop_info(
             context.override_next(
                 "shop_jade_child_shopping",
                 [
-                    "[JumpBack]secondary_password",
                     "shop_jade_child_shopping_interface",
                     "shop_jade_child_follow_up_shopping",
                     "shop_swipe_back_for_good",

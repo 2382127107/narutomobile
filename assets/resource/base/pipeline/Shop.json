@@ -257,7 +257,6 @@
         "action": "Click",
         "next": [
             "shop_confirm_exchange_jade",
-            "[JumpBack]secondary_password",
             "shop_try_exchange_jade",
             "shop_exchange_jade_done"
         ],
@@ -276,7 +275,6 @@
         ],
         "action": "Click",
         "next": [
-            "[JumpBack]secondary_password",
             "shop_confirm_exchange_jade",
             "shop_exchange_jade_done"
         ],
@@ -702,7 +700,6 @@
         },
         "action": "Click",
         "next": [
-            "[JumpBack]secondary_password",
             "shop_jade_child_shopping_interface",
             "shop_swipe_back_for_good"
         ],
@@ -794,7 +791,6 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "[JumpBack]secondary_password",
             "shop_jade_child_buy_shopping_count",
             "shop_swipe_back_for_good"
         ],

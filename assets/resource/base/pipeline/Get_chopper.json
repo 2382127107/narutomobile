@@ -203,7 +203,6 @@
         "next": [
             "check_get_copper_by_roll",
             "check_get_copper_by_roll_1",
-            "[JumpBack]secondary_password",
             "[JumpBack]try_get_copper_by_roll",
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
@@ -272,7 +271,6 @@
         "next": [
             "check_get_copper_by_count",
             "[JumpBack]try_get_copper_by_count",
-            "[JumpBack]secondary_password",
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
         ],
