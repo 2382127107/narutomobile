@@ -501,6 +501,7 @@
         ],
         "action": "Click",
         "next": [
+            "get_aoyi_picture_challenge_option",
             "[JumpBack]get_aoyi_picture_challenge_dice_quit_confirm",
             "get_aoyi_picture_challenge_quit_in_icon",
             "get_aoyi_picture_challenge_quit_back_to_icon"
@@ -571,7 +572,10 @@
         ],
         "next": [
             "get_aoyi_picture_challenge_use_dice",
-            "get_aoyi_picture_challenge_option_check"
+            "get_aoyi_picture_challenge_option_check",
+            "get_aoyi_picture_challenge_goto_other",
+            "get_aoyi_picture_challenge_OK",
+            "get_aoyi_picture_challenge_dice_done"
         ],
         "pre_delay": 0,
         "post_delay": 0
@@ -589,6 +593,7 @@
         ],
         "action": "Click",
         "next": [
+            "get_aoyi_picture_challenge_option",
             "get_aoyi_picture_challenge_use_dice",
             "get_aoyi_picture_challenge_goto_other",
             "get_aoyi_picture_challenge_OK"
