@@ -363,6 +363,7 @@
         ],
         "action": "Click",
         "next": [
+            "get_aoyi_picture_challenge_option",
             "get_aoyi_picture_challenge_icon",
             "get_aoyi_picture_challenge_lag_back_to_icon"
         ],
