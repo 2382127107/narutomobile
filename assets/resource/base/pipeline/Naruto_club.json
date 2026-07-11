@@ -869,12 +869,28 @@
         "next": [
             "[JumpBack]naruto_club_duplicate_claim",
             "[JumpBack]club_submit",
+            "club_submit_blank",
             "check_club_all_submit"
         ],
         "on_error": [
             "unknow_error"
         ],
         "post_wait_freezes": 1000
+    },
+    "club_submit_blank": {
+        "recognition": "TemplateMatch",
+        "template": "Naruto_club/club_misson_blank.png",
+        "roi": [
+            35,
+            236,
+            674,
+            483
+        ],
+        "threshold": 0.9,
+        "next": "back_main_screen_and_stop",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DarkGoldenRod]这里已经空了,可能是系统繁忙,退出请报社[/color]"
     },
     "check_club_all_submit": {
         "recognition": "TemplateMatch",
@@ -891,6 +907,7 @@
             "check_club_all_submit",
             "[JumpBack]club_first_award_on_error"
         ],
+        "max_hit": 5,
         "inverse": true,
         "focus": "[color:DeepSkyBlue]检测任务是否已经全部提交[/color]",
         "timeout": 10000,
