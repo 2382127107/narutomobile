@@ -276,7 +276,8 @@
             "name": "商店兑换(beta)",
             "entry": "shop",
             "option": [
-                "玉石商店"
+                "玉石商店",
+                "生存商店"
             ],
             "description": "进行商店日常兑换[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
@@ -1836,7 +1837,7 @@
         },
         "玉石商店": {
             "type": "switch",
-            "description": "不想代码太乱,只做两个兑换位",
+            "description": "不想代码太乱,只做两个兑换位;目前还没优化好,可能有的选项出错",
             "cases": [
                 {
                     "name": "No"
@@ -2112,8 +2113,18 @@
                     }
                 },
                 {
+                    "name": "声望",
+                    "description": "推荐一个雷霆",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_1": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "shop_jade_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
                     "name": "奥秘精华",
-                    "description": "你真要换这个吗",
                     "pipeline_override": {
                         "shop_jade_child_shop_shot_1": {
                             "anchor": {
@@ -2219,8 +2230,19 @@
                     }
                 },
                 {
+                    "name": "声望",
+                    "description": "推荐一个雷霆",
+                    "pipeline_override": {
+                        "shop_jade_child_shop_shot_2": {
+                            "anchor": {
+                                "jade_child_shop_slot_1": "",
+                                "jade_child_shop_slot_2": "shop_jade_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
                     "name": "奥秘精华",
-                    "description": "你真要换这个吗",
                     "pipeline_override": {
                         "shop_jade_child_shop_shot_2": {
                             "anchor": {
@@ -2266,6 +2288,309 @@
             ],
             "pipeline_override": {
                 "jade_good_slot_2_set": {
+                    "max_hit": "{二号数量}"
+                }
+            }
+        },
+        "生存商店": {
+            "type": "switch",
+            "description": "不想代码太乱,只做两个兑换位;目前还没优化好,可能有的选项出错",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "shop_to_play_methon_parent_shop": {
+                            "enabled": true
+                        },
+                        "shop_to_survival_child_shop": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "生存商店兑换"
+                    ]
+                }
+            ]
+        },
+        "生存商店兑换": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "一个兑换位",
+                    "option": [
+                        "生存一号兑换位",
+                        "生存一号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "不兑换"
+                },
+                {
+                    "name": "两个兑换位",
+                    "option": [
+                        "生存一号兑换位",
+                        "生存一号位兑换数量",
+                        "生存二号兑换位",
+                        "生存二号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "enabled": true
+                        },
+                        "shop_survival_child_shop_shot_2": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "生存一号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "凯",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_gai"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "红豆"
+                },
+                {
+                    "name": "土台",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_dodai"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "一尾鸣人",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_one_tail_naruto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "重铸符",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_recast_rune"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传井野",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_ino_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传手鞠",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_temari_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "声望",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "忍玉",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_1": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "shop_survival_child_shop_ninja_jade"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "生存二号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "凯",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_gai"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "红豆"
+                },
+                {
+                    "name": "土台",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_dodai"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "一尾鸣人",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_one_tail_naruto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "重铸符",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_recast_rune"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传井野",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_ino_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传手鞠",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_temari_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "声望",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "忍玉",
+                    "pipeline_override": {
+                        "shop_survival_child_shop_shot_2": {
+                            "anchor": {
+                                "survival_child_shop_slot_1": "",
+                                "survival_child_shop_slot_2": "shop_survival_child_shop_ninja_jade"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "生存一号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "一号数量",
+                    "label": "一号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "survival_good_slot_1_set": {
+                    "max_hit": "{一号数量}"
+                }
+            }
+        },
+        "生存二号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "二号数量",
+                    "label": "二号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "survival_good_slot_2_set": {
                     "max_hit": "{二号数量}"
                 }
             }
