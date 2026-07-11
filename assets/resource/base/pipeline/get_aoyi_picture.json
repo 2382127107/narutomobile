@@ -534,10 +534,10 @@
             "aoyi_picture/option.png"
         ],
         "roi": [
-            602,
-            342,
-            103,
-            138
+            535,
+            358,
+            59,
+            116
         ],
         "threshold": 0.95,
         "action": "Click",

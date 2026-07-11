@@ -402,10 +402,7 @@
             "name": "小游戏",
             "entry": "mini_game",
             "option": [
-                "选择小游戏",
-                "忍道交锋刷什么",
-                "羁绊追寻自动退出",
-                "木叶小吃店不选蓝红色奖励"
+                "选择小游戏"
             ],
             "description": "小游戏可以主页进,也可以从有小游戏名的功能入口界面进"
         },
@@ -2280,6 +2277,9 @@
                 {
                     "name": "忍道交锋(beta)",
                     "description": "刷不出来8个S箱",
+                    "option": [
+                        "忍道交锋刷什么"
+                    ],
                     "pipeline_override": {
                         "mini_game": {
                             "next": "nindao_clash"
@@ -2321,6 +2321,9 @@
                 },
                 {
                     "name": "羁绊追寻",
+                    "option": [
+                        "羁绊追寻自动退出"
+                    ],
                     "pipeline_override": {
                         "mini_game": {
                             "next": "find_bonds"
@@ -2329,6 +2332,9 @@
                 },
                 {
                     "name": "木叶小吃店",
+                    "option": [
+                        "木叶小吃店不选蓝红色奖励"
+                    ],
                     "pipeline_override": {
                         "mini_game": {
                             "next": "konoha_snack_shop"
