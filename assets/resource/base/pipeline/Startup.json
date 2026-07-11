@@ -76,14 +76,18 @@
     },
     "close_teenager_page": {
         "recognition": "TemplateMatch",
-        "template": "Startup/teenager_page.png",
+        "template": [
+            "Startup/teenager_page.png",
+            "Startup/teenager_page_1.png"
+        ],
         "roi": [
-            1080,
+            637,
             0,
-            93,
-            50
+            642,
+            325
         ],
         "action": "Click",
+        "pre_delay": 0,
         "pre_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]尝试关闭青少年界面[/color]"
     },
