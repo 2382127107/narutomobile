@@ -247,19 +247,22 @@
     "start_survival_challenge_sweep": {
         "recognition": "TemplateMatch",
         "template": "Practice_place/survival_challenge_sweep.png",
-        "max_hit": 10,
         "roi": [
             706,
             594,
             129,
             110
         ],
+        "method": 10001,
+        "threshold": 0.95,
         "action": "Click",
+        "max_hit": 10,
         "next": [
             "check_survival_challenge_done",
             "survival_challenge_ticket_used_up",
             "survival_challenge_sweep_ready",
-            "start_survival_challenge_sweep"
+            "start_survival_challenge_sweep",
+            "survival_challenge_sweep_ticket_confirm"
         ],
         "timeout": 3000,
         "on_error": [
@@ -267,7 +270,16 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 300,
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300,
+            "target": [
+                520,
+                285,
+                261,
+                150
+            ]
+        },
         "focus": "[color:DeepSkyBlue]进入生存挑战扫荡任务[/color]"
     },
     "check_survival_challenge_done": {
@@ -340,12 +352,57 @@
         "action": "Click",
         "next": [
             "survival_challenge_sweep_ticket_confirm",
-            "survival_challenge_sweep_confirm"
+            "survival_challenge_sweep_confirm",
+            "survival_challenge_ninja_select_confirm"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]确认进行生存挑战[/color]"
+    },
+    "survival_challenge_ninja_select_confirm": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confirm_small_2.png",
+        "roi": [
+            819,
+            508,
+            98,
+            86
+        ],
+        "next": [
+            "survival_challenge_close_ninja_select_confirm"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "survival_challenge_close_ninja_select_confirm": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/survival_challenge_sweep_masked.png",
+        "roi": [
+            718,
+            599,
+            118,
+            103
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "next": [
+            "start_survival_challenge_sweep",
+            "survival_challenge_close_ninja_select_confirm"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300,
+            "target": [
+                520,
+                285,
+                261,
+                150
+            ]
+        }
     },
     "survival_challenge_sweep_ticket_confirm": {
         "recognition": "OCR",
