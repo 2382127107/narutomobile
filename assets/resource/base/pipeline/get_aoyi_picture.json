@@ -308,6 +308,15 @@
             "get_aoyi_picture_challenge_dice_done",
             "get_aoyi_picture_return"
         ],
+        "pre_wait_freezes": {
+            "time": 200,
+            "target": [
+                508,
+                594,
+                244,
+                83
+            ]
+        },
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200
@@ -603,25 +612,23 @@
         "post_wait_freezes": 500
     },
     "get_aoyi_picture_challenge_goto_other": {
-        "recognition": "OCR",
-        "expected": [
-            "第三关（20/20）",
-            "第三关(20/20)"
+        "recognition": "TemplateMatch",
+        "template": "aoyi_picture/goto_other.png",
+        "roi": [
+            40,
+            7,
+            231,
+            66
         ],
         "max_hit": 3,
-        "roi": [
-            51,
-            15,
-            211,
-            51
-        ],
+        "threshold": 0.9,
+        "action": "Click",
         "target": [
             358,
             34,
             84,
             17
         ],
-        "action": "Click",
         "next": [
             "get_aoyi_picture_challenge_use_dice",
             "get_aoyi_picture_return",
