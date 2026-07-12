@@ -125,48 +125,44 @@ class FindToChallenge(CustomRecognition):
                 detail={},
             )
 
-        enemy_list_roi = [714, 207, 248, 431]
+        enemy_rois = [
+            [841, 234, 115, 32],
+            [841, 352, 113, 32],
+            [841, 471, 115, 32],
+            [841, 589, 111, 29],
+        ]
 
         logger.info("尝试读取敌方小队战力...")
 
-        reco_detail = context.run_recognition(
-            "GetSenryokuText",
-            argv.image,
-            {
-                "GetSenryokuText": {"roi": enemy_list_roi},
-            },
-        )
-
-        if (reco_detail is None) or len(reco_detail.filtered_results) < 4:
-            logger.warning("无法读取到敌队战力！")
-            logger.debug(
-                f"识别结果：{reco_detail.all_results if reco_detail else None}"
-            )
-            return CustomRecognition.AnalyzeResult(
-                box=None,
-                detail={},
-            )
-
         pattern = re.compile(r"\d+万?")
         enemySenryoku_list = []
-        for x in reco_detail.filtered_results[:4]:
-            match = pattern.search(x.text)  # ty:ignore[unresolved-attribute]
+
+        for roi in enemy_rois:
+            reco_detail = context.run_recognition(
+                "GetSenryokuText",
+                argv.image,
+                {
+                    "GetSenryokuText": {"roi": roi},
+                },
+            )
+
+            if reco_detail is None or not reco_detail.hit:
+                logger.warning(f"无法读取到敌队战力,ROI: {roi}")
+                enemySenryoku_list.append(1145141919810)  # 一个非常大的数，表示无法挑战
+                continue
+
+            text = reco_detail.best_result.text
+            match = pattern.search(text)
             if match:
                 senryoku = correct_senryoku_text(match.group())
                 if senryoku:
                     enemySenryoku_list.append(senryoku)
                 else:
-                    logger.warning(
-                        f"无法解析战力文本: {x.text}"  # ty:ignore[unresolved-attribute]
-                    )
-                    enemySenryoku_list.append(
-                        1145141919810
-                    )  # 一个非常大的数，表示无法挑战
+                    logger.warning(f"无法解析战力文本: {text}")
+                    enemySenryoku_list.append(1145141919810)
             else:
-                logger.warning(
-                    f"无法解析战力文本: {x.text}"  # ty:ignore[unresolved-attribute]
-                )
-                enemySenryoku_list.append(1145141919810)  # 一个非常大的数，表示无法挑战
+                logger.warning(f"无法解析战力文本: {text}")
+                enemySenryoku_list.append(1145141919810)
 
         min_enemySenryoku = min(enemySenryoku_list)
         idx = enemySenryoku_list.index(min_enemySenryoku)
