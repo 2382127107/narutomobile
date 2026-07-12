@@ -880,7 +880,7 @@
         "max_hit": 1,
         "next": [
             "shop_jade_child_shop_slot_2",
-            "shop_done"
+            "shop_jade_shop_done"
         ],
         "action": "Custom",
         "custom_action": "ShopSwipeBack",
@@ -1364,7 +1364,7 @@
         "max_hit": 1,
         "next": [
             "shop_survival_child_shop_slot_2",
-            "shop_done"
+            "shop_survival_shop_done"
         ],
         "action": "Custom",
         "custom_action": "ShopSwipeBack",
@@ -1789,7 +1789,7 @@
         "max_hit": 1,
         "next": [
             "shop_point_race_child_shop_slot_2",
-            "shop_done"
+            "shop_point_race_shop_done"
         ],
         "action": "Custom",
         "custom_action": "ShopSwipeBack",
@@ -2289,7 +2289,7 @@
         "max_hit": 1,
         "next": [
             "shop_group_child_shop_slot_2",
-            "shop_done"
+            "shop_group_shop_done"
         ],
         "action": "Custom",
         "custom_action": "ShopSwipeBack",
