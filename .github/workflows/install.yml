@@ -234,7 +234,7 @@ jobs:
 
       - uses: actions/upload-artifact@7
         with:
-          name: MaaAutoNaruto-${{ matrix.os }}-${{ matrix.arch }}
+          name: MaaAutoNaruto-${{ matrix.os }}-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
           path: "install"
 
   changelog:
