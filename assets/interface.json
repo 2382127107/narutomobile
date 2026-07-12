@@ -281,7 +281,7 @@
                 "积分赛商店",
                 "组织商店"
             ],
-            "description": "进行商店日常兑换[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
+            "description": "测试商店日常兑换,该功能暂时不受理bug上报[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
         {
             "name": "铜币招财[二级密码](beta)",
@@ -1863,6 +1863,7 @@
         },
         "玉石商店兑换": {
             "type": "select",
+            "description": "一号兑换位物品最好在二号兑换位物品的前面",
             "cases": [
                 {
                     "name": "一个兑换位",
@@ -2319,6 +2320,7 @@
         },
         "生存商店兑换": {
             "type": "select",
+            "description": "一号兑换位物品最好在二号兑换位物品的前面",
             "cases": [
                 {
                     "name": "一个兑换位",
@@ -2569,7 +2571,7 @@
                     "description": "输入需要兑换的数量,最大10",
                     "pipeline_type": "int",
                     "default": "1",
-                    "verify": "^([1-9]|10)$"
+                    "verify": "^([1-9]|1[0-4])$"
                 }
             ],
             "pipeline_override": {
@@ -2588,7 +2590,7 @@
                     "description": "输入需要兑换的数量,最大10",
                     "pipeline_type": "int",
                     "default": "1",
-                    "verify": "^([1-9]|10)$"
+                    "verify": "^([1-9]|1[0-4])$"
                 }
             ],
             "pipeline_override": {
@@ -2622,6 +2624,7 @@
         },
         "积分赛商店兑换": {
             "type": "select",
+            "description": "一号兑换位物品最好在二号兑换位物品的前面",
             "cases": [
                 {
                     "name": "一个兑换位",
@@ -2925,6 +2928,7 @@
         },
         "组织商店兑换": {
             "type": "select",
+            "description": "一号兑换位物品最好在二号兑换位物品的前面",
             "cases": [
                 {
                     "name": "一个兑换位",
@@ -2964,7 +2968,137 @@
             "type": "select",
             "cases": [
                 {
-                    "name": "红豆"
+                    "name": "阿斯玛"
+                },
+                {
+                    "name": "疾风传鸣人",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_naruto_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传樱",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_sakura_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传井野",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_ino_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "随机忍者",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_random_ninja"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "组织饰品礼盒",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_group_box"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "忍玉",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_ninja_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "铜币",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_copper"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "秘术之尘",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_magic_dust"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "秘术之星",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_magic_star"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "奥秘精华",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_mystery_essence"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "声望",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "随机三级勾玉",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "shop_group_child_shop_random_level_3_magatama"
+                            }
+                        }
+                    }
                 }
             ]
         },
@@ -2972,7 +3106,150 @@
             "type": "select",
             "cases": [
                 {
-                    "name": "红豆"
+                    "name": "阿斯玛"
+                },
+                {
+                    "name": "疾风传鸣人",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_naruto_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传樱",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_sakura_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传井野",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_ino_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "随机忍者",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_random_ninja"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "组织饰品礼盒",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_group_box"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "忍玉",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_ninja_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "铜币",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_copper"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "秘术之尘",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_magic_dust"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "秘术之星",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_magic_star"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "奥秘精华",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_mystery_essence"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "声望",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "随机三级勾玉",
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_2": {
+                            "anchor": {
+                                "group_child_shop_slot_1": "",
+                                "group_child_shop_slot_2": "shop_group_child_shop_random_level_3_magatama"
+                            }
+                        }
+                    }
                 }
             ]
         },
@@ -2986,7 +3263,7 @@
                     "description": "输入需要兑换的数量,最大10",
                     "pipeline_type": "int",
                     "default": "1",
-                    "verify": "^([1-9]|10)$"
+                    "verify": "^([1-9]|[1-2][0-9]|3[0-5])$"
                 }
             ],
             "pipeline_override": {
@@ -3005,7 +3282,7 @@
                     "description": "输入需要兑换的数量,最大10",
                     "pipeline_type": "int",
                     "default": "1",
-                    "verify": "^([1-9]|10)$"
+                    "verify": "^([1-9]|[1-2][0-9]|3[0-5])$"
                 }
             ],
             "pipeline_override": {

@@ -479,9 +479,30 @@ class CleanupCustomLog(CustomAction):
     def run(
         self, context: Context, argv: CustomAction.RunArg
     ) -> CustomAction.RunResult:
-        context.clear_hit_count("swipe_for_goods"),
-        fast_swipe(context, 293, 409, 1140, 404)
-        return CustomAction.RunResult(success=True)
+        try:
+            context.clear_hit_count("swipe_for_goods"),
+            fast_swipe(context, 280, 409, 1200, 404)
+            return CustomAction.RunResult(success=True)
+        except Exception as e:
+            print(f"ShopSwipeBack动作执行失败: {e}")
+            return CustomAction.RunResult(success=False)
+
+
+@AgentServer.custom_action("ResetShopSwipeFind")
+class CleanupCustomLog(CustomAction):
+    """
+    重置商店滑动寻找商品的max_hit
+    """
+
+    def run(
+        self, context: Context, argv: CustomAction.RunArg
+    ) -> CustomAction.RunResult:
+        try:
+            context.clear_hit_count("shop_swipe_for_goods"),
+            return CustomAction.RunResult(success=True)
+        except Exception as e:
+            print(f"ResetShopSwipeFind动作执行失败: {e}")
+            return CustomAction.RunResult(success=False)
 
 
 @AgentServer.custom_action("SecondaryPasswordAction")

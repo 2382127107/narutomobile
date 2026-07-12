@@ -1164,8 +1164,8 @@ class Shopping(CustomRecognition):
         logger.info(f"商店类型: {shop_type}")
         if (
             shop_type == "jade_child_shop"
-            or "survival_child_shop"
-            or "point_race_child_shop"
+            or shop_type == "survival_child_shop"
+            or shop_type == "point_race_child_shop"
         ):
             total_roi = [1019, 17, 128, 37]
         elif shop_type == "group_child_shop":
@@ -1286,7 +1286,6 @@ def get_child_shop_info(
         if total_detail and total_detail.hit
         else ""
     )
-    logger.info(total_text)
     try:
         total_value = _extract_number(total_text)
     except (ValueError, TypeError):
