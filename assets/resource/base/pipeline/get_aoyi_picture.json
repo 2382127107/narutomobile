@@ -297,8 +297,7 @@
             149
         ],
         "method": 10001,
-        "threshold": 0.95,
-        "action": "Click",
+        "threshold": 0.9,
         "next": [
             "get_aoyi_picture_challenge_lag",
             "get_aoyi_picture_challenge_option",
@@ -319,7 +318,7 @@
         },
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 200
+        "post_wait_freezes": 300
     },
     "get_aoyi_picture_challenge_lag": {
         "recognition": "OCR",
