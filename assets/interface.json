@@ -279,7 +279,8 @@
                 "玉石商店",
                 "生存商店",
                 "积分赛商店",
-                "组织商店"
+                "组织商店",
+                "商店结束不返回主页面"
             ],
             "description": "测试商店日常兑换,该功能暂时不受理bug上报[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
@@ -459,8 +460,7 @@
             "default_case": "安卓QQ",
             "cases": [
                 {
-                    "name": "安卓QQ",
-                    "pipeline_override": {}
+                    "name": "安卓QQ"
                 },
                 {
                     "name": "苹果QQ",
@@ -528,8 +528,7 @@
             "default_case": "No",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -647,8 +646,7 @@
                     }
                 },
                 {
-                    "name": "什么都不做",
-                    "pipeline_override": {}
+                    "name": "什么都不做"
                 },
                 {
                     "name": "重启火影",
@@ -813,8 +811,7 @@
                     "name": "Yes",
                     "option": [
                         "招财轮次"
-                    ],
-                    "pipeline_override": {}
+                    ]
                 },
                 {
                     "name": "No",
@@ -1691,8 +1688,7 @@
                     }
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -1717,8 +1713,7 @@
                     }
                 },
                 {
-                    "name": "是",
-                    "pipeline_override": {}
+                    "name": "是"
                 }
             ]
         },
@@ -1726,8 +1721,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -1747,8 +1741,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -1810,8 +1803,7 @@
                     }
                 },
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 }
             ]
         },
@@ -1832,8 +1824,7 @@
                     }
                 },
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 }
             ]
         },
@@ -3291,6 +3282,23 @@
                 }
             }
         },
+        "商店结束不返回主页面": {
+            "description": "方便拼接商店兑换任务,节约时间;开启后任务结束不返回主界面",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "shop_done": {
+                            "action": "StopTask"
+                        }
+                    }
+                }
+            ]
+        },
         "选择小游戏": {
             "type": "select",
             "description": "请尽量不要滥用这个功能影响其他人游戏体验",
@@ -3477,8 +3485,7 @@
                     }
                 },
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 }
             ]
         },
@@ -3486,8 +3493,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -3668,8 +3674,7 @@
                     }
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -3678,8 +3683,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -3872,8 +3876,7 @@
                     }
                 },
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 }
             ]
         },
@@ -4071,8 +4074,7 @@
                     }
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -4093,8 +4095,7 @@
                     }
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -4675,8 +4676,7 @@
                     }
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -4709,8 +4709,7 @@
                     }
                 },
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 }
             ]
         },
@@ -4726,8 +4725,7 @@
                     }
                 },
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 }
             ]
         },
@@ -4921,8 +4919,7 @@
                     }
                 },
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 }
             ]
         },
@@ -4931,8 +4928,7 @@
             "description": "首领功能",
             "cases": [
                 {
-                    "name": "困难",
-                    "pipeline_override": {}
+                    "name": "困难"
                 },
                 {
                     "name": "普通",
@@ -4958,8 +4954,7 @@
             "description": "首领功能",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {}
+                    "name": "Yes"
                 },
                 {
                     "name": "No",
@@ -5027,8 +5022,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -5062,8 +5056,7 @@
             "description": "在不开荒的时候开启这个会快一点,但开启可能会在开荒时因为功能更新卡住",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -5089,8 +5082,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
@@ -5110,8 +5102,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
+                    "name": "No"
                 },
                 {
                     "name": "Yes",
