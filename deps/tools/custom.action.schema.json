@@ -17,8 +17,7 @@
                 "CleanupCustomImg",
                 "CleanupCustomLog",
                 "ShopSwipeBack",
-                "SecondaryPasswordAction",
-                "ResetShopSwipeFind"
+                "SecondaryPasswordAction"
             ]
         },
         "custom_action_param": {
@@ -64,9 +63,6 @@
                 },
                 {
                     "$ref": "#/$defs/SecondaryPasswordActionParam"
-                },
-                {
-                    "$ref": "#/$defs/ResetShopSwipeFindParam"
                 }
             ]
         }
@@ -204,12 +200,6 @@
         "SecondaryPasswordActionParam": {
             "type": "object",
             "description": "协助处理二级密码相关事务,暂时废弃",
-            "markdownDescription": "",
-            "properties": {}
-        },
-        "ResetShopSwipeFindParam": {
-            "type": "object",
-            "description": "重置商店滑动寻找商品的max_hit",
             "markdownDescription": "",
             "properties": {}
         }

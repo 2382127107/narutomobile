@@ -448,7 +448,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -467,7 +467,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -486,7 +486,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -505,7 +505,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -524,7 +524,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -543,7 +543,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -562,7 +562,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -581,7 +581,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -600,7 +600,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -619,7 +619,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -638,7 +638,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -657,7 +657,7 @@
         "threshold": 0.9,
         "next": [
             "shop_jade_child_shopping",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -668,12 +668,10 @@
             "jade_child_shop_slot_1": "shop_jade_child_shop_old_snake"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "next": [
             "[Anchor]jade_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
-            "shop_jade_child_shop_slot_2",
+            "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
         ],
         "pre_delay": 0,
@@ -685,8 +683,6 @@
             "jade_child_shop_slot_2": "shop_jade_child_shop_old_snake"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "max_hit": 1,
         "next": [
             "[Anchor]jade_child_shop_slot_2",
@@ -1027,7 +1023,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1046,7 +1042,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1065,7 +1061,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1084,7 +1080,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1103,7 +1099,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1122,7 +1118,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1141,7 +1137,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1160,7 +1156,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1179,7 +1175,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1198,7 +1194,7 @@
         "threshold": 0.9,
         "next": [
             "shop_survival_child_shopping",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1209,12 +1205,10 @@
             "survival_child_shop_slot_1": "shop_survival_child_shop_red_bean"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "next": [
             "[Anchor]survival_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
-            "shop_survival_child_shop_slot_2",
+            "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
         ],
         "pre_delay": 0,
@@ -1226,8 +1220,6 @@
             "survival_child_shop_slot_2": "shop_survival_child_shop_red_bean"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "max_hit": 1,
         "next": [
             "[Anchor]survival_child_shop_slot_2",
@@ -1452,7 +1444,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1471,7 +1463,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1490,7 +1482,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1509,7 +1501,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1528,7 +1520,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1547,7 +1539,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1566,7 +1558,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1585,7 +1577,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1604,7 +1596,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1623,7 +1615,7 @@
         "threshold": 0.9,
         "next": [
             "shop_point_race_child_shopping",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1634,12 +1626,10 @@
             "point_race_child_shop_slot_1": "shop_point_race_child_shop_sasori"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "next": [
             "[Anchor]point_race_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
-            "shop_point_race_child_shop_slot_2",
+            "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
         ],
         "pre_delay": 0,
@@ -1651,8 +1641,6 @@
             "point_race_child_shop_slot_2": "shop_point_race_child_shop_sasori"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "max_hit": 1,
         "next": [
             "[Anchor]point_race_child_shop_slot_2",
@@ -1876,7 +1864,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -1895,7 +1883,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -1914,7 +1902,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -1933,7 +1921,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -1952,7 +1940,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -1971,7 +1959,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -1990,7 +1978,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2009,7 +1997,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2028,7 +2016,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2047,7 +2035,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2066,7 +2054,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2085,7 +2073,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2104,7 +2092,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2123,7 +2111,7 @@
         "threshold": 0.9,
         "next": [
             "shop_group_child_shopping",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2134,12 +2122,10 @@
             "group_child_shop_slot_1": "shop_group_child_shop_old_horse"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "next": [
             "[Anchor]group_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
-            "shop_group_child_shop_slot_2",
+            "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
         ],
         "pre_delay": 0,
@@ -2151,8 +2137,6 @@
             "group_child_shop_slot_2": "shop_group_child_shop_old_horse"
         },
         "enabled": false,
-        "action": "Custom",
-        "custom_action": "ResetShopSwipeFind",
         "max_hit": 1,
         "next": [
             "[Anchor]group_child_shop_slot_2",
@@ -2286,7 +2270,6 @@
         ],
         "method": 10001,
         "threshold": 0.9,
-        "max_hit": 1,
         "next": [
             "shop_group_child_shop_slot_2",
             "shop_group_shop_done"
