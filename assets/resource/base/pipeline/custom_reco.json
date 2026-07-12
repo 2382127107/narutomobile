@@ -56,10 +56,20 @@
                     [
                         "米",
                         "术"
+                    ],
+                    [
+                        "\\(",
+                        "（"
+                    ],
+                    [
+                        "D",
+                        "0"
                     ]
                 ]
             }
-        }
+        },
+        "post_delay": 0,
+        "pre_delay": 0
     },
     "card_wait": {
         "recognition": "TemplateMatch",

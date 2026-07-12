@@ -69,7 +69,7 @@ class IsCounterOverflow(CustomRecognition):
 
         now_count = counter.get_count(argv.task_detail.task_id)
         logger.info(
-            f"当前节点名：{argv.node_name} 当前任务ID：{argv.task_detail.task_id}"
+            f"当前节点名:{argv.node_name};当前任务入口:{argv.task_detail.entry};任务id:{argv.task_detail.task_id}"
         )
         if now_count >= max_hit:
             logger.debug(f"计数器溢出！最大值: {max_hit} 当前值: {now_count} ")
@@ -726,6 +726,7 @@ class FlipCard(CustomRecognition):
 
 def get_token_count(context: Context, image: ndarray, roi: list[int]) -> int | None:
     """
+    羁绊追寻
     独立读取指定ROI的纯数字(调用custom_ocr)
     :param context: MAA上下文
     :param image: 屏幕图像
@@ -771,9 +772,10 @@ def get_token_count(context: Context, image: ndarray, roi: list[int]) -> int | N
 @AgentServer.custom_recognition("find_bonds_without_enough_token")
 class FindBondsWithoutEnoughToken(CustomRecognition):
     """
+    羁绊追寻
     固定读取ROI的纯数字
-    数字 < 5 → 返回识别通过(非空box)
-    数字 ≥ 5 或识别失败 → 返回识别未通过(空box)
+    数字 < 5 ,返回识别通过(非空box)
+    数字 ≥ 5 或识别失败,返回识别未通过(空box)
     """
 
     TOKEN_CHECK_ROI = [846, 639, 111, 80]
@@ -786,7 +788,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         # 读取token数量
         token_count = get_token_count(context, argv.image, self.TOKEN_CHECK_ROI)
 
-        # 逻辑1：识别失败 → 返回未通过（空box）
+        # 识别失败
         if token_count is None:
             logger.warning(
                 "[find_bonds_without_enough_token] token数量识别失败,返回未通过"
@@ -795,7 +797,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
                 box=None, detail={"token_count": None, "passed": False}
             )
 
-        # 逻辑2：数字 < 5 → 返回通过（非空box，用无效Rect表示）
+        # 数字 < 5
         if token_count < 5:
             logger.info(
                 f"[find_bonds_without_enough_token] token数量{token_count}<5,返回识别通过"
@@ -806,9 +808,9 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
                 box=pass_box, detail={"token_count": token_count, "passed": True}
             )
 
-        # 逻辑3：数字 ≥ 5 → 返回未通过（空box）
+        # 数字 ≥ 5
         logger.info(
-            f"[find_bonds_without_enough_token] token数量{token_count}≥5，返回识别未通过"
+            f"[find_bonds_without_enough_token] token数量{token_count}≥5,返回识别未通过"
         )
         return CustomRecognition.AnalyzeResult(
             box=None, detail={"token_count": token_count, "passed": False}
@@ -886,17 +888,14 @@ class FindAccessoryFlipTicket(CustomRecognition):
             text_modifier=lambda x: x,
         )
 
-        # 逻辑1：识别失败 → 返回未通过（空box）
         if ticket_count is None:
             logger.warning("饰品翻牌卷数量识别失败,返回未通过")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
-        # 逻辑2：数量>0 → 返回通过（非空无效Rect）
         if ticket_count > 0:
             logger.info(f"饰品翻牌卷数量{ticket_count}>0,返回识别通过")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
-        # 逻辑3：数量≤0 → 返回未通过（空box）
         logger.info(f"饰品翻牌卷数量{ticket_count}≤0,返回识别未通过")
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
@@ -1027,3 +1026,361 @@ class MissionOfficeStrategy(CustomRecognition):
                 "[MissionOfficeStrategy] 公式条件不成立，返回识别未通过(安全策略)"
             )
             return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+def get_digit_count(context: Context, image: ndarray, roi: list[int]) -> int | None:
+    """
+    独立读取指定ROI的纯数字(小数点和正负号也会去除)
+    :param context: MAA上下文
+    :param image: 屏幕图像
+    :param roi: 识别区域 [x, y, w, h]
+    :return: 解析后的整型数字,失败返回None
+    """
+    # 调用custom_ocr
+    reco_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
+    )
+
+    if reco_detail is None or not reco_detail.hit:
+        logger.warning(f"ROI{roi} 未识别到任何文本")
+        return None
+
+    # 提取并清洗识别文本,仅保留数字
+    source_text = str(reco_detail.best_result.text).strip()
+    logger.debug(f"ROI{roi} 原始识别文本：{source_text}")
+
+    # 正则提取纯数字,过滤所有非数字字符
+    num_match = re.search(r"\d+", source_text)
+    if not num_match:
+        logger.warning(f"ROI{roi} 未提取到有效数字，原始文本：{source_text}")
+        return None
+
+    try:
+        token_count = int(num_match.group())
+        logger.info(f" ROI{roi} 解析到的纯数字:{token_count}")
+        return token_count
+    except ValueError:
+        logger.warning(f"ROI{roi} 数字转换失败，提取字符串：{num_match.group()}")
+        return None
+
+
+@AgentServer.custom_recognition("CheckGetCopperRoll")
+class CheckGetCopperRoll(CustomRecognition):
+    """
+    检测招财轮次,识别轮次大于设定轮次+1则通过
+    """
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        roi = [104, 468, 40, 31]
+        param = json.loads(argv.custom_recognition_param)
+        count = int(param.get("count", "1"))
+        now_count = get_digit_count(context, argv.image, roi)
+        if now_count is None:
+            now_count = 66
+
+        if now_count >= count + 1:
+            logger.info(f"当前值: {now_count},达到最大执行次数{count}")
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.debug(f"招财轮次计数器状态： 最大值: {count} 当前值: {now_count} ")
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("CheckGetCopperCount")
+class CheckGetCopperCount(CustomRecognition):
+    """
+    检测招财次数,识别次数大于设定次数则通过
+    """
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        roi = [309, 468, 27, 30]
+        param = json.loads(argv.custom_recognition_param)
+        count = int(param.get("count", "1"))
+        now_count = get_digit_count(context, argv.image, roi)
+        if now_count is None:
+            now_count = 66
+
+        if now_count >= count:
+            logger.info(f"当前值: {now_count},达到最大执行次数{count}")
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.debug(f"招财次数计数器状态： 最大值: {count} 当前值: {now_count} ")
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("CheckBuyEnergyCount")
+class CheckBuyEnergyCount(CustomRecognition):
+    """
+    检测购买体力次数,第一次识别次数-目前识别次数>=传入次数则通过
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.start_count = -1
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        roi = [499, 374, 251, 59]
+        param = json.loads(argv.custom_recognition_param)
+        count = int(param.get("count", "1"))
+        if self.start_count == -1:
+            self.start_count = get_digit_count(context, argv.image, roi)
+            if self.start_count is None:
+                self.start_count = 66
+
+        now_count = get_digit_count(context, argv.image, roi)
+        if now_count is None:
+            now_count = 0
+
+        if self.start_count - now_count >= count:
+            logger.info(
+                f"当前值:{self.start_count - now_count},达到最大执行次数{count},初始值{self.start_count},识别值{now_count}"
+            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.debug(
+            f"购买体力计数器状态: 最大值:{count} 当前值: {self.start_count - now_count},初始值{self.start_count},识别值{now_count}"
+        )
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("Shopping")
+class Shopping(CustomRecognition):
+    """
+    商店兑换
+    """
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        context.clear_hit_count("shop_swipe_back_for_good")
+        param = json.loads(argv.custom_recognition_param)
+        shop_type = param.get("shop_type", "root_shop")
+        logger.info(f"商店类型: {shop_type}")
+        if (
+            shop_type == "jade_child_shop"
+            or "survival_child_shop"
+            or "point_race_child_shop"
+        ):
+            total_roi = [1019, 17, 128, 37]
+        elif shop_type == "group_child_shop":
+            total_roi = [646, 16, 130, 37]
+        else:
+            logger.info("暂不支持")
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        box = get_child_shop_info(context, argv.image, total_roi, shop_type)
+        if box is None:
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+        x, y, w, h = box
+        logger.info(f"点击位置[{x},{y},{w},{h}]")
+
+        return CustomRecognition.AnalyzeResult(box=Rect(x, y, w, h), detail={})
+
+
+def get_child_shop_info(
+    context: Context, image: ndarray, total_roi: list[int], shop_type: Any
+) -> Optional[List[int]]:
+    """
+    获取商店信息,返回可购买商品的价格区域坐标[x, y, w, h],否则返回 None;
+    """
+    if shop_type == "jade_child_shop":
+        slot_1 = context.get_anchor("jade_child_shop_slot_1")
+        slot_2 = context.get_anchor("jade_child_shop_slot_2")
+    elif shop_type == "survival_child_shop":
+        slot_1 = context.get_anchor("survival_child_shop_slot_1")
+        slot_2 = context.get_anchor("survival_child_shop_slot_2")
+
+    if slot_1 is not None:
+        slot = slot_1
+        if shop_type == "jade_child_shop":
+            node_data_key = "jade_good_slot_1_set"
+        elif shop_type == "survival_child_shop":
+            node_data_key = "survival_good_slot_1_set"
+    elif slot_2 is not None:
+        slot = slot_2
+        if shop_type == "jade_child_shop":
+            node_data_key = "jade_good_slot_2_set"
+        elif shop_type == "survival_child_shop":
+            node_data_key = "survival_good_slot_2_set"
+    else:
+        logger.error("未找到商店锚点配置")
+        return None
+
+    node_data = context.get_node_data(node_data_key)
+    if not node_data or "max_hit" not in node_data:
+        logger.error(f"节点数据 {node_data_key} 缺失或无效")
+        return None
+
+    count = node_data["max_hit"]
+    logger.info(f"购买数量: {count}")
+    if shop_type == "jade_child_shop":
+        context.override_pipeline(
+            {"shop_jade_child_check_shopping_count": {"expected": str(count)}}
+        )
+    elif shop_type == "survival_child_shop":
+        context.override_pipeline(
+            {"shop_survival_child_check_shopping_count": {"expected": str(count)}}
+        )
+
+    reco_detail = context.run_recognition(slot, image)
+    if not reco_detail or not reco_detail.hit:
+        logger.warning("商品图标识别未命中")
+        return None
+
+    best_box = reco_detail.best_result.box
+
+    # 解析限购文本
+    limit_roi = [
+        best_box[0] + 10,
+        best_box[1] + 87,
+        192,
+        138,
+    ]
+    limit_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": limit_roi}}
+    )
+    limit_text = (
+        str(limit_detail.best_result.text).strip()
+        if limit_detail and limit_detail.hit
+        else ""
+    )
+    logger.info(f"限购文本: '{limit_text}'")
+    if not parse_limit_text(limit_text, count):
+        logger.info("限购条件不满足，不可购买")
+        return None
+
+    # 解析总货币数量
+    total_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": total_roi}}
+    )
+    total_text = (
+        str(total_detail.best_result.text).strip()
+        if total_detail and total_detail.hit
+        else ""
+    )
+    logger.info(total_text)
+    try:
+        total_value = _extract_number(total_text)
+    except (ValueError, TypeError):
+        logger.error(f"货币总数解析失败: '{total_text}'")
+        return None
+
+    # 解析价格
+    price_roi = [
+        best_box[0] + 42,
+        best_box[1] + 179,
+        123,
+        54,
+    ]
+    price_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": price_roi}}
+    )
+    price_text = (
+        str(price_detail.best_result.text).strip()
+        if price_detail and price_detail.hit
+        else ""
+    )
+    try:
+        price_value = _extract_number(price_text)
+    except (ValueError, TypeError):
+        logger.error(f"价格解析失败: '{price_text}'")
+        return None
+
+    if price_value <= 0:
+        logger.warning("价格识别为0或负数,跳过购买")
+        return None
+    if total_value is None or price_value is None:
+        logger.error("货币总数或价格解析失败")
+        return None
+    if total_value >= price_value * count:
+        if count > 1:
+            count -= 1
+            if shop_type == "jade_child_shop":
+                context.override_next(
+                    "shop_jade_child_shopping",
+                    [
+                        "shop_jade_child_shopping_interface",
+                        "[JumpBack]shop_confirm_exchange",
+                        "shop_jade_child_follow_up_shopping",
+                        "shop_swipe_back_for_good",
+                    ],
+                )
+                context.override_pipeline(
+                    {
+                        "shop_jade_child_follow_up_shopping": {
+                            "target": price_roi,
+                            "repeat": count,
+                        }
+                    }
+                )
+            elif shop_type == "survival_child_shop":
+                context.override_next(
+                    "shop_survival_child_shopping",
+                    [
+                        "shop_survival_child_shopping_interface",
+                        "[JumpBack]shop_confirm_exchange",
+                        "shop_survival_child_follow_up_shopping",
+                        "shop_swipe_back_for_good",
+                    ],
+                )
+                context.override_pipeline(
+                    {
+                        "shop_survival_child_follow_up_shopping": {
+                            "target": price_roi,
+                            "repeat": count,
+                        }
+                    }
+                )
+        return price_roi
+    logger.info(f"货币不足: 需要{price_value * count}, 拥有{total_value}")
+    return None
+
+
+def parse_limit_text(limit_text: str, buy_count: int) -> bool:
+    """
+    根据限购文本判断是否可以购买
+    """
+    if not limit_text:
+        logger.warning("限购文本为空,拒绝购买")
+        return False
+    if (
+        "已拥有" in limit_text
+        or "售罄" in limit_text
+        or "售馨" in limit_text
+        or "开启" in limit_text
+    ):
+        return False
+
+    nums = re.findall(r"\d+", limit_text)
+    if len(nums) >= 2:
+        try:
+            bought = int(nums[0])
+            total = int(nums[1])
+        except ValueError:
+            return False
+        if bought + buy_count > total:
+            logger.info(f"限购不足:已购{bought}/{total},需要购买{buy_count}")
+            return False
+        return True
+    # 仅有一个数字或无法识别的格式,保守处理
+    logger.warning(f"限购文本格式无法明确判断: '{limit_text}'")
+    return False
+
+
+def _extract_number(text: str) -> Optional[int]:
+    """从文本中提取第一个连续数字并返回整数，失败返回 None"""
+    if not text:
+        return None
+    nums = re.findall(r"\d+", text)
+    if nums:
+        try:
+            return int(nums[0])
+        except ValueError:
+            pass
+    return None

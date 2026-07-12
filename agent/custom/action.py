@@ -468,3 +468,29 @@ class CleanupCustomLog(CustomAction):
         except Exception as e:
             print(f"自定义日志清理异常: {e}")
             return CustomAction.RunResult(success=False)
+
+
+@AgentServer.custom_action("ShopSwipeBack")
+class CleanupCustomLog(CustomAction):
+    """
+    商店兑换滑动回商品头部
+    """
+
+    def run(
+        self, context: Context, argv: CustomAction.RunArg
+    ) -> CustomAction.RunResult:
+        context.clear_hit_count("swipe_for_goods"),
+        fast_swipe(context, 293, 409, 1140, 404)
+        return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("SecondaryPasswordAction")
+class CleanupCustomLog(CustomAction):
+    """
+    二级密码动作
+    """
+
+    def run(
+        self, context: Context, argv: CustomAction.RunArg
+    ) -> CustomAction.RunResult:
+        return CustomAction.RunResult(success=True)

@@ -308,6 +308,15 @@
             "get_aoyi_picture_challenge_dice_done",
             "get_aoyi_picture_return"
         ],
+        "pre_wait_freezes": {
+            "time": 200,
+            "target": [
+                508,
+                594,
+                244,
+                83
+            ]
+        },
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200
@@ -363,6 +372,7 @@
         ],
         "action": "Click",
         "next": [
+            "get_aoyi_picture_challenge_option",
             "get_aoyi_picture_challenge_icon",
             "get_aoyi_picture_challenge_lag_back_to_icon"
         ],
@@ -442,7 +452,7 @@
         ],
         "action": "Click",
         "next": [
-            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confrim",
+            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confirm",
             "get_aoyi_picture_challenge_quit_back_to_icon",
             "get_aoyi_picture_challenge_quit_back"
         ],
@@ -450,10 +460,10 @@
         "post_delay": 0,
         "post_wait_freezes": 500
     },
-    "get_aoyi_picture_challenge_dice_quit_confrim": {
+    "get_aoyi_picture_challenge_dice_quit_confirm": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             634,
@@ -479,7 +489,7 @@
         ],
         "action": "Click",
         "next": [
-            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confrim",
+            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confirm",
             "get_aoyi_picture_challenge_lag_back_to_icon",
             "get_aoyi_picture_challenge_lag_back"
         ],
@@ -500,7 +510,8 @@
         ],
         "action": "Click",
         "next": [
-            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confrim",
+            "get_aoyi_picture_challenge_option",
+            "[JumpBack]get_aoyi_picture_challenge_dice_quit_confirm",
             "get_aoyi_picture_challenge_quit_in_icon",
             "get_aoyi_picture_challenge_quit_back_to_icon"
         ],
@@ -534,10 +545,10 @@
             "aoyi_picture/option.png"
         ],
         "roi": [
-            602,
-            342,
-            103,
-            138
+            535,
+            358,
+            59,
+            116
         ],
         "threshold": 0.95,
         "action": "Click",
@@ -570,7 +581,10 @@
         ],
         "next": [
             "get_aoyi_picture_challenge_use_dice",
-            "get_aoyi_picture_challenge_option_check"
+            "get_aoyi_picture_challenge_option_check",
+            "get_aoyi_picture_challenge_goto_other",
+            "get_aoyi_picture_challenge_OK",
+            "get_aoyi_picture_challenge_dice_done"
         ],
         "pre_delay": 0,
         "post_delay": 0
@@ -588,6 +602,7 @@
         ],
         "action": "Click",
         "next": [
+            "get_aoyi_picture_challenge_option",
             "get_aoyi_picture_challenge_use_dice",
             "get_aoyi_picture_challenge_goto_other",
             "get_aoyi_picture_challenge_OK"
@@ -597,25 +612,23 @@
         "post_wait_freezes": 500
     },
     "get_aoyi_picture_challenge_goto_other": {
-        "recognition": "OCR",
-        "expected": [
-            "第三关（20/20）",
-            "第三关(20/20)"
+        "recognition": "TemplateMatch",
+        "template": "aoyi_picture/goto_other.png",
+        "roi": [
+            40,
+            7,
+            231,
+            66
         ],
         "max_hit": 3,
-        "roi": [
-            51,
-            15,
-            211,
-            51
-        ],
+        "threshold": 0.9,
+        "action": "Click",
         "target": [
             358,
             34,
             84,
             17
         ],
-        "action": "Click",
         "next": [
             "get_aoyi_picture_challenge_use_dice",
             "get_aoyi_picture_return",

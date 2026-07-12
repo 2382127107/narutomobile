@@ -473,7 +473,7 @@
     },
     "more_gameplay_match_win": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             472,
             342,
@@ -491,7 +491,7 @@
     },
     "more_gameplay_without_match_win": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             472,
             342,
@@ -511,7 +511,7 @@
     },
     "more_gameplay_trace_vanish_confirm_selcet_ninja": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             437,
             505,
@@ -585,7 +585,7 @@
     },
     "more_gameplay_trace_vanish_check_no_fight": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             485,
             598,

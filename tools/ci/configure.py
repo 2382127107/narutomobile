@@ -1,6 +1,5 @@
 import urllib.request
 import zipfile
-import shutil
 
 from utils import assets_dir
 
@@ -27,16 +26,6 @@ def configure_ocr_model():
         zip_ref.extractall(ocr_dir)
 
     zip_path.unlink()
-
-    # 下面是移除ocr.zip解压后的small文件夹,直接把onnx文件放在ocr目录下
-    small_dir = ocr_dir / "small"
-    if small_dir.exists() and small_dir.is_dir():
-        print("Moving contents from 'small' subdirectory up to OCR root...")
-        for item in small_dir.iterdir():
-            target = ocr_dir / item.name
-            shutil.move(str(item), str(target))
-        small_dir.rmdir()
-
     print("OCR model configured successfully.")
 
 

@@ -178,7 +178,7 @@
                     251,
                     671
                 ],
-                "threshold": 0.9
+                "threshold": 0.87
             },
             {
                 "sub_name": "text",

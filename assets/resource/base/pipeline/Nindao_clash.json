@@ -444,7 +444,7 @@
     },
     "nindao_clash_confirm_refresh": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             405,
             390,
@@ -504,7 +504,7 @@
     },
     "nindao_clash_confirm_sweep": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             405,
             390,
@@ -563,7 +563,7 @@
     },
     "nindao_clash_confirm_set": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim_small_2.png",
+        "template": "SharedNode/confirm_small_2.png",
         "roi": [
             634,
             592,

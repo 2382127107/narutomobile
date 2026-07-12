@@ -81,7 +81,7 @@
             "rebel_ninja_not_open",
             "rebel_ninja_go_fight",
             "rebel_ninja_finish",
-            "rebel_ninja_confirm_nijia",
+            "rebel_ninja_confirm_ninja",
             "rebel_ninja_summon_member"
         ],
         "pre_delay": 0,
@@ -208,7 +208,7 @@
         ],
         "action": "Click",
         "next": [
-            "rebel_ninja_confirm_nijia",
+            "rebel_ninja_confirm_ninja",
             "rebel_ninja_only_me",
             "rebel_ninja_in_battlefield",
             "[JumpBack]rebel_ninja_confirm_tip"
@@ -219,7 +219,7 @@
     "rebel_ninja_confirm_tip": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             407,
@@ -231,7 +231,7 @@
         "pre_delay": 0,
         "post_delay": 300
     },
-    "rebel_ninja_confirm_nijia": {
+    "rebel_ninja_confirm_ninja": {
         "recognition": "OCR",
         "expected": [
             "确定"
@@ -246,7 +246,7 @@
         "next": [
             "rebel_ninja_only_me",
             "rebel_ninja_in_battlefield",
-            "[JumpBack]rebel_ninja_confirm_nijia"
+            "[JumpBack]rebel_ninja_confirm_ninja"
         ],
         "pre_delay": 0,
         "post_delay": 300
@@ -441,133 +441,11 @@
         "action": "Click",
         "next": [
             "rebel_ninja_confirm_open",
-            "[JumpBack]secondary_password",
             "rebel_ninja_summon_member",
             "rebel_ninja_group_to_rebel_ninja"
         ],
         "on_error": [
             "rebel_ninja"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
-    },
-    "rebel_ninja_secondary_password": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/secondary_password.png"
-        ],
-        "roi": [
-            387,
-            251,
-            241,
-            160
-        ],
-        "action": "Click",
-        "target": [
-            567,
-            355,
-            54,
-            39
-        ],
-        "next": [
-            "rebel_ninja_input_secondary_password",
-            "rebel_ninja_incorrect_secondary_password",
-            "[JumpBack]rebel_ninja_secondary_password"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
-    },
-    "rebel_ninja_input_secondary_password": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
-        "roi": [
-            1205,
-            649,
-            74,
-            59
-        ],
-        "action": "InputText",
-        "input_text": "0",
-        "next": [
-            "rebel_ninja_incorrect_secondary_password",
-            "rebel_ninja_confirm_secondary_password"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
-    },
-    "rebel_ninja_check_secondary_password": {
-        "recognition": "OCR",
-        "expected": [
-            "0"
-        ],
-        "roi": [
-            0,
-            651,
-            116,
-            68
-        ],
-        "next": [
-            "rebel_ninja_confirm_secondary_password"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
-    },
-    "rebel_ninja_incorrect_secondary_password": {
-        "recognition": "OCR",
-        "expected": [
-            "不足",
-            "错误"
-        ],
-        "roi": [
-            486,
-            290,
-            325,
-            138
-        ],
-        "action": "StopTask",
-        "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:tomato]密码有误[/color]"
-    },
-    "rebel_ninja_confirm_secondary_password": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
-        "roi": [
-            562,
-            431,
-            143,
-            64
-        ],
-        "action": "Click",
-        "max_hit": 5,
-        "next": [
-            "rebel_ninja_incorrect_secondary_password",
-            "rebel_ninja_without_confirm_secondary_password",
-            "rebel_ninja_confirm_secondary_password"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
-    },
-    "rebel_ninja_without_confirm_secondary_password": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
-        "roi": [
-            562,
-            431,
-            143,
-            64
-        ],
-        "inverse": true,
-        "next": [
-            "rebel_ninja_group_to_rebel_ninja",
-            "rebel_ninja",
-            "rebel_ninja_without_confirm_secondary_password"
         ],
         "pre_delay": 0,
         "post_delay": 300
@@ -845,7 +723,7 @@
     "rebel_ninja_confirm_enemy": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             516,
@@ -864,7 +742,7 @@
     "rebel_ninja_without_confirm_enemy": {
         "recognition": "TemplateMatch",
         "template": [
-            "SharedNode/confrim.png"
+            "SharedNode/confirm.png"
         ],
         "roi": [
             516,

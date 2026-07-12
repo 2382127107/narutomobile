@@ -97,7 +97,7 @@
     },
     "switch_account_confirm_logout": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             412,
             406,

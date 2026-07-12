@@ -658,7 +658,7 @@
     },
     "spring_festival_post_office_confirm_one_key_gacha": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim.png",
+        "template": "SharedNode/confirm.png",
         "roi": [
             402,
             397,

@@ -188,5 +188,39 @@
             "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]扫荡完成或者没有选中扫荡副本[/color]"
+    },
+    "use_energy_check_one_key_select": {
+        "recognition": "TemplateMatch",
+        "template": "Use_energy/check.png",
+        "roi": [
+            501,
+            527,
+            138,
+            135
+        ],
+        "next": [
+            "use_energy_ez_sweep"
+        ],
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "use_energy_check_not_one_key_select": {
+        "recognition": "TemplateMatch",
+        "template": "Use_energy/not_check.png",
+        "roi": [
+            501,
+            527,
+            138,
+            135
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "use_energy_check_one_key_select",
+            "use_energy_check_not_one_key_select"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
     }
 }

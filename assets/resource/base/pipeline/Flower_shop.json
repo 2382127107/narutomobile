@@ -183,7 +183,7 @@
     },
     "flower_shop_confirm_choose_flower": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confrim_small.png",
+        "template": "SharedNode/confirm_small.png",
         "roi": [
             730,
             409,
