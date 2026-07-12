@@ -1341,19 +1341,20 @@ def get_child_shop_info(
     price_detail = context.run_recognition(
         "custom_ocr", image, {"custom_ocr": {"roi": price_roi}}
     )
-    price_text = (
-        str(price_detail.best_result.text).strip()
-        if price_detail and price_detail.hit
-        else ""
-    )
+    if price_detail and price_detail.hit:
+        best = max(price_detail.all_results, key=lambda r: r.score)
+        price_text = best.text.strip()
+    else:
+        price_text = ""
+
     try:
         price_value = _extract_number(price_text)
     except (ValueError, TypeError):
         logger.error(f"价格解析失败: '{price_text}'")
         return None
 
-    if price_value <= 0:
-        logger.warning("价格识别为0或负数,跳过购买")
+    if price_value <= 40:
+        logger.warning(f"价格识别出错,跳过购买;原始文本:'{price_detail}'")
         return None
     if total_value is None or price_value is None:
         logger.error("货币总数或价格解析失败")
@@ -1361,9 +1362,8 @@ def get_child_shop_info(
 
     # 可否购买
     if total_value < price_value * count:
-        logger.info(f"货币不足: 需要{price_value * count}, 拥有{total_value}")
         return None
-
+    logger.info(f"需要{price_value * count},拥有{total_value}")
     # 多次购买事务
     if count > 1:
         repeat_count = count - 1
