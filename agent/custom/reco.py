@@ -1183,49 +1183,108 @@ class Shopping(CustomRecognition):
         return CustomRecognition.AnalyzeResult(box=Rect(x, y, w, h), detail={})
 
 
+# 商店配置
+SHOP_CONFIGS: Dict[str, dict] = {
+    "jade_child_shop": {
+        "total_roi": [1019, 17, 128, 37],
+        "slot_1_anchor": "jade_child_shop_slot_1",
+        "slot_2_anchor": "jade_child_shop_slot_2",
+        "node_data_key_1": "jade_good_slot_1_set",
+        "node_data_key_2": "jade_good_slot_2_set",
+        "check_count_pipeline": "shop_jade_child_check_shopping_count",
+        "shopping": "shop_jade_child_shopping",
+        "shopping_interface": "shop_jade_child_shopping_interface",
+        "follow_up_shopping": "shop_jade_child_follow_up_shopping",
+    },
+    "survival_child_shop": {
+        "total_roi": [1019, 17, 128, 37],
+        "slot_1_anchor": "survival_child_shop_slot_1",
+        "slot_2_anchor": "survival_child_shop_slot_2",
+        "node_data_key_1": "survival_good_slot_1_set",
+        "node_data_key_2": "survival_good_slot_2_set",
+        "check_count_pipeline": "shop_survival_child_check_shopping_count",
+        "shopping": "shop_survival_child_shopping",
+        "shopping_interface": "shop_survival_child_shopping_interface",
+        "follow_up_shopping": "shop_survival_child_follow_up_shopping",
+    },
+    "point_race_child_shop": {
+        "total_roi": [1019, 17, 128, 37],
+        "slot_1_anchor": "point_race_child_shop_slot_1",
+        "slot_2_anchor": "point_race_child_shop_slot_2",
+        "node_data_key_1": "point_race_good_slot_1_set",
+        "node_data_key_2": "point_race_good_slot_2_set",
+        "check_count_pipeline": "shop_point_race_child_check_shopping_count",
+        "shopping": "shop_point_race_child_shopping",
+        "shopping_interface": "shop_point_race_child_shopping_interface",
+        "follow_up_shopping": "shop_point_race_child_follow_up_shopping",
+    },
+    "group_child_shop": {
+        "total_roi": [646, 16, 130, 37],
+        "slot_1_anchor": "group_child_shop_slot_1",
+        "slot_2_anchor": "group_child_shop_slot_2",
+        "node_data_key_1": "group_good_slot_1_set",
+        "node_data_key_2": "group_good_slot_2_set",
+        "check_count_pipeline": "shop_group_child_check_shopping_count",
+        "shopping": "shop_group_child_shopping",
+        "shopping_interface": "shop_group_child_shopping_interface",
+        "follow_up_shopping": "shop_group_child_follow_up_shopping",
+    },
+}
+
+
+@AgentServer.custom_recognition("Shopping")
+class Shopping(CustomRecognition):
+    """商店兑换"""
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        context.clear_hit_count("shop_swipe_back_for_good")
+        param = json.loads(argv.custom_recognition_param)
+        shop_type = param.get("shop_type", "root_shop")
+        logger.info(f"商店类型: {shop_type}")
+
+        config = SHOP_CONFIGS.get(shop_type)
+        if not config:
+            logger.info("暂不支持")
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        box = get_child_shop_info(context, argv.image, shop_type, config)
+        if box is None:
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        x, y, w, h = box
+        logger.info(f"点击位置[{x},{y},{w},{h}]")
+        return CustomRecognition.AnalyzeResult(box=Rect(x, y, w, h), detail={})
+
+
 def get_child_shop_info(
-    context: Context, image: ndarray, total_roi: list[int], shop_type: Any
+    context: Context,
+    image: ndarray,
+    shop_type: str,
+    config: dict,
 ) -> Optional[List[int]]:
     """
     获取商店信息,返回可购买商品的价格区域坐标[x, y, w, h],否则返回 None;
     """
-    if shop_type == "jade_child_shop":
-        slot_1 = context.get_anchor("jade_child_shop_slot_1")
-        slot_2 = context.get_anchor("jade_child_shop_slot_2")
-    elif shop_type == "survival_child_shop":
-        slot_1 = context.get_anchor("survival_child_shop_slot_1")
-        slot_2 = context.get_anchor("survival_child_shop_slot_2")
-    elif shop_type == "point_race_child_shop":
-        slot_1 = context.get_anchor("point_race_child_shop_slot_1")
-        slot_2 = context.get_anchor("point_race_child_shop_slot_2")
-    elif shop_type == "group_child_shop":
-        slot_1 = context.get_anchor("group_child_shop_slot_1")
-        slot_2 = context.get_anchor("group_child_shop_slot_2")
+    # 获取需要的识别商品节点
+    slot_1_anchor = config["slot_1_anchor"]
+    slot_2_anchor = config["slot_2_anchor"]
+
+    slot_1 = context.get_anchor(slot_1_anchor)
+    slot_2 = context.get_anchor(slot_2_anchor) if slot_1 is None else None
 
     if slot_1 is not None:
         slot = slot_1
-        if shop_type == "jade_child_shop":
-            node_data_key = "jade_good_slot_1_set"
-        elif shop_type == "survival_child_shop":
-            node_data_key = "survival_good_slot_1_set"
-        elif shop_type == "point_race_child_shop":
-            node_data_key = "point_race_good_slot_1_set"
-        elif shop_type == "group_child_shop":
-            node_data_key = "group_good_slot_1_set"
+        node_data_key = config["node_data_key_1"]
     elif slot_2 is not None:
         slot = slot_2
-        if shop_type == "jade_child_shop":
-            node_data_key = "jade_good_slot_2_set"
-        elif shop_type == "survival_child_shop":
-            node_data_key = "survival_good_slot_2_set"
-        elif shop_type == "point_race_child_shop":
-            node_data_key = "point_race_good_slot_1_set"
-        elif shop_type == "group_child_shop":
-            node_data_key = "group_good_slot_1_set"
+        node_data_key = config["node_data_key_2"]
     else:
         logger.error("未找到商店锚点配置")
         return None
 
+    # 获得购买数量
     node_data = context.get_node_data(node_data_key)
     if not node_data or "max_hit" not in node_data:
         logger.error(f"节点数据 {node_data_key} 缺失或无效")
@@ -1233,23 +1292,12 @@ def get_child_shop_info(
 
     count = node_data["max_hit"]
     logger.info(f"购买数量: {count}")
-    if shop_type == "jade_child_shop":
-        context.override_pipeline(
-            {"shop_jade_child_check_shopping_count": {"expected": str(count)}}
-        )
-    elif shop_type == "survival_child_shop":
-        context.override_pipeline(
-            {"shop_survival_child_check_shopping_count": {"expected": str(count)}}
-        )
-    elif shop_type == "point_race_child_shop":
-        context.override_pipeline(
-            {"shop_point_race_child_check_shopping_count": {"expected": str(count)}}
-        )
-    elif shop_type == "group_race_child_shop":
-        context.override_pipeline(
-            {"shop_group_race_child_check_shopping_count": {"expected": str(count)}}
-        )
 
+    # 设置购买数量检查
+    check_pipeline = config["check_count_pipeline"]
+    context.override_pipeline({check_pipeline: {"expected": str(count)}})
+
+    # 识别商品
     reco_detail = context.run_recognition(slot, image)
     if not reco_detail or not reco_detail.hit:
         logger.warning("商品图标识别未命中")
@@ -1258,12 +1306,7 @@ def get_child_shop_info(
     best_box = reco_detail.best_result.box
 
     # 解析限购文本
-    limit_roi = [
-        best_box[0] + 10,
-        best_box[1] + 87,
-        192,
-        138,
-    ]
+    limit_roi = [best_box[0] + 10, best_box[1] + 87, 192, 138]
     limit_detail = context.run_recognition(
         "custom_ocr", image, {"custom_ocr": {"roi": limit_roi}}
     )
@@ -1277,7 +1320,8 @@ def get_child_shop_info(
         logger.info("限购条件不满足，不可购买")
         return None
 
-    # 解析总货币数量
+    # 解析货币数量
+    total_roi = config["total_roi"]
     total_detail = context.run_recognition(
         "custom_ocr", image, {"custom_ocr": {"roi": total_roi}}
     )
@@ -1292,13 +1336,8 @@ def get_child_shop_info(
         logger.error(f"货币总数解析失败: '{total_text}'")
         return None
 
-    # 解析价格
-    price_roi = [
-        best_box[0] + 42,
-        best_box[1] + 179,
-        123,
-        54,
-    ]
+    # 价格解析
+    price_roi = [best_box[0] + 42, best_box[1] + 179, 123, 54]
     price_detail = context.run_recognition(
         "custom_ocr", image, {"custom_ocr": {"roi": price_roi}}
     )
@@ -1319,99 +1358,42 @@ def get_child_shop_info(
     if total_value is None or price_value is None:
         logger.error("货币总数或价格解析失败")
         return None
-    if total_value >= price_value * count:
-        if count > 1:
-            count -= 1
-            if shop_type == "jade_child_shop":
-                context.override_next(
-                    "shop_jade_child_shopping",
-                    [
-                        "shop_jade_child_shopping_interface",
-                        "[JumpBack]shop_confirm_exchange",
-                        "shop_jade_child_follow_up_shopping",
-                        "shop_swipe_back_for_good",
-                    ],
-                )
-                context.override_pipeline(
-                    {
-                        "shop_jade_child_follow_up_shopping": {
-                            "target": price_roi,
-                            "repeat": count,
-                        }
-                    }
-                )
-            elif shop_type == "survival_child_shop":
-                context.override_next(
-                    "shop_survival_child_shopping",
-                    [
-                        "shop_survival_child_shopping_interface",
-                        "[JumpBack]shop_confirm_exchange",
-                        "shop_survival_child_follow_up_shopping",
-                        "shop_swipe_back_for_good",
-                    ],
-                )
-                context.override_pipeline(
-                    {
-                        "shop_survival_child_follow_up_shopping": {
-                            "target": price_roi,
-                            "repeat": count,
-                        }
-                    }
-                )
-            elif shop_type == "point_race_child_shop":
-                context.override_next(
-                    "shop_point_race_child_shopping",
-                    [
-                        "shop_point_race_child_shopping_interface",
-                        "[JumpBack]shop_confirm_exchange",
-                        "shop_point_race_child_follow_up_shopping",
-                        "shop_swipe_back_for_good",
-                    ],
-                )
-                context.override_pipeline(
-                    {
-                        "shop_point_race_child_follow_up_shopping": {
-                            "target": price_roi,
-                            "repeat": count,
-                        }
-                    }
-                )
-            elif shop_type == "group_child_shop":
-                context.override_next(
-                    "shop_group_child_shopping",
-                    [
-                        "shop_group_child_shopping_interface",
-                        "[JumpBack]shop_confirm_exchange",
-                        "shop_group_child_follow_up_shopping",
-                        "shop_swipe_back_for_good",
-                    ],
-                )
-                context.override_pipeline(
-                    {
-                        "shop_group_child_follow_up_shopping": {
-                            "target": price_roi,
-                            "repeat": count,
-                        }
-                    }
-                )
-        return price_roi
-    logger.info(f"货币不足: 需要{price_value * count}, 拥有{total_value}")
-    return None
+
+    # 可否购买
+    if total_value < price_value * count:
+        logger.info(f"货币不足: 需要{price_value * count}, 拥有{total_value}")
+        return None
+
+    # 多次购买事务
+    if count > 1:
+        repeat_count = count - 1
+        context.override_next(
+            config["shopping"],
+            [
+                config["shopping_interface"],
+                "[JumpBack]shop_confirm_exchange",
+                config["follow_up_shopping"],
+                "shop_swipe_back_for_good",
+            ],
+        )
+        context.override_pipeline(
+            {
+                config["follow_up_shopping"]: {
+                    "target": price_roi,
+                    "repeat": repeat_count,
+                }
+            }
+        )
+
+    return price_roi
 
 
 def parse_limit_text(limit_text: str, buy_count: int) -> bool:
-    """
-    根据限购文本判断是否可以购买
-    """
+    """根据限购文本判断是否可以购买"""
     if not limit_text:
         logger.warning("限购文本为空,拒绝购买")
         return False
-    if (
-        "已拥有" in limit_text
-        or "售罄" in limit_text
-        or "售馨" in limit_text
-        or "开启" in limit_text
-    ):
+    if any(kw in limit_text for kw in ["已拥有", "售罄", "售馨", "开启"]):
         return False
 
     nums = re.findall(r"\d+", limit_text)
@@ -1425,7 +1407,6 @@ def parse_limit_text(limit_text: str, buy_count: int) -> bool:
             logger.info(f"限购不足:已购{bought}/{total},需要购买{buy_count}")
             return False
         return True
-    # 仅有一个数字或无法识别的格式,保守处理
     logger.warning(f"限购文本格式无法明确判断: '{limit_text}'")
     return False
 
