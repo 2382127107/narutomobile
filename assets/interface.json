@@ -277,7 +277,9 @@
             "entry": "shop",
             "option": [
                 "玉石商店",
-                "生存商店"
+                "生存商店",
+                "积分赛商店",
+                "组织商店"
             ],
             "description": "进行商店日常兑换[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
@@ -1869,7 +1871,7 @@
                         "玉石一号位兑换数量"
                     ],
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "enabled": true
                         }
                     }
@@ -1886,10 +1888,10 @@
                         "玉石二号位兑换数量"
                     ],
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "enabled": true
                         },
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "enabled": true
                         }
                     }
@@ -2035,7 +2037,7 @@
                 {
                     "name": "百战蛇",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_fight_snake"
                             }
@@ -2045,7 +2047,7 @@
                 {
                     "name": "old水",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_old_water"
                             }
@@ -2055,7 +2057,7 @@
                 {
                     "name": "百战水",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_fight_water"
                             }
@@ -2065,7 +2067,7 @@
                 {
                     "name": "old自",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_the_oldest"
                             }
@@ -2075,7 +2077,7 @@
                 {
                     "name": "一尾鸣人",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_one_tail_naruto"
                             }
@@ -2085,7 +2087,7 @@
                 {
                     "name": "6级红勾玉",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_red_jade"
                             }
@@ -2095,7 +2097,7 @@
                 {
                     "name": "6级青勾玉",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_cyan_jade"
                             }
@@ -2105,7 +2107,7 @@
                 {
                     "name": "轮回石",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_reincarnation_stone"
                             }
@@ -2116,7 +2118,7 @@
                     "name": "声望",
                     "description": "推荐一个雷霆",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_fame"
                             }
@@ -2126,7 +2128,7 @@
                 {
                     "name": "奥秘精华",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_1": {
+                        "shop_jade_child_shop_slot_1": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "shop_jade_child_shop_mystery_essence"
                             }
@@ -2144,7 +2146,7 @@
                 {
                     "name": "百战蛇",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_fight_snake"
@@ -2155,7 +2157,7 @@
                 {
                     "name": "old水",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_old_water"
@@ -2166,7 +2168,7 @@
                 {
                     "name": "百战水",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_fight_water"
@@ -2177,7 +2179,7 @@
                 {
                     "name": "old自",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_the_oldest"
@@ -2188,7 +2190,7 @@
                 {
                     "name": "一尾鸣人",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_one_tail_naruto"
@@ -2199,7 +2201,7 @@
                 {
                     "name": "6级红勾玉",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_red_jade"
@@ -2210,7 +2212,7 @@
                 {
                     "name": "6级青勾玉",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_cyan_jade"
@@ -2221,7 +2223,7 @@
                 {
                     "name": "轮回石",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_reincarnation_stone"
@@ -2233,7 +2235,7 @@
                     "name": "声望",
                     "description": "推荐一个雷霆",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_fame"
@@ -2244,7 +2246,7 @@
                 {
                     "name": "奥秘精华",
                     "pipeline_override": {
-                        "shop_jade_child_shop_shot_2": {
+                        "shop_jade_child_shop_slot_2": {
                             "anchor": {
                                 "jade_child_shop_slot_1": "",
                                 "jade_child_shop_slot_2": "shop_jade_child_shop_mystery_essence"
@@ -2325,7 +2327,7 @@
                         "生存一号位兑换数量"
                     ],
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "enabled": true
                         }
                     }
@@ -2342,10 +2344,10 @@
                         "生存二号位兑换数量"
                     ],
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "enabled": true
                         },
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "enabled": true
                         }
                     }
@@ -2358,7 +2360,7 @@
                 {
                     "name": "凯",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_gai"
                             }
@@ -2371,7 +2373,7 @@
                 {
                     "name": "土台",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_dodai"
                             }
@@ -2381,7 +2383,7 @@
                 {
                     "name": "一尾鸣人",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_one_tail_naruto"
                             }
@@ -2391,7 +2393,7 @@
                 {
                     "name": "重铸符",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_recast_rune"
                             }
@@ -2401,7 +2403,7 @@
                 {
                     "name": "疾风传井野",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_ino_Shippuden"
                             }
@@ -2411,7 +2413,7 @@
                 {
                     "name": "疾风传手鞠",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_temari_Shippuden"
                             }
@@ -2421,7 +2423,7 @@
                 {
                     "name": "声望",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_fame"
                             }
@@ -2431,7 +2433,7 @@
                 {
                     "name": "轮回石",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_reincarnation_stone"
                             }
@@ -2441,7 +2443,7 @@
                 {
                     "name": "忍玉",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_1": {
+                        "shop_survival_child_shop_slot_1": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "shop_survival_child_shop_ninja_jade"
                             }
@@ -2456,7 +2458,7 @@
                 {
                     "name": "凯",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_gai"
@@ -2470,7 +2472,7 @@
                 {
                     "name": "土台",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_dodai"
@@ -2481,7 +2483,7 @@
                 {
                     "name": "一尾鸣人",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_one_tail_naruto"
@@ -2492,7 +2494,7 @@
                 {
                     "name": "重铸符",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_recast_rune"
@@ -2503,7 +2505,7 @@
                 {
                     "name": "疾风传井野",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_ino_Shippuden"
@@ -2514,7 +2516,7 @@
                 {
                     "name": "疾风传手鞠",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_temari_Shippuden"
@@ -2525,7 +2527,7 @@
                 {
                     "name": "声望",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_fame"
@@ -2536,7 +2538,7 @@
                 {
                     "name": "轮回石",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_reincarnation_stone"
@@ -2547,7 +2549,7 @@
                 {
                     "name": "忍玉",
                     "pipeline_override": {
-                        "shop_survival_child_shop_shot_2": {
+                        "shop_survival_child_shop_slot_2": {
                             "anchor": {
                                 "survival_child_shop_slot_1": "",
                                 "survival_child_shop_slot_2": "shop_survival_child_shop_ninja_jade"
@@ -2591,6 +2593,423 @@
             ],
             "pipeline_override": {
                 "survival_good_slot_2_set": {
+                    "max_hit": "{二号数量}"
+                }
+            }
+        },
+        "积分赛商店": {
+            "type": "switch",
+            "description": "不想代码太乱,只做两个兑换位;目前还没优化好,可能有的选项出错",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "shop_to_play_methon_parent_shop": {
+                            "enabled": true
+                        },
+                        "shop_to_point_race_child_shop": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "积分赛商店兑换"
+                    ]
+                }
+            ]
+        },
+        "积分赛商店兑换": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "一个兑换位",
+                    "option": [
+                        "积分赛一号兑换位",
+                        "积分赛一号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "不兑换"
+                },
+                {
+                    "name": "两个兑换位",
+                    "option": [
+                        "积分赛一号兑换位",
+                        "积分赛一号位兑换数量",
+                        "积分赛二号兑换位",
+                        "积分赛二号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "enabled": true
+                        },
+                        "shop_point_race_child_shop_slot_2": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "积分赛一号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "蝎"
+                },
+                {
+                    "name": "死司凭血飞段",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_black_fly"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级通灵卷轴",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_advance_summon_scroll"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "积分赛宝箱",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_point_race_box"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "鬼鲛",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_kisame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "咒印君麻吕",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_kimimaro_Curse_Mark"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传木叶丸",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_konohamaru_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "忍玉",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_ninja_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "声望",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_1": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "shop_point_race_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "积分赛二号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "蝎"
+                },
+                {
+                    "name": "死司凭血飞段",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_black_fly"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "高级通灵卷轴",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_advance_summon_scroll"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "积分赛宝箱",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_point_race_box"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "鬼鲛",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_kisame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "咒印君麻吕",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_kimimaro_Curse_Mark"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "疾风传木叶丸",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_konohamaru_Shippuden"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "忍玉",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_ninja_jade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "声望",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_fame"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "轮回石",
+                    "pipeline_override": {
+                        "shop_point_race_child_shop_slot_2": {
+                            "anchor": {
+                                "point_race_child_shop_slot_1": "",
+                                "point_race_child_shop_slot_2": "shop_point_race_child_shop_reincarnation_stone"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "积分赛一号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "一号数量",
+                    "label": "一号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "point_race_good_slot_1_set": {
+                    "max_hit": "{一号数量}"
+                }
+            }
+        },
+        "积分赛二号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "二号数量",
+                    "label": "二号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "point_race_good_slot_2_set": {
+                    "max_hit": "{二号数量}"
+                }
+            }
+        },
+        "组织商店": {
+            "type": "switch",
+            "description": "不想代码太乱,只做两个兑换位;目前还没优化好,可能有的选项出错",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "shop_to_play_methon_parent_shop": {
+                            "enabled": true
+                        },
+                        "shop_to_group_child_shop": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "组织商店兑换"
+                    ]
+                }
+            ]
+        },
+        "组织商店兑换": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "一个兑换位",
+                    "option": [
+                        "组织一号兑换位",
+                        "组织一号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "不兑换"
+                },
+                {
+                    "name": "两个兑换位",
+                    "option": [
+                        "组织一号兑换位",
+                        "组织一号位兑换数量",
+                        "组织二号兑换位",
+                        "组织二号位兑换数量"
+                    ],
+                    "pipeline_override": {
+                        "shop_group_child_shop_slot_1": {
+                            "enabled": true
+                        },
+                        "shop_group_child_shop_slot_2": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "组织一号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "红豆"
+                }
+            ]
+        },
+        "组织二号兑换位": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "红豆"
+                }
+            ]
+        },
+        "组织一号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "一号数量",
+                    "label": "一号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "group_good_slot_1_set": {
+                    "max_hit": "{一号数量}"
+                }
+            }
+        },
+        "组织二号位兑换数量": {
+            "type": "input",
+            "description": "兑换多个可能存在问题",
+            "inputs": [
+                {
+                    "name": "二号数量",
+                    "label": "二号数量",
+                    "description": "输入需要兑换的数量,最大10",
+                    "pipeline_type": "int",
+                    "default": "1",
+                    "verify": "^([1-9]|10)$"
+                }
+            ],
+            "pipeline_override": {
+                "group_good_slot_2_set": {
                     "max_hit": "{二号数量}"
                 }
             }

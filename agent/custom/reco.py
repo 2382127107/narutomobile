@@ -1195,6 +1195,12 @@ def get_child_shop_info(
     elif shop_type == "survival_child_shop":
         slot_1 = context.get_anchor("survival_child_shop_slot_1")
         slot_2 = context.get_anchor("survival_child_shop_slot_2")
+    elif shop_type == "point_race_child_shop":
+        slot_1 = context.get_anchor("point_race_child_shop_slot_1")
+        slot_2 = context.get_anchor("point_race_child_shop_slot_2")
+    elif shop_type == "group_child_shop":
+        slot_1 = context.get_anchor("group_child_shop_slot_1")
+        slot_2 = context.get_anchor("group_child_shop_slot_2")
 
     if slot_1 is not None:
         slot = slot_1
@@ -1202,12 +1208,20 @@ def get_child_shop_info(
             node_data_key = "jade_good_slot_1_set"
         elif shop_type == "survival_child_shop":
             node_data_key = "survival_good_slot_1_set"
+        elif shop_type == "point_race_child_shop":
+            node_data_key = "point_race_good_slot_1_set"
+        elif shop_type == "group_child_shop":
+            node_data_key = "group_good_slot_1_set"
     elif slot_2 is not None:
         slot = slot_2
         if shop_type == "jade_child_shop":
             node_data_key = "jade_good_slot_2_set"
         elif shop_type == "survival_child_shop":
             node_data_key = "survival_good_slot_2_set"
+        elif shop_type == "point_race_child_shop":
+            node_data_key = "point_race_good_slot_1_set"
+        elif shop_type == "group_child_shop":
+            node_data_key = "group_good_slot_1_set"
     else:
         logger.error("未找到商店锚点配置")
         return None
@@ -1226,6 +1240,14 @@ def get_child_shop_info(
     elif shop_type == "survival_child_shop":
         context.override_pipeline(
             {"shop_survival_child_check_shopping_count": {"expected": str(count)}}
+        )
+    elif shop_type == "point_race_child_shop":
+        context.override_pipeline(
+            {"shop_point_race_child_check_shopping_count": {"expected": str(count)}}
+        )
+    elif shop_type == "group_race_child_shop":
+        context.override_pipeline(
+            {"shop_group_race_child_check_shopping_count": {"expected": str(count)}}
         )
 
     reco_detail = context.run_recognition(slot, image)
@@ -1332,6 +1354,42 @@ def get_child_shop_info(
                 context.override_pipeline(
                     {
                         "shop_survival_child_follow_up_shopping": {
+                            "target": price_roi,
+                            "repeat": count,
+                        }
+                    }
+                )
+            elif shop_type == "point_race_child_shop":
+                context.override_next(
+                    "shop_point_race_child_shopping",
+                    [
+                        "shop_point_race_child_shopping_interface",
+                        "[JumpBack]shop_confirm_exchange",
+                        "shop_point_race_child_follow_up_shopping",
+                        "shop_swipe_back_for_good",
+                    ],
+                )
+                context.override_pipeline(
+                    {
+                        "shop_point_race_child_follow_up_shopping": {
+                            "target": price_roi,
+                            "repeat": count,
+                        }
+                    }
+                )
+            elif shop_type == "group_child_shop":
+                context.override_next(
+                    "shop_group_child_shopping",
+                    [
+                        "shop_group_child_shopping_interface",
+                        "[JumpBack]shop_confirm_exchange",
+                        "shop_group_child_follow_up_shopping",
+                        "shop_swipe_back_for_good",
+                    ],
+                )
+                context.override_pipeline(
+                    {
+                        "shop_group_child_follow_up_shopping": {
                             "target": price_roi,
                             "repeat": count,
                         }

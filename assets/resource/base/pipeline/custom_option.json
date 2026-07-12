@@ -10,5 +10,17 @@
     },
     "survival_good_slot_2_set": {
         "max_hit": 1
+    },
+    "point_race_good_slot_1_set": {
+        "max_hit": 1
+    },
+    "point_race_good_slot_2_set": {
+        "max_hit": 1
+    },
+    "group_good_slot_1_set": {
+        "max_hit": 1
+    },
+    "group_good_slot_2_set": {
+        "max_hit": 1
     }
 }
