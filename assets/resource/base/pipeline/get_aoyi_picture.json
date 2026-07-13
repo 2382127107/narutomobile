@@ -298,6 +298,7 @@
         ],
         "method": 10001,
         "threshold": 0.9,
+        "action": "Click",
         "next": [
             "get_aoyi_picture_challenge_lag",
             "get_aoyi_picture_challenge_option",
