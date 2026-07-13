@@ -452,7 +452,7 @@
         "next": [
             "back_main_screen_and_stop"
         ],
-        "focus": "[color:tomato]无法进入战斗[/color]"
+        "focus": "[color:tomato]无法进入战斗提示[/color]"
     },
     "battle_again": {
         "recognition": "TemplateMatch",
