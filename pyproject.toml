@@ -6,7 +6,7 @@ requires-python = ">=3.12"
 dependencies = [
     "json-with-comments>=1.2.10",
     "loguru>=0.7.3",
-    "maafw>=5.11.2",
+    "maafw>=5.12.1",
     "notify-py>=0.3.2",
     "pillow>=12.0.0",
     "pip>=26.1.2",
@@ -14,4 +14,3 @@ dependencies = [
 
 [tool.uv]
 index-url = "https://mirrors.cloud.tencent.com/pypi/simple"
-extra-index-urls = ["https://pypi.company.com/simple"]
