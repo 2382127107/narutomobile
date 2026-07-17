@@ -4,7 +4,7 @@
   "scripts": {
     "typecheck:py": "uv run --frozen pyright",
     "lint:py": "uv run --frozen ruff check .",
-    "format": "prettier --write .",
+    "format": "prettier --write . && pnpm format:py && pnpm format:md",
     "format:check": "prettier --check .",
     "format:py": "uv run --frozen ruff format .",
     "lint:md": "markdownlint-cli2 --config docs/.markdownlint.yaml \"docs/**/*.md\" \"README.md\" \"#**/node_modules\"",
