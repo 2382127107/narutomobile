@@ -179,17 +179,13 @@ class Shopping(CustomRecognition):
         else:
             price_text = ""
 
-        try:
-            price_value = self.extract_number(price_text)
-        except (ValueError, TypeError):
-            logger.error(f"价格解析失败: '{price_text}'")
+        price_value = self.extract_number(price_text)
+        if total_value is None or price_value is None:
+            logger.error("货币总数或价格解析失败")
             return None
 
         if price_value <= 40:
             logger.warning(f"价格识别出错,跳过购买;原始文本:'{price_detail}'")
-            return None
-        if total_value is None or price_value is None:
-            logger.error("货币总数或价格解析失败")
             return None
 
         # 可否购买

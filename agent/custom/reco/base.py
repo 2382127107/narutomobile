@@ -1024,7 +1024,7 @@ class MissionOfficeStrategy(CustomRecognition):
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
-def get_digit_count(context: Context, image: ndarray, roi: list[int]) -> int | None:
+def get_digit_count(context: Context, image: ndarray, roi: list[int], default=None):
     """
     独立读取指定ROI的纯数字(小数点和正负号也会去除)
     :param context: MAA上下文
@@ -1039,7 +1039,7 @@ def get_digit_count(context: Context, image: ndarray, roi: list[int]) -> int | N
 
     if reco_detail is None or not reco_detail.hit:
         logger.warning(f"ROI{roi} 未识别到任何文本")
-        return None
+        return default
 
     # 提取并清洗识别文本,仅保留数字
     source_text = str(
@@ -1048,18 +1048,14 @@ def get_digit_count(context: Context, image: ndarray, roi: list[int]) -> int | N
     logger.debug(f"ROI{roi} 原始识别文本：{source_text}")
 
     # 正则提取纯数字,过滤所有非数字字符
-    num_match = re.search(r"\d+", source_text)
+    num_match = re.search(r"\d+", source_text, re.ASCII)
     if not num_match:
         logger.warning(f"ROI{roi} 未提取到有效数字，原始文本：{source_text}")
-        return None
+        return default
 
-    try:
-        token_count = int(num_match.group())
-        logger.info(f" ROI{roi} 解析到的纯数字:{token_count}")
-        return token_count
-    except ValueError:
-        logger.warning(f"ROI{roi} 数字转换失败，提取字符串：{num_match.group()}")
-        return None
+    token_count = int(num_match.group())
+    logger.info(f" ROI{roi} 解析到的纯数字:{token_count}")
+    return token_count
 
 
 @AgentServer.custom_recognition("CheckGetCopperRoll")
@@ -1116,9 +1112,7 @@ class CheckBuyEnergyCount(CustomRecognition):
     检测购买体力次数,第一次识别次数-目前识别次数>=传入次数则通过
     """
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.start_count = -1
+    start_count = -1
 
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
