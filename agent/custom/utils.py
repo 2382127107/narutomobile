@@ -358,37 +358,6 @@ def extract_datetime_from_log_name(filename: str) -> Optional[datetime]:
         return None
 
 
-def extract_datetime_from_image_name(filename: str) -> Optional[datetime]:
-    try:
-        base = filename.split("_")[0]
-        date_part, time_part = base.split("-")
-        year, month, day = date_part.split(".")
-        time_components = time_part.split(".")
-        if len(time_components) == 4:
-            hour, minute, second, millisecond = time_components
-        elif len(time_components) == 3:
-            hour, minute, sec_ms = time_components
-            if "." in sec_ms:
-                second, millisecond = sec_ms.split(".")
-            else:
-                second = sec_ms
-                millisecond = "0"
-        else:
-            return None
-        microsecond = int(millisecond.ljust(6, "0")[:6])
-        return datetime(
-            int(year),
-            int(month),
-            int(day),
-            int(hour),
-            int(minute),
-            int(second),
-            microsecond,
-        )
-    except Exception:
-        return None
-
-
 def cleanup_maafw_bak_logs(debug_folder: Path, keep_count: int):
     """
     清理旧的 maafw.bak.*.log 文件,保留最新的 keep_count 个。
