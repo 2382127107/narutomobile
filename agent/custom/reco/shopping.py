@@ -159,12 +159,12 @@ class Shopping(CustomRecognition):
             if total_detail and total_detail.hit
             else ""
         )
-        try:
-            total_value = self.extract_number(total_text)
-        except (ValueError, TypeError):
-            logger.error(f"货币总数解析失败: '{total_text}'")
-            return None
-
+        w = 1  # 挣w
+        if "万" in total_text:
+            w = 10000
+        total_value = self.extract_number(total_text)
+        if total_value is not None:
+            total_value *= w
         # 价格解析
         price_roi = [best_box[0] + 42, best_box[1] + 179, 123, 54]
         price_detail = context.run_recognition(
