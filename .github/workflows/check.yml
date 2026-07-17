@@ -27,6 +27,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+
       # pip install maafw
       - name: Install maafw
         run: |
@@ -47,8 +54,8 @@ jobs:
 
       - name: Check Interface
         run: |
-          npm ci
-          npx @nekosu/maa-tools check
+          pnpm install --frozen-lockfile
+          pnpm exec maa-tools check
 
   python:
     runs-on: ubuntu-latest

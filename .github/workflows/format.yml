@@ -42,7 +42,9 @@ jobs:
         run: pnpm exec prettier --write .
 
       - name: Format Python
-        run: pnpm format:py
+        run: |
+          uv run --frozen ruff check --fix .
+          uv run --frozen ruff format .
 
       - name: Format Markdown
         run: pnpm format:md
