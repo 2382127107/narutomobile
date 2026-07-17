@@ -167,7 +167,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:yellow ]百忍还没开,尝试玩别的[/color]"
+        "focus": "[color:darkorange]百忍还没开,尝试玩别的[/color]"
     },
     "more_gameplay_trace_vanish": {
         "recognition": "OCR",
