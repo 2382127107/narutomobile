@@ -92,7 +92,7 @@
         "recognition": {
             "type": "Custom",
             "param": {
-                "custom_recognition": "find_bonds_without_enough_token"
+                "custom_recognition": "FindBondsWithoutEnoughToken"
             }
         },
         "next": [

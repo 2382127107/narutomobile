@@ -82,7 +82,7 @@ python -m venv .venv
 # 安装依赖
 pip install -r requirements.txt
 # 如果已经安装过依赖，使用以下命令更新
-# pip install -U requirements.txt  # 或使用 pip install --upgrade requirements.txt
+# pip install -U -r requirements.txt 或使用 pip install --upgrade -r requirements.txt
 ```
 
 > [!WARNING]  

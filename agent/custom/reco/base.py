@@ -197,7 +197,7 @@ class FindPlantableFlower(CustomRecognition):
         return current_seeds
 
 
-@AgentServer.custom_recognition("find_bonds_without_enough_token")
+@AgentServer.custom_recognition("FindBondsWithoutEnoughToken")
 class FindBondsWithoutEnoughToken(CustomRecognition):
     """
     羁绊追寻
@@ -211,7 +211,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
-        logger.info("===== 执行find_bonds_without_enough_token节点 =====")
+        logger.info("===== 执行FindBondsWithoutEnoughToken节点 =====")
 
         # 读取token数量
         token_count,_ = get_digit_count(context, argv.image, self.TOKEN_CHECK_ROI)
@@ -219,7 +219,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         # 识别失败
         if token_count is None:
             logger.warning(
-                "[find_bonds_without_enough_token] token数量识别失败,返回未通过"
+                "[FindBondsWithoutEnoughToken] token数量识别失败,返回未通过"
             )
             return CustomRecognition.AnalyzeResult(
                 box=None, detail={"token_count": None, "passed": False}
@@ -228,7 +228,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         # 数字 < 5
         if token_count < 5:
             logger.info(
-                f"[find_bonds_without_enough_token] token数量{token_count}<5,返回识别通过"
+                f"[FindBondsWithoutEnoughToken] token数量{token_count}<5,返回识别通过"
             )
             # 返回非空box表示节点识别通过
             pass_box = Rect(0, 0, 1, 1)
@@ -238,7 +238,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
 
         # 数字 ≥ 5
         logger.info(
-            f"[find_bonds_without_enough_token] token数量{token_count}≥5,返回识别未通过"
+            f"[FindBondsWithoutEnoughToken] token数量{token_count}≥5,返回识别未通过"
         )
         return CustomRecognition.AnalyzeResult(
             box=None, detail={"token_count": token_count, "passed": False}
