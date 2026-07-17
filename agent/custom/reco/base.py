@@ -9,44 +9,7 @@ from numpy import ndarray
 from utils.counter import counter
 from utils.logger import logger
 
-
-def correct_senryoku_text(source_text: str) -> int | None:
-    """
-    解析战力文本，返回整数战力值
-    """
-    if source_text.endswith("万"):
-        text = source_text[:-1]
-        text += "0000"
-    else:
-        text = source_text
-
-    if text.isdigit():
-        logger.info(f"读取到战力：{source_text}")
-        return int(text)
-
-    logger.warning(f"战力解析错误：{source_text}")
-    return None
-
-
-def get_senryoku(context: Context, image: ndarray, roi: list[int]) -> int | None:
-    """
-    获取战力
-    """
-    reco_detail = context.run_recognition(
-        "GetSenryokuText",
-        image,
-        {
-            "GetSenryokuText": {"roi": roi},
-        },
-    )
-
-    if reco_detail is None or not reco_detail.hit:
-        logger.debug(reco_detail)
-        logger.warning("无法读取到战力！")
-        return None
-
-    source_text = str(reco_detail.best_result.text)  # type: ignore
-    return correct_senryoku_text(source_text)
+from ..utils import get_digit_count
 
 
 @AgentServer.custom_recognition("IsCounterOverflow")
@@ -95,97 +58,6 @@ class IsInNinjaGuide(CustomRecognition):
                 detail={},
             )
         return CustomRecognition.AnalyzeResult(box=None, detail={})
-
-
-@AgentServer.custom_recognition("FindToChallenge")
-class FindToChallenge(CustomRecognition):
-    """
-    在积分赛中寻找可以挑战的对象
-    """
-
-    def analyze(
-        self,
-        context: Context,
-        argv: CustomRecognition.AnalyzeArg,
-    ) -> CustomRecognition.AnalyzeResult:
-        fource_battle = json.loads(argv.custom_recognition_param).get(
-            "fource_battle", False
-        )
-        if fource_battle:
-            logger.info("当前配置：强制挑战")
-        else:
-            logger.info("当前配置：非强制挑战")
-
-        logger.info("尝试读取我方小队战力...")
-        team_senryoku = get_senryoku(context, argv.image, [271, 337, 178, 29])
-        if team_senryoku is None:
-            return CustomRecognition.AnalyzeResult(
-                box=None,
-                detail={},
-            )
-
-        enemy_rois = [
-            [841, 234, 115, 32],
-            [841, 352, 113, 32],
-            [841, 471, 115, 32],
-            [841, 589, 111, 29],
-        ]
-
-        logger.info("尝试读取敌方小队战力...")
-
-        pattern = re.compile(r"\d+万?")
-        enemySenryoku_list = []
-
-        for roi in enemy_rois:
-            reco_detail = context.run_recognition(
-                "GetSenryokuText",
-                argv.image,
-                {
-                    "GetSenryokuText": {"roi": roi},
-                },
-            )
-
-            if reco_detail is None or not reco_detail.hit:
-                logger.warning(f"无法读取到敌队战力,ROI: {roi}")
-                enemySenryoku_list.append(1145141919810)  # 一个非常大的数，表示无法挑战
-                continue
-
-            text = reco_detail.best_result.text  # ty:ignore[unresolved-attribute]
-            match = pattern.search(text)
-            if match:
-                senryoku = correct_senryoku_text(match.group())
-                if senryoku:
-                    enemySenryoku_list.append(senryoku)
-                else:
-                    logger.warning(f"无法解析战力文本: {text}")
-                    enemySenryoku_list.append(1145141919810)
-            else:
-                logger.warning(f"无法解析战力文本: {text}")
-                enemySenryoku_list.append(1145141919810)
-
-        min_enemySenryoku = min(enemySenryoku_list)
-        idx = enemySenryoku_list.index(min_enemySenryoku)
-        logger.info(f"敌队{idx + 1}战力最低：{min_enemySenryoku/10000}万")
-
-        if (min_enemySenryoku > team_senryoku) and (not fource_battle):
-            logger.info("没一个打得过的，溜了溜了。")
-            return CustomRecognition.AnalyzeResult(
-                box=None,
-                detail={},
-            )
-
-        logger.info(f"挑战敌队{idx + 1}!")
-        targets = [
-            [986, 195, 92, 39],
-            [987, 312, 92, 39],
-            [988, 430, 92, 39],
-            [987, 548, 92, 39],
-        ]
-
-        return CustomRecognition.AnalyzeResult(
-            box=targets[idx],
-            detail={},
-        )
 
 
 @AgentServer.custom_recognition("FindPlantableFlower")
@@ -325,51 +197,6 @@ class FindPlantableFlower(CustomRecognition):
         return current_seeds
 
 
-def get_token_count(context: Context, image: ndarray, roi: list[int]) -> int | None:
-    """
-    羁绊追寻
-    独立读取指定ROI的纯数字(调用custom_ocr)
-    :param context: MAA上下文
-    :param image: 屏幕图像
-    :param roi: 识别区域 [x, y, w, h]
-    :return: 解析后的整型数字,失败返回None
-    """
-    # 调用custom_ocr
-    reco_detail = context.run_recognition(
-        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
-    )
-
-    if reco_detail is None or not reco_detail.hit:
-        logger.warning(f"[find_bonds_without_enough_token] ROI{roi} 未识别到任何文本")
-        return None
-
-    # 提取并清洗识别文本（仅保留数字）
-    source_text = str(reco_detail.best_result.text).strip()  # type: ignore
-    logger.debug(
-        f"[find_bonds_without_enough_token] ROI{roi} 原始识别文本：{source_text}"
-    )
-
-    # 正则提取纯数字（过滤所有非数字字符）
-    num_match = re.search(r"\d+", source_text)
-    if not num_match:
-        logger.warning(
-            f"[find_bonds_without_enough_token] ROI{roi} 未提取到有效数字，原始文本：{source_text}"
-        )
-        return None
-
-    try:
-        token_count = int(num_match.group())
-        logger.info(
-            f"[find_bonds_without_enough_token] ROI{roi} 解析到token数量:{token_count}"
-        )
-        return token_count
-    except ValueError:
-        logger.warning(
-            f"[find_bonds_without_enough_token] ROI{roi} 数字转换失败，提取字符串：{num_match.group()}"
-        )
-        return None
-
-
 @AgentServer.custom_recognition("find_bonds_without_enough_token")
 class FindBondsWithoutEnoughToken(CustomRecognition):
     """
@@ -387,7 +214,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         logger.info("===== 执行find_bonds_without_enough_token节点 =====")
 
         # 读取token数量
-        token_count = get_token_count(context, argv.image, self.TOKEN_CHECK_ROI)
+        token_count = get_digit_count(context, argv.image, self.TOKEN_CHECK_ROI)
 
         # 识别失败
         if token_count is None:
@@ -416,6 +243,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         return CustomRecognition.AnalyzeResult(
             box=None, detail={"token_count": token_count, "passed": False}
         )
+
 
 
 def get_flip_ticket_count(
@@ -627,40 +455,6 @@ class MissionOfficeStrategy(CustomRecognition):
                 "[MissionOfficeStrategy] 公式条件不成立，返回识别未通过(安全策略)"
             )
             return CustomRecognition.AnalyzeResult(box=None, detail={})
-
-
-def get_digit_count(context: Context, image: ndarray, roi: list[int], default=None):
-    """
-    独立读取指定ROI的纯数字(小数点和正负号也会去除)
-    :param context: MAA上下文
-    :param image: 屏幕图像
-    :param roi: 识别区域 [x, y, w, h]
-    :return: 解析后的整型数字,失败返回None
-    """
-    # 调用custom_ocr
-    reco_detail = context.run_recognition(
-        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
-    )
-
-    if reco_detail is None or not reco_detail.hit:
-        logger.warning(f"ROI{roi} 未识别到任何文本")
-        return default
-
-    # 提取并清洗识别文本,仅保留数字
-    source_text = str(
-        reco_detail.best_result.text  # ty:ignore[unresolved-attribute]
-    ).strip()
-    logger.debug(f"ROI{roi} 原始识别文本：{source_text}")
-
-    # 正则提取纯数字,过滤所有非数字字符
-    num_match = re.search(r"\d+", source_text, re.ASCII)
-    if not num_match:
-        logger.warning(f"ROI{roi} 未提取到有效数字，原始文本：{source_text}")
-        return default
-
-    token_count = int(num_match.group())
-    logger.info(f" ROI{roi} 解析到的纯数字:{token_count}")
-    return token_count
 
 
 @AgentServer.custom_recognition("CheckGetCopperRoll")

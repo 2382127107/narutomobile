@@ -1,21 +1,18 @@
-from random import randint
-from typing import Iterable
-from time import sleep
 import os
 import random
-import json
-import sys
-from pathlib import Path
+import re
 from datetime import datetime
-from typing import Optional
+from pathlib import Path
+from random import randint
+from time import sleep
+from typing import Iterable, Optional
 
-from PIL import Image
-from notifypy import Notify
 from maa.context import Context
 from maa.define import RectType
-
-from utils import get_format_timestamp
-from utils import bdc, root, jL, jD, logo
+from notifypy import Notify
+from numpy import ndarray
+from PIL import Image
+from utils import bdc, get_format_timestamp, jD, jL, logo, root
 from utils.logger import log_dir, logger
 
 
@@ -306,6 +303,40 @@ def nonlinear_swipe(
 
 def send_notification(title: str = "系统通知", msg: str = "这是一条测试消息"):
     Notify(title, msg, "MaaAutoNaruto", logo.__str__()).send()
+
+
+def get_digit_count(context: Context, image: ndarray, roi: list[int], default=None):
+    """
+    独立读取指定ROI的纯数字(小数点和正负号也会去除)
+    :param context: MAA上下文
+    :param image: 屏幕图像
+    :param roi: 识别区域 [x, y, w, h]
+    :return: 解析后的整型数字,失败返回None
+    """
+    # 调用custom_ocr
+    reco_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
+    )
+
+    if reco_detail is None or not reco_detail.hit:
+        logger.warning(f"ROI{roi} 未识别到任何文本")
+        return default
+
+    # 提取并清洗识别文本,仅保留数字
+    source_text = str(
+        reco_detail.best_result.text  # ty:ignore[unresolved-attribute]
+    ).strip()
+    logger.debug(f"ROI{roi} 原始识别文本：{source_text}")
+
+    # 正则提取纯数字,过滤所有非数字字符
+    num_match = re.search(r"\d+", source_text, re.ASCII)
+    if not num_match:
+        logger.warning(f"ROI{roi} 未提取到有效数字，原始文本：{source_text}")
+        return default
+
+    token_count = int(num_match.group())
+    logger.info(f" ROI{roi} 解析到的纯数字:{token_count}")
+    return token_count
 
 
 # 日志文件清理基准时间
