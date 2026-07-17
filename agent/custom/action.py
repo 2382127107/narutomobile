@@ -471,7 +471,7 @@ class CleanupCustomLog(CustomAction):
 
 
 @AgentServer.custom_action("ShopSwipeBack")
-class CleanupCustomLog(CustomAction):
+class ShopSwipeBack(CustomAction):
     """
     商店兑换滑动回商品头部
     """
@@ -489,7 +489,7 @@ class CleanupCustomLog(CustomAction):
 
 
 @AgentServer.custom_action("SecondaryPasswordAction")
-class CleanupCustomLog(CustomAction):
+class SecondaryPasswordAction(CustomAction):
     """
     二级密码动作
     """
