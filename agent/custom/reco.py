@@ -1145,40 +1145,6 @@ class CheckBuyEnergyCount(CustomRecognition):
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
-@AgentServer.custom_recognition("Shopping")
-class Shopping(CustomRecognition):
-    """
-    商店兑换
-    """
-
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
-        context.clear_hit_count("shop_swipe_back_for_good")
-        param = json.loads(argv.custom_recognition_param)
-        shop_type = param.get("shop_type", "root_shop")
-        logger.info(f"商店类型: {shop_type}")
-        if (
-            shop_type == "jade_child_shop"
-            or shop_type == "survival_child_shop"
-            or shop_type == "point_race_child_shop"
-        ):
-            total_roi = [1019, 17, 128, 37]
-        elif shop_type == "group_child_shop":
-            total_roi = [646, 16, 130, 37]
-        else:
-            logger.info("暂不支持")
-            return CustomRecognition.AnalyzeResult(box=None, detail={})
-
-        box = get_child_shop_info(context, argv.image, total_roi, shop_type)
-        if box is None:
-            return CustomRecognition.AnalyzeResult(box=None, detail={})
-        x, y, w, h = box
-        logger.info(f"点击位置[{x},{y},{w},{h}]")
-
-        return CustomRecognition.AnalyzeResult(box=Rect(x, y, w, h), detail={})
-
-
 # 商店配置
 SHOP_CONFIGS: Dict[str, dict] = {
     "jade_child_shop": {
@@ -1245,7 +1211,7 @@ class Shopping(CustomRecognition):
             logger.info("暂不支持")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
-        box = get_child_shop_info(context, argv.image, shop_type, config)
+        box = get_child_shop_info(context, argv.image, config)
         if box is None:
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
@@ -1257,7 +1223,6 @@ class Shopping(CustomRecognition):
 def get_child_shop_info(
     context: Context,
     image: ndarray,
-    shop_type: str,
     config: dict,
 ) -> Optional[List[int]]:
     """
