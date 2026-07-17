@@ -474,3 +474,4 @@ assets/resource/model/ocr
 assets/resource/base/model/ocr
 
 temp
+.pnpm-store/v11/index.db

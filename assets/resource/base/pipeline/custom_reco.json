@@ -30,12 +30,12 @@
             }
         ]
     },
-    "GetSenryokuText": {
+    // 获取带有数字的文本
+    "GetTextWithNumers": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "order_by": "Vertical",
-                "expected": "[\\u4e00-\\u9fa5]*[\\d]+万?"
+                "expected": "\\d+"
             }
         }
     },
@@ -43,7 +43,6 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "expected": ".*",
                 "replace": [
                     [
                         "丑",
