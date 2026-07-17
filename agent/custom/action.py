@@ -71,7 +71,7 @@ class Screenshot(CustomAction):
 
 
 @AgentServer.custom_action("RetryFailed")
-class RetryFaild(CustomAction):
+class RetryFailed(CustomAction):
     """
     重试失败
     """
