@@ -1,14 +1,14 @@
 import json
-from maa.define import Rect
-from maa.agent.agent_server import AgentServer
-from maa.custom_recognition import CustomRecognition
-from maa.context import Context
-from numpy import ndarray
-from typing import List, Tuple, Dict, Optional, Any
 import re
+from typing import Any, Dict, List, Optional, Tuple
 
-from utils.logger import logger
+from maa.agent.agent_server import AgentServer
+from maa.context import Context
+from maa.custom_recognition import CustomRecognition
+from maa.define import Rect
+from numpy import ndarray
 from utils.counter import counter
+from utils.logger import logger
 
 
 def correct_senryoku_text(source_text: str) -> int | None:
