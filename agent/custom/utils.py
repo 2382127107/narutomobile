@@ -330,12 +330,12 @@ def get_digit_count(context: Context, image: ndarray, roi: list[int], default=No
     ).strip()
 
     # 正则提取纯数字,过滤所有非数字字符
-    num_match: re.Match[str] | None = re.search(r"\d+", source_text, re.ASCII)
-    if not num_match:
+    nums = re.findall(r"\d+", source_text, re.ASCII)
+    if not nums:
         logger.warning(f"ROI {roi} 未提取到有效数字，原始文本：{source_text}")
         return default, source_text
 
-    value = int(num_match.group(1))
+    value = int(nums[0])
     logger.info(f" ROI{roi} 解析到的纯数字:{value}")
     return value, source_text
 
