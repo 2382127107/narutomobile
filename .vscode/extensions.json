@@ -6,6 +6,10 @@
         "github.vscode-github-actions",
         "github.vscode-pull-request-github",
         "ms-python.python",
-        "ms-python.vscode-pyright"
+        "astral-sh.ty",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "windsland52.maa-log-analyzer",
+        "tamasfe.even-better-toml",
     ]
 }

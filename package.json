@@ -1,5 +1,19 @@
 {
+    "name": "man",
+    "license": "AGPL-3.0-or-later","scripts": {
+              "typecheck:py": "uv run --frozen pyright",
+                      "lint:py": "uv run --frozen ruff check .",        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "format:py": "uv run --frozen ruff format .",        "check": "pnpm format:check && pnpm check:schema && pnpm check:maa && pnpm lint",
+        "check:maa": "pnpm exec maa-tools check",
+        "check:py": "pnpm lint:py && pnpm typecheck:py && pnpm test:py"
+    },
   "devDependencies": {
-    "prettier-plugin-multiline-arrays": "^3.0.6"
-  }
+    "prettier-plugin-multiline-arrays": "^3.0.6",
+    "@nekosu/maa-tools": "^1.0.24",
+    "@nekosu/prettier-plugin-maafw-sort": "^1.0.5",
+    "prettier": "^3.9.5"
+  },
+    "private": true,
+  "packageManager": "pnpm@11.13.1"
 }
