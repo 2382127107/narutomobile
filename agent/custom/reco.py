@@ -735,37 +735,35 @@ def get_token_count(context: Context, image: ndarray, roi: list[int]) -> int | N
     )
 
     if reco_detail is None or not reco_detail.hit:
-        logger.warning(f"[find_bonds_without_enough_token] ROI{roi} 未识别到任何文本")
+        logger.warning(f"[FindBondsWithoutEnoughToken] ROI{roi} 未识别到任何文本")
         return None
 
     # 提取并清洗识别文本（仅保留数字）
     source_text = str(reco_detail.best_result.text).strip()  # type: ignore
-    logger.debug(
-        f"[find_bonds_without_enough_token] ROI{roi} 原始识别文本：{source_text}"
-    )
+    logger.debug(f"[FindBondsWithoutEnoughToken] ROI{roi} 原始识别文本：{source_text}")
 
     # 正则提取纯数字（过滤所有非数字字符）
     num_match = re.search(r"\d+", source_text)
     if not num_match:
         logger.warning(
-            f"[find_bonds_without_enough_token] ROI{roi} 未提取到有效数字，原始文本：{source_text}"
+            f"[FindBondsWithoutEnoughToken] ROI{roi} 未提取到有效数字，原始文本：{source_text}"
         )
         return None
 
     try:
         token_count = int(num_match.group())
         logger.info(
-            f"[find_bonds_without_enough_token] ROI{roi} 解析到token数量:{token_count}"
+            f"[FindBondsWithoutEnoughToken] ROI{roi} 解析到token数量:{token_count}"
         )
         return token_count
     except ValueError:
         logger.warning(
-            f"[find_bonds_without_enough_token] ROI{roi} 数字转换失败，提取字符串：{num_match.group()}"
+            f"[FindBondsWithoutEnoughToken] ROI{roi} 数字转换失败，提取字符串：{num_match.group()}"
         )
         return None
 
 
-@AgentServer.custom_recognition("find_bonds_without_enough_token")
+@AgentServer.custom_recognition("FindBondsWithoutEnoughToken")
 class FindBondsWithoutEnoughToken(CustomRecognition):
     """
     羁绊追寻
@@ -779,16 +777,14 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
-        logger.info("===== 执行find_bonds_without_enough_token节点 =====")
+        logger.info("===== 执行FindBondsWithoutEnoughToken =====")
 
         # 读取token数量
         token_count = get_token_count(context, argv.image, self.TOKEN_CHECK_ROI)
 
         # 识别失败
         if token_count is None:
-            logger.warning(
-                "[find_bonds_without_enough_token] token数量识别失败,返回未通过"
-            )
+            logger.warning("[FindBondsWithoutEnoughToken] token数量识别失败,返回未通过")
             return CustomRecognition.AnalyzeResult(
                 box=None, detail={"token_count": None, "passed": False}
             )
@@ -796,7 +792,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         # 数字 < 5
         if token_count < 5:
             logger.info(
-                f"[find_bonds_without_enough_token] token数量{token_count}<5,返回识别通过"
+                f"[FindBondsWithoutEnoughToken] token数量{token_count}<5,返回识别通过"
             )
             # 返回非空box表示节点识别通过
             pass_box = Rect(0, 0, 1, 1)
@@ -806,7 +802,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
 
         # 数字 ≥ 5
         logger.info(
-            f"[find_bonds_without_enough_token] token数量{token_count}≥5,返回识别未通过"
+            f"[FindBondsWithoutEnoughToken] token数量{token_count}≥5,返回识别未通过"
         )
         return CustomRecognition.AnalyzeResult(
             box=None, detail={"token_count": token_count, "passed": False}
