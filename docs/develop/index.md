@@ -71,18 +71,13 @@ cd narutomobile
 
 ## 5. 安装 Python 依赖
 
-使用 pip 安装项目所需的 Python 依赖：
+使用 uv 安装项目所需的 Python 依赖：
 
 ```bash title="安装Python依赖"
-# 创建虚拟环境
-python -m venv .venv
-.venv\Scripts\activate  # Windows 系统
-# source .venv/bin/activate  # Linux/macOS 系统
-
-# 安装依赖
-pip install -r requirements.txt
-# 如果已经安装过依赖，使用以下命令更新
-# pip install -U requirements.txt  # 或使用 pip install --upgrade requirements.txt
+# 安装uv
+pip install uv
+# 创建虚拟环境并安装依赖
+uv sync
 ```
 
 > [!WARNING]  
