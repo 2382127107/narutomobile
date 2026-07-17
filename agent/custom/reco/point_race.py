@@ -1,11 +1,12 @@
 import json
-import re
 
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_recognition import CustomRecognition
 from numpy import ndarray
 from utils.logger import logger
+
+from ..utils import get_digit_count
 
 
 @AgentServer.custom_recognition("FindToChallenge")
@@ -89,29 +90,11 @@ class FindToChallenge(CustomRecognition):
         """
         获取战力
         """
-        reco_detail = context.run_recognition(
-            "GetSenryokuText",
-            image,
-            {
-                "GetSenryokuText": {"roi": roi},
-            },
-        )
+        value,source_text = get_digit_count(context, image, roi, default=default)
+        if value is None or source_text is None:
+            logger.error(f"无法解析战力 ROI: {roi}")
+            return None
 
-        if reco_detail is None or not reco_detail.hit:
-            logger.debug(reco_detail)
-            logger.warning("无法读取到战力！")
-            return default
-
-        source_text = str(
-            reco_detail.best_result.text  # ty:ignore[unresolved-attribute]
-        )
-        pattern = r"\d+"
-        match = re.search(pattern, source_text)
-        if not match:
-            logger.warning(f"无法解析战力文本: {source_text}")
-            return default
-
-        value = int(match.group())
         if source_text.endswith("万"):
             value *= 10000
         logger.info(f"读取到战力：{value}")

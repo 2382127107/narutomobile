@@ -142,10 +142,10 @@ class FindPlantableFlower(CustomRecognition):
         """
 
         reco_detail = context.run_recognition(
-            "GetSenryokuText",
+            "GetTextWithNumers",
             image,
             {
-                "GetSenryokuText": {"roi": roi},
+                "GetTextWithNumers": {"roi": roi},
             },
         )
 
@@ -214,7 +214,7 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         logger.info("===== 执行find_bonds_without_enough_token节点 =====")
 
         # 读取token数量
-        token_count = get_digit_count(context, argv.image, self.TOKEN_CHECK_ROI)
+        token_count,_ = get_digit_count(context, argv.image, self.TOKEN_CHECK_ROI)
 
         # 识别失败
         if token_count is None:
@@ -469,7 +469,7 @@ class CheckGetCopperRoll(CustomRecognition):
         roi = [104, 468, 40, 31]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
-        now_count = get_digit_count(context, argv.image, roi)
+        now_count,_ = get_digit_count(context, argv.image, roi)
         if now_count is None:
             now_count = 66
 
@@ -493,7 +493,7 @@ class CheckGetCopperCount(CustomRecognition):
         roi = [309, 468, 27, 30]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
-        now_count = get_digit_count(context, argv.image, roi)
+        now_count,_ = get_digit_count(context, argv.image, roi)
         if now_count is None:
             now_count = 66
 
@@ -520,13 +520,11 @@ class CheckBuyEnergyCount(CustomRecognition):
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
         if self.start_count == -1:
-            self.start_count = get_digit_count(context, argv.image, roi)
-            if self.start_count is None:
-                self.start_count = 66
+            value,_ = get_digit_count(context, argv.image, roi)
+            self.start_count = value if value  else 0
 
-        now_count = get_digit_count(context, argv.image, roi)
-        if now_count is None:
-            now_count = 0
+        value,_ = get_digit_count(context, argv.image, roi)
+        now_count = value if value else 0
 
         if self.start_count - now_count >= count:
             logger.info(

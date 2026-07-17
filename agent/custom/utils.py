@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 from random import randint
 from time import sleep
-from typing import Iterable, Optional
+from typing import Iterable, Optional, Tuple
 
 from maa.context import Context
 from maa.define import RectType
@@ -305,38 +305,39 @@ def send_notification(title: str = "系统通知", msg: str = "这是一条测�
     Notify(title, msg, "MaaAutoNaruto", logo.__str__()).send()
 
 
-def get_digit_count(context: Context, image: ndarray, roi: list[int], default=None):
+def get_digit_count(context: Context, image: ndarray, roi: list[int], default=None) -> Tuple[int|None, str|None]:
     """
     独立读取指定ROI的纯数字(小数点和正负号也会去除)
     :param context: MAA上下文
     :param image: 屏幕图像
     :param roi: 识别区域 [x, y, w, h]
-    :return: 解析后的整型数字,失败返回None
+    :return: tuple[int, str] (识别到的数字, 识别到的文本)
     """
     # 调用custom_ocr
     reco_detail = context.run_recognition(
-        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
+        "GetTextWithNumers", 
+        image,
+        {"GetTextWithNumers": {"roi": roi}},
     )
 
     if reco_detail is None or not reco_detail.hit:
-        logger.warning(f"ROI{roi} 未识别到任何文本")
-        return default
+        logger.warning(f"ROI {roi} 未识别到任何带数字的文本")
+        return default,None
 
     # 提取并清洗识别文本,仅保留数字
     source_text = str(
         reco_detail.best_result.text  # ty:ignore[unresolved-attribute]
     ).strip()
-    logger.debug(f"ROI{roi} 原始识别文本：{source_text}")
 
     # 正则提取纯数字,过滤所有非数字字符
-    num_match = re.search(r"\d+", source_text, re.ASCII)
+    num_match: re.Match[str] | None = re.search(r"\d+", source_text, re.ASCII)
     if not num_match:
-        logger.warning(f"ROI{roi} 未提取到有效数字，原始文本：{source_text}")
-        return default
+        logger.warning(f"ROI {roi} 未提取到有效数字，原始文本：{source_text}")
+        return default, source_text
 
-    token_count = int(num_match.group())
-    logger.info(f" ROI{roi} 解析到的纯数字:{token_count}")
-    return token_count
+    value = int(num_match.group(1))
+    logger.info(f" ROI{roi} 解析到的纯数字:{value}")
+    return value, source_text
 
 
 # 日志文件清理基准时间
