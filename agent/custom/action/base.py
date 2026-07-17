@@ -1,7 +1,6 @@
 import json
 import sys
 from time import sleep
-import random
 from typing import Optional, Tuple
 from pathlib import Path
 
@@ -12,7 +11,7 @@ from maa.define import RectType
 
 from utils.logger import logger
 from utils.counter import counter
-from .utils import (
+from ..utils import (
     fast_ocr,
     fast_swipe,
     nonlinear_swipe,
@@ -71,7 +70,7 @@ class Screenshot(CustomAction):
 
 
 @AgentServer.custom_action("RetryFailed")
-class RetryFaild(CustomAction):
+class RetryFailed(CustomAction):
     """
     重试失败
     """

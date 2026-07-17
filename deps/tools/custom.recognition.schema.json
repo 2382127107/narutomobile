@@ -7,7 +7,7 @@
                 "FindToChallenge",
                 "FindPlantableFlower",
                 "FlipCard",
-                "find_bonds_without_enough_token",
+                "FindBondsWithoutEnoughToken",
                 "IsInNinjaGuide",
                 "IsCounterOverflow",
                 "FindAccessoryFlipTicket",
