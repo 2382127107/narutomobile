@@ -1,10 +1,12 @@
 import * as multilineArrays from "prettier-plugin-multiline-arrays";
 import * as maafwSort from "@nekosu/prettier-plugin-maafw-sort";
+import { printers } from "prettier/plugins/estree";
+
+const patched = maafwSort.patchPlugin(multilineArrays);
+patched.getVisitorKeys = printers["estree-json"].getVisitorKeys;
 
 export default {
-    plugins: [
-        maafwSort.patchPlugin(multilineArrays),
-    ],
+    plugins: [patched],
     multilineArraysWrapThreshold: 1,
     maafwPipelinePatterns: [
         "/pipeline/.*\\.jsonc?",
