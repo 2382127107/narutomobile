@@ -18,7 +18,7 @@
     "@nekosu/prettier-plugin-maafw-sort": "^1.0.5",
     "markdownlint-cli2": "^0.13.0",
     "prettier": "^3.9.5",
-    "prettier-plugin-multiline-arrays": "^3.0.6"
+    "prettier-plugin-multiline-arrays": "^4.1.10"
   },
   "private": true,
   "packageManager": "pnpm@11.13.1"
