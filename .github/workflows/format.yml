@@ -44,7 +44,7 @@ jobs:
       - name: Format Python
         run: |
           uv run --frozen ruff check --fix .
-          uv run --frozen ruff format --fix .
+          uv run --frozen ruff format .
 
       - name: Format Markdown
         run: pnpm format:md
