@@ -1,10 +1,15 @@
 {
     "recommendations": [
-        "ms-python.black-formatter",
+        "charliermarsh.ruff",
         "nekosu.maa-support",
         "davidanson.vscode-markdownlint",
         "github.vscode-github-actions",
         "github.vscode-pull-request-github",
-        "ms-python.python"
+        "ms-python.python",
+        "astral-sh.ty",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "windsland52.maa-log-analyzer",
+        "tamasfe.even-better-toml",
     ]
 }

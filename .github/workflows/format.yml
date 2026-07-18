@@ -1,0 +1,63 @@
+name: format
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: format-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Python dependencies
+        run: uv sync --frozen --group dev
+
+      - name: Format JS/JSON/YAML
+        run: pnpm exec prettier --write .
+
+      - name: Format Python
+        run: |
+          uv run --frozen ruff check --fix .
+          uv run --frozen ruff format --fix .
+
+      - name: Format Markdown
+        run: pnpm format:md
+        continue-on-error: true
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No formatting changes."
+          else
+            git commit -m "style: 自动格式化代码"
+            git push
+          fi

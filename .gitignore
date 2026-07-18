@@ -474,4 +474,6 @@ assets/resource/model/ocr
 assets/resource/base/model/ocr
 
 temp
+
+# Node.js
 .pnpm-store/v11/index.db
