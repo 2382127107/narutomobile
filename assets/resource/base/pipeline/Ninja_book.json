@@ -685,9 +685,20 @@
             570
         ],
         "template": "Ninja_book/get_mechanical_treasure_box_award.png",
+        "method": 10001,
+        "threshold": 0.95,
         "pre_delay": 200,
         "action": "Click",
-        "post_wait_freezes": 500,
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 400,
+            "target": [
+                600,
+                293,
+                79,
+                49
+            ]
+        },
         "post_delay": 0,
         "next": [
             "[JumpBack]get_treasure_box_award_one_key",
@@ -724,7 +735,10 @@
             404,
             234
         ],
-        "template": "SharedNode/confirm.png",
+        "template": [
+            "SharedNode/confirm.png",
+            "SharedNode/one_key_get.png"
+        ],
         "pre_delay": 200,
         "action": "Click",
         "post_wait_freezes": 500,
