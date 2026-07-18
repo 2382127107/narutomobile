@@ -25,6 +25,10 @@ from ..utils import (
     wait_for_freezes,
 )
 
+root = Path(__file__).parent.parent.parent.parent
+sys.path.insert(0, str(root))
+debug_folder = root / "debug"
+
 
 @AgentServer.custom_action("StopTaskList")
 class StopTaskList(CustomAction):
@@ -355,101 +359,54 @@ class NonlinearSwipe(CustomAction):
             return CustomAction.RunResult(success=False)
 
 
+def _run_cleanup(action_name: str, cleanup_func, *args, **kwargs):
+    """通用清理模板"""
+    try:
+        if not debug_folder.exists():
+            logger.info(f"[{action_name}] debug文件夹不存在,跳过")
+            return CustomAction.RunResult(success=True)
+
+        cleanup_func(debug_folder, *args, **kwargs)
+        return CustomAction.RunResult(success=True)
+    except Exception as e:
+        logger.error(f"{action_name} 执行异常: {e}")
+        return CustomAction.RunResult(success=False)
+
+
 @AgentServer.custom_action("CleanupMaafwBakLogs")
 class CleanupMaafwBakLogs(CustomAction):
-    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
-        try:
-            keep_count = 3
-            if argv.custom_action_param:
-                param_dict = json.loads(argv.custom_action_param)
-                count_val = param_dict.get("save_log_count", "")
-                if count_val and str(count_val).isdigit():
-                    keep_count = int(count_val)
-
-            root = Path(__file__).parent.parent.parent
-            sys.path.insert(0, str(root))
-            debug_folder = root / "debug"
-            if not debug_folder.exists():
-                print("[日志清理] debug文件夹不存在,跳过")
-                return CustomAction.RunResult(success=True)
-
-            cleanup_maafw_bak_logs(debug_folder, keep_count)
-            return CustomAction.RunResult(success=True)
-        except Exception as e:
-            print(f"日志清理执行异常: {e}")
-            return CustomAction.RunResult(success=False)
+    def run(self, context, argv):
+        keep_count = 3
+        if argv.custom_action_param:
+            param_dict = json.loads(argv.custom_action_param)
+            count_val = param_dict.get("save_log_count", "")
+            if count_val and str(count_val).isdigit():
+                keep_count = int(count_val)
+        return _run_cleanup("MaafwBak日志清理", cleanup_maafw_bak_logs, keep_count)
 
 
 @AgentServer.custom_action("CleanupOnErrorImg")
 class CleanupOnErrorImg(CustomAction):
-    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
-        try:
-            root = Path(__file__).parent.parent.parent
-            sys.path.insert(0, str(root))
-            debug_folder = root / "debug"
-            if not debug_folder.exists():
-                print("[图片清理] debug文件夹不存在,跳过")
-                return CustomAction.RunResult(success=True)
-
-            clean_images_in_dir(debug_folder, "on_error")
-            return CustomAction.RunResult(success=True)
-        except Exception as e:
-            print(f"on_error 图片清理异常: {e}")
-            return CustomAction.RunResult(success=False)
+    def run(self, context, argv):
+        return _run_cleanup("on_error图片清理", clean_images_in_dir, "on_error")
 
 
 @AgentServer.custom_action("CleanupVisionImg")
 class CleanupVisionImg(CustomAction):
-    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
-        try:
-            root = Path(__file__).parent.parent.parent
-            sys.path.insert(0, str(root))
-            debug_folder = root / "debug"
-            if not debug_folder.exists():
-                print("[图片清理] debug文件夹不存在,跳过")
-                return CustomAction.RunResult(success=True)
-
-            clean_images_in_dir(debug_folder, "vision")
-            return CustomAction.RunResult(success=True)
-        except Exception as e:
-            print(f"vision 图片清理异常: {e}")
-            return CustomAction.RunResult(success=False)
+    def run(self, context, argv):
+        return _run_cleanup("vision图片清理", clean_images_in_dir, "vision")
 
 
 @AgentServer.custom_action("CleanupCustomImg")
 class CleanupCustomImg(CustomAction):
-    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
-        try:
-            root = Path(__file__).parent.parent.parent
-            sys.path.insert(0, str(root))
-            debug_folder = root / "debug"
-            if not debug_folder.exists():
-                print("[图片清理] debug文件夹不存在,跳过")
-                return CustomAction.RunResult(success=True)
-
-            clean_images_in_dir(debug_folder, "custom")
-            return CustomAction.RunResult(success=True)
-        except Exception as e:
-            print(f"custom 图片清理异常: {e}")
-            return CustomAction.RunResult(success=False)
+    def run(self, context, argv):
+        return _run_cleanup("custom图片清理", clean_images_in_dir, "custom")
 
 
 @AgentServer.custom_action("CleanupCustomLog")
 class CleanupCustomLog(CustomAction):
-    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
-        try:
-            root = Path(__file__).parent.parent.parent
-            sys.path.insert(0, str(root))
-            debug_folder = root / "debug"
-            if not debug_folder.exists():
-                print("[custom日志清理] debug文件夹不存在,跳过")
-                return CustomAction.RunResult(success=True)
-
-            clean_logs_in_dir(debug_folder, "custom")
-            return CustomAction.RunResult(success=True)
-        except Exception as e:
-            print(f"自定义日志清理异常: {e}")
-            return CustomAction.RunResult(success=False)
+    def run(self, context, argv):
+        return _run_cleanup("custom日志清理", clean_logs_in_dir, "custom")
 
 
 @AgentServer.custom_action("ShopSwipeBack")
