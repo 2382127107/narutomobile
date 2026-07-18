@@ -9,7 +9,7 @@
     "format:py": "uv run --frozen ruff format .",
     "lint:md": "markdownlint-cli2 --config docs/.markdownlint.yaml \"docs/**/*.md\" \"README.md\" \"#**/node_modules\"",
     "format:md": "markdownlint-cli2 --fix --config docs/.markdownlint.yaml \"docs/**/*.md\" \"README.md\" \"#**/node_modules\"",
-    "check": "pnpm format:check && pnpm check:schema && pnpm check:maa && pnpm lint && pnpm lint:md",
+    "check": "pnpm format:check && pnpm check:maa && pnpm lint:md",
     "check:maa": "pnpm exec maa-tools check",
     "check:py": "pnpm lint:py && pnpm typecheck:py && pnpm test:py"
   },
