@@ -12,267 +12,267 @@
         "template": "home/决斗场",
         "threshold": 0.7,
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "hundred_ninja_more_game_entry"
         ],
-        "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]进入决斗场[/color]"
     },
     "hundred_ninja_more_game_entry": {
         "recognition": "OCR",
-        "expected": [
-            "更多玩法"
-        ],
         "roi": [
             953,
             605,
             145,
             53
         ],
+        "expected": [
+            "更多玩法"
+        ],
         "action": "Click",
+        "post_wait_freezes": 200,
         "next": [
             "hundred_ninja_icon"
         ],
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]进入更多玩法[/color]"
     },
     "hundred_ninja_icon": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/entry.png",
         "roi": [
             688,
             159,
             243,
             450
         ],
+        "template": "Hundred_ninja/entry.png",
         "action": "Click",
         "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]进入百忍对决[/color]"
     },
     "hundred_ninja_match": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/match.png",
         "roi": [
             1169,
             602,
             75,
             66
         ],
+        "template": "Hundred_ninja/match.png",
         "action": "Swipe",
         "duration": 50,
+        "post_delay": 900,
         "next": [
             "hundred_ninja_in_match",
             "[JumpBack]hundred_ninja_match"
-        ],
-        "post_delay": 900
+        ]
     },
     "hundred_ninja_check_point": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Hundred_ninja/mission.png"
-        ],
         "roi": [
             1113,
             197,
             166,
             522
         ],
+        "template": [
+            "Hundred_ninja/mission.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 800,
         "next": [
             "hundred_ninja_in_mission_book",
             "hundred_ninja_check_point"
-        ],
-        "pre_delay": 0,
-        "post_delay": 800
+        ]
     },
     "hundred_ninja_in_mission_book": {
         "recognition": "TemplateMatch",
-        "template": "More_gameplay/point_text.png",
         "roi": [
             192,
             587,
             81,
             56
         ],
+        "template": "More_gameplay/point_text.png",
         "threshold": 0.9,
+        "pre_delay": 100,
+        "post_delay": 0,
         "next": [
             "hundred_ninja_complete",
             "hundred_ninja_back_fight"
-        ],
-        "pre_delay": 100,
-        "post_delay": 0
+        ]
     },
     "hundred_ninja_complete": {
         "recognition": "TemplateMatch",
-        "template": "More_gameplay/complete.png",
         "roi": [
             249,
             575,
             177,
             79
         ],
+        "template": "More_gameplay/complete.png",
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "hundred_ninja_back_fight": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/match.png",
         "roi": [
             1169,
             602,
             75,
             66
         ],
+        "template": "Hundred_ninja/match.png",
         "action": "Swipe",
         "duration": 50,
+        "post_delay": 900,
         "next": [
             "hundred_ninja_in_match",
             "[JumpBack]hundred_ninja_back_fight"
-        ],
-        "post_delay": 900
+        ]
     },
     "hundred_ninja_award": {
         "recognition": "TemplateMatch",
-        "template": [
-            "More_gameplay/award.png",
-            "More_gameplay/pre_award.png"
-        ],
         "roi": [
             434,
             570,
             674,
             93
         ],
+        "template": [
+            "More_gameplay/award.png",
+            "More_gameplay/pre_award.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "hundred_ninja_get_award_one_key",
             "hundred_ninja_award_done",
             "hundred_ninja_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "hundred_ninja_get_award_one_key": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/one_key_get.png",
         "roi": [
             414,
             406,
             222,
             98
         ],
+        "template": "SharedNode/one_key_get.png",
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "hundred_ninja_get_award_one_key",
             "hundred_ninja_award_done"
-        ],
-        "pre_delay": 0,
-        "pre_wait_freezes": 200,
-        "post_delay": 300
+        ]
     },
     "hundred_ninja_award_done": {
         "recognition": "TemplateMatch",
-        "template": "More_gameplay/award_done.png",
         "roi": [
             1024,
             582,
             83,
             76
         ],
+        "template": "More_gameplay/award_done.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "close_hundred_ninja_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "close_hundred_ninja_award": {
         "recognition": "TemplateMatch",
+        "roi": [
+            1135,
+            330,
+            144,
+            360
+        ],
         "template": [
             "Hundred_ninja/close_mission.png"
         ],
-        "roi": [
-            1135,
-            330,
-            144,
-            360
-        ],
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 900,
         "next": [
             "hundred_ninja_achievement_award",
             "close_hundred_ninja_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 900
+        ]
     },
     "hundred_ninja_achievement_award": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Hundred_ninja/achievement.png"
-        ],
         "roi": [
             1135,
             330,
             144,
             360
         ],
+        "template": [
+            "Hundred_ninja/achievement.png"
+        ],
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 900,
         "next": [
             "hundred_ninja_in_achievement_award",
             "hundred_ninja_achievement_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 900
+        ]
     },
     "hundred_ninja_in_achievement_award": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Hundred_ninja/in_achievement.png"
-        ],
         "roi": [
             298,
             43,
             303,
             404
         ],
+        "template": [
+            "Hundred_ninja/in_achievement.png"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "hundred_ninja_get_achievement_award",
             "hundred_ninja_achievement_award_celebreate",
             "hundred_ninja_achievement_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "hundred_ninja_get_achievement_award": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Hundred_ninja/get.png"
-        ],
         "roi": [
             664,
             95,
             155,
             560
         ],
+        "template": [
+            "Hundred_ninja/get.png"
+        ],
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 100,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "hundred_ninja_get_achievement_award_one_key",
             "hundred_ninja_achievement_award_celebreate",
             "hundred_ninja_get_achievement_award",
             "hundred_ninja_achievement_award_done"
-        ],
-        "pre_delay": 100,
-        "post_delay": 300
+        ]
     },
     "hundred_ninja_achievement_award_celebreate": {
         "recognition": "Or",
@@ -280,44 +280,45 @@
             {
                 "sub_name": "celebrate",
                 "recognition": "OCR",
-                "expected": [
-                    "恭喜",
-                    "你获得"
-                ],
                 "roi": [
                     449,
                     105,
                     400,
                     175
+                ],
+                "expected": [
+                    "恭喜",
+                    "你获得"
                 ]
             },
             {
                 "sub_name": "shadow",
                 "recognition": "TemplateMatch",
-                "template": "Hundred_ninja/shadow.png",
                 "roi": [
                     373,
                     155,
                     100,
                     81
                 ],
+                "template": "Hundred_ninja/shadow.png",
                 "method": 10001,
                 "threshold": 0.95
             },
             {
                 "sub_name": "shadow_1",
                 "recognition": "TemplateMatch",
-                "template": "Hundred_ninja/shadow_1.png",
                 "roi": [
                     1131,
                     436,
                     148,
                     133
                 ],
+                "template": "Hundred_ninja/shadow_1.png",
                 "method": 10001,
                 "threshold": 0.95
             }
         ],
+        "pre_delay": 100,
         "action": "Click",
         "target": [
             404,
@@ -325,63 +326,64 @@
             39,
             32
         ],
+        "post_delay": 400,
         "next": [
             "hundred_ninja_achievement_award_celebreate",
             "hundred_ninja_get_achievement_award",
             "hundred_ninja_achievement_award_done"
-        ],
-        "pre_delay": 100,
-        "post_delay": 400
+        ]
     },
     "hundred_ninja_get_achievement_award_one_key": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/one_key_get.png",
         "roi": [
             414,
             406,
             222,
             98
         ],
+        "template": "SharedNode/one_key_get.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 500,
         "next": [
             "hundred_ninja_get_achievement_award_one_key",
             "hundred_ninja_achievement_award_celebreate",
             "hundred_ninja_achievement_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 500
+        ]
     },
     "hundred_ninja_achievement_award_done": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/get.png",
         "roi": [
             664,
             95,
             155,
             560
         ],
-        "inverse": true,
+        "template": "Hundred_ninja/get.png",
         "method": 10001,
         "threshold": 0.95,
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "hundred_ninja_achievement_award_end",
             "swipe_for_achievement_award",
             "close_hundred_ninja_achievement_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "swipe_for_achievement_award": {
+        "max_hit": 6,
         "recognition": "TemplateMatch",
-        "template": [
-            "Hundred_ninja/in_achievement.png"
-        ],
         "roi": [
             298,
             43,
             303,
             404
         ],
+        "template": [
+            "Hundred_ninja/in_achievement.png"
+        ],
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             733,
@@ -395,18 +397,22 @@
             1,
             1
         ],
-        "max_hit": 6,
+        "post_delay": 400,
         "next": [
             "hundred_ninja_get_achievement_award",
             "hundred_ninja_achievement_award_celebreate",
             "hundred_ninja_achievement_award_done",
             "hundred_ninja_achievement_award_end"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "hundred_ninja_achievement_award_end": {
         "recognition": "OCR",
+        "roi": [
+            677,
+            93,
+            125,
+            560
+        ],
         "expected": [
             "达成",
             "未"
@@ -417,106 +423,100 @@
                 "未"
             ]
         ],
-        "roi": [
-            677,
-            93,
-            125,
-            560
-        ],
+        "pre_delay": 0,
+        "post_delay": 300,
         "next": [
             "close_hundred_ninja_achievement_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "close_hundred_ninja_achievement_award": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/close_mission.png",
         "roi": [
             1135,
             330,
             144,
             360
         ],
+        "template": "Hundred_ninja/close_mission.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 900,
         "next": [
             "hundred_ninja_quit",
             "close_hundred_ninja_achievement_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 900
+        ]
     },
     "hundred_ninja_quit": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/quit.png",
         "roi": [
             1158,
             0,
             121,
             118
         ],
+        "template": "Hundred_ninja/quit.png",
         "green_mask": true,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "hundred_ninja_quit",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "hundred_ninja_in_match": {
         "recognition": "OCR",
-        "expected": [
-            "0",
-            "匹配中"
-        ],
         "roi": [
             555,
             2,
             150,
             98
         ],
+        "expected": [
+            "0",
+            "匹配中"
+        ],
         "post_delay": 900,
+        "timeout": 60000,
         "next": [
             "hundred_ninja_in_match",
             "hundred_ninja_not_in_match"
-        ],
-        "timeout": 60000
+        ]
     },
     "hundred_ninja_not_in_match": {
         "recognition": "OCR",
-        "expected": [
-            "0",
-            "匹配中"
-        ],
         "roi": [
             555,
             2,
             150,
             98
         ],
+        "expected": [
+            "0",
+            "匹配中"
+        ],
         "inverse": true,
         "post_delay": 900,
+        "timeout": 60000,
         "next": [
             "hundred_ninja_entrance_animation"
         ],
-        "timeout": 60000,
         "focus": "[color:DeepSkyBlue]匹配结束[/color]"
     },
     "hundred_ninja_entrance_animation": {
         "recognition": "OCR",
-        "expected": [
-            "百",
-            "大",
-            "战"
-        ],
         "roi": [
             0,
             0,
             541,
             308
+        ],
+        "expected": [
+            "百",
+            "大",
+            "战"
         ],
         "post_delay": 900,
         "next": [
@@ -527,17 +527,17 @@
     },
     "hundred_ninja_out_entrance_animation": {
         "recognition": "OCR",
-        "expected": [
-            "百",
-            "忍",
-            "大",
-            "战"
-        ],
         "roi": [
             0,
             0,
             541,
             308
+        ],
+        "expected": [
+            "百",
+            "忍",
+            "大",
+            "战"
         ],
         "inverse": true,
         "post_delay": 900,
@@ -549,35 +549,35 @@
     },
     "hundred_ninja_selcet_ninja": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/select_ninja_masked.png",
         "roi": [
             82,
             406,
             1120,
             213
         ],
-        "threshold": 0.6,
+        "template": "Hundred_ninja/select_ninja_masked.png",
         "green_mask": true,
+        "threshold": 0.6,
         "action": "Click",
+        "post_delay": 500,
+        "timeout": 60000,
         "next": [
             "hundred_ninja_confirm_selcet_ninja",
             "hundred_ninja_battle_tips",
             "[JumpBack]hundred_ninja_selcet_ninja",
             "hundred_ninja_check_fight"
         ],
-        "post_delay": 500,
-        "timeout": 60000,
         "focus": "[color:DeepSkyBlue]进入百忍选忍者[/color]"
     },
     "hundred_ninja_battle_tips": {
         "recognition": "TemplateMatch",
-        "template": "Weekly_win/battle_tips.png",
         "roi": [
             527,
             120,
             225,
             157
         ],
+        "template": "Weekly_win/battle_tips.png",
         "next": [
             "hundred_ninja_tips_confirm"
         ],
@@ -585,13 +585,13 @@
     },
     "hundred_ninja_tips_confirm": {
         "recognition": "OCR",
-        "expected": "确定",
         "roi": [
             529,
             375,
             221,
             155
         ],
+        "expected": "确定",
         "action": "Click",
         "next": [
             "hundred_ninja_without_tips_confirm",
@@ -600,13 +600,13 @@
     },
     "hundred_ninja_without_tips_confirm": {
         "recognition": "OCR",
-        "expected": "确定",
         "roi": [
             529,
             375,
             221,
             155
         ],
+        "expected": "确定",
         "inverse": true,
         "next": [
             "back_main_screen_and_stop"
@@ -614,35 +614,35 @@
     },
     "hundred_ninja_confirm_selcet_ninja": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             538,
             634,
             197,
             75
         ],
+        "expected": [
+            "确定"
+        ],
         "action": "Click",
+        "timeout": 60000,
         "next": [
             "hundred_ninja_check_fight",
             "hundred_ninja_battle_tips",
             "[JumpBack]hundred_ninja_selcet_ninja"
         ],
-        "timeout": 60000,
         "focus": "[color:DeepSkyBlue]百忍对决确定选忍者[/color]"
     },
     "hundred_ninja_fight": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/fight.png",
         "roi": [
             0,
             0,
             327,
             145
         ],
-        "threshold": 0.7,
+        "template": "Hundred_ninja/fight.png",
         "green_mask": true,
+        "threshold": 0.7,
         "action": "DoNothing",
         "next": [
             "hundred_ninja_check_no_fight",
@@ -653,15 +653,15 @@
     },
     "hundred_ninja_check_fight": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/fight.png",
         "roi": [
             0,
             0,
             327,
             145
         ],
-        "threshold": 0.7,
+        "template": "Hundred_ninja/fight.png",
         "green_mask": true,
+        "threshold": 0.7,
         "action": "DoNothing",
         "next": [
             "hundred_ninja_check_no_fight",
@@ -675,16 +675,16 @@
     },
     "hundred_ninja_check_no_fight": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/fight.png",
         "roi": [
             0,
             0,
             327,
             145
         ],
+        "template": "Hundred_ninja/fight.png",
+        "green_mask": true,
         "threshold": 0.7,
         "inverse": true,
-        "green_mask": true,
         "next": [
             "hundred_ninja_confirm_game_over",
             "hundred_ninja_windfall",
@@ -695,15 +695,15 @@
     },
     "hundred_ninja_windfall": {
         "recognition": "OCR",
-        "expected": [
-            "继",
-            "续"
-        ],
         "roi": [
             476,
             557,
             355,
             163
+        ],
+        "expected": [
+            "继",
+            "续"
         ],
         "action": "Click",
         "next": [
@@ -715,35 +715,36 @@
     },
     "hundred_ninja_confirm_game_over": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             650,
             613,
             200,
             69
         ],
+        "expected": [
+            "确定"
+        ],
         "action": "Click",
+        "post_delay": 4000,
+        "timeout": 60000,
         "next": [
             "hundred_ninja_match",
             "[JumpBack]hundred_ninja_confirm_game_over"
         ],
-        "post_delay": 4000,
-        "timeout": 60000,
         "focus": "[color:DeepSkyBlue]百忍对决战斗结束[/color]"
     },
     "hundred_ninja_click_All_skill": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninja/fight.png",
         "roi": [
             0,
             0,
             327,
             145
         ],
+        "template": "Hundred_ninja/fight.png",
         "green_mask": true,
         "threshold": 0.7,
+        "pre_delay": 0,
         "action": "MultiSwipe",
         "swipes": [
             {
@@ -859,7 +860,6 @@
                 "duration": 100
             }
         ],
-        "pre_delay": 0,
         "post_delay": 0
     }
 }

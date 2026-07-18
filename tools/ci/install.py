@@ -1,11 +1,10 @@
-import platform
-from pathlib import Path
 import os
+import platform
 import shutil
 import sys
+from pathlib import Path
 
 import jsonc
-
 from configure import configure_ocr_model  # type: ignore
 from utils import working_dir  # type: ignore
 
@@ -69,12 +68,10 @@ def install_resource(version):
         合并 pipeline 目录下的所有 json 文件为一个 merged.json 文件
         这样用户在直接替换升级的时候就不会出现冲突了
         """
-        pipeline_files = Path(
-            working_dir / "assets" / "resource" / "base" / "pipeline"
-        ).glob("*.json")
+        pipeline_files = Path(working_dir / "assets" / "resource" / "base" / "pipeline").glob("*.json")
         pipeline_merged = {}
         for pipeline_file in pipeline_files:
-            with open(pipeline_file, "r", encoding="utf-8") as f:
+            with open(pipeline_file, encoding="utf-8") as f:
                 pipeline_data = jsonc.load(f)
                 pipeline_merged.update(pipeline_data)
             os.remove(pipeline_file)
@@ -102,7 +99,7 @@ def install_resource(version):
         install_path,
     )
 
-    with open(install_path / "interface.json", "r", encoding="utf-8") as f:
+    with open(install_path / "interface.json", encoding="utf-8") as f:
         interface = jsonc.load(f)
 
     interface["version"] = version
@@ -157,7 +154,7 @@ def install_agent(os_name):
         dirs_exist_ok=True,
     )
 
-    with open(install_path / "interface.json", "r", encoding="utf-8") as f:
+    with open(install_path / "interface.json", encoding="utf-8") as f:
         interface = jsonc.load(f)
 
     if os_name == "win":

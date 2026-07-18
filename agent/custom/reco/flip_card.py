@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
@@ -58,7 +58,7 @@ class FlipCard(CustomRecognition):
     SUB_DIAG = [(0, 3), (1, 2), (2, 1), (3, 0)]  # 副对角线（右上-左下）
     ALL_DIAG = MAIN_DIAG + SUB_DIAG  # 所有对角线位置
 
-    def get_orange_info(self, card_state_grid: List[List[int]]) -> Dict[str, Any]:
+    def get_orange_info(self, card_state_grid: list[list[int]]) -> dict[str, Any]:
         """提取橙色牌信息(只要有1个橙色就标记该对角线)"""
         orange_pos = []
         orange_rows = set()
@@ -92,7 +92,7 @@ class FlipCard(CustomRecognition):
             "is_both_diag_orange": is_both_diag_orange,
         }
 
-    def _is_initial_state(self, card_state_grid: List[List[int]]) -> bool:
+    def _is_initial_state(self, card_state_grid: list[list[int]]) -> bool:
         """判断是否初始状态（除橙色外全未翻牌）"""
         for row in range(4):
             for col in range(4):
@@ -100,13 +100,9 @@ class FlipCard(CustomRecognition):
                     return False
         return True
 
-    def _get_valid_initial_pos(
-        self, card_state_grid: List[List[int]], orange_info: Dict
-    ) -> Tuple[int, int]:
+    def _get_valid_initial_pos(self, card_state_grid: list[list[int]], orange_info: dict) -> tuple[int, int]:
         """初始状态选最优翻牌位置"""
-        all_unflip = [
-            (r, c) for r in range(4) for c in range(4) if card_state_grid[r][c] == 0
-        ]
+        all_unflip = [(r, c) for r in range(4) for c in range(4) if card_state_grid[r][c] == 0]
         if not all_unflip:
             return all_unflip[0]
 
@@ -115,8 +111,7 @@ class FlipCard(CustomRecognition):
             valid_unflip = [
                 (r, c)
                 for (r, c) in all_unflip
-                if r not in orange_info["orange_rows"]
-                and c not in orange_info["orange_cols"]
+                if r not in orange_info["orange_rows"] and c not in orange_info["orange_cols"]
             ]
             if valid_unflip:
                 logger.info(f"双对角线橙色，选横竖无橙色的未翻牌：{valid_unflip[0]}")
@@ -133,9 +128,7 @@ class FlipCard(CustomRecognition):
         priority3 = []  # 其他对角线牌
 
         for r, c in diag_unflip:
-            in_orange_row_col = (r in orange_info["orange_rows"]) or (
-                c in orange_info["orange_cols"]
-            )
+            in_orange_row_col = (r in orange_info["orange_rows"]) or (c in orange_info["orange_cols"])
             in_orange_diag = False
             if (r, c) in self.MAIN_DIAG and "main" in orange_info["orange_diags"]:
                 in_orange_diag = True
@@ -161,8 +154,8 @@ class FlipCard(CustomRecognition):
         return diag_unflip[0]
 
     def _calc_single_dir_score(
-        self, pos: Tuple[int, int], card_state_grid: List[List[int]], orange_info: Dict
-    ) -> Dict[str, int | str]:
+        self, pos: tuple[int, int], card_state_grid: list[list[int]], orange_info: dict
+    ) -> dict[str, int | str]:
         """
         计算单一方向的分数（非叠加）：行/列/对角线各自的分数
         return: {"row_score": 行分数, "col_score": 列分数, "diag_score": 对角线分数, "max_score": 最高分}
@@ -186,9 +179,7 @@ class FlipCard(CustomRecognition):
         diag_score = 0
         # 主对角线
         if (r, c) in self.MAIN_DIAG and "main" not in orange_diags:
-            diag_score = sum(
-                1 for (x, y) in self.MAIN_DIAG if card_state_grid[x][y] == 1
-            )
+            diag_score = sum(1 for (x, y) in self.MAIN_DIAG if card_state_grid[x][y] == 1)
         # 副对角线（若同时在两个对角线，取最大值,不过应该不会出现这种情况）
         if (r, c) in self.SUB_DIAG and "sub" not in orange_diags:
             sub_score = sum(1 for (x, y) in self.SUB_DIAG if card_state_grid[x][y] == 1)
@@ -203,22 +194,16 @@ class FlipCard(CustomRecognition):
             "diag_score": diag_score,
             "max_score": max_score,
             # 标记最高分所属方向（用于优先选同方向位置）
-            "max_dir": (
-                "row"
-                if row_score == max_score
-                else ("col" if col_score == max_score else "diag")
-            ),
+            "max_dir": ("row" if row_score == max_score else ("col" if col_score == max_score else "diag")),
         }
 
     def get_best_growth_pos_by_score(
-        self, card_state_grid: List[List[int]], orange_info: Dict
-    ) -> Tuple[int, int] | None:
+        self, card_state_grid: list[list[int]], orange_info: dict
+    ) -> tuple[int, int] | None:
         """
         优先同方向生长
         """
-        all_unflip = [
-            (r, c) for r in range(4) for c in range(4) if card_state_grid[r][c] == 0
-        ]
+        all_unflip = [(r, c) for r in range(4) for c in range(4) if card_state_grid[r][c] == 0]
         if not all_unflip:
             return None
 
@@ -230,11 +215,7 @@ class FlipCard(CustomRecognition):
             max_dir = dir_scores["max_dir"]
             # 排序权重：1. 最高分降序 → 2. 最高分方向（行>列>对角线）→ 3. 对角线优先 → 4. 行列号升序
             dir_priority = 0 if max_dir == "row" else (1 if max_dir == "col" else 2)
-            is_diag = (
-                1
-                if (pos in self.ALL_DIAG and not orange_info["is_both_diag_orange"])
-                else 0
-            )
+            is_diag = 1 if (pos in self.ALL_DIAG and not orange_info["is_both_diag_orange"]) else 0
             pos_data.append((-max_score, dir_priority, -is_diag, pos))
 
         # 排序规则：
@@ -251,31 +232,29 @@ class FlipCard(CustomRecognition):
         for idx, item in enumerate(pos_data[:3]):
             max_score = -item[0]
             dir_priority = item[1]
-            max_dir = (
-                "行" if dir_priority == 0 else ("列" if dir_priority == 1 else "对角线")
-            )
+            max_dir = "行" if dir_priority == 0 else ("列" if dir_priority == 1 else "对角线")
             is_diag = "*" if -item[2] == 1 else " "
             pos = item[3]
             logger.info(
-                f"  候选{idx+1}:({pos[0]+1},{pos[1]+1}) {is_diag} 最高分={max_score} 最高分方向={max_dir}"
+                f"  候选{idx + 1}:({pos[0] + 1},{pos[1] + 1}) {is_diag} 最高分={max_score} 最高分方向={max_dir}"
             )
-        logger.info(f"最终选择：({best_pos[0]+1},{best_pos[1]+1}) 最高分={best_score}")
+        logger.info(f"最终选择：({best_pos[0] + 1},{best_pos[1] + 1}) 最高分={best_score}")
 
         return best_pos
 
-    def check_victory(self, card_state_grid: List[List[int]]) -> bool:
+    def check_victory(self, card_state_grid: list[list[int]]) -> bool:
         """胜利判定：仅统计紫色牌(1)数量,连续4个才胜利"""
         # 检查行
         for r in range(4):
             purple_count = sum(1 for col in range(4) if card_state_grid[r][col] == 1)
             if purple_count == 4:
-                logger.info(f"检测到第{r+1}行4个紫色连成一线,胜利!")
+                logger.info(f"检测到第{r + 1}行4个紫色连成一线,胜利!")
                 return True
         # 检查列
         for c in range(4):
             purple_count = sum(1 for row in range(4) if card_state_grid[row][c] == 1)
             if purple_count == 4:
-                logger.info(f"检测到第{c+1}列4个紫色连成一线,胜利!")
+                logger.info(f"检测到第{c + 1}列4个紫色连成一线,胜利!")
                 return True
         # 检查主对角线
         main_purple = sum(1 for i in range(4) if card_state_grid[i][i] == 1)
@@ -289,9 +268,7 @@ class FlipCard(CustomRecognition):
             return True
         return False
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         logger.info("===== 开始检测翻牌游戏状态=====")
 
         # 步骤1：识别卡牌状态
@@ -320,14 +297,12 @@ class FlipCard(CustomRecognition):
         # 步骤3：检查胜利
         if self.check_victory(card_state_grid):
             invalid_box = Rect(0, 0, 1, 1)
-            return CustomRecognition.AnalyzeResult(
-                box=invalid_box, detail={"has_valid_target": False, "is_win": True}
-            )
+            return CustomRecognition.AnalyzeResult(box=invalid_box, detail={"has_valid_target": False, "is_win": True})
 
         # 步骤4：提取橙色信息
         orange_info = self.get_orange_info(card_state_grid)
         logger.info(
-            f"橙色牌信息：位置{[(x+1,y+1) for x,y in orange_info['orange_pos']]}，阻挡行{orange_info['orange_rows']},"
+            f"橙色牌信息：位置{[(x + 1, y + 1) for x, y in orange_info['orange_pos']]}，阻挡行{orange_info['orange_rows']},"  # noqa: E501
             f"阻挡列{orange_info['orange_cols']}，阻挡对角线{orange_info['orange_diags']}，双对角线橙色：{orange_info['is_both_diag_orange']}"
         )
 
@@ -335,9 +310,7 @@ class FlipCard(CustomRecognition):
         if self._is_initial_state(card_state_grid):
             best_pos = self._get_valid_initial_pos(card_state_grid, orange_info)
             best_roi = self.CARD_4X4_ROI[best_pos[0]][best_pos[1]]
-            logger.info(
-                f"初始状态选择翻牌位置：({best_pos[0]+1},{best_pos[1]+1}),ROI={best_roi}"
-            )
+            logger.info(f"初始状态选择翻牌位置：({best_pos[0] + 1},{best_pos[1] + 1}),ROI={best_roi}")
             flip_box = Rect(*best_roi)
             return CustomRecognition.AnalyzeResult(
                 box=flip_box,
@@ -350,9 +323,7 @@ class FlipCard(CustomRecognition):
             )
 
         # 步骤6：按单一方向最高分选最优生长位置
-        best_growth_pos = self.get_best_growth_pos_by_score(
-            card_state_grid, orange_info
-        )
+        best_growth_pos = self.get_best_growth_pos_by_score(card_state_grid, orange_info)
         if not best_growth_pos:
             logger.warning("无未翻牌可翻")
             invalid_box = Rect(0, 0, 1, 1)
@@ -362,9 +333,7 @@ class FlipCard(CustomRecognition):
             )
 
         best_roi = self.CARD_4X4_ROI[best_growth_pos[0]][best_growth_pos[1]]
-        logger.info(
-            f"紫色生长选择翻牌位置：({best_growth_pos[0]+1},{best_growth_pos[1]+1}),ROI={best_roi}"
-        )
+        logger.info(f"紫色生长选择翻牌位置：({best_growth_pos[0] + 1},{best_growth_pos[1] + 1}),ROI={best_roi}")
         flip_box = Rect(*best_roi)
         return CustomRecognition.AnalyzeResult(
             box=flip_box,
@@ -392,9 +361,7 @@ class FlipCard(CustomRecognition):
             return 2
 
         # 识别未翻开牌
-        wait_reco = context.run_recognition(
-            "card_wait", image, {"card_wait": {"roi": roi}}
-        )
+        wait_reco = context.run_recognition("card_wait", image, {"card_wait": {"roi": roi}})
         if wait_reco and wait_reco.hit:
             return 0
 

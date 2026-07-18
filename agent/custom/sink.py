@@ -7,9 +7,8 @@ Copy from M9A
 """
 
 from maa.agent.agent_server import AgentServer
-from maa.tasker import Tasker, TaskerEventSink
 from maa.event_sink import NotificationType
-
+from maa.tasker import Tasker, TaskerEventSink
 from utils.logger import logger
 
 # 目标宽高比：16:9
@@ -69,9 +68,7 @@ class AspectRatioChecker(TaskerEventSink):
             return
 
         # 每次任务开始时都检查（不再使用 _checked 标志）
-        logger.debug(
-            f"任务开始前检查分辨率 - task_id: {detail.task_id}, entry: {detail.entry}"
-        )
+        logger.debug(f"任务开始前检查分辨率 - task_id: {detail.task_id}, entry: {detail.entry}")
 
         # 获取控制器
         controller = tasker.controller

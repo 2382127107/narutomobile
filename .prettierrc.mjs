@@ -1,7 +1,6 @@
 import * as multilineArrays from "prettier-plugin-multiline-arrays";
 import * as maafwSort from "@nekosu/prettier-plugin-maafw-sort";
 
-
 export default {
     plugins: [
         maafwSort.patchPlugin(multilineArrays),

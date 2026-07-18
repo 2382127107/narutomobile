@@ -1,49 +1,52 @@
 {
     "ninja_book": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "ninja_book_entry"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入忍法帖任务[/color]"
     },
     "ninja_book_entry": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "ninja_book_undone",
             "ninja_book_done",
             "[JumpBack]back_main_screen"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "ninja_book_done": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/ninja_book_done_masked.png",
         "roi": [
             1204,
             412,
             53,
             39
         ],
+        "template": "Ninja_book/ninja_book_done_masked.png",
         "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]忍法帖已完成[/color]"
     },
     "ninja_book_undone": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/ninja_book_undone_masked.png",
         "roi": [
             1205,
             412,
             63,
             39
         ],
+        "template": "Ninja_book/ninja_book_undone_masked.png",
         "green_mask": true,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "ninja_book_leaderboard",
             "ninja_book_undone",
@@ -51,24 +54,21 @@
             "[JumpBack]hit_to_enter_ninja_book_x",
             "[JumpBack]ninja_book_skip"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]忍法帖未完成[/color]"
     },
     "ninja_book_skip": {
         "recognition": "OCR",
-        "expected": [
-            "跳过"
-        ],
         "roi": [
             847,
             0,
             432,
             236
         ],
-        "action": "Click",
+        "expected": [
+            "跳过"
+        ],
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 300
     },
     "hit_to_enter_ninja_book": {
@@ -89,74 +89,76 @@
     },
     "hit_to_enter_ninja_book_x": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/mask_x.png",
-        "green_mask": true,
-        "threshold": 0.68,
         "roi": [
             610,
             0,
             670,
             229
         ],
+        "template": "SharedNode/mask_x.png",
+        "green_mask": true,
+        "threshold": 0.68,
         "action": "Click",
         "focus": "[color:DeepSkyBlue]忍法帖忍者展示[/color]"
     },
     "ninja_book_share_to_qq": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/qq_share_icon.png",
         "roi": [
             1043,
             419,
             237,
             301
         ],
+        "template": "Ninja_book/qq_share_icon.png",
         "threshold": 0.8,
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 2000,
         "next": [
             "ninja_book_share_to_qq",
             "ninja_book_share_back_to_natuto",
             "close_ninja_book_qq_share"
         ],
-        "pre_delay": 0,
-        "pre_wait_freezes": 200,
-        "post_delay": 2000,
         "focus": "[color:DeepSkyBlue]qq分享[/color]"
     },
     "close_ninja_book_qq_share": {
+        "pre_delay": 1000,
         "action": "StopApp",
         "package": "com.tencent.mobileqq",
+        "post_delay": 1000,
         "next": [
             "ninja_book_quit_x",
             "ninja_book_close_share_top_bar"
         ],
-        "pre_delay": 1000,
-        "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]关闭qq分享[/color]"
     },
     "ninja_book_share_to_wechat": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/wechat_share_icon.png",
         "roi": [
             1043,
             419,
             237,
             301
         ],
+        "template": "Ninja_book/wechat_share_icon.png",
         "threshold": 0.8,
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 3000,
         "next": [
             "ninja_book_share_to_wechat",
             "ninja_book_share_back_to_natuto",
             "close_ninja_book_wechat_share"
         ],
-        "pre_wait_freezes": 200,
-        "pre_delay": 0,
-        "post_delay": 3000,
         "focus": "[color:DeepSkyBlue]微信分享[/color]"
     },
     "close_ninja_book_wechat_share": {
+        "pre_delay": 1000,
         "action": "StopApp",
         "package": "com.tencent.mm",
+        "post_delay": 1000,
         "next": [
             "ninja_book_quit_x",
             "close_ninja_book_leaderboard",
@@ -166,19 +168,20 @@
             "ninja_book_close_share_top_bar",
             "ninja_book_share_without_x"
         ],
-        "pre_delay": 1000,
-        "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]关闭分享[/color]"
     },
     "ninja_book_close_share_top_bar": {
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/top_bar.png",
         "roi": [
             1165,
             0,
             114,
             78
         ],
+        "template": "Ninja_book/top_bar.png",
+        "green_mask": true,
+        "threshold": 0.9,
         "action": "Click",
         "target": [
             1074,
@@ -186,9 +189,6 @@
             86,
             44
         ],
-        "green_mask": true,
-        "threshold": 0.9,
-        "max_hit": 5,
         "next": [
             "close_ninja_book_leaderboard",
             "[JumpBack]ninja_book_mission_undone",
@@ -202,15 +202,17 @@
     },
     "ninja_book_quit_x": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/green_masked_x.png",
-        "green_mask": true,
-        "threshold": 0.6,
         "roi": [
             610,
             0,
             670,
             229
         ],
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "close_ninja_book_leaderboard",
             "[JumpBack]ninja_book_mission_undone",
@@ -218,39 +220,37 @@
             "ninja_book_close_share",
             "[JumpBack]ninja_book_close_share_top_bar",
             "ninja_book_share_without_x"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "ninja_book_share_without_x": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/share_logo.png",
         "roi": [
             0,
             0,
             254,
             154
         ],
+        "template": "Ninja_book/share_logo.png",
         "green_mask": true,
+        "pre_delay": 0,
         "action": "ClickKey",
         "key": 4,
+        "post_delay": 0,
+        "timeout": 5000,
         "next": [
             "ninja_book_cancel_quit"
         ],
-        "timeout": 5000,
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DarkGoldenRod]没有退出的地方[/color]"
     },
     "ninja_book_cancel_quit": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/cancel.png",
         "roi": [
             730,
             362,
             296,
             158
         ],
+        "template": "Ninja_book/cancel.png",
         "action": "Click",
         "next": [
             "ninja_book_without_cancel_quit"
@@ -258,35 +258,35 @@
     },
     "ninja_book_without_cancel_quit": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/cancel.png",
         "roi": [
             730,
             362,
             296,
             158
         ],
+        "template": "Ninja_book/cancel.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "ninja_book_close_share",
             "close_ninja_book_leaderboard",
             "[JumpBack]ninja_book_mission_undone",
             "[JumpBack]ninja_book_mission_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "ninja_book_close_share": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/green_masked_x.png",
-        "green_mask": true,
-        "threshold": 0.6,
         "roi": [
             610,
             0,
             670,
             229
         ],
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
         "action": "Click",
         "next": [
             "close_ninja_book_leaderboard",
@@ -297,53 +297,59 @@
     },
     "ninja_book_mission_done": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/mission_done_v2.png",
         "roi": [
             133,
             234,
             36,
             29
         ],
+        "template": "Ninja_book/mission_done_v2.png",
         "threshold": 0.94,
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_liveness_undone",
             "ninja_book_liveness_done",
             "[JumpBack]close_ninja_book_liveness_detail"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500
+        ]
     },
     "ninja_book_mission_undone": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/mission_undone_v2.png",
         "roi": [
             136,
             236,
             29,
             31
         ],
+        "template": "Ninja_book/mission_undone_v2.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_mission_award"
         ],
-        "action": "Click",
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]忍法帖任务未完成[/color]"
     },
     "ninja_book_mission_award": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]get_ninja_book_mission_award_one_key",
             "[JumpBack]get_ninja_book_mission_award",
             "[JumpBack]close_ninja_book_level_up_page",
             "check_no_ninja_book_mission_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "close_ninja_book_level_up_page": {
         "recognition": "OCR",
+        "roi": [
+            432,
+            93,
+            592,
+            340
+        ],
         "expected": [
             "恭喜",
             "已",
@@ -352,12 +358,6 @@
         "replace": [
             "己",
             "已"
-        ],
-        "roi": [
-            432,
-            93,
-            592,
-            340
         ],
         "action": "Click",
         "target": [
@@ -374,6 +374,12 @@
     },
     "ninja_book_without_level_up_page": {
         "recognition": "OCR",
+        "roi": [
+            432,
+            93,
+            592,
+            340
+        ],
         "expected": [
             "恭喜",
             "已",
@@ -383,24 +389,18 @@
             "己",
             "已"
         ],
-        "roi": [
-            432,
-            93,
-            592,
-            340
-        ],
         "inverse": true
     },
     "check_no_ninja_book_mission_award": {
         "recognition": "OCR",
-        "expected": [
-            "领取"
-        ],
         "roi": [
             256,
             485,
             947,
             91
+        ],
+        "expected": [
+            "领取"
         ],
         "inverse": true,
         "next": [
@@ -413,114 +413,115 @@
     },
     "get_ninja_book_mission_award": {
         "recognition": "OCR",
-        "expected": [
-            "领取"
-        ],
         "roi": [
             256,
             485,
             947,
             91
         ],
-        "action": "Click",
+        "expected": [
+            "领取"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]领取忍法帖任务奖励[/color]"
     },
     "get_ninja_book_mission_award_one_key": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             329,
             377,
             320,
             212
         ],
-        "action": "Click",
+        "expected": [
+            "确定"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]一键领取忍法帖任务奖励[/color]"
     },
     "ninja_book_liveness_done": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/liveness_undone_v2.png",
         "roi": [
             113,
             323,
             66,
             71
         ],
+        "template": "Ninja_book/liveness_undone_v2.png",
         "threshold": 0.9,
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "treasure_box_undone",
             "ninja_book_award_undone",
             "ninja_book_award_selected",
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]忍法帖活跃度奖励已领取[/color]"
     },
     "ninja_book_liveness_undone": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/liveness_undone_v2.png",
         "roi": [
             113,
             323,
             66,
             71
         ],
+        "template": "Ninja_book/liveness_undone_v2.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "check_selected_ninja_book_liveness",
             "[JumpBack]ninja_book_liveness_undone"
         ],
-        "action": "Click",
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]忍法帖活跃度奖励未领取[/color]"
     },
     "check_selected_ninja_book_liveness": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Ninja_book/liveness_selected.png"
-        ],
         "roi": [
             0,
             298,
             259,
             197
         ],
+        "template": [
+            "Ninja_book/liveness_selected.png"
+        ],
         "green_mask": true,
         "threshold": 0.8,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "check_no_ninja_book_liveness_award",
             "[JumpBack]ninja_book_liveness_award",
             "[JumpBack]close_ninja_book_level_up_page_when_liveness",
             "[JumpBack]close_ninja_book_liveness_detail"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]确认已经选中活跃度奖励[/color]"
     },
     "close_ninja_book_liveness_detail": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/liveness_detail.png",
         "roi": [
             254,
             85,
             997,
             368
         ],
+        "template": "Ninja_book/liveness_detail.png",
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             662,
@@ -528,287 +529,286 @@
             106,
             86
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]关闭活跃度详情[/color]"
     },
     "ninja_book_liveness_award": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Ninja_book/liveness_waiting.png"
-        ],
         "roi": [
             308,
             240,
             846,
             170
         ],
+        "template": [
+            "Ninja_book/liveness_waiting.png"
+        ],
         "method": 10001,
         "threshold": 0.95,
-        "action": "Click",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 3000,
         "focus": "[color:DeepSkyBlue]领取活跃度奖励[/color]"
     },
     "check_no_ninja_book_liveness_award": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Ninja_book/liveness_undone_selected.png"
-        ],
         "roi": [
             118,
             289,
             83,
             111
         ],
+        "template": [
+            "Ninja_book/liveness_undone_selected.png"
+        ],
         "green_mask": true,
-        "inverse": true,
         "threshold": 0.9,
+        "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "treasure_box_undone",
             "ninja_book_award_undone",
             "ninja_book_award_selected",
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]没有可领取的活跃度奖励[/color]"
     },
     "treasure_box_undone": {
         "recognition": "OCR",
-        "expected": [
-            "宝"
-        ],
         "roi": [
             96,
             402,
             95,
             133
         ],
+        "expected": [
+            "宝"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "treasure_box_in_treasure_box",
             "[JumpBack]treasure_box_undone"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]宝匣未领取[/color]"
     },
     "treasure_box_in_treasure_box": {
         "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/finger_pointing.png"
-        ],
         "roi": [
             906,
             641,
             373,
             78
         ],
+        "template": [
+            "SharedNode/finger_pointing.png"
+        ],
         "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "treasure_box_access_method_undone",
             "treasure_box_access_method_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "treasure_box_access_method_done": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/mechanical_treasure_box_access_method_undone.png",
         "roi": [
             903,
             619,
             212,
             101
         ],
+        "template": "Ninja_book/mechanical_treasure_box_access_method_undone.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected",
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]宝匣可抽奖[/color]"
     },
     "treasure_box_access_method_undone": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/mechanical_treasure_box_access_method_undone.png",
         "roi": [
             903,
             619,
             212,
             101
         ],
+        "template": "Ninja_book/mechanical_treasure_box_access_method_undone.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_check_in_treasure_box_access_method",
             "[JumpBack]treasure_box_access_method_undone"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]宝匣可领取或挑战[/color]"
     },
     "ninja_book_check_in_treasure_box_access_method": {
         "recognition": "OCR",
-        "expected": [
-            "挑战",
-            "关卡"
-        ],
         "roi": [
             448,
             71,
             419,
             219
         ],
+        "expected": [
+            "挑战",
+            "关卡"
+        ],
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "check_no_treasure_box_award",
             "[JumpBack]get_treasure_box_award"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]进入宝匣获取方式[/color]"
     },
     "get_treasure_box_award": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/get_mechanical_treasure_box_award.png",
         "roi": [
             730,
             88,
             158,
             570
         ],
+        "template": "Ninja_book/get_mechanical_treasure_box_award.png",
+        "pre_delay": 200,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "[JumpBack]get_treasure_box_award_one_key",
             "get_treasure_box_award",
             "check_no_treasure_box_award"
         ],
-        "pre_delay": 200,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]领取宝匣奖励[/color]"
     },
     "check_no_treasure_box_award": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/get_mechanical_treasure_box_award.png",
         "roi": [
             730,
             88,
             158,
             570
         ],
+        "template": "Ninja_book/get_mechanical_treasure_box_award.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected",
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]检查还有没有宝匣奖励[/color]"
     },
     "get_treasure_box_award_one_key": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confirm.png",
         "roi": [
             363,
             335,
             404,
             234
         ],
+        "template": "SharedNode/confirm.png",
+        "pre_delay": 200,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "get_treasure_box_award_without_one_key",
             "[JumpBack]get_treasure_box_award_one_key"
         ],
-        "pre_delay": 200,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]一键领取宝匣奖励[/color]"
     },
     "get_treasure_box_award_without_one_key": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/one_key_get.png",
         "roi": [
             363,
             335,
             404,
             234
         ],
+        "template": "SharedNode/one_key_get.png",
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 0
     },
     "treasure_box_challenge": {
         "recognition": "OCR",
-        "expected": [
-            "挑战",
-            "扫荡"
-        ],
         "roi": [
             721,
             130,
             135,
             80
         ],
+        "expected": [
+            "挑战",
+            "扫荡"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "treasure_box_challenge_confirm_ninja",
             "treasure_box_celebrate",
             "[JumpBack]treasure_box_challenge"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]前往宝匣挑战[/color]"
     },
     "treasure_box_celebrate": {
         "recognition": "OCR",
-        "expected": [
-            "恭喜",
-            "你获得"
-        ],
         "roi": [
             336,
             53,
             639,
             224
         ],
+        "expected": [
+            "恭喜",
+            "你获得"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "treasure_box_without_celebrate",
             "treasure_box_celebrate"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]宝匣扫荡完成[/color]"
     },
     "treasure_box_without_celebrate": {
         "recognition": "OCR",
-        "expected": [
-            "恭喜",
-            "你获得"
-        ],
         "roi": [
             336,
             53,
             639,
             224
         ],
+        "expected": [
+            "恭喜",
+            "你获得"
+        ],
         "inverse": true,
         "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected"
@@ -817,15 +817,16 @@
     },
     "treasure_box_sweep": {
         "recognition": "OCR",
-        "expected": [
-            "扫荡"
-        ],
         "roi": [
             721,
             130,
             135,
             80
         ],
+        "expected": [
+            "扫荡"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             54,
@@ -833,164 +834,164 @@
             48,
             43
         ],
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected",
             "[JumpBack]treasure_box_sweep"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]前往宝匣挑战[/color]"
     },
     "treasure_box_challenge_confirm_ninja": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             621,
             579,
             311,
             140
         ],
+        "expected": [
+            "确定"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "treasure_box_challenge_without_confirm_ninja",
             "treasure_box_challenge_confirm_ninja"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]宝匣挑战确认忍者[/color]"
     },
     "treasure_box_challenge_without_confirm_ninja": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             621,
             579,
             311,
             140
         ],
+        "expected": [
+            "确定"
+        ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "treasure_box_challenge_in_fight",
             "[JumpBack]treasure_box_challenge_loading"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "treasure_box_challenge_loading": {
         "recognition": "OCR",
-        "expected": [
-            "资源加载"
-        ],
         "roi": [
             491,
             589,
             295,
             130
         ],
+        "expected": [
+            "资源加载"
+        ],
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]宝匣挑战加载中[/color]"
     },
     "treasure_box_challenge_in_fight": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Advanture/stop_button.png"
-        ],
-        "green_mask": true,
         "roi": [
             1120,
             0,
             160,
             127
         ],
+        "template": [
+            "Advanture/stop_button.png"
+        ],
+        "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]treasure_box_click_All_skill",
             "treasure_box_challenge_not_in_fight"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "treasure_box_challenge_not_in_fight": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Advanture/stop_button.png"
-        ],
-        "green_mask": true,
         "roi": [
             1120,
             0,
             160,
             127
         ],
+        "template": [
+            "Advanture/stop_button.png"
+        ],
+        "green_mask": true,
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "treasure_box_challenge_quit",
             "treasure_box_challenge_in_fight"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]宝匣不在战斗[/color]"
     },
     "treasure_box_challenge_quit": {
         "recognition": "OCR",
-        "expected": [
-            "任意",
-            "位置",
-            "关闭"
-        ],
         "roi": [
             378,
             572,
             543,
             147
         ],
+        "expected": [
+            "任意",
+            "位置",
+            "关闭"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 500,
         "next": [
             "treasure_box_challenge_out_quit",
             "treasure_box_challenge_quit"
         ],
-        "pre_delay": 0,
-        "post_delay": 500,
         "focus": "[color:DeepSkyBlue]宝匣退出战斗[/color]"
     },
     "treasure_box_challenge_out_quit": {
         "recognition": "OCR",
-        "expected": [
-            "任意",
-            "位置",
-            "关闭"
-        ],
         "roi": [
             378,
             572,
             543,
             147
         ],
+        "expected": [
+            "任意",
+            "位置",
+            "关闭"
+        ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 2000,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected"
-        ],
-        "pre_delay": 0,
-        "post_delay": 2000
+        ]
     },
     "close_ninja_book_level_up_page_when_liveness": {
         "recognition": "OCR",
-        "expected": [
-            "前往领取"
-        ],
         "roi": [
             445,
             553,
             169,
             58
         ],
+        "expected": [
+            "前往领取"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             46,
@@ -998,56 +999,55 @@
             74,
             64
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 600,
+        "post_delay": 0,
         "focus": "[color:darkgray]关闭领取活跃度奖励时的升级界面[/color]"
     },
     "ninja_book_leaderboard": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/leaderboard.png",
         "roi": [
             1112,
             659,
             93,
             39
         ],
+        "template": "Ninja_book/leaderboard.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 100,
         "next": [
             "ninja_book_leaderboard_like_undone",
             "ninja_book_leaderboard_like_done",
             "[JumpBack]ninja_book_leaderboard"
         ],
-        "pre_delay": 0,
-        "post_delay": 100,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]进入忍法帖排行榜界面[/color]"
     },
     "ninja_book_leaderboard_like_done": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/thumbed.png",
         "roi": [
             1000,
             200,
             80,
             349
         ],
+        "template": "Ninja_book/thumbed.png",
+        "pre_delay": 0,
+        "post_delay": 200,
         "next": [
             "ninja_book_share"
         ],
-        "pre_delay": 0,
-        "post_delay": 200,
         "focus": "[color:DeepSkyBlue]进入忍法帖排行榜界面已点赞[/color]"
     },
     "ninja_book_leaderboard_like_undone": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/thumb.png",
         "roi": [
             1000,
             200,
             80,
             349
         ],
+        "template": "Ninja_book/thumb.png",
         "action": "Click",
         "next": [
             "ninja_book_share",
@@ -1057,15 +1057,16 @@
     },
     "close_ninja_book_level_up_page_when_like": {
         "recognition": "OCR",
-        "expected": [
-            "前往领取"
-        ],
         "roi": [
             445,
             553,
             169,
             58
         ],
+        "expected": [
+            "前往领取"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             46,
@@ -1073,96 +1074,95 @@
             74,
             64
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]关闭出现在排行榜点赞后的升级界面[/color]"
     },
     "ninja_book_share": {
         "recognition": "OCR",
-        "expected": [
-            "分享"
-        ],
         "roi": [
             955,
             522,
             175,
             130
         ],
+        "expected": [
+            "分享"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 1500,
         "next": [
             "ninja_book_share_to_qq",
             "ninja_book_share_to_wechat",
             "[JumpBack]ninja_book_share"
         ],
-        "pre_delay": 0,
-        "post_delay": 1500,
         "focus": "[color:darkgray]进入分享页面[/color]"
     },
     "close_ninja_book_leaderboard": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/close_leaderboard.png",
         "roi": [
             1007,
             133,
             36,
             44
         ],
+        "template": "Ninja_book/close_leaderboard.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "ninja_book_mission_undone",
             "ninja_book_mission_done",
             "[JumpBack]close_ninja_book_leaderboard"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]关闭忍法帖排行榜[/color]"
     },
     "ninja_book_award_undone": {
+        "max_hit": 4,
         "recognition": "TemplateMatch",
-        "template": [
-            "Ninja_book/has_award.png"
-        ],
         "roi": [
             89,
             98,
             111,
             108
         ],
-        "max_hit": 4,
+        "template": [
+            "Ninja_book/has_award.png"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_award_selected",
             "[JumpBack]ninja_book_award_undone",
             "[JumpBack]back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
-        "action": "Click",
         "focus": "[color:DeepSkyBlue]忍法帖奖励未领取[/color]"
     },
     "ninja_book_award_selected": {
+        "max_hit": 3,
         "recognition": "TemplateMatch",
-        "template": [
-            "Ninja_book/has_award_selected.png",
-            "Ninja_book/has_award_selected_2.png"
-        ],
         "roi": [
             111,
             76,
             93,
             106
         ],
-        "max_hit": 3,
+        "template": [
+            "Ninja_book/has_award_selected.png",
+            "Ninja_book/has_award_selected_2.png"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_book_award_swip_to_left",
             "[JumpBack]back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
-        "action": "Click",
         "focus": "[color:DeepSkyBlue]忍法帖奖励未领取[/color]"
     },
     "ninja_book_award_swip_to_left": {
@@ -1190,31 +1190,31 @@
     },
     "top_level_award": {
         "recognition": "OCR",
-        "expected": "165",
         "roi": [
             303,
             553,
             974,
             129
         ],
+        "expected": "165",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]滑动到忍法帖165级[/color]"
     },
     "ninja_book_award_swipe_to_right": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Ninja_book/ninja_book_award_undone_v2.png",
-            "Ninja_book/selected_red_point.png"
-        ],
         "roi": [
             116,
             108,
             56,
             79
+        ],
+        "template": [
+            "Ninja_book/ninja_book_award_undone_v2.png",
+            "Ninja_book/selected_red_point.png"
         ],
         "threshold": 0.9,
         "action": "Swipe",
@@ -1235,28 +1235,34 @@
     },
     "check_no_ninja_book_award_red_point": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Ninja_book/ninja_book_award_undone_v2.png",
-            "Ninja_book/selected_red_point.png"
-        ],
         "roi": [
             116,
             108,
             56,
             79
         ],
+        "template": [
+            "Ninja_book/ninja_book_award_undone_v2.png",
+            "Ninja_book/selected_red_point.png"
+        ],
         "threshold": 0.85,
+        "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
-        "inverse": true,
         "focus": "[color:DeepSkyBlue]检查没有忍法帖奖励红点[/color]"
     },
     "get_ninja_book_award": {
         "recognition": "TemplateMatch",
+        "roi": [
+            98,
+            490,
+            1131,
+            148
+        ],
         "template": [
             "Ninja_book/copper_60_waiting.png",
             "Ninja_book/fame_waiting.png",
@@ -1271,12 +1277,6 @@
             "Ninja_book/title_waiting.png",
             "Ninja_book/exchange_token_waiting.png"
         ],
-        "roi": [
-            98,
-            490,
-            1131,
-            148
-        ],
         "threshold": 0.85,
         "action": "Click",
         "timeout": 1000,
@@ -1287,29 +1287,30 @@
     },
     "confirm_ninja_book_award": {
         "recognition": "TemplateMatch",
-        "template": "Ninja_book/get_award.png",
         "roi": [
             493,
             562,
             261,
             143
         ],
+        "template": "Ninja_book/get_award.png",
         "action": "Click",
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]确认领取忍法帖奖励[/color]"
     },
     "treasure_box_click_All_skill": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Advanture/stop_button.png"
-        ],
-        "green_mask": true,
         "roi": [
             1120,
             0,
             160,
             127
         ],
+        "template": [
+            "Advanture/stop_button.png"
+        ],
+        "green_mask": true,
+        "pre_delay": 0,
         "action": "MultiSwipe",
         "swipes": [
             {
@@ -1441,7 +1442,6 @@
                 "duration": 100
             }
         ],
-        "pre_delay": 0,
         "post_delay": 0
     }
 }

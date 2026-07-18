@@ -2,62 +2,62 @@
     "complete": {
         "pre_delay": 0,
         "post_delay": 0,
-        "$doc": "用来标记全部任务已经完成,和auto_mas配合",
-        "focus": "OK"
+        "focus": "OK",
+        "$doc": "用来标记全部任务已经完成,和auto_mas配合"
     },
     "cleanup_maafw_bak_logs": {
+        "pre_delay": 0,
         "action": "Custom",
         "custom_action": "CleanupMaafwBakLogs",
         "custom_action_param": {
             "save_log_count": "3"
         },
+        "post_delay": 0,
         "next": [
             "cleanup_custom_img",
             "cleanup_custom_log",
             "cleanup_on_error_img",
             "cleanup_vision_img"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "$doc": "清理多余的maafw_bak日志,节省空间"
     },
     "cleanup_custom_img": {
+        "pre_delay": 0,
         "action": "Custom",
         "custom_action": "CleanupCustomImg",
+        "post_delay": 0,
         "next": [
             "cleanup_custom_log",
             "cleanup_on_error_img",
             "cleanup_vision_img"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "$doc": "清理多余的custom图像和日志,节省空间"
     },
     "cleanup_custom_log": {
+        "pre_delay": 0,
         "action": "Custom",
         "custom_action": "CleanupCustomLog",
+        "post_delay": 0,
         "next": [
             "cleanup_on_error_img",
             "cleanup_vision_img"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "$doc": "清理多余的custom图像和日志,节省空间"
     },
     "cleanup_on_error_img": {
+        "pre_delay": 0,
         "action": "Custom",
         "custom_action": "CleanupOnErrorImg",
+        "post_delay": 0,
         "next": [
             "cleanup_vision_img"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "$doc": "清理多余的on_error图像,节省空间"
     },
     "cleanup_vision_img": {
+        "pre_delay": 0,
         "action": "Custom",
         "custom_action": "CleanupVisionImg",
-        "pre_delay": 0,
         "post_delay": 0,
         "$doc": "清理多余的vision图像,节省空间"
     }

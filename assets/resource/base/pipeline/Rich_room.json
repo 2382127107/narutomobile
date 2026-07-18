@@ -1,130 +1,130 @@
 {
     "rich_room": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "rich_room_in_center_enter",
             "rich_room_ac_entry",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入丰饶之间任务[/color]"
     },
     "rich_room_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_in_daily_award.png",
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "rich_room_ac_entry_undone",
             "award_center_find_end",
             "[JumpBack]swipe_for_award_center_find"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "rich_room_not_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_not_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "rich_room_in_center_enter",
             "rich_room_not_in_center_enter"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
     },
     "rich_room_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/award_center_entry.png",
         "roi": [
             1174,
             302,
             99,
             105
         ],
+        "template": "SharedNode/award_center_entry.png",
         "method": 10001,
         "threshold": [
             0.8
         ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "rich_room_in_center_enter",
             "rich_room_not_in_center_enter",
             "rich_room_ac_entry"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "rich_room_ac_entry_undone": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/rich_room_ac_undone.png",
         "roi": [
             180,
             288,
             1100,
             225
         ],
-        "threshold": 0.9,
+        "template": "Rich_room/rich_room_ac_undone.png",
         "green_mask": true,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
         "target_offset": [
             12,
             116,
             -40,
             -114
         ],
+        "post_delay": 0,
         "next": [
             "rich_room_in_rich_room",
             "rich_room_ac_entry_undone"
         ],
-        "action": "Click",
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]丰饶之间未完成[/color]"
     },
     "rich_room_in_rich_room": {
         "recognition": "OCR",
-        "expected": [
-            "丰饶",
-            "之间",
-            "可获取",
-            "大量"
-        ],
         "roi": [
             331,
             335,
             617,
             256
         ],
+        "expected": [
+            "丰饶",
+            "之间",
+            "可获取",
+            "大量"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "rich_room_above_kage",
             "rich_room_without_above_kage"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "rich_room_without_above_kage": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/above_kage.png",
         "roi": [
             751,
             546,
             395,
             173
         ],
+        "template": "Rich_room/above_kage.png",
         "threshold": [
             0.9
         ],
@@ -135,13 +135,13 @@
     },
     "rich_room_above_kage": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/above_kage.png",
         "roi": [
             751,
             546,
             395,
             173
         ],
+        "template": "Rich_room/above_kage.png",
         "threshold": [
             0.9
         ],
@@ -151,68 +151,68 @@
     },
     "rich_room_above_kage_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/one_key.png",
         "roi": [
             632,
             587,
             224,
             113
         ],
+        "template": "Rich_room/one_key.png",
         "method": 10001,
         "threshold": 0.9,
         "action": "Click",
+        "post_wait_freezes": 400,
         "next": [
             "rich_room_confirm_above_kage_sweep",
             "rich_room_need_20_gold_coin",
             "rich_room_above_kage_sweep"
-        ],
-        "post_wait_freezes": 400
+        ]
     },
     "rich_room_need_20_gold_coin": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/gold_coin.png",
         "roi": [
             532,
             426,
             219,
             88
         ],
+        "template": "Rich_room/gold_coin.png",
         "threshold": 0.8,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "rich_room_close_need_20_gold_coin"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "rich_room_close_need_20_gold_coin": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/tip_x.png",
-        "green_mask": true,
-        "threshold": 0.6,
         "roi": [
             828,
             165,
             108,
             103
         ],
+        "template": "SharedNode/tip_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "challenge_rich_room",
             "rich_room_close_need_20_gold_coin"
-        ],
-        "action": "Click",
-        "post_wait_freezes": 200,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "rich_room_confirm_above_kage_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/above_kage_free.png",
         "roi": [
             380,
             362,
             528,
             219
         ],
+        "template": "Rich_room/above_kage_free.png",
         "threshold": [
             0.8
         ],
@@ -224,13 +224,13 @@
     },
     "rich_room_without_confirm_above_kage_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/above_kage_free.png",
         "roi": [
             380,
             362,
             528,
             219
         ],
+        "template": "Rich_room/above_kage_free.png",
         "threshold": [
             0.8
         ],
@@ -242,14 +242,14 @@
     },
     "rich_room_finished": {
         "recognition": "OCR",
-        "expected": [
-            "点击"
-        ],
         "roi": [
             465,
             646,
             355,
             61
+        ],
+        "expected": [
+            "点击"
         ],
         "next": [
             "back_main_screen_and_stop"
@@ -258,18 +258,18 @@
     },
     "challenge_rich_room": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/fight.png",
         "roi": [
             447,
             568,
             171,
             144
         ],
+        "template": "Rich_room/fight.png",
         "method": 10001,
         "threshold": 0.9,
         "pre_delay": 0,
-        "post_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "rich_room_finished",
             "rich_room_in_fight",
@@ -293,13 +293,13 @@
     },
     "rich_room_in_fight": {
         "recognition": "TemplateMatch",
-        "template": "auto_battle/challenge.png",
         "roi": [
             560,
             0,
             156,
             89
         ],
+        "template": "auto_battle/challenge.png",
         "green_mask": true,
         "threshold": 0.7,
         "pre_delay": 0,
@@ -311,13 +311,13 @@
     },
     "rich_room_not_in_fight": {
         "recognition": "TemplateMatch",
-        "template": "auto_battle/challenge.png",
         "roi": [
             560,
             0,
             156,
             89
         ],
+        "template": "auto_battle/challenge.png",
         "green_mask": true,
         "threshold": 0.7,
         "inverse": true,
@@ -328,15 +328,16 @@
     },
     "rich_room_combo": {
         "recognition": "TemplateMatch",
-        "template": "auto_battle/challenge.png",
         "roi": [
             560,
             0,
             156,
             89
         ],
+        "template": "auto_battle/challenge.png",
         "green_mask": true,
         "threshold": 0.7,
+        "pre_delay": 0,
         "action": "MultiSwipe",
         "swipes": [
             {
@@ -404,7 +405,6 @@
                 "duration": 100
             }
         ],
-        "pre_delay": 0,
         "post_delay": 0
     }
 }

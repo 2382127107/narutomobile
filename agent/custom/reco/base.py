@@ -18,9 +18,7 @@ class IsCounterOverflow(CustomRecognition):
     计数器溢出检测
     """
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         param = json.loads(argv.custom_recognition_param)
         max_hit = int(param.get("max_hit", "0"))
 
@@ -47,9 +45,7 @@ class IsInNinjaGuide(CustomRecognition):
     是否在忍界引导界面
     """
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         reco_detail = context.run_recognition("in_ninja_guide", argv.image, {})
         if reco_detail and reco_detail.hit:
             # GoIntoEntryByGuide不需要这个box
@@ -102,9 +98,7 @@ class FindPlantableFlower(CustomRecognition):
             flower_num = flower_idx + 1
             logger.info(f"正在检查第{flower_num}种花...")
 
-            current_seeds = self.get_seed_count(
-                context=context, image=argv.image, roi=seed_roi
-            )
+            current_seeds = self.get_seed_count(context=context, image=argv.image, roi=seed_roi)
             if current_seeds is None:
                 logger.warning(f"第{flower_num}种花:种子数量读取失败,跳过")
                 continue
@@ -127,16 +121,10 @@ class FindPlantableFlower(CustomRecognition):
             )
 
         # 无可用种子或全识别失败
-        invalid_box = Rect(
-            0, 0, 1, 1
-        )  # 直接返回None的box会重试，所以我返回一个不影响的box
-        return CustomRecognition.AnalyzeResult(
-            box=invalid_box, detail={"has_valid_target": False}
-        )
+        invalid_box = Rect(0, 0, 1, 1)  # 直接返回None的box会重试，所以我返回一个不影响的box
+        return CustomRecognition.AnalyzeResult(box=invalid_box, detail={"has_valid_target": False})
 
-    def get_seed_count(
-        self, context: Context, image: ndarray, roi: list[int]
-    ) -> int | None:
+    def get_seed_count(self, context: Context, image: ndarray, roi: list[int]) -> int | None:
         """
         在选花界面中寻找可以种的花
         """
@@ -175,9 +163,7 @@ class FindPlantableFlower(CustomRecognition):
             ":",
             "：",
         ]:
-            logger.warning(
-                f"ROI{roi}:种子文本格式错误(无有效冒号),识别文本:{source_text}"
-            )
+            logger.warning(f"ROI{roi}:种子文本格式错误(无有效冒号),识别文本:{source_text}")
             return None
 
         slash_index = source_text.find("/", colon_index + 1)
@@ -187,9 +173,7 @@ class FindPlantableFlower(CustomRecognition):
 
         seed_str = source_text[colon_index + 1 : slash_index]
         if not seed_str.isdigit():
-            logger.warning(
-                f"ROI{roi}:种子数量不是数字,实际:{seed_str}(识别文本:{source_text})"
-            )
+            logger.warning(f"ROI{roi}:种子数量不是数字,实际:{seed_str}(识别文本:{source_text})")
             return None
 
         current_seeds = int(seed_str)
@@ -208,47 +192,30 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
 
     TOKEN_CHECK_ROI = [846, 639, 111, 80]
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         logger.info("===== 执行FindBondsWithoutEnoughToken节点 =====")
 
         # 读取token数量
-        token_count,_ = get_digit_count(context, argv.image, self.TOKEN_CHECK_ROI)
+        token_count, _ = get_digit_count(context, argv.image, self.TOKEN_CHECK_ROI)
 
         # 识别失败
         if token_count is None:
-            logger.warning(
-                "[FindBondsWithoutEnoughToken] token数量识别失败,返回未通过"
-            )
-            return CustomRecognition.AnalyzeResult(
-                box=None, detail={"token_count": None, "passed": False}
-            )
+            logger.warning("[FindBondsWithoutEnoughToken] token数量识别失败,返回未通过")
+            return CustomRecognition.AnalyzeResult(box=None, detail={"token_count": None, "passed": False})
 
         # 数字 < 5
         if token_count < 5:
-            logger.info(
-                f"[FindBondsWithoutEnoughToken] token数量{token_count}<5,返回识别通过"
-            )
+            logger.info(f"[FindBondsWithoutEnoughToken] token数量{token_count}<5,返回识别通过")
             # 返回非空box表示节点识别通过
             pass_box = Rect(0, 0, 1, 1)
-            return CustomRecognition.AnalyzeResult(
-                box=pass_box, detail={"token_count": token_count, "passed": True}
-            )
+            return CustomRecognition.AnalyzeResult(box=pass_box, detail={"token_count": token_count, "passed": True})
 
         # 数字 ≥ 5
-        logger.info(
-            f"[FindBondsWithoutEnoughToken] token数量{token_count}≥5,返回识别未通过"
-        )
-        return CustomRecognition.AnalyzeResult(
-            box=None, detail={"token_count": token_count, "passed": False}
-        )
+        logger.info(f"[FindBondsWithoutEnoughToken] token数量{token_count}≥5,返回识别未通过")
+        return CustomRecognition.AnalyzeResult(box=None, detail={"token_count": token_count, "passed": False})
 
 
-
-def get_flip_ticket_count(
-    context: Context, image: ndarray, roi: list[int], text_modifier=lambda x: x
-) -> int | None:
+def get_flip_ticket_count(context: Context, image: ndarray, roi: list[int], text_modifier=lambda x: x) -> int | None:
     """
     独立读取指定ROI的翻牌卷数量(调用custom_oc)，支持自定义文本修改
     :param context: MAA上下文
@@ -258,9 +225,7 @@ def get_flip_ticket_count(
     :return: 解析后的整型数字,失败返回None
     """
 
-    reco_detail = context.run_recognition(
-        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
-    )
+    reco_detail = context.run_recognition("custom_ocr", image, {"custom_ocr": {"roi": roi}})
 
     # 基础校验：识别器返回None或未命中文本
     if reco_detail is None or not reco_detail.hit:
@@ -278,9 +243,7 @@ def get_flip_ticket_count(
     # 正则提取纯数字
     num_match = re.search(r"\d+", modified_text)
     if not num_match:
-        logger.warning(
-            f"[get_flip_ticket_count] ROI{roi} 未提取到有效数字，修改后文本：{modified_text}"
-        )
+        logger.warning(f"[get_flip_ticket_count] ROI{roi} 未提取到有效数字，修改后文本：{modified_text}")
         return None
 
     # 数字转换（异常捕获）
@@ -289,9 +252,7 @@ def get_flip_ticket_count(
         logger.info(f"[get_flip_ticket_count] ROI{roi} 解析到翻牌卷数量:{ticket_count}")
         return ticket_count
     except ValueError:
-        logger.warning(
-            f"[get_flip_ticket_count] ROI{roi} 数字转换失败，提取字符串：{num_match.group()}"
-        )
+        logger.warning(f"[get_flip_ticket_count] ROI{roi} 数字转换失败，提取字符串：{num_match.group()}")
         return None
 
 
@@ -304,12 +265,11 @@ class FindAccessoryFlipTicket(CustomRecognition):
     # 饰品翻牌卷ROI
     ACCESSORY_TICKET_ROI = [550, 481, 171, 238]
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         logger.info("===== 执行饰品翻牌卷识别 =====")
 
-        # 调用独立识别函数，传入ROI+自定义文本修改（lambda x: x[1:] if x else x是去掉第一个字符，无修改则改为lambda x:x）
+        # 调用独立识别函数，传入ROI+自定义文本修改
+        # lambda x: x[1:] if x else x是去掉第一个字符，无修改则改为lambda x:x
         ticket_count = get_flip_ticket_count(
             context=context,
             image=argv.image,
@@ -338,9 +298,7 @@ class FindGearFlipTicket(CustomRecognition):
     # 忍具翻牌卷ROI
     GEAR_TICKET_ROI = [436, 483, 138, 236]
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         logger.info("===== 执行忍具翻牌卷识别 =====")
 
         ticket_count = get_flip_ticket_count(
@@ -371,9 +329,7 @@ class SecretRealmTicket(CustomRecognition):
     # 秘境挑战卷ROI
     Secret_Real_Roi = [496, 624, 39, 44]
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         logger.info("===== 执行秘境挑战卷识别 SecretRealmTicket =====")
 
         ticket_count = get_flip_ticket_count(
@@ -384,20 +340,14 @@ class SecretRealmTicket(CustomRecognition):
         )
 
         if ticket_count is None:
-            logger.warning(
-                "[SecretRealmTicket] 秘境挑战卷数量识别失败,返回未通过,可能是挑战卷不够了"
-            )
+            logger.warning("[SecretRealmTicket] 秘境挑战卷数量识别失败,返回未通过,可能是挑战卷不够了")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
         if ticket_count > 0:
-            logger.info(
-                f"[SecretRealmTicket] 秘境挑战卷数量{ticket_count}>0,返回识别通过"
-            )
+            logger.info(f"[SecretRealmTicket] 秘境挑战卷数量{ticket_count}>0,返回识别通过")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
-        logger.info(
-            f"[SecretRealmTicket] 秘境挑战卷数量{ticket_count}≤0,返回识别未通过"
-        )
+        logger.info(f"[SecretRealmTicket] 秘境挑战卷数量{ticket_count}≤0,返回识别未通过")
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
@@ -416,9 +366,7 @@ class MissionOfficeStrategy(CustomRecognition):
     # 已获得资源个数 识别ROI
     CURRENT_RESOURCE_ROI = [1003, 648, 22, 28]
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         logger.info("===== 执行任务集会所策略选择 MissionOfficeStrategy =====")
 
         # 目前刷新上限
@@ -442,18 +390,14 @@ class MissionOfficeStrategy(CustomRecognition):
             logger.warning("[MissionOfficeStrategy] 数字识别失败,返回未通过(安全策略)")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
-        logger.info(
-            f"[MissionOfficeStrategy] 识别结果：刷新上限={max_resource},可接取={current_resource}"
-        )
+        logger.info(f"[MissionOfficeStrategy] 识别结果：刷新上限={max_resource},可接取={current_resource}")
 
         condition = (max_resource - 9) * 1.5 >= current_resource
         if condition:
             logger.info("[MissionOfficeStrategy] 公式条件成立，返回识别通过(贪心策略)")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
         else:
-            logger.info(
-                "[MissionOfficeStrategy] 公式条件不成立，返回识别未通过(安全策略)"
-            )
+            logger.info("[MissionOfficeStrategy] 公式条件不成立，返回识别未通过(安全策略)")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
@@ -463,13 +407,11 @@ class CheckGetCopperRoll(CustomRecognition):
     检测招财轮次,识别轮次大于设定轮次+1则通过
     """
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         roi = [104, 468, 40, 31]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
-        now_count,_ = get_digit_count(context, argv.image, roi)
+        now_count, _ = get_digit_count(context, argv.image, roi)
         if now_count is None:
             now_count = 66
 
@@ -487,13 +429,11 @@ class CheckGetCopperCount(CustomRecognition):
     检测招财次数,识别次数大于设定次数则通过
     """
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         roi = [309, 468, 27, 30]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
-        now_count,_ = get_digit_count(context, argv.image, roi)
+        now_count, _ = get_digit_count(context, argv.image, roi)
         if now_count is None:
             now_count = 66
 
@@ -513,26 +453,24 @@ class CheckBuyEnergyCount(CustomRecognition):
 
     start_count = -1
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         roi = [499, 374, 251, 59]
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
         if self.start_count == -1:
-            value,_ = get_digit_count(context, argv.image, roi)
-            self.start_count = value if value  else 0
+            value, _ = get_digit_count(context, argv.image, roi)
+            self.start_count = value if value else 0
 
-        value,_ = get_digit_count(context, argv.image, roi)
+        value, _ = get_digit_count(context, argv.image, roi)
         now_count = value if value else 0
 
         if self.start_count - now_count >= count:
             logger.info(
-                f"当前值:{self.start_count - now_count},达到最大执行次数{count},初始值{self.start_count},识别值{now_count}"
+                f"当前值:{self.start_count - now_count},达到最大执行次数{count},初始值{self.start_count},识别值{now_count}"  # noqa: E501
             )
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
         logger.debug(
-            f"购买体力计数器状态: 最大值:{count} 当前值: {self.start_count - now_count},初始值{self.start_count},识别值{now_count}"
+            f"购买体力计数器状态: 最大值:{count} 当前值: {self.start_count - now_count},初始值{self.start_count},识别值{now_count}"  # noqa: E501
         )
         return CustomRecognition.AnalyzeResult(box=None, detail={})

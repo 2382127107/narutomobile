@@ -1,24 +1,25 @@
 {
     "buy_energy": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "buy_energy_in_main_screen",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入购买体力任务[/color]"
     },
     "buy_energy_in_main_screen": {
         "recognition": "TemplateMatch",
-        "template": "Buy_energy/energy.png",
         "roi": [
             358,
             4,
             79,
             71
         ],
+        "template": "Buy_energy/energy.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             151,
@@ -26,25 +27,26 @@
             -5,
             -2
         ],
+        "post_delay": 500,
+        "rate_limit": 500,
         "next": [
             "buy_energy_in_buy_energy",
             "buy_energy_in_main_screen"
-        ],
-        "rate_limit": 500,
-        "pre_delay": 0,
-        "post_delay": 500
+        ]
     },
     "buy_energy_in_buy_energy": {
         "recognition": "TemplateMatch",
-        "template": "Buy_energy/buy_button.png",
         "roi": [
             627,
             431,
             125,
             96
         ],
+        "template": "Buy_energy/buy_button.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]energy_upper_limit",
             "[JumpBack]check_not_in_buy_energy",
@@ -52,58 +54,56 @@
             "[JumpBack]try_buy_energy",
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "energy_upper_limit": {
         "recognition": "OCR",
-        "expected": [
-            "当前体力",
-            "到达上限"
-        ],
         "roi": [
             486,
             333,
             308,
             51
         ],
-        "next": [
-            "back_main_screen_and_stop"
+        "expected": [
+            "当前体力",
+            "到达上限"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
     },
     "check_not_in_buy_energy": {
         "recognition": "TemplateMatch",
-        "template": "Buy_energy/in_buy_energy.png",
         "roi": [
             565,
             276,
             150,
             111
         ],
+        "template": "Buy_energy/in_buy_energy.png",
+        "method": 10001,
+        "threshold": 0.95,
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]energy_upper_limit",
             "[JumpBack]pay_to_stronger_tip",
             "check_in_buy_energy",
             "back_main_screen_and_stop"
-        ],
-        "method": 10001,
-        "threshold": 0.95,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "check_in_buy_energy": {
         "recognition": "TemplateMatch",
-        "template": "Buy_energy/in_buy_energy.png",
         "roi": [
             565,
             276,
             150,
             111
         ],
+        "template": "Buy_energy/in_buy_energy.png",
         "method": 10001,
         "threshold": 0.95,
         "pre_delay": 0,
@@ -115,28 +115,28 @@
         "custom_recognition_param": {
             "count": 1
         },
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:pink]检查购买体力次数[/color]"
     },
     "try_buy_energy": {
         "recognition": "TemplateMatch",
-        "template": "Buy_energy/buy_button.png",
         "roi": [
             627,
             431,
             125,
             96
         ],
+        "template": "Buy_energy/buy_button.png",
         "method": 10001,
         "threshold": 0.95,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 500,
-        "post_wait_freezes": 500
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 500
     }
 }

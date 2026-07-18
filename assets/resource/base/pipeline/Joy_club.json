@@ -1,26 +1,27 @@
 {
     "joy_club": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 2000,
         "next": [
             "joy_club_enter",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "timeout": 2000,
         "focus": "[color:DeepSkyBlue]进入心悦俱乐部子任务[/color]"
     },
     "joy_club_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/settings.png",
         "roi": [
             14,
             113,
             98,
             74
         ],
+        "template": "SharedNode/settings.png",
         "green_mask": true,
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             24,
@@ -28,142 +29,141 @@
             -29,
             -32
         ],
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "joy_club_in_set",
             "joy_club_enter"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "joy_club_in_set": {
         "recognition": "TemplateMatch",
-        "template": "Switch_account/emo.png",
         "roi": [
             133,
             382,
             229,
             145
         ],
+        "template": "Switch_account/emo.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "joy_club_find_icon",
             "[JumpBack]joy_club_next_page"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "joy_club_find_icon": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Joy_club/joy_club_icon.png"
-        ],
         "roi": [
             362,
             189,
             711,
             251
         ],
+        "template": [
+            "Joy_club/joy_club_icon.png"
+        ],
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "joy_club_in_joy_club",
             "joy_club_find_icon"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "joy_club_next_page": {
+        "max_hit": 7,
         "recognition": "TemplateMatch",
-        "template": [
-            "Joy_club/next_page.png"
-        ],
         "roi": [
             1059,
             276,
             74,
             81
         ],
-        "action": "Click",
-        "max_hit": 7,
+        "template": [
+            "Joy_club/next_page.png"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0
     },
     "joy_club_in_joy_club": {
         "recognition": "TemplateMatch",
-        "template": "Joy_club/in_joy_club.png",
         "roi": [
             81,
             36,
             125,
             76
         ],
+        "template": "Joy_club/in_joy_club.png",
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "joy_club_get_weekly_award",
             "joy_club_weekly_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "joy_club_get_weekly_award": {
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "template": "Joy_club/get.png",
         "roi": [
             1012,
             11,
             251,
             671
         ],
+        "template": "Joy_club/get.png",
         "threshold": 0.9,
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
         "action": "Click",
-        "max_hit": 5,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "joy_club_close_weekly_award",
             "joy_club_get_weekly_award",
             "joy_club_weekly_award_done"
-        ],
-        "pre_wait_freezes": 200,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "joy_club_close_weekly_award": {
         "recognition": "TemplateMatch",
-        "template": "Joy_club/x.png",
         "roi": [
             1138,
             21,
             96,
             88
         ],
+        "template": "Joy_club/x.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "joy_club_weekly_award_done",
             "joy_club_close_weekly_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "joy_club_weekly_award_done": {
         "recognition": "TemplateMatch",
-        "template": "Joy_club/done.png",
         "roi": [
             1012,
             11,
             251,
             671
         ],
+        "template": "Joy_club/done.png",
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "joy_club_draw",
             "joy_club_draw_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "joy_club_draw": {
         "recognition": "And",
@@ -171,59 +171,59 @@
             {
                 "sub_name": "image",
                 "recognition": "TemplateMatch",
-                "template": "Joy_club/draw.png",
                 "roi": [
                     1012,
                     11,
                     251,
                     671
                 ],
+                "template": "Joy_club/draw.png",
                 "threshold": 0.87
             },
             {
                 "sub_name": "text",
                 "recognition": "OCR",
-                "expected": [
-                    "立即",
-                    "抽奖"
-                ],
                 "roi": [
                     1012,
                     11,
                     251,
                     671
+                ],
+                "expected": [
+                    "立即",
+                    "抽奖"
                 ]
             }
         ],
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "joy_club_close_draw_award",
             "joy_club_draw_done",
             "joy_club_draw"
-        ],
-        "pre_wait_freezes": 200,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "joy_club_close_draw_award": {
         "recognition": "TemplateMatch",
-        "template": "Joy_club/x.png",
         "roi": [
             1138,
             21,
             96,
             88
         ],
+        "template": "Joy_club/x.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "joy_club_draw",
             "joy_club_close_draw_award",
             "joy_club_draw_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "joy_club_draw_done": {
         "recognition": "And",
@@ -231,70 +231,70 @@
             {
                 "sub_name": "image",
                 "recognition": "TemplateMatch",
-                "template": "Joy_club/draw_done.png",
                 "roi": [
                     1012,
                     11,
                     251,
                     671
                 ],
+                "template": "Joy_club/draw_done.png",
                 "method": 10001,
                 "threshold": 0.9
             },
             {
                 "sub_name": "text",
                 "recognition": "OCR",
-                "expected": [
-                    "本周",
-                    "已抽奖"
-                ],
                 "roi": [
                     1012,
                     11,
                     251,
                     671
+                ],
+                "expected": [
+                    "本周",
+                    "已抽奖"
                 ]
             }
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "joy_club_quit",
             "joy_club_close_draw_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "joy_club_quit": {
         "recognition": "TemplateMatch",
-        "template": "Joy_club/quit.png",
         "roi": [
             46,
             43,
             51,
             54
         ],
+        "template": "Joy_club/quit.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "joy_club_not_in_joy_club",
             "joy_club_quit"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "joy_club_not_in_joy_club": {
         "recognition": "TemplateMatch",
-        "template": "Joy_club/in_joy_club.png",
         "roi": [
             81,
             36,
             125,
             76
         ],
+        "template": "Joy_club/in_joy_club.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     }
 }

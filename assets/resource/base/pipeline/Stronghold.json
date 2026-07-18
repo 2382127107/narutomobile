@@ -1,5 +1,6 @@
 {
     "stronghold": {
+        "timeout": 1500,
         "next": [
             "ninja_guide_returning_player",
             "ninja_guide_in_ninja_guide",
@@ -8,7 +9,6 @@
             "stronghold_in_map",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "timeout": 1500,
         "focus": "[color:DeepSkyBlue]进入要塞任务[/color]"
     },
     "stronghold_entry": {
@@ -17,27 +17,27 @@
             {
                 "sub_name": "mission_label",
                 "recognition": "OCR",
-                "expected": [
-                    "任务"
-                ],
                 "roi": [
                     968,
                     68,
                     307,
                     100
+                ],
+                "expected": [
+                    "任务"
                 ]
             },
             {
                 "sub_name": "returning_player",
                 "recognition": "OCR",
-                "expected": [
-                    "回流"
-                ],
                 "roi": [
                     0,
                     0,
                     195,
                     285
+                ],
+                "expected": [
+                    "回流"
                 ]
             }
         ],
@@ -46,51 +46,51 @@
         "custom_action_param": {
             "entry_name": "组织"
         },
+        "post_delay": 1500,
+        "timeout": 3000,
         "next": [
             "stronghold_gameplay",
             "no_group",
             "stronghold_entry"
         ],
-        "timeout": 3000,
-        "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]组织主界面入口[/color]"
     },
     "stronghold_gameplay": {
         "recognition": "TemplateMatch",
         "template": "Sky_ground/gameplay.png",
         "action": "Click",
+        "post_delay": 500,
         "next": [
             "stronghold_gameplay_slected",
             "[JumpBack]stronghold_gameplay"
-        ],
-        "post_delay": 500
+        ]
     },
     "stronghold_gameplay_slected": {
         "recognition": "TemplateMatch",
-        "template": "Group/selected_group_gameplay.png",
         "roi": [
             44,
             382,
             177,
             118
         ],
+        "template": "Group/selected_group_gameplay.png",
         "action": "DoNothing",
+        "post_wait_freezes": 300,
         "next": [
             "stronghold_mode",
             "[JumpBack]swipe_for_stronghold_mode"
         ],
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]确认选中组织玩法按钮[/color]"
     },
     "stronghold_mode": {
         "recognition": "TemplateMatch",
-        "template": "Stronghold/stronghold_icon.png",
         "roi": [
             190,
             150,
             913,
             224
         ],
+        "template": "Stronghold/stronghold_icon.png",
         "action": "Click",
         "target_offset": [
             -10,
@@ -98,24 +98,24 @@
             40,
             -5
         ],
+        "post_wait_freezes": 400,
         "next": [
             "stronghold_in_map",
             "[JumpBack]stronghold_mode",
             "group_mode_not_open"
         ],
-        "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]进入要塞[/color]"
     },
     "stronghold_in_map": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Stronghold/map.png"
-        ],
         "roi": [
             427,
             0,
             419,
             123
+        ],
+        "template": [
+            "Stronghold/map.png"
         ],
         "next": [
             "stronghold_end",
@@ -125,13 +125,13 @@
     },
     "swipe_for_stronghold_mode": {
         "recognition": "TemplateMatch",
-        "template": "Group/selected_group_gameplay.png",
         "roi": [
             44,
             382,
             177,
             118
         ],
+        "template": "Group/selected_group_gameplay.png",
         "action": "Swipe",
         "begin": [
             479,
@@ -151,34 +151,34 @@
     },
     "stronghold_to_fire_stronghold": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Stronghold/fire_stronghold.png"
-        ],
         "roi": [
             432,
             108,
             560,
             424
         ],
+        "template": [
+            "Stronghold/fire_stronghold.png"
+        ],
         "action": "Click",
+        "post_delay": 700,
         "next": [
             "stronghold_to_fight",
             "[JumpBack]stronghold_to_fire_stronghold"
         ],
-        "post_delay": 700,
         "focus": "[color:DeepSkyBlue]点击火要塞[/color]"
     },
     "stronghold_to_fight": {
         "recognition": "OCR",
-        "expected": [
-            "攻",
-            "击"
-        ],
         "roi": [
             750,
             542,
             249,
             118
+        ],
+        "expected": [
+            "攻",
+            "击"
         ],
         "action": "Click",
         "next": [
@@ -189,18 +189,19 @@
     },
     "stronghold_in_stronghold": {
         "recognition": "OCR",
-        "expected": [
-            "组织",
-            "个人",
-            "战力",
-            "名称"
-        ],
         "roi": [
             0,
             0,
             279,
             125
         ],
+        "expected": [
+            "组织",
+            "个人",
+            "战力",
+            "名称"
+        ],
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             283,
@@ -215,6 +216,8 @@
             28
         ],
         "duration": 3000,
+        "post_delay": 0,
+        "timeout": 30000,
         "next": [
             "stronghold_in_match",
             "[JumpBack]stronghold_in_stronghold",
@@ -223,23 +226,21 @@
             "stronghold_finished",
             "[JumpBack]stronghold_substitution"
         ],
-        "timeout": 30000,
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:darkgray]在要塞中，向右走[/color]"
     },
     "stronghold_in_match": {
         "recognition": "OCR",
-        "expected": [
-            "旗鼓",
-            "相当"
-        ],
         "roi": [
             477,
             340,
             311,
             153
         ],
+        "expected": [
+            "旗鼓",
+            "相当"
+        ],
+        "timeout": 30000,
         "next": [
             "[JumpBack]stronghold_fighting",
             "stronghold_end",
@@ -248,62 +249,63 @@
             "[JumpBack]stronghold_match_win",
             "stronghold_finished",
             "[JumpBack]stronghold_substitution"
-        ],
-        "timeout": 30000
+        ]
     },
     "stronghold_match_win": {
         "recognition": "OCR",
-        "expected": [
-            "确",
-            "定"
-        ],
         "roi": [
             472,
             342,
             325,
             209
         ],
+        "expected": [
+            "确",
+            "定"
+        ],
         "action": "Click",
+        "post_delay": 500,
         "next": [
             "stronghold_without_match_win",
             "[JumpBack]stronghold_match_win",
             "stronghold_finished"
         ],
-        "post_delay": 500,
         "focus": "[color:DeepSkyBlue]敌人退出了,你获胜[/color]"
     },
     "stronghold_without_match_win": {
         "recognition": "OCR",
-        "expected": [
-            "确",
-            "定"
-        ],
         "roi": [
             472,
             342,
             325,
             209
         ],
+        "expected": [
+            "确",
+            "定"
+        ],
         "inverse": true,
+        "post_delay": 500,
         "next": [
             "stronghold_in_stronghold",
             "stronghold_finished"
         ],
-        "post_delay": 500,
         "focus": "[color:DeepSkyBlue]回到战斗[/color]"
     },
     "stronghold_fighting": {
         "recognition": "OCR",
-        "expected": [
-            "第",
-            "回"
-        ],
         "roi": [
             496,
             0,
             229,
             108
         ],
+        "expected": [
+            "第",
+            "回"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "stronghold_winner_decided",
             "[JumpBack]stronghold_click_All_skill",
@@ -312,22 +314,22 @@
             "[JumpBack]stronghold_match_win",
             "stronghold_finished"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"
     },
     "stronghold_winner_decided": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Weekly_win/winner.png"
-        ],
         "roi": [
             412,
             427,
             239,
             177
         ],
+        "template": [
+            "Weekly_win/winner.png"
+        ],
         "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "stronghold_winner_decided",
             "stronghold_battle_end",
@@ -337,21 +339,19 @@
             "stronghold_finished",
             "[JumpBack]stronghold_click_All_skill"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "$doc": "有一部分忍者会复活,这时候可能会直接进战斗"
     },
     "stronghold_finished": {
         "recognition": "OCR",
-        "expected": [
-            "祈愿",
-            "考核"
-        ],
         "roi": [
             1005,
             579,
             274,
             140
+        ],
+        "expected": [
+            "祈愿",
+            "考核"
         ],
         "next": [
             "back_main_screen_and_stop"
@@ -360,14 +360,14 @@
     },
     "stronghold_battle_end": {
         "recognition": "OCR",
-        "expected": [
-            "举报"
-        ],
         "roi": [
             1066,
             0,
             214,
             96
+        ],
+        "expected": [
+            "举报"
         ],
         "action": "Click",
         "target": [
@@ -385,26 +385,26 @@
     },
     "stronghold_substitution": {
         "recognition": "TemplateMatch",
-        "template": "Weekly_win/substitution.png",
         "roi": [
             550,
             441,
             210,
             200
         ],
+        "template": "Weekly_win/substitution.png",
         "threshold": 0.9,
         "post_delay": 3000
     },
     "stronghold_end": {
         "recognition": "OCR",
-        "expected": [
-            "结算"
-        ],
         "roi": [
             446,
             0,
             335,
             145
+        ],
+        "expected": [
+            "结算"
         ],
         "next": [
             "back_main_screen_and_stop"
@@ -413,16 +413,17 @@
     },
     "stronghold_click_All_skill": {
         "recognition": "OCR",
-        "expected": [
-            "第",
-            "回"
-        ],
         "roi": [
             496,
             0,
             229,
             108
         ],
+        "expected": [
+            "第",
+            "回"
+        ],
+        "pre_delay": 0,
         "action": "MultiSwipe",
         "swipes": [
             {
@@ -554,7 +555,6 @@
                 "duration": 50
             }
         ],
-        "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]连点器战斗[/color]"
     }

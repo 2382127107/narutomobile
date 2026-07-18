@@ -20,9 +20,7 @@ class FindToChallenge(CustomRecognition):
         context: Context,
         argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
-        fource_battle = json.loads(argv.custom_recognition_param).get(
-            "fource_battle", False
-        )
+        fource_battle = json.loads(argv.custom_recognition_param).get("fource_battle", False)
         if fource_battle:
             logger.info("当前配置：强制挑战")
         else:
@@ -62,7 +60,7 @@ class FindToChallenge(CustomRecognition):
 
         min_enemySenryoku = min(enemySenryoku_list)
         idx = enemySenryoku_list.index(min_enemySenryoku)
-        logger.info(f"敌队{idx + 1}战力最低：{min_enemySenryoku/10000}万")
+        logger.info(f"敌队{idx + 1}战力最低：{min_enemySenryoku / 10000}万")
 
         if (min_enemySenryoku > team_senryoku) and (not fource_battle):
             logger.info("没一个打得过的，溜了溜了。")
@@ -84,13 +82,11 @@ class FindToChallenge(CustomRecognition):
             detail={},
         )
 
-    def get_senryoku(
-        self, context: Context, image: ndarray, roi: list[int], default=None
-    ) -> int | None:
+    def get_senryoku(self, context: Context, image: ndarray, roi: list[int], default=None) -> int | None:
         """
         获取战力
         """
-        value,source_text = get_digit_count(context, image, roi, default=default)
+        value, source_text = get_digit_count(context, image, roi, default=default)
         if value is None or source_text is None:
             logger.error(f"无法解析战力 ROI: {roi}")
             return None

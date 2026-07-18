@@ -5,27 +5,27 @@
             {
                 "sub_name": "mission_label",
                 "recognition": "OCR",
-                "expected": [
-                    "任务"
-                ],
                 "roi": [
                     968,
                     68,
                     307,
                     100
+                ],
+                "expected": [
+                    "任务"
                 ]
             },
             {
                 "sub_name": "returning_player",
                 "recognition": "OCR",
-                "expected": [
-                    "回流"
-                ],
                 "roi": [
                     0,
                     0,
                     195,
                     285
+                ],
+                "expected": [
+                    "回流"
                 ]
             }
         ]
@@ -67,8 +67,8 @@
                 ]
             }
         },
-        "post_delay": 0,
-        "pre_delay": 0
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "card_wait": {
         "recognition": "TemplateMatch",

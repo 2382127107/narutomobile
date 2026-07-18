@@ -1,40 +1,31 @@
+import argparse
+import json
 import os
 import platform
-from zipfile import ZipFile
-import json
-import sys
-from pathlib import Path
-import argparse
 import shutil
 import subprocess
+import sys
 import urllib.request as request
+from pathlib import Path
+from zipfile import ZipFile
 
 sys.path.insert(0, Path(__file__).parent.__str__())
 sys.path.insert(0, (Path(__file__).parent / "ci").__str__())
 
 from ci.install import (
+    install_agent,
     install_maafw,
     install_resource,
-    install_agent,
 )
-from ci.setup_embed_python import PYTHON_VERSION_TARGET
 from utils import download
 
 DEFAULT_MFA_VERSION = "v2.12.1"
 GHPROXY_URL = "https://gh-proxy.natsuu.top/"
 
-parser = argparse.ArgumentParser(
-    description="Install MaaFramework to install directory"
-)
-parser.add_argument(
-    "--install_dir", type=str, default="install", help="Install directory"
-)
-parser.add_argument(
-    "--arch", type=str, default="amd64", help="Architecture (amd64 or win32)"
-)
-parser.add_argument(
-    "--pre-release", type=bool, default=False, help="Install pre-release version"
-)
+parser = argparse.ArgumentParser(description="Install MaaFramework to install directory")
+parser.add_argument("--install_dir", type=str, default="install", help="Install directory")
+parser.add_argument("--arch", type=str, default="amd64", help="Architecture (amd64 or win32)")
+parser.add_argument("--pre-release", type=bool, default=False, help="Install pre-release version")
 parser.add_argument(
     "--ghproxy",
     type=bool,
@@ -121,7 +112,6 @@ def detect_dotnet_platform_tag():
     print(f"检测到操作系统: {os_type}, 架构: {os_arch}")
 
     if os_type == "Windows":
-
         # 在Windows ARM64环境中，platform.machine()可能错误返回AMD64
         # 我们需要检查处理器标识符来确定真实架构
         processor_identifier = os.environ.get("PROCESSOR_IDENTIFIER", "")
@@ -180,9 +170,7 @@ def install_mfa():
         if response.status != 200:
             if response.status == 403:
                 print("Rate limit exceeded")
-                print(
-                    "Please check the proxy settings or use tag argument to install specific version"
-                )
+                print("Please check the proxy settings or use tag argument to install specific version")
                 sys.exit(1)
             print(f"Failed to get release info: {response.status}")
             sys.exit(1)
@@ -191,9 +179,7 @@ def install_mfa():
         if args.pre_release:
             pass
         else:
-            release_info = [
-                release for release in release_info if not release["prerelease"]
-            ]
+            release_info = [release for release in release_info if not release["prerelease"]]
 
         release_info = release_info[0]
         version = release_info["tag_name"]

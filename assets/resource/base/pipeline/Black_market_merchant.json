@@ -1,5 +1,8 @@
 {
     "black_market_merchant": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 1500,
         "next": [
             "black_market_merchant_in_hood",
             "ninja_guide_returning_player",
@@ -7,9 +10,6 @@
             "[JumpBack]open_ninja_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "timeout": 1500,
         "focus": "[color:DeepSkyBlue]进入秘境子任务[/color]"
     },
     "open_black_market_merchant_by_guide": {
@@ -23,143 +23,145 @@
                 "秋境探险"
             ]
         },
+        "post_wait_freezes": 500,
         "next": [
             "black_market_merchant_create_room",
             "open_black_market_merchant_by_guide"
-        ],
-        "post_wait_freezes": 500
+        ]
     },
     "black_market_merchant_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_in_daily_award.png",
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "black_market_merchant_ac_entry_undone",
             "ac_entry_mission_done",
             "[JumpBack]swipe_for_award_center_find"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "black_market_merchant_ac_entry_undone": {
         "recognition": "TemplateMatch",
-        "template": "Secret_realm/secret_realm_ac_undone.png",
         "roi": [
             180,
             288,
             1100,
             225
         ],
-        "threshold": 0.9,
+        "template": "Secret_realm/secret_realm_ac_undone.png",
         "green_mask": true,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
         "target_offset": [
             12,
             116,
             -40,
             -114
         ],
+        "post_delay": 0,
         "next": [
             "black_market_merchant_create_room",
             "black_market_merchant_ac_entry_undone"
-        ],
-        "action": "Click",
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "black_market_merchant_create_room": {
         "recognition": "OCR",
-        "expected": [
-            "创建房间"
-        ],
         "roi": [
             859,
             488,
             202,
             77
         ],
+        "expected": [
+            "创建房间"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 2000,
         "next": [
             "black_market_merchant_quit_room"
-        ],
-        "timeout": 2000,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "black_market_merchant_quit_room": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/green_masked_x.png",
-        "green_mask": true,
-        "threshold": 0.6,
         "roi": [
             610,
             0,
             670,
             229
         ],
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "black_market_merchant_in_hood",
             "black_market_merchant_quit_room"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "black_market_merchant_in_hood": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/settings_button.png",
         "roi": [
             1190,
             626,
             68,
             74
         ],
+        "template": "Black_market_merchant/settings_button.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "find_black_market_merchant",
             "[JumpBack]swipe_for_black_market_merchant",
             "not_find_black_market_merchant"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "find_black_market_merchant": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/black_market_enter.png",
         "roi": [
             64,
             152,
             1215,
             138
         ],
+        "template": "Black_market_merchant/black_market_enter.png",
         "method": 10001,
         "threshold": 0.95,
         "order_by": "Score",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "black_market_merchant_in_black_market_merchant",
             "find_black_market_merchant"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "swipe_for_black_market_merchant": {
+        "max_hit": 6,
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/settings_button.png",
         "roi": [
             1190,
             626,
             68,
             74
         ],
+        "template": "Black_market_merchant/settings_button.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             260,
@@ -174,175 +176,173 @@
             1
         ],
         "duration": 1000,
-        "max_hit": 6,
-        "pre_delay": 0,
         "post_delay": 0
     },
     "not_find_black_market_merchant": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/settings_button.png",
         "roi": [
             1190,
             626,
             68,
             74
         ],
+        "template": "Black_market_merchant/settings_button.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:tomato]找不到黑市商人[/color]"
     },
     "black_market_merchant_in_black_market_merchant": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/profiteer.png",
         "roi": [
             190,
             132,
             288,
             244
         ],
+        "template": "Black_market_merchant/profiteer.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "black_market_merchant_to_buy_gear_dust"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "black_market_merchant_to_buy_gear_dust": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/gear_dust.png",
         "roi": [
             175,
             533,
             125,
             108
         ],
+        "template": "Black_market_merchant/gear_dust.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 100,
         "next": [
             "black_market_merchant_in_buy_gear_dust",
             "black_market_merchant_to_buy_gear_dust"
-        ],
-        "pre_delay": 0,
-        "post_delay": 100,
-        "post_wait_freezes": 200
+        ]
     },
     "black_market_merchant_in_buy_gear_dust": {
         "recognition": "And",
         "all_of": [
             {
                 "sub_name": "购买按钮",
-                "template": "Black_market_merchant/buy.png",
                 "roi": [
                     543,
                     456,
                     179,
                     83
-                ]
+                ],
+                "template": "Black_market_merchant/buy.png"
             },
             {
                 "sub_name": "默认数量1",
                 "recognition": "OCR",
-                "expected": [
-                    "1"
-                ],
-                "threshold": 0,
                 "roi": [
                     609,
                     360,
                     59,
                     51
-                ]
+                ],
+                "expected": [
+                    "1"
+                ],
+                "threshold": 0
             }
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "black_market_merchant_check_gear_dust_quantity",
             "[JumpBack]black_market_merchant_add_gear_dust_quantity"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "black_market_merchant_check_gear_dust_quantity": {
         "recognition": "OCR",
-        "expected": [
-            "1"
-        ],
-        "threshold": 0,
         "roi": [
             609,
             360,
             59,
             51
         ],
-        "$doc": "这个threshold:0,有时会不起效,变成默认的0.3.原因不明",
+        "expected": [
+            "1"
+        ],
+        "threshold": 0,
+        "pre_delay": 100,
+        "post_delay": 0,
         "next": [
             "black_market_merchant_buy_gear_dust_quantity"
         ],
-        "pre_delay": 100,
-        "post_delay": 0
+        "$doc": "这个threshold:0,有时会不起效,变成默认的0.3.原因不明"
     },
     "black_market_merchant_buy_gear_dust_quantity": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/buy.png",
         "roi": [
             543,
             456,
             179,
             83
         ],
+        "template": "Black_market_merchant/buy.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "black_market_merchant_insufficient_items",
             "black_market_merchant_without_buy_gear_dust_quantity",
             "black_market_merchant_buy_gear_dust_quantity_end"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "black_market_merchant_without_buy_gear_dust_quantity": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/buy.png",
         "roi": [
             543,
             456,
             179,
             83
         ],
+        "template": "Black_market_merchant/buy.png",
         "inverse": true,
-        "next": [
-            "black_market_merchant_buy_gear_dust_quantity"
-        ],
         "pre_wait_freezes": 300,
         "pre_delay": 300,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "black_market_merchant_buy_gear_dust_quantity"
+        ]
     },
     "black_market_merchant_buy_gear_dust_quantity_end": {
         "recognition": "TemplateMatch",
-        "template": "Black_market_merchant/buy.png",
         "roi": [
             543,
             456,
             179,
             83
         ],
+        "template": "Black_market_merchant/buy.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "black_market_merchant_insufficient_items": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Black_market_merchant/insufficient_items.png"
-        ],
         "roi": [
             541,
             315,
             201,
             93
+        ],
+        "template": [
+            "Black_market_merchant/insufficient_items.png"
         ],
         "next": [
             "back_main_screen_and_stop"
@@ -351,17 +351,17 @@
     },
     "black_market_merchant_add_gear_dust_quantity": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Black_market_merchant/add.png"
-        ],
         "roi": [
             689,
             357,
             43,
             46
         ],
-        "action": "Click",
+        "template": [
+            "Black_market_merchant/add.png"
+        ],
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 100
     }
 }

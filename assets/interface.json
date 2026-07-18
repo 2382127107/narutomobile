@@ -468,22 +468,22 @@
                     "name": "苹果QQ",
                     "pipeline_override": {
                         "switch_account_switch_social_media_account": {
-                            "template": "SharedNode/ios_qq_login.png",
                             "roi": [
                                 755,
                                 501,
                                 108,
                                 81
-                            ]
+                            ],
+                            "template": "SharedNode/ios_qq_login.png"
                         },
                         "start_up_switch_social_media_account": {
-                            "template": "SharedNode/ios_qq_login.png",
                             "roi": [
                                 755,
                                 501,
                                 108,
                                 81
-                            ]
+                            ],
+                            "template": "SharedNode/ios_qq_login.png"
                         }
                     }
                 }
@@ -1754,14 +1754,14 @@
                             ]
                         },
                         "ninja_book_check_in_treasure_box_access_method": {
-                            "expected": [
-                                "每日活跃度"
-                            ],
                             "roi": [
                                 550,
                                 125,
                                 118,
                                 41
+                            ],
+                            "expected": [
+                                "每日活跃度"
                             ]
                         }
                     }
@@ -3376,8 +3376,8 @@
                     "name": "决斗场托管一把",
                     "pipeline_override": {
                         "mini_game": {
-                            "next": "weekly_win_match_fighting",
-                            "timeout": 10000
+                            "timeout": 10000,
+                            "next": "weekly_win_match_fighting"
                         }
                     }
                 },
@@ -5149,32 +5149,32 @@
             ],
             "pipeline_override": {
                 "try_share_to_qq": {
+                    "post_delay": "{等待时间}",
                     "next": [
                         "share_back_to_natuto",
                         "close_qq_app"
-                    ],
-                    "post_delay": "{等待时间}"
+                    ]
                 },
                 "try_share_to_wechat": {
+                    "post_delay": "{等待时间}",
                     "next": [
                         "share_back_to_natuto",
                         "close_wechat_app"
-                    ],
-                    "post_delay": "{等待时间}"
+                    ]
                 },
                 "ninja_book_share_to_wechat": {
+                    "post_delay": "{等待时间}",
                     "next": [
                         "ninja_book_share_back_to_natuto",
                         "close_ninja_book_wechat_share"
-                    ],
-                    "post_delay": "{等待时间}"
+                    ]
                 },
                 "ninja_book_share_to_qq": {
+                    "post_delay": "{等待时间}",
                     "next": [
                         "ninja_book_share_back_to_natuto",
                         "close_ninja_book_qq_share"
-                    ],
-                    "post_delay": "{等待时间}"
+                    ]
                 }
             }
         },

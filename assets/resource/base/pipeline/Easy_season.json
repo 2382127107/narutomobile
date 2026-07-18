@@ -1,96 +1,96 @@
 {
     "easy_season": {
+        "timeout": 3000,
         "next": [
             "easy_season_enter",
             "easy_season_done",
             "easy_season_may_be_in_more",
             "[JumpBack]back_main_screen"
         ],
-        "timeout": 3000,
         "focus": "[color:DeepSkyBlue]进入轻松季任务[/color]"
     },
     "easy_season_done": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_season_done.png",
         "roi": [
             1066,
             1,
             145,
             533
         ],
+        "template": "Easy_season/easy_season_done.png",
+        "green_mask": true,
         "method": 10001,
         "threshold": 0.95,
-        "green_mask": true,
         "action": "StopTask",
         "focus": "[color:DeepSkyBlue]轻松季已完成[/color]"
     },
     "easy_season_enter": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_season.png",
         "roi": [
             1066,
             1,
             145,
             533
         ],
+        "template": "Easy_season/easy_season.png",
         "green_mask": true,
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "easy_season_in_easy_season",
             "easy_season_to_easy_helper"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入轻松季[/color]"
     },
     "easy_season_in_easy_season": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_season/easy_season_main.png"
-        ],
         "roi": [
             0,
             0,
             314,
             171
         ],
+        "template": [
+            "Easy_season/easy_season_main.png"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_to_easy_helper",
             "easy_season_easy_helper_not_open"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_in_easy_helper": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_helper_select.png",
         "roi": [
             0,
             103,
             199,
             272
         ],
+        "template": "Easy_season/easy_helper_select.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_one_key"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_to_easy_helper": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_helper.png",
         "roi": [
             0,
             103,
             199,
             272
         ],
-        "action": "Click",
+        "template": "Easy_season/easy_helper.png",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 150,
+        "post_delay": 0,
         "next": [
             "easy_season_in_easy_helper",
             "easy_season_to_easy_helper"
@@ -99,380 +99,382 @@
     },
     "easy_season_easy_helper_not_open": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_season/easy_helper_select.png",
-            "Easy_season/easy_helper.png"
-        ],
-        "inverse": true,
         "roi": [
             0,
             103,
             199,
             272
         ],
+        "template": [
+            "Easy_season/easy_helper_select.png",
+            "Easy_season/easy_helper.png"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_to_easy_season",
             "easy_season_plus_in_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_one_key": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/one_key.png",
         "roi": [
             1091,
             538,
             188,
             181
         ],
+        "template": "Easy_season/one_key.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "easy_season_one_key_done",
             "easy_season_no_gold_sweep",
             "[JumpBack]easy_season_one_key"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]打开轻松季[/color]"
     },
     "easy_season_one_key_done": {
         "recognition": "OCR",
-        "expected": [
-            "所有奖励",
-            "当前没有"
-        ],
         "roi": [
             486,
             300,
             336,
             144
         ],
+        "expected": [
+            "所有奖励",
+            "当前没有"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_to_easy_season",
             "easy_season_plus_in_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_no_gold_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/no_gold.png",
         "roi": [
             650,
             414,
             205,
             74
         ],
+        "template": "Easy_helper/no_gold.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "easy_season_one_key_done",
             "confirm_easy_season_one_key"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]不进行金币扫荡[/color]"
     },
     "confirm_easy_season_one_key": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_season/approval.png"
-        ],
         "roi": [
             451,
             41,
             365,
             177
         ],
+        "template": [
+            "Easy_season/approval.png"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_to_easy_season",
             "easy_season_plus_in_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_may_be_in_more": {
+        "max_hit": 3,
         "recognition": "TemplateMatch",
-        "template": "Easy_season/more.png",
         "roi": [
             1066,
             1,
             145,
             533
         ],
+        "template": "Easy_season/more.png",
         "green_mask": true,
+        "pre_delay": 0,
         "action": "Click",
-        "max_hit": 3,
+        "post_delay": 400,
+        "timeout": 2000,
         "next": [
             "easy_season_in_more",
             "easy_season_may_be_in_more",
             "easy_season_in_easy_season"
-        ],
-        "timeout": 2000,
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "easy_season_in_more": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_season.png",
         "roi": [
             866,
             375,
             316,
             165
         ],
+        "template": "Easy_season/easy_season.png",
         "green_mask": true,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "easy_season_in_easy_season",
             "easy_season_in_more",
             "easy_season_may_be_in_more"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入轻松季[/color]"
     },
     "easy_season_plus_to_easy_season": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_season_main.png",
         "roi": [
             0,
             0,
             314,
             171
         ],
+        "template": "Easy_season/easy_season_main.png",
         "method": 10001,
         "threshold": 0.95,
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_in_easy_season",
             "easy_season_plus_back_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_back_easy_season": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/green_masked_x.png",
-        "green_mask": true,
-        "threshold": 0.6,
-        "action": "Click",
         "roi": [
             610,
             0,
             670,
             229
         ],
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
         "next": [
             "easy_season_plus_in_easy_season",
             "easy_season_plus_back_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "easy_season_plus_in_easy_season": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_season_main.png",
         "roi": [
             0,
             0,
             314,
             171
         ],
+        "template": "Easy_season/easy_season_main.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus",
             "easy_season_plus_select",
             "easy_season_plus_not_open"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "easy_season_plus_select",
             "easy_season_plus"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "easy_season_plus_select": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus_select.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_find_energy",
             "easy_season_plus_energy_done",
             "easy_season_plus_end",
             "[JumpBack]swipe_for_easy_season_plus_find_energy"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_not_open": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_season/plus.png",
-            "Easy_season/plus_select.png"
-        ],
-        "inverse": true,
         "roi": [
             0,
             140,
             202,
             321
         ],
-        "next": "back_main_screen_and_stop",
+        "template": [
+            "Easy_season/plus.png",
+            "Easy_season/plus_select.png"
+        ],
+        "inverse": true,
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop"
     },
     "easy_season_plus_end": {
         "recognition": "OCR",
-        "expected": [
-            "未开启",
-            "已结束"
-        ],
         "roi": [
             167,
             476,
             1112,
             120
         ],
-        "next": [
-            "back_main_screen_and_stop"
+        "expected": [
+            "未开启",
+            "已结束"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
     },
     "easy_season_plus_end_to_easy_helper": {
         "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            103,
+            199,
+            272
+        ],
         "template": [
             "Easy_season/easy_helper.png"
         ],
-        "roi": [
-            0,
-            103,
-            199,
-            272
-        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_end_in_easy_helper",
             "easy_season_plus_end_to_easy_helper"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "easy_season_plus_end_to_easy_share": {
         "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            103,
+            199,
+            272
+        ],
         "template": [
             "Easy_season/share.png"
         ],
-        "roi": [
-            0,
-            103,
-            199,
-            272
-        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_end_in_easy_share",
             "easy_season_plus_end_to_easy_share"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "easy_season_plus_end_in_easy_share": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/share_select.png",
         "roi": [
             0,
             103,
             199,
             272
         ],
+        "template": "Easy_season/share_select.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_end_to_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_end_in_easy_helper": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/easy_helper_select.png",
         "roi": [
             0,
             103,
             199,
             272
         ],
+        "template": "Easy_season/easy_helper_select.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_end_to_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_end_to_easy_season": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "easy_season_plus_end_to_easy_season_select",
             "easy_season_plus_end_to_easy_season"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "easy_season_plus_end_to_easy_season_select": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus_select.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_sweep_card",
             "easy_season_plus_find_team_sweep_card_event",
             "easy_season_plus_back_to_easy_season_plus",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "swipe_for_easy_season_plus_find_energy": {
+        "max_hit": 6,
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus_select.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             1180,
@@ -487,36 +489,35 @@
             1
         ],
         "duration": 200,
-        "max_hit": 6,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "post_delay": 0
     },
     "easy_season_plus_find_energy": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/ramen.png",
         "roi": [
             165,
             474,
             1114,
             140
         ],
+        "template": "Easy_season/ramen.png",
         "threshold": 0.85,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_get_energy"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_get_energy": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/ramen.png",
         "roi": [
             165,
             474,
             1114,
             140
         ],
+        "template": "Easy_season/ramen.png",
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             20,
@@ -524,39 +525,39 @@
             -70,
             -13
         ],
+        "post_delay": 100,
         "next": [
             "easy_season_plus_energy_done",
             "easy_season_plus_get_energy"
-        ],
-        "pre_delay": 0,
-        "post_delay": 100
+        ]
     },
     "easy_season_plus_energy_done": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/ramen_done.png",
         "roi": [
             165,
             474,
             1114,
             140
         ],
+        "template": "Easy_season/ramen_done.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_sweep_card": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/sweep_card_enter.png",
         "roi": [
             891,
             629,
             268,
             90
         ],
+        "template": "Easy_season/sweep_card_enter.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             1002,
@@ -564,128 +565,127 @@
             21,
             14
         ],
+        "post_delay": 400,
         "next": [
             "easy_season_plus_sweep_card_in_claim_interface",
             "easy_season_plus_sweep_card"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "easy_season_plus_sweep_card_in_claim_interface": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_season/claim_interface.png",
-            "Easy_season/claim_interface_2.png"
-        ],
         "roi": [
             343,
             66,
             182,
             340
         ],
+        "template": [
+            "Easy_season/claim_interface.png",
+            "Easy_season/claim_interface_2.png"
+        ],
+        "pre_delay": 0,
+        "post_delay": 200,
         "next": [
             "easy_season_plus_get_sweep_card",
             "easy_season_plus_without_sweep_card"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "easy_season_plus_get_sweep_card": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/get.png",
         "roi": [
             711,
             68,
             162,
             565
         ],
+        "template": "SharedNode/get.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "easy_season_plus_get_sweep_card",
             "[JumpBack]easy_season_plus_one_key_get_sweep_card",
             "easy_season_plus_to_team_sweep_card",
             "easy_season_plus_close_claim_interface"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "easy_season_plus_to_team_sweep_card": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_season/easy_team.png"
-        ],
         "roi": [
             402,
             209,
             61,
             133
         ],
+        "template": [
+            "Easy_season/easy_team.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "easy_season_plus_get_sweep_card",
             "[JumpBack]easy_season_plus_one_key_get_sweep_card",
             "easy_season_plus_close_claim_interface"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "easy_season_plus_one_key_get_sweep_card": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/one_key_get.png",
         "roi": [
             385,
             385,
             259,
             153
         ],
-        "action": "Click",
+        "template": "SharedNode/one_key_get.png",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 200
     },
     "easy_season_plus_without_sweep_card": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/get.png",
         "roi": [
             711,
             68,
             162,
             565
         ],
+        "template": "SharedNode/get.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_close_claim_interface": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/close_claim_interface.png",
         "roi": [
             699,
             641,
             195,
             78
         ],
+        "template": "Easy_season/close_claim_interface.png",
         "method": 10001,
         "threshold": 0.97,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "easy_season_plus_back_to_easy_season_plus",
             "easy_season_plus_close_claim_interface"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "easy_season_plus_back_to_easy_season_plus": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             12,
             137,
             192,
             318
         ],
+        "template": "Easy_season/plus_select.png",
         "method": 10001,
         "threshold": 0.95,
         "next": [
@@ -697,13 +697,14 @@
     },
     "easy_season_plus_find_sweep_card_event": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/secret_realm.png",
         "roi": [
             234,
             439,
             1045,
             32
         ],
+        "template": "Easy_season/secret_realm.png",
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             49,
@@ -711,6 +712,7 @@
             -79,
             -8
         ],
+        "post_delay": 200,
         "next": [
             "easy_season_plus_secret_realm_can_not_sweep",
             "secret_realm_win",
@@ -718,40 +720,40 @@
             "secret_realm_celebreate_1",
             "secret_realm_old_settlement",
             "easy_season_plus_find_sweep_card_event"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "easy_season_plus_secret_realm_can_not_sweep": {
         "recognition": "OCR",
-        "expected": [
-            "不足"
-        ],
         "roi": [
             483,
             332,
             318,
             51
         ],
+        "expected": [
+            "不足"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_team_sweep_card_event_done",
             "easy_season_plus_find_team_sweep_card_event",
             "easy_season_plus_complete",
             "[JumpBack]swipe_for_easy_season_plus_find_team_sweep_card_event",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "swipe_for_easy_season_plus_find_sweep_card_event": {
+        "max_hit": 6,
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus_select.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             1180,
@@ -766,28 +768,26 @@
             1
         ],
         "duration": 200,
-        "max_hit": 6,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "post_delay": 0
     },
     "easy_season_plus_back_plus_select_from_secret_realm_celebreate": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus_select.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_sweep_card_event_done",
             "easy_season_plus_find_sweep_card_event"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_sweep_card_event_done": {
         "recognition": "And",
@@ -795,49 +795,50 @@
             {
                 "sub_name": "秘境界面",
                 "recognition": "TemplateMatch",
-                "template": "Easy_season/secret_realm.png",
                 "roi": [
                     234,
                     439,
                     1045,
                     32
                 ],
+                "template": "Easy_season/secret_realm.png",
                 "threshold": 0.9
             },
             {
                 "sub_name": "无扫荡卡",
                 "recognition": "TemplateMatch",
-                "template": [
-                    "Easy_season/zero.png"
-                ],
                 "roi": [
                     165,
                     476,
                     1088,
                     37
                 ],
+                "template": [
+                    "Easy_season/zero.png"
+                ],
                 "threshold": 0.9
             }
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_team_sweep_card_event_done",
             "easy_season_plus_find_team_sweep_card_event",
             "easy_season_plus_complete",
             "[JumpBack]swipe_for_easy_season_plus_find_team_sweep_card_event",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_find_team_sweep_card_event": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/team_dash.png",
         "roi": [
             234,
             439,
             1045,
             32
         ],
+        "template": "Easy_season/team_dash.png",
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             55,
@@ -845,117 +846,118 @@
             -42,
             -2
         ],
+        "post_delay": 100,
         "next": [
             "easy_season_plus_find_team_dash_can_not_sweep",
             "easy_season_plus_find_team_dash_cancel_gold",
             "easy_season_plus_find_team_sweep_card_event"
-        ],
-        "pre_delay": 0,
-        "post_delay": 100
+        ]
     },
     "easy_season_plus_find_team_dash_cancel_gold": {
         "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/cancel.png"
-        ],
         "roi": [
             706,
             424,
             103,
             54
         ],
+        "template": [
+            "SharedNode/cancel.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 100,
         "next": [
             "easy_season_plus_find_team_dash_back",
             "easy_season_plus_find_team_dash_cancel_gold"
-        ],
-        "pre_delay": 0,
-        "post_delay": 100,
-        "post_wait_freezes": 200
+        ]
     },
     "easy_season_plus_find_team_dash_back": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_season/team_dash_back.png"
-        ],
         "roi": [
             20,
             636,
             167,
             83
         ],
+        "template": [
+            "Easy_season/team_dash_back.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 100,
         "next": [
             "easy_season_plus_find_team_dash_back_to_main",
             "easy_season_plus_find_team_dash_back"
-        ],
-        "pre_delay": 0,
-        "post_delay": 100,
-        "post_wait_freezes": 200
+        ]
     },
     "easy_season_plus_find_team_dash_back_to_main": {
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus_select.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "easy_season_plus_team_sweep_card_event_done",
             "easy_season_plus_find_team_sweep_card_event",
             "easy_season_plus_complete",
             "[JumpBack]swipe_for_easy_season_plus_find_team_sweep_card_event",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_season_plus_find_team_dash_can_not_sweep": {
         "recognition": "OCR",
-        "expected": [
-            "上限"
-        ],
         "roi": [
             483,
             332,
             318,
             51
         ],
-        "next": [
-            "back_main_screen_and_stop"
+        "expected": [
+            "上限"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
     },
     "easy_season_plus_complete": {
         "recognition": "OCR",
-        "expected": [
-            "未开启",
-            "已结束"
-        ],
         "roi": [
             167,
             476,
             1112,
             120
         ],
-        "next": [
-            "back_main_screen_and_stop"
+        "expected": [
+            "未开启",
+            "已结束"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
     },
     "swipe_for_easy_season_plus_find_team_sweep_card_event": {
+        "max_hit": 6,
         "recognition": "TemplateMatch",
-        "template": "Easy_season/plus_select.png",
         "roi": [
             0,
             140,
             202,
             321
         ],
+        "template": "Easy_season/plus_select.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             1180,
@@ -970,10 +972,8 @@
             1
         ],
         "duration": 200,
-        "max_hit": 6,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "post_delay": 0
     },
     "easy_season_plus_team_sweep_card_event_done": {
         "recognition": "And",
@@ -981,34 +981,34 @@
             {
                 "sub_name": "小队突袭界面",
                 "recognition": "TemplateMatch",
-                "template": "Easy_season/team_dash.png",
                 "roi": [
                     234,
                     439,
                     1045,
                     32
                 ],
+                "template": "Easy_season/team_dash.png",
                 "threshold": 0.9
             },
             {
                 "sub_name": "无扫荡卡",
                 "recognition": "TemplateMatch",
-                "template": [
-                    "Easy_season/zero.png"
-                ],
                 "roi": [
                     165,
                     476,
                     1088,
                     37
                 ],
+                "template": [
+                    "Easy_season/zero.png"
+                ],
                 "threshold": 0.9
             }
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     }
 }

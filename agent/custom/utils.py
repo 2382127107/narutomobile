@@ -1,11 +1,11 @@
 import os
 import random
 import re
+from collections.abc import Iterable
 from datetime import datetime
 from pathlib import Path
 from random import randint
 from time import sleep
-from typing import Iterable, Optional, Tuple
 
 from maa.context import Context
 from maa.define import RectType
@@ -98,9 +98,7 @@ def fast_ocr(
                     for res in reco_detail.filtered_results
                     if res.text == target  # ty:ignore[unresolved-attribute]
                 )
-                logger.debug(
-                    f"OCR 绝对匹配成功: {target} in {reco_detail.filtered_results} with {result}"
-                )
+                logger.debug(f"OCR 绝对匹配成功: {target} in {reco_detail.filtered_results} with {result}")
                 break
 
         if result is not None:
@@ -112,9 +110,7 @@ def fast_ocr(
 
 
 def wait_for_freezes(context: Context, wait_for_freezes: int = 200):
-    context.run_task(
-        "wait_for_freezes", {"wait_for_freezes": {"wait_for_freezes": wait_for_freezes}}
-    )
+    context.run_task("wait_for_freezes", {"wait_for_freezes": {"wait_for_freezes": wait_for_freezes}})
 
 
 def check_resolution(context: Context):
@@ -136,9 +132,7 @@ def validate_config(context: Context):
     config.update(
         {
             bdc("bmFtZQ=="): bdc("TWFhQXV0b05hcnV0bw=="),
-            bdc("Z2l0aHVi"): bdc(
-                "aHR0cHM6Ly9naXRodWIuY29tL2R1b3J1YS9uYXJ1dG9tb2JpbGU="
-            ),
+            bdc("Z2l0aHVi"): bdc("aHR0cHM6Ly9naXRodWIuY29tL2R1b3J1YS9uYXJ1dG9tb2JpbGU="),
             bdc("bWlycm9yY2h5YW5fcmlk"): bdc("TWFhQXV0b05hcnV0bw=="),
         }
     )
@@ -146,9 +140,7 @@ def validate_config(context: Context):
 
 
 def click(context: Context, x: int, y: int, w: int = 1, h: int = 1):
-    context.tasker.controller.post_click(
-        random.randint(x, x + w - 1), random.randint(y, y + h - 1)
-    ).wait()
+    context.tasker.controller.post_click(random.randint(x, x + w - 1), random.randint(y, y + h - 1)).wait()
 
 
 def validate_mfa(context: Context):
@@ -305,7 +297,7 @@ def send_notification(title: str = "系统通知", msg: str = "这是一条测�
     Notify(title, msg, "MaaAutoNaruto", logo.__str__()).send()
 
 
-def get_digit_count(context: Context, image: ndarray, roi: list[int], default=None) -> Tuple[int|None, str|None]:
+def get_digit_count(context: Context, image: ndarray, roi: list[int], default=None) -> tuple[int | None, str | None]:
     """
     独立读取指定ROI的纯数字(小数点和正负号也会去除)
     :param context: MAA上下文
@@ -315,14 +307,14 @@ def get_digit_count(context: Context, image: ndarray, roi: list[int], default=No
     """
     # 调用custom_ocr
     reco_detail = context.run_recognition(
-        "GetTextWithNumers", 
+        "GetTextWithNumers",
         image,
         {"GetTextWithNumers": {"roi": roi}},
     )
 
     if reco_detail is None or not reco_detail.hit:
         logger.warning(f"ROI {roi} 未识别到任何带数字的文本")
-        return default,None
+        return default, None
 
     # 提取并清洗识别文本,仅保留数字
     source_text = str(
@@ -343,10 +335,10 @@ def get_digit_count(context: Context, image: ndarray, roi: list[int], default=No
 # 日志文件清理基准时间
 DEFAULT_BASE_TIME = datetime(2025, 5, 1, 0, 0, 0, 0)
 # 每次任务调用一次utils.py,因此不用持久化;由 CleanupMaafwBakLogs 设置,供日志文件清理节点使用
-base_time_for_cleanup: Optional[datetime] = DEFAULT_BASE_TIME
+base_time_for_cleanup: datetime | None = DEFAULT_BASE_TIME
 
 
-def extract_datetime_from_log_name(filename: str) -> Optional[datetime]:
+def extract_datetime_from_log_name(filename: str) -> datetime | None:
     """
     从日志文件名中提取 datetime
     """
@@ -439,7 +431,7 @@ def cleanup_maafw_bak_logs(debug_folder: Path, keep_count: int):
     base_time_for_cleanup = deleted_latest
 
 
-def extract_datetime_from_image_name(filename: str) -> Optional[datetime]:
+def extract_datetime_from_image_name(filename: str) -> datetime | None:
     """
     从图片文件名中提取 datetime
     """
@@ -485,11 +477,7 @@ def clean_images_in_dir(debug_folder: Path, sub_dir: str):
         return
 
     img_extensions = {".png", ".jpg", ".jpeg", ".bmp", ".gif"}
-    img_files = [
-        f
-        for f in target_dir.iterdir()
-        if f.is_file() and f.suffix.lower() in img_extensions
-    ]
+    img_files = [f for f in target_dir.iterdir() if f.is_file() and f.suffix.lower() in img_extensions]
     total_count = len(img_files)
     if total_count == 0:
         print(f"[图片清理] {sub_dir} 目录下无图片文件,跳过")
@@ -507,9 +495,7 @@ def clean_images_in_dir(debug_folder: Path, sub_dir: str):
 
     eligible = len(to_delete)
     if eligible == 0:
-        print(
-            f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,没有时间早于 {base_time} 的图片"
-        )
+        print(f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,没有时间早于 {base_time} 的图片")
         return
 
     deleted = 0
@@ -522,7 +508,7 @@ def clean_images_in_dir(debug_folder: Path, sub_dir: str):
             print(f"[图片清理] 删除失败 {img_path.name}: {e}")
 
     print(
-        f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,其中时间早于 {base_time} 的有 {eligible} 张,实际删除了 {deleted} 张"
+        f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,其中时间早于 {base_time} 的有 {eligible} 张,实际删除了 {deleted} 张"  # noqa: E501
     )
 
 
@@ -562,9 +548,7 @@ def clean_logs_in_dir(debug_folder: Path, sub_dir: str):
 
     eligible = len(to_delete)
     if eligible == 0:
-        print(
-            f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,没有日期早于 {base_date} 的日志"
-        )
+        print(f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,没有日期早于 {base_date} 的日志")
         return
 
     deleted = 0
@@ -577,5 +561,5 @@ def clean_logs_in_dir(debug_folder: Path, sub_dir: str):
             print(f"[日志清理] 删除失败 {log_path.name}: {e}")
 
     print(
-        f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,其中日期早于 {base_date} 的有 {eligible} 个,实际删除了 {deleted} 个"
+        f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,其中日期早于 {base_date} 的有 {eligible} 个,实际删除了 {deleted} 个"  # noqa: E501
     )

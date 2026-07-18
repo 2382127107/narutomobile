@@ -3,9 +3,7 @@ import zipfile
 
 from utils import assets_dir
 
-OCR_DOWNLOAD_URL = (
-    "https://download.maafw.xyz/MaaCommonAssets/OCR/ppocr_v6/ppocr_v6-small.zip"
-)
+OCR_DOWNLOAD_URL = "https://download.maafw.xyz/MaaCommonAssets/OCR/ppocr_v6/ppocr_v6-small.zip"
 
 
 def configure_ocr_model():

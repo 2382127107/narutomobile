@@ -1,87 +1,87 @@
 {
     "activity": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "activity_entry",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入活动任务[/color]"
     },
     "activity_entry": {
         "recognition": "TemplateMatch",
-        "template": "Activity/headhunt.png",
         "roi": [
             1194,
             132,
             50,
             42
         ],
+        "template": "Activity/headhunt.png",
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
-        "$doc": "活动的图标会变，所以识别用的是招募的图标",
         "target": [
             1196,
             32,
             53,
             45
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "activity_check_in_activity",
             "activity_entry"
-        ]
+        ],
+        "$doc": "活动的图标会变，所以识别用的是招募的图标"
     },
     "activity_check_in_activity": {
         "recognition": "OCR",
-        "expected": [
-            "一乐",
-            "外卖"
-        ],
         "roi": [
             0,
             0,
             261,
             288
         ],
+        "expected": [
+            "一乐",
+            "外卖"
+        ],
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "check_no_energy",
             "[JumpBack]get_ramen"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "has_ramen": {
         "recognition": "TemplateMatch",
-        "template": "Activity/ramen.png",
         "roi": [
             190,
             108,
             1077,
             395
         ],
+        "template": "Activity/ramen.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "check_no_energy",
             "[JumpBack]get_ramen"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "check_no_energy": {
         "recognition": "TemplateMatch",
-        "template": "Activity/ramen.png",
         "roi": [
             190,
             108,
             1077,
             395
         ],
+        "template": "Activity/ramen.png",
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 0,
@@ -89,19 +89,20 @@
     },
     "get_ramen": {
         "recognition": "TemplateMatch",
-        "template": "Activity/ramen.png",
         "roi": [
             190,
             108,
             1077,
             395
         ],
-        "action": "Click",
+        "template": "Activity/ramen.png",
         "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0
     },
     "swipes_for_monthly_sign": {
+        "max_hit": 10,
         "action": "Swipe",
         "begin": [
             80,
@@ -115,29 +116,28 @@
             50,
             50
         ],
-        "duration": 200,
         "end_hold": 100,
-        "max_hit": 10,
+        "duration": 200,
+        "post_delay": 900,
         "next": [
             "has_ramen",
             "mouthly_sign_tab",
             "activity_entry",
             "swipes_for_monthly_sign",
             "retry_failed"
-        ],
-        "post_delay": 900
+        ]
     },
     "mouthly_sign_tab": {
         "recognition": "OCR",
-        "expected": "每月签到",
         "roi": [
             19,
             130,
             143,
             572
         ],
-        "action": "Click",
+        "expected": "每月签到",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 0,
         "next": [
             "[JumpBack]mouthly_signature",
@@ -147,31 +147,31 @@
     },
     "mouthly_signature": {
         "recognition": "TemplateMatch",
-        "template": "Activity/sign.png",
         "roi": [
             1107,
             547,
             164,
             61
         ],
-        "action": "Click",
+        "template": "Activity/sign.png",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进行月度签到[/color]"
     },
     "mouthly_signature_done": {
         "recognition": "OCR",
-        "expected": [
-            "已签到",
-            "活跃度",
-            "补签"
-        ],
         "roi": [
             1104,
             532,
             158,
             98
+        ],
+        "expected": [
+            "已签到",
+            "活跃度",
+            "补签"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -182,6 +182,12 @@
     },
     "mouthly_signature_title_done": {
         "recognition": "OCR",
+        "roi": [
+            346,
+            360,
+            414,
+            340
+        ],
         "expected": [
             "已",
             "领"
@@ -196,12 +202,6 @@
                 "已"
             ]
         ],
-        "roi": [
-            346,
-            360,
-            414,
-            340
-        ],
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -211,35 +211,35 @@
     },
     "check_mouthly_signature_title": {
         "recognition": "TemplateMatch",
-        "template": "Activity/title.png",
         "roi": [
             346,
             360,
             414,
             340
         ],
-        "action": "Click",
-        "$doc": "点一下也没啥坏处",
+        "template": "Activity/title.png",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 0,
         "next": [
             "[JumpBack]back_main_screen",
             "store_enter"
-        ]
+        ],
+        "$doc": "点一下也没啥坏处"
     },
     "store_enter": {
         "recognition": "TemplateMatch",
-        "template": "Shop/shop_entry.png",
         "roi": [
             1157,
             180,
             123,
             129
         ],
-        "action": "Click",
+        "template": "Shop/shop_entry.png",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "click_privilege_store",
             "[JumpBack]click_normal_store",
@@ -248,64 +248,69 @@
     },
     "click_normal_store": {
         "recognition": "OCR",
-        "expected": "^商店$",
         "roi": [
             30,
             145,
             162,
             470
         ],
-        "action": "Click",
+        "expected": "^商店$",
         "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0
     },
     "click_privilege_store": {
         "recognition": "OCR",
-        "expected": "特权商店",
         "roi": [
             30,
             145,
             162,
             470
         ],
+        "expected": "特权商店",
         "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "action": "Click",
-        "focus": "[color:DarkGray]进入特权商店[/color]",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "privilege_points",
             "click_privilege_store"
-        ]
+        ],
+        "focus": "[color:DarkGray]进入特权商店[/color]"
     },
     "privilege_points": {
-        "$doc1": "这玩意会被全区广播挡住，所以用了半张图的模板检测",
         "recognition": "TemplateMatch",
-        "template": "Shop/privilege_points.png",
         "roi": [
             594,
             60,
             206,
             115
         ],
-        "action": "Click",
+        "template": "Shop/privilege_points.png",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
+        "timeout": 1000,
         "next": [
             "get_copper_in_privilege_points_done",
             "[JumpBack]get_copper_in_privilege_points",
             "privilege_points",
             "get_copper_in_privilege_points_done_1"
         ],
-        "timeout": 1000,
-        "$doc2": "遇到真投入什么字也没有",
-        "on_error": "back_main_screen_and_stop"
+        "on_error": "back_main_screen_and_stop",
+        "$doc1": "这玩意会被全区广播挡住，所以用了半张图的模板检测",
+        "$doc2": "遇到真投入什么字也没有"
     },
     "get_copper_in_privilege_points_done": {
         "recognition": "OCR",
-        "$doc": "图标为立即充值的领不了",
+        "roi": [
+            906,
+            659,
+            323,
+            48
+        ],
         "expected": [
             "已",
             "充值"
@@ -314,43 +319,38 @@
             "己",
             "已"
         ],
-        "roi": [
-            906,
-            659,
-            323,
-            48
-        ],
-        "next": "back_main_screen_and_stop",
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop",
+        "$doc": "图标为立即充值的领不了"
     },
     "get_copper_in_privilege_points_done_1": {
         "recognition": "TemplateMatch",
-        "template": "Shop/privilege_points_without_recharge.png",
-        "threshold": 0.9,
-        "$doc": "遇到真投入什么字也没有",
         "roi": [
             659,
             600,
             511,
             120
         ],
-        "next": "back_main_screen_and_stop",
+        "template": "Shop/privilege_points_without_recharge.png",
+        "threshold": 0.9,
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DarkGoldenRod]没有充值按钮[/color]"
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DarkGoldenRod]没有充值按钮[/color]",
+        "$doc": "遇到真投入什么字也没有"
     },
     "get_copper_in_privilege_points": {
         "recognition": "OCR",
-        "expected": "领取",
         "roi": [
             1120,
             659,
             109,
             48
         ],
-        "action": "Click",
+        "expected": "领取",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 200
     }
 }

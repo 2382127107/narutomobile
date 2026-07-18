@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
-
 # M9A
 # https://github.com/MAA1999/M9A
 # AGPL-3.0 License
 
+import json
 import os
 import sys
-import json
 from pathlib import Path
 
+from utils.logger import logger
 
 # utf-8
 sys.stdout.reconfigure(encoding="utf-8")  # type: ignore
@@ -31,8 +30,6 @@ if current_script_dir.__str__() not in sys.path:
 VENV_NAME = ".venv"  # 虚拟环境目录的名称
 VENV_DIR = Path(project_root_dir) / VENV_NAME
 
-from utils.logger import logger
-
 
 ### 配置相关 ###
 def read_interface_version(interface_file_name="./interface.json") -> str:
@@ -47,7 +44,7 @@ def read_interface_version(interface_file_name="./interface.json") -> str:
         return "DEBUG"
 
     try:
-        with open(interface_path, "r", encoding="utf-8") as f:
+        with open(interface_path, encoding="utf-8") as f:
             interface_data = json.load(f)
             return interface_data.get("version", "unknown")
     except Exception:
@@ -65,12 +62,11 @@ def agent(is_dev_mode=False):
             logger.info("开发模式:日志等级已设置为DEBUG")
 
         try:
-            from maa.agent.agent_server import AgentServer
-            from maa.toolkit import Toolkit
-
             # 导入cunstom模块
             # 这行不能删！！！
             import custom  # noqa: F401
+            from maa.agent.agent_server import AgentServer
+            from maa.toolkit import Toolkit
         except ImportError as e:
             logger.error(e)
             logger.error("Failed to import modules")

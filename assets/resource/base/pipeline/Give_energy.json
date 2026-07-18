@@ -1,36 +1,36 @@
 {
     "give_energy": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 2000,
         "next": [
             "energy_entry",
             "give_energy_done",
             "[JumpBack]back_main_screen"
         ],
-        "timeout": 2000,
-        "post_delay": 0,
-        "pre_delay": 0,
         "focus": "[color:DeepSkyBlue]进入送体力任务[/color]"
     },
     "energy_entry": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Give_energy/give_energy_undone_masked.png"
-        ],
         "roi": [
             29,
             186,
             59,
             55
         ],
-        "method": 10001,
+        "template": [
+            "Give_energy/give_energy_undone_masked.png"
+        ],
         "green_mask": true,
+        "method": 10001,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "sent_energy",
             "energy_entry"
         ],
-        "post_delay": 0,
-        "pre_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]进入送体力界面[/color]"
     },
     "give_energy_account_friend": {
@@ -44,6 +44,7 @@
         "expected": [
             "游戏好友"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             0,
@@ -51,7 +52,6 @@
             0,
             0
         ],
-        "pre_delay": 0,
         "post_delay": 0,
         "next": [
             "give_energy_in_account_friend",
@@ -61,14 +61,14 @@
     },
     "give_energy_in_account_friend": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Leaderboard/leaderboard_the_first.png"
-        ],
         "roi": [
             259,
             83,
             298,
             439
+        ],
+        "template": [
+            "Leaderboard/leaderboard_the_first.png"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -80,56 +80,56 @@
     },
     "give_energy_done": {
         "recognition": "TemplateMatch",
-        "template": "Give_energy/give_energy_done_masked.png",
         "roi": [
             27,
             181,
             63,
             61
         ],
-        "method": 10001,
+        "template": "Give_energy/give_energy_done_masked.png",
         "green_mask": true,
-        "action": "StopTask",
+        "method": 10001,
         "pre_delay": 0,
+        "action": "StopTask",
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]送体力已完成[/color]"
     },
     "sent_energy": {
         "recognition": "OCR",
-        "expected": [
-            "一键"
-        ],
         "roi": [
             239,
             557,
             175,
             74
         ],
-        "action": "Click",
-        "next": "get_energy",
+        "expected": [
+            "一键"
+        ],
         "pre_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 200,
+        "next": "get_energy",
         "focus": "[color:DeepSkyBlue]送体力[/color]"
     },
     "get_energy": {
         "recognition": "OCR",
-        "expected": [
-            "领取"
-        ],
         "roi": [
             412,
             560,
             182,
             74
         ],
-        "action": "Click",
+        "expected": [
+            "领取"
+        ],
         "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
         "post_delay": 0,
-        "$doc": "一键领取体力后不需要点确定",
         "next": [
             "back_main_screen_and_stop"
         ],
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]领取好友送的体力[/color]"
+        "focus": "[color:DeepSkyBlue]领取好友送的体力[/color]",
+        "$doc": "一键领取体力后不需要点确定"
     }
 }

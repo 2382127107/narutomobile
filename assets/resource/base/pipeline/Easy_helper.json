@@ -1,141 +1,142 @@
 {
     "easy_helper": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
         "next": [
             "easy_helper_enter",
             "easy_helper_done",
             "[JumpBack]back_main_screen"
         ],
-        "timeout": 3000,
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入轻松助手任务[/color]"
     },
     "easy_helper_done": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/easy_helper_done_masked.png",
         "roi": [
             1066,
             1,
             145,
             533
         ],
+        "template": "Easy_helper/easy_helper_done_masked.png",
         "green_mask": true,
         "method": 10001,
         "threshold": 0.95,
-        "action": "StopTask",
         "pre_delay": 0,
+        "action": "StopTask",
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]轻松助手已完成[/color]"
     },
     "easy_helper_enter": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/easy_helper_undone_masked.png",
         "roi": [
             1066,
             1,
             145,
             533
         ],
+        "template": "Easy_helper/easy_helper_undone_masked.png",
         "green_mask": true,
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 700,
         "next": [
             "easy_helper_one_key",
             "[JumpBack]easy_helper_daily"
         ],
-        "pre_delay": 0,
-        "post_delay": 700,
         "focus": "[color:DeepSkyBlue]进入轻松助手[/color]"
     },
     "easy_helper_daily": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/daily.png",
         "roi": [
             400,
             34,
             76,
             79
         ],
-        "action": "Click",
+        "template": "Easy_helper/daily.png",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 700,
         "focus": "[color:DeepSkyBlue]点击一键审批[/color]"
     },
     "easy_helper_one_key": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Easy_helper/easy_helper_one_key_button.png"
-        ],
         "roi": [
             1049,
             456,
             230,
             227
         ],
+        "template": [
+            "Easy_helper/easy_helper_one_key_button.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "easy_helper_one_key_done",
             "confirm_easy_helper_one_key",
             "easy_helper_no_gold_sweep",
             "[JumpBack]easy_helper_one_key"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]打开轻松助手[/color]"
     },
     "easy_helper_one_key_done": {
         "recognition": "OCR",
-        "expected": [
-            "所有奖励",
-            "当前没有"
-        ],
         "roi": [
             486,
             300,
             336,
             144
         ],
+        "expected": [
+            "所有奖励",
+            "当前没有"
+        ],
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "easy_helper_log_on_award_undone",
             "easy_helper_log_on_award_done",
             "[JumpBack]confirm_easy_helper_one_key"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500
+        ]
     },
     "easy_helper_no_gold_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/no_gold.png",
         "roi": [
             650,
             414,
             205,
             74
         ],
+        "template": "Easy_helper/no_gold.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "easy_helper_one_key_done",
             "confirm_easy_helper_one_key"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]不进行金币扫荡[/color]"
     },
     "confirm_easy_helper_one_key": {
         "recognition": "OCR",
-        "expected": [
-            "日程"
-        ],
         "roi": [
             464,
             3,
             503,
             299
         ],
+        "expected": [
+            "日程"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             934,
@@ -143,210 +144,212 @@
             88,
             75
         ],
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "confirm_easy_helper_one_key",
             "confirm_easy_helper_one_key_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]一键审批[/color]"
     },
     "confirm_easy_helper_one_key_done": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/easy_helper_one_key_button.png",
         "roi": [
             1049,
             456,
             230,
             227
         ],
+        "template": "Easy_helper/easy_helper_one_key_button.png",
         "threshold": 0.8,
+        "post_wait_freezes": 1000,
         "next": [
             "easy_helper_log_on_award_undone",
             "easy_helper_log_on_award_done"
         ],
-        "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]确认一键审批已完成[/color]"
     },
     "easy_helper_log_on_award_undone": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/log_on_award_undone.png",
         "roi": [
             560,
             32,
             101,
             66
         ],
+        "template": "Easy_helper/log_on_award_undone.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "easy_helper_check_in_log_on_award",
             "[JumpBack]easy_helper_log_on_award_undone"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]轻松助手奖励未领取[/color]"
     },
     "easy_helper_check_in_log_on_award": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/check_in_log_on.png",
         "roi": [
             488,
             14,
             177,
             108
         ],
+        "template": "Easy_helper/check_in_log_on.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]get_easy_helper_log_on_award",
             "get_easy_helper_without_log_on_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "easy_helper_log_on_award_done": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/log_on_award_done.png",
         "roi": [
             560,
             32,
             101,
             66
         ],
+        "template": "Easy_helper/log_on_award_done.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "easy_helper_privilege_undone",
             "easy_helper_privilege_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]轻松助手奖励已领取[/color]"
     },
     "get_easy_helper_without_log_on_award": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/log_on_award.png",
         "roi": [
             329,
             523,
             951,
             89
         ],
+        "template": "Easy_helper/log_on_award.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "easy_helper_privilege_undone",
             "easy_helper_privilege_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "get_easy_helper_log_on_award": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/log_on_award.png",
         "roi": [
             329,
             523,
             951,
             89
         ],
-        "action": "Click",
+        "template": "Easy_helper/log_on_award.png",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]领取签到奖励[/color]"
     },
     "easy_helper_privilege_done": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/easy_helper_privilege_done.png",
         "roi": [
             740,
             28,
             93,
             64
         ],
+        "template": "Easy_helper/easy_helper_privilege_done.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "easy_helper_sweep"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]轻松特权已完成[/color]"
     },
     "easy_helper_privilege_undone": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/easy_helper_privilege_undone.png",
         "roi": [
             740,
             28,
             93,
             64
         ],
+        "template": "Easy_helper/easy_helper_privilege_undone.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "easy_helper_sweep",
             "easy_helper_privilege_undone"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]轻松特权未完成[/color]"
     },
     "easy_helper_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/check_in_easy_helper_privilege.png",
         "roi": [
             661,
             11,
             187,
             113
         ],
+        "template": "Easy_helper/check_in_easy_helper_privilege.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "check_no_easy_helper_sweep",
             "[JumpBack]get_easy_helper_sweep"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "check_no_easy_helper_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/sweep.png",
         "roi": [
             864,
             485,
             86,
             56
         ],
+        "template": "Easy_helper/sweep.png",
         "threshold": 0.9,
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "easy_helper_team_dash_sweep"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]检查能否进行扫荡[/color]"
     },
     "get_easy_helper_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/sweep.png",
         "roi": [
             864,
             485,
             86,
             56
         ],
+        "template": "Easy_helper/sweep.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "easy_helper_can_not_sweep",
             "secret_realm_win",
@@ -355,186 +358,183 @@
             "secret_realm_old_settlement",
             "easy_season_plus_find_sweep_card_event"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]点击扫荡按钮[/color]"
     },
     "easy_helper_can_not_sweep": {
         "recognition": "OCR",
-        "expected": [
-            "不足"
-        ],
         "roi": [
             483,
             332,
             318,
             51
         ],
-        "next": [
-            "easy_helper_team_dash_sweep"
+        "expected": [
+            "不足"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "easy_helper_team_dash_sweep"
+        ]
     },
     "check_without_easy_helper_back_to_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/back_to_sweep.png",
         "roi": [
             29,
             642,
             159,
             58
         ],
+        "template": "Easy_helper/back_to_sweep.png",
         "threshold": 0.85,
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "easy_helper_sweep",
             "[JumpBack]easy_helper_celebrate_sweep",
             "[JumpBack]easy_helper_back_to_sweep"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "easy_helper_back_to_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/back_to_sweep.png",
         "roi": [
             29,
             642,
             159,
             58
         ],
+        "template": "Easy_helper/back_to_sweep.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "easy_helper_celebrate_sweep",
             "[JumpBack]easy_helper_back_to_sweep",
             "check_no_easy_helper_sweep",
             "[JumpBack]get_easy_helper_sweep"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]返回扫荡界面[/color]"
     },
     "easy_helper_celebrate_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/celebrate_sweep.png",
         "roi": [
             502,
             146,
             273,
             58
         ],
+        "template": "Easy_helper/celebrate_sweep.png",
         "threshold": 0.85,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 100,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]领取扫荡奖励[/color]"
     },
     "easy_helper_team_dash_sweep": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "check_no_easy_helper_team_dash_sweep",
             "[JumpBack]get_easy_helper_team_dash_sweep"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "check_no_easy_helper_team_dash_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/team_dash_undone.png",
         "roi": [
             1180,
             490,
             96,
             56
         ],
+        "template": "Easy_helper/team_dash_undone.png",
         "threshold": 0.9,
         "inverse": true,
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "pre_wait_freezes": 200,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]领取扫荡奖励[/color]"
     },
     "get_easy_helper_team_dash_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/team_dash_undone.png",
         "roi": [
             1180,
             490,
             96,
             56
         ],
+        "template": "Easy_helper/team_dash_undone.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "confirm_easy_helper_team_dash_sweep",
             "[JumpBack]easy_helper_back_to_team_dash_sweep"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]开始小队扫荡[/color]"
     },
     "confirm_easy_helper_team_dash_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/team_dash_no_gold.png",
         "roi": [
             661,
             414,
             197,
             72
         ],
+        "template": "Easy_helper/team_dash_no_gold.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "check_easy_helper_back_to_team_dash_sweep",
             "[JumpBack]easy_helper_back_to_team_dash_sweep"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]继续扫荡[/color]"
     },
     "check_easy_helper_back_to_team_dash_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/team_dash_back_to_sweep.png",
         "roi": [
             29,
             642,
             148,
             67
         ],
+        "template": "Easy_helper/team_dash_back_to_sweep.png",
         "threshold": 0.9,
         "inverse": true,
+        "pre_delay": 0,
+        "post_wait_freezes": 100,
+        "post_delay": 0,
         "next": [
             "easy_helper_team_dash_sweep"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]检测返回图标[/color]"
     },
     "easy_helper_back_to_team_dash_sweep": {
         "recognition": "TemplateMatch",
-        "template": "Easy_helper/team_dash_back_to_sweep.png",
         "roi": [
             29,
             642,
             148,
             67
         ],
+        "template": "Easy_helper/team_dash_back_to_sweep.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 100,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]返回小队扫荡界面[/color]"
     }
 }
