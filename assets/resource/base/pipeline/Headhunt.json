@@ -1,25 +1,25 @@
 {
     "headhunt": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "headhunt_entry",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入招募任务[/color]"
     },
     "headhunt_entry": {
         "recognition": "TemplateMatch",
-        "template": "Headhunt/headhunt_entry.png",
         "roi": [
             1195,
             132,
             52,
             45
         ],
+        "template": "Headhunt/headhunt_entry.png",
         "pre_delay": 0,
-        "post_delay": 300,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "headhunt_to_advanced_recruit",
             "headhunt_entry"
@@ -27,130 +27,132 @@
     },
     "headhunt_to_advanced_recruit": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Headhunt/headhunt.png",
-            "Headhunt/headhunt_selected.png"
-        ],
         "roi": [
             4,
             108,
             210,
             456
         ],
+        "template": [
+            "Headhunt/headhunt.png",
+            "Headhunt/headhunt_selected.png"
+        ],
         "threshold": 0.8,
-        "action": "Click",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 0,
-        "$doc": "因为高招有动画,所以这里不设post_wait_freezes",
         "next": [
             "no_free_headhunt",
             "[JumpBack]free_headhunt_waiting",
             "headhunt_to_advanced_recruit"
-        ]
+        ],
+        "$doc": "因为高招有动画,所以这里不设post_wait_freezes"
     },
     "no_free_headhunt": {
         "recognition": "TemplateMatch",
-        "template": "Headhunt/no_free_headhunt.png",
         "roi": [
             646,
             498,
             382,
             221
         ],
+        "template": "Headhunt/no_free_headhunt.png",
         "pre_delay": 0,
         "post_delay": 0,
-        "$doc": "因为高招有动画,所以这里不设post_wait_freezes",
         "next": [
             "headhunt_recruit_enter",
             "[JumpBack]swipe_for_headhunt_recruit_enter"
         ],
-        "focus": "[color:DeepSkyBlue]没有免费高级招募[/color]"
+        "focus": "[color:DeepSkyBlue]没有免费高级招募[/color]",
+        "$doc": "因为高招有动画,所以这里不设post_wait_freezes"
     },
     "free_headhunt_waiting": {
         "recognition": "TemplateMatch",
-        "template": "Headhunt/free_headhunt.png",
         "roi": [
             646,
             498,
             382,
             221
         ],
+        "template": "Headhunt/free_headhunt.png",
         "threshold": 0.97,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "confirm_free_headhunt",
             "free_headhunt_fake",
             "free_headhunt_waiting"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]有免费高级招募[/color]"
     },
     "free_headhunt_fake": {
         "recognition": "OCR",
-        "expected": [
-            "取消"
-        ],
         "roi": [
             639,
             385,
             274,
             153
         ],
-        "action": "Click",
+        "expected": [
+            "取消"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "focus": "[color:DarkGoldenRod]什么,情报是假的[/color]"
     },
     "confirm_free_headhunt": {
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "template": "Headhunt/confirm_free_headhunt.png",
         "roi": [
             300,
             525,
             197,
             70
         ],
+        "template": "Headhunt/confirm_free_headhunt.png",
+        "pre_delay": 0,
         "action": "Click",
-        "max_hit": 5,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "without_confirm_free_headhunt",
             "confirm_free_headhunt"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]确认免费高级招募[/color]"
     },
     "without_confirm_free_headhunt": {
         "recognition": "TemplateMatch",
-        "template": "Headhunt/confirm_free_headhunt.png",
         "roi": [
             300,
             525,
             197,
             70
         ],
+        "template": "Headhunt/confirm_free_headhunt.png",
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]完成免费高级招募[/color]"
     },
     "swipe_for_headhunt_recruit_enter": {
+        "max_hit": 3,
         "recognition": "TemplateMatch",
-        "template": [
-            "Headhunt/headhunt.png",
-            "Headhunt/headhunt_selected.png"
-        ],
         "roi": [
             4,
             108,
             210,
             456
         ],
+        "template": [
+            "Headhunt/headhunt.png",
+            "Headhunt/headhunt_selected.png"
+        ],
         "threshold": 0.8,
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             71,
@@ -164,124 +166,122 @@
             1,
             1
         ],
-        "max_hit": 3,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "post_delay": 0
     },
     "headhunt_recruit_enter": {
         "recognition": "OCR",
-        "expected": [
-            "普通"
-        ],
         "roi": [
             0,
             108,
             165,
             611
         ],
-        "action": "Click",
+        "expected": [
+            "普通"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
+        "timeout": 2000,
         "next": [
             "headhunt_recruit_no_free",
             "[JumpBack]headhunt_recruit"
         ],
-        "timeout": 2000,
         "focus": "[color:DeepSkyBlue]进入普通招募[/color]"
     },
     "headhunt_recruit_no_free": {
         "recognition": "TemplateMatch",
+        "roi": [
+            624,
+            508,
+            427,
+            143
+        ],
         "template": [
             "Headhunt/no_free_headhunt_2.png",
             "Headhunt/no_free_headhunt_2_1.png"
         ],
-        "roi": [
-            624,
-            508,
-            427,
-            143
-        ],
+        "threshold": 0.5,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "top_secret_treasure_box_undone",
             "top_secret_treasure_box_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "threshold": 0.5,
         "focus": "[color:DeepSkyBlue]免费普通招募已使用[/color]"
     },
     "headhunt_recruit": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Headhunt/recruit_done_2.png",
-            "Headhunt/free_headhunt_1.png"
-        ],
         "roi": [
             624,
             508,
             427,
             143
         ],
+        "template": [
+            "Headhunt/recruit_done_2.png",
+            "Headhunt/free_headhunt_1.png"
+        ],
         "threshold": 0.6,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "confirm_headhunt_recruit",
             "headhunt_recruit"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]进行免费普通招募[/color]"
     },
     "confirm_headhunt_recruit": {
         "recognition": "OCR",
-        "expected": [
-            "确",
-            "认"
-        ],
         "roi": [
             353,
             352,
             614,
             368
         ],
-        "action": "Click",
+        "expected": [
+            "确",
+            "认"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0
     },
     "top_secret_treasure_box_undone": {
         "recognition": "TemplateMatch",
-        "template": "Headhunt/top_secret_treasure_box_undone.png",
         "roi": [
             0,
             119,
             174,
             523
         ],
+        "template": "Headhunt/top_secret_treasure_box_undone.png",
         "threshold": 0.85,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
+        "timeout": 2000,
         "next": [
             "top_secret_treasure_box_log",
             "top_secret_treasure_box_undone"
         ],
-        "timeout": 2000,
         "focus": "[color:DeepSkyBlue]绝密宝匣未完成[/color]"
     },
     "top_secret_treasure_box_done": {
         "recognition": "TemplateMatch",
-        "template": "Headhunt/top_secret_treasure_box_undone.png",
         "roi": [
             0,
             119,
             174,
             523
         ],
+        "template": "Headhunt/top_secret_treasure_box_undone.png",
         "threshold": 0.85,
         "inverse": true,
         "pre_delay": 0,
@@ -293,18 +293,18 @@
     },
     "top_secret_treasure_box_log": {
         "recognition": "TemplateMatch",
-        "template": "Headhunt/top_secret_treasure_box_log.png",
         "roi": [
             1210,
             661,
             39,
             34
         ],
+        "template": "Headhunt/top_secret_treasure_box_log.png",
         "method": 10001,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "top_secret_treasure_box_copper",
             "top_secret_treasure_box_log"
@@ -313,17 +313,17 @@
     },
     "top_secret_treasure_box_copper": {
         "recognition": "OCR",
-        "expected": [
-            "一",
-            "键",
-            "领",
-            "取"
-        ],
         "roi": [
             553,
             601,
             180,
             80
+        ],
+        "expected": [
+            "一",
+            "键",
+            "领",
+            "取"
         ],
         "action": "Click",
         "post_delay": 0,
@@ -334,17 +334,17 @@
     },
     "top_secret_treasure_box_without_copper": {
         "recognition": "OCR",
-        "expected": "没有可领取",
         "roi": [
             484,
             316,
             299,
             80
         ],
+        "expected": "没有可领取",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     }
 }

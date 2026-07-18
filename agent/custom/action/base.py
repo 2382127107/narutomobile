@@ -1,29 +1,28 @@
 import json
 import sys
-from time import sleep
-from typing import Optional, Tuple
 from pathlib import Path
+from time import sleep
 
 from maa.agent.agent_server import AgentServer, TaskDetail
-from maa.custom_action import CustomAction
 from maa.context import Context
+from maa.custom_action import CustomAction
 from maa.define import RectType
-
-from utils.logger import logger
 from utils.counter import counter
+from utils.logger import logger
+
 from ..utils import (
+    check_resolution,
+    clean_images_in_dir,
+    clean_logs_in_dir,
+    cleanup_maafw_bak_logs,
+    click,
     fast_ocr,
     fast_swipe,
     nonlinear_swipe,
-    click,
     save_screenshot,
     validate_config,
     validate_mfa,
     wait_for_freezes,
-    check_resolution,
-    cleanup_maafw_bak_logs,
-    clean_images_in_dir,
-    clean_logs_in_dir,
 )
 
 
@@ -59,9 +58,7 @@ class Screenshot(CustomAction):
         argv: CustomAction.RunArg,
     ) -> CustomAction.RunResult:
         save_screenshot(context)
-        task_detail: TaskDetail = context.tasker.get_task_detail(
-            argv.task_detail.task_id
-        )  # type: ignore
+        task_detail: TaskDetail = context.tasker.get_task_detail(argv.task_detail.task_id)  # type: ignore
         logger.debug(
             f"task_id: {task_detail.task_id}, task_entry: {task_detail.entry}, status: {task_detail.status._status}"
         )
@@ -108,9 +105,7 @@ class GoIntoEntry(CustomAction):
             context.tasker.post_stop()
             return CustomAction.RunResult(success=False)
         # 检查目标是否为空字符串或空列表
-        if (isinstance(target, str) and not target.strip()) or (
-            isinstance(target, list) and len(target) == 0
-        ):
+        if (isinstance(target, str) and not target.strip()) or (isinstance(target, list) and len(target) == 0):
             logger.error(f"目标为空: {target}")
             context.tasker.post_stop()
             return CustomAction.RunResult(success=False)
@@ -156,9 +151,7 @@ class GoIntoEntry(CustomAction):
         logger.error("获取功能入口失败")
         return CustomAction.RunResult(success=False)
 
-    def rec_entry(
-        self, context: Context, template: str | list[str]
-    ) -> Tuple[bool, Optional[RectType]]:
+    def rec_entry(self, context: Context, template: str | list[str]) -> tuple[bool, RectType | None]:
         reco_detail = context.run_recognition(
             "click_entry",
             context.tasker.controller.cached_image,
@@ -364,9 +357,7 @@ class NonlinearSwipe(CustomAction):
 
 @AgentServer.custom_action("CleanupMaafwBakLogs")
 class CleanupMaafwBakLogs(CustomAction):
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         try:
             keep_count = 3
             if argv.custom_action_param:
@@ -391,9 +382,7 @@ class CleanupMaafwBakLogs(CustomAction):
 
 @AgentServer.custom_action("CleanupOnErrorImg")
 class CleanupOnErrorImg(CustomAction):
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         try:
             root = Path(__file__).parent.parent.parent
             sys.path.insert(0, str(root))
@@ -411,9 +400,7 @@ class CleanupOnErrorImg(CustomAction):
 
 @AgentServer.custom_action("CleanupVisionImg")
 class CleanupVisionImg(CustomAction):
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         try:
             root = Path(__file__).parent.parent.parent
             sys.path.insert(0, str(root))
@@ -431,9 +418,7 @@ class CleanupVisionImg(CustomAction):
 
 @AgentServer.custom_action("CleanupCustomImg")
 class CleanupCustomImg(CustomAction):
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         try:
             root = Path(__file__).parent.parent.parent
             sys.path.insert(0, str(root))
@@ -451,9 +436,7 @@ class CleanupCustomImg(CustomAction):
 
 @AgentServer.custom_action("CleanupCustomLog")
 class CleanupCustomLog(CustomAction):
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         try:
             root = Path(__file__).parent.parent.parent
             sys.path.insert(0, str(root))
@@ -475,9 +458,7 @@ class ShopSwipeBack(CustomAction):
     商店兑换滑动回商品头部
     """
 
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         try:
             context.clear_hit_count("shop_swipe_for_goods")
             fast_swipe(context, 280, 409, 1200, 404)
@@ -493,7 +474,5 @@ class SecondaryPasswordAction(CustomAction):
     二级密码动作
     """
 
-    def run(
-        self, context: Context, argv: CustomAction.RunArg
-    ) -> CustomAction.RunResult:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> CustomAction.RunResult:
         return CustomAction.RunResult(success=True)

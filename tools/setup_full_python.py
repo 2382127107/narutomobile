@@ -1,6 +1,7 @@
-from pathlib import Path
 import argparse
+from pathlib import Path
 from zipfile import ZipFile
+
 from utils import download
 
 default_version = "3.12.9"
@@ -13,15 +14,9 @@ default_is_embed = False
 def get_args():
     parser = argparse.ArgumentParser(description="Download Python embeddable package.")
     parser.add_argument("--version", default=default_version, help="Python version")
-    parser.add_argument(
-        "--arch", default=default_arch, help="Architecture (amd64 or win32)"
-    )
-    parser.add_argument(
-        "--tmp_dir", default=default_tmp_dir, help="Temporary directory"
-    )
-    parser.add_argument(
-        "--install_path", default=default_install_path, help="Install directory"
-    )
+    parser.add_argument("--arch", default=default_arch, help="Architecture (amd64 or win32)")
+    parser.add_argument("--tmp_dir", default=default_tmp_dir, help="Temporary directory")
+    parser.add_argument("--install_path", default=default_install_path, help="Install directory")
     parser.add_argument(
         "--is_embed",
         type=bool,

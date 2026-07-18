@@ -1,26 +1,26 @@
 {
     "survival_challenge": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "survival_challenge_in_center_enter",
             "[JumpBack]award_center_enter",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入生存挑战任务[/color]"
     },
     "survival_challenge_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_in_daily_award.png",
         "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "survival_challenge_ac_entry_undone",
             "survival_challenge_ac_done",
@@ -30,40 +30,40 @@
     },
     "survival_challenge_ac_entry_undone": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_ac_undone.png",
         "roi": [
             180,
             288,
             1100,
             225
         ],
-        "threshold": 0.9,
+        "template": "Practice_place/survival_challenge_ac_undone.png",
         "green_mask": true,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
         "target_offset": [
             12,
             116,
             -40,
             -114
         ],
+        "post_delay": 0,
         "next": [
             "survival_challenge_above_kage",
             "survival_challenge_yesterday_award",
             "survival_challenge_ac_entry_undone"
         ],
-        "action": "Click",
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入生存挑战[/color]"
     },
     "survival_challenge_above_kage": {
         "recognition": "TemplateMatch",
-        "template": "Weekly_win/battle_tips.png",
         "roi": [
             486,
             187,
             385,
             227
         ],
+        "template": "Weekly_win/battle_tips.png",
         "next": [
             "survival_challenge_confirm_above_kage"
         ],
@@ -71,14 +71,14 @@
     },
     "survival_challenge_confirm_above_kage": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             533,
             343,
             380,
             187
+        ],
+        "expected": [
+            "确定"
         ],
         "action": "Click",
         "next": [
@@ -88,95 +88,96 @@
     },
     "survival_challenge_without_confirm_above_kage": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             533,
             343,
             380,
             187
         ],
+        "expected": [
+            "确定"
+        ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "survival_challenge_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
             1100,
             118
         ],
+        "template": "SharedNode/center_entry_end.png",
         "pre_delay": 0,
         "post_delay": 0,
         "next": "back_and_stop_after_task_done"
     },
     "survival_challenge_yesterday_award": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_yesterday_award.png",
         "roi": [
             451,
             626,
             108,
             19
         ],
-        "action": "Click",
-        "next": "survival_challenge_yesterday_award_1",
+        "template": "Practice_place/survival_challenge_yesterday_award.png",
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": "survival_challenge_yesterday_award_1",
         "focus": "[color:DeepSkyBlue]尝试领取昨日奖励[/color]"
     },
     "survival_challenge_yesterday_award_1": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_yesterday_award.png",
         "roi": [
             451,
             626,
             108,
             19
         ],
+        "template": "Practice_place/survival_challenge_yesterday_award.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "survival_challenge_reset_undone",
             "survival_challenge_reset_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 500
+        ]
     },
     "survival_challenge_reset_done": {
         "recognition": "OCR",
-        "expected": [
-            "0"
-        ],
         "roi": [
             560,
             609,
             74,
             42
         ],
-        "next": "start_survival_challenge_sweep",
+        "expected": [
+            "0"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": "start_survival_challenge_sweep",
         "focus": "[color:DeepSkyBlue]生存挑战已重置[/color]"
     },
     "survival_challenge_reset_undone": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_reset_undone.png",
         "roi": [
             560,
             609,
             51,
             37
         ],
+        "template": "Practice_place/survival_challenge_reset_undone.png",
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             864,
@@ -184,92 +185,79 @@
             56,
             47
         ],
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "confirm_survival_challenge_reset"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]生存挑战未重置[/color]"
     },
     "confirm_survival_challenge_reset": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/confirm_survival_challenge_reset.png",
         "roi": [
             535,
             415,
             205,
             74
         ],
+        "template": "Practice_place/confirm_survival_challenge_reset.png",
         "threshold": 0.8,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "survival_challenge_confirm_tp"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]确认生存挑战重置[/color]"
     },
     "survival_challenge_confirm_tp": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_yesterday_award.png",
         "roi": [
             451,
             626,
             108,
             19
         ],
+        "template": "Practice_place/survival_challenge_yesterday_award.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "survival_challenge_confirm_tp_1"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]生存挑战传送[/color]"
     },
     "survival_challenge_confirm_tp_1": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_yesterday_award.png",
         "roi": [
             451,
             626,
             108,
             19
         ],
-        "action": "Click",
-        "next": "start_survival_challenge_sweep",
+        "template": "Practice_place/survival_challenge_yesterday_award.png",
         "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
         "post_delay": 0,
-        "post_wait_freezes": 200
+        "next": "start_survival_challenge_sweep"
     },
     "start_survival_challenge_sweep": {
+        "max_hit": 10,
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_sweep.png",
         "roi": [
             706,
             594,
             129,
             110
         ],
+        "template": "Practice_place/survival_challenge_sweep.png",
         "method": 10001,
         "threshold": 0.95,
-        "action": "Click",
-        "max_hit": 10,
-        "next": [
-            "check_survival_challenge_done",
-            "survival_challenge_ticket_used_up",
-            "survival_challenge_sweep_ready",
-            "start_survival_challenge_sweep",
-            "survival_challenge_sweep_ticket_confirm"
-        ],
-        "timeout": 3000,
-        "on_error": [
-            "retry_failed"
-        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -280,34 +268,46 @@
                 150
             ]
         },
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "check_survival_challenge_done",
+            "survival_challenge_ticket_used_up",
+            "survival_challenge_sweep_ready",
+            "start_survival_challenge_sweep",
+            "survival_challenge_sweep_ticket_confirm"
+        ],
+        "on_error": [
+            "retry_failed"
+        ],
         "focus": "[color:DeepSkyBlue]进入生存挑战扫荡任务[/color]"
     },
     "check_survival_challenge_done": {
         "recognition": "OCR",
+        "roi": [
+            515,
+            332,
+            229,
+            47
+        ],
         "expected": [
             "已通过",
             "所有关卡"
         ],
-        "roi": [
-            515,
-            332,
-            229,
-            47
-        ],
-        "next": "back_main_screen_and_stop",
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop"
     },
     "survival_challenge_ticket_used_up": {
         "recognition": "OCR",
-        "expected": [
-            "不足"
-        ],
         "roi": [
             515,
             332,
             229,
             47
+        ],
+        "expected": [
+            "不足"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -316,83 +316,78 @@
     },
     "survival_challenge_sweep_ready": {
         "recognition": "OCR",
-        "expected": [
-            "准备",
-            "就绪"
-        ],
         "roi": [
             535,
             548,
             205,
             77
         ],
+        "expected": [
+            "准备",
+            "就绪"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "timeout": 1500,
         "next": [
             "survival_challenge_sweep_confirm"
         ],
         "on_error": [
             "survival_challenge_sweep_ready"
-        ],
-        "timeout": 1500,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "survival_challenge_sweep_confirm": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             535,
             415,
             205,
             74
         ],
+        "expected": [
+            "确定"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "survival_challenge_sweep_ticket_confirm",
             "survival_challenge_sweep_confirm",
             "survival_challenge_ninja_select_confirm"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]确认进行生存挑战[/color]"
     },
     "survival_challenge_ninja_select_confirm": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confirm_small_2.png",
         "roi": [
             819,
             508,
             98,
             86
         ],
+        "template": "SharedNode/confirm_small_2.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "survival_challenge_close_ninja_select_confirm"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "survival_challenge_close_ninja_select_confirm": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/survival_challenge_sweep_masked.png",
         "roi": [
             718,
             599,
             118,
             103
         ],
+        "template": "Practice_place/survival_challenge_sweep_masked.png",
         "method": 10001,
         "threshold": 0.95,
-        "action": "Click",
-        "next": [
-            "start_survival_challenge_sweep",
-            "survival_challenge_close_ninja_select_confirm"
-        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -402,35 +397,40 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "start_survival_challenge_sweep",
+            "survival_challenge_close_ninja_select_confirm"
+        ]
     },
     "survival_challenge_sweep_ticket_confirm": {
         "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
         "roi": [
             418,
             415,
             205,
             75
         ],
+        "expected": [
+            "确定"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "timeout": 50000,
         "next": [
             "wait_for_survival_challenge_sweep_complete",
             "survival_challenge_sweep_ticket_used_up",
             "survival_challenge_check_done",
             "survival_challenge_sweep_ticket_confirm"
         ],
-        "$doc": "这里设置了post_wait_freezes,所以timeout可以调的很短",
-        "timeout": 50000,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "on_error": [
             "back_main_screen_and_stop"
         ],
-        "focus": "[color:DeepSkyBlue]确认生存挑战挑战卷提示[/color]"
+        "focus": "[color:DeepSkyBlue]确认生存挑战挑战卷提示[/color]",
+        "$doc": "这里设置了post_wait_freezes,所以timeout可以调的很短"
     },
     "survival_challenge_check_done": {
         "recognition": "Or",
@@ -438,62 +438,62 @@
             {
                 "sub_name": "announcement_x",
                 "recognition": "TemplateMatch",
-                "template": "SharedNode/green_masked_x.png",
-                "green_mask": true,
-                "threshold": 0.6,
                 "roi": [
                     610,
                     0,
                     670,
                     229
-                ]
+                ],
+                "template": "SharedNode/green_masked_x.png",
+                "green_mask": true,
+                "threshold": 0.6
             },
             {
                 "sub_name": "right_top_x",
                 "recognition": "TemplateMatch",
-                "template": "SharedNode/x_right_top.png",
-                "green_mask": true,
-                "threshold": 0.6,
                 "roi": [
                     610,
                     0,
                     670,
                     229
-                ]
+                ],
+                "template": "SharedNode/x_right_top.png",
+                "green_mask": true,
+                "threshold": 0.6
             },
             {
                 "sub_name": "masked_x",
                 "recognition": "TemplateMatch",
-                "template": "SharedNode/mask_x.png",
-                "green_mask": true,
-                "threshold": 0.68,
                 "roi": [
                     610,
                     0,
                     670,
                     229
-                ]
+                ],
+                "template": "SharedNode/mask_x.png",
+                "green_mask": true,
+                "threshold": 0.68
             }
         ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "survival_challenge_check_done",
             "wait_for_survival_challenge_sweep_complete",
             "survival_challenge_sweep_ticket_used_up",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 1000
+        ]
     },
     "survival_challenge_sweep_ticket_used_up": {
         "recognition": "TemplateMatch",
-        "template": "Practice_place/sweep_ticket_used_up.png",
         "roi": [
             469,
             219,
             316,
             217
         ],
+        "template": "Practice_place/sweep_ticket_used_up.png",
         "pre_delay": 0,
         "post_delay": 0,
         "next": "back_main_screen_and_stop",
@@ -505,12 +505,12 @@
             "Practice_place/survival_no_ninja.png",
             "Practice_place/final_reward.png"
         ],
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]生存挑战扫荡完成[/color]"
     }
 }

@@ -10,6 +10,6 @@
         "ms-python.debugpy",
         "ms-python.vscode-python-envs",
         "windsland52.maa-log-analyzer",
-        "tamasfe.even-better-toml",
+        "tamasfe.even-better-toml"
     ]
 }

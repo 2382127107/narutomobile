@@ -1,24 +1,25 @@
 {
     "craft_gift": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "craft_gift_start",
             "craft_gift_entry",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入合成赠礼任务[/color]"
     },
     "craft_gift_entry": {
         "recognition": "TemplateMatch",
-        "template": "Activity/headhunt.png",
         "roi": [
             1194,
             132,
             50,
             42
         ],
+        "template": "Activity/headhunt.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             1196,
@@ -26,26 +27,27 @@
             53,
             45
         ],
+        "post_wait_freezes": 700,
+        "post_delay": 0,
         "next": [
             "find_craft_gift",
             "craft_gift_entry",
             "[JumpBack]swipes_for_craft_gift",
             "[JumpBack]back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 700,
         "focus": "[color:DeepSkyBlue]进入合成赠礼活动[/color]"
     },
     "swipes_for_craft_gift": {
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "template": "SharedNode/activity_plus_button.png",
         "roi": [
             906,
             0,
             269,
             81
         ],
+        "template": "SharedNode/activity_plus_button.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             80,
@@ -60,164 +62,164 @@
             10
         ],
         "duration": 200,
-        "pre_delay": 0,
         "post_delay": 700,
-        "max_hit": 5,
         "focus": "[color:DeepSkyBlue]前往合成赠礼[/color]"
     },
     "find_craft_gift": {
         "recognition": "OCR",
-        "expected": [
-            "合成赠礼"
-        ],
         "roi": [
             0,
             115,
             212,
             605
         ],
+        "expected": [
+            "合成赠礼"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "craft_gift_start",
             "[JumpBack]find_craft_gift"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]找到合成赠礼[/color]"
     },
     "craft_gift_start": {
         "recognition": "TemplateMatch",
-        "template": "Craft_gift/one_key_craft.png",
         "roi": [
             846,
             506,
             251,
             162
         ],
+        "template": "Craft_gift/one_key_craft.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "craft_gift_exchange"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入合成赠礼游戏[/color]"
     },
     "craft_gift_exchange": {
         "recognition": "OCR",
-        "expected": [
-            "兑换"
-        ],
         "roi": [
             1069,
             557,
             187,
             88
         ],
+        "expected": [
+            "兑换"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "craft_gift_shortage",
             "craft_gift_full",
             "craft_gift_exchange"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_craft": {
         "recognition": "TemplateMatch",
-        "template": "Craft_gift/one_key_craft.png",
         "roi": [
             846,
             506,
             251,
             162
         ],
+        "template": "Craft_gift/one_key_craft.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "craft_gift_craft_done",
             "craft_gift_craft"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_shortage_craft": {
         "recognition": "TemplateMatch",
-        "template": "Craft_gift/one_key_craft.png",
         "roi": [
             846,
             506,
             251,
             162
         ],
+        "template": "Craft_gift/one_key_craft.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "craft_gift_shortage_craft_done",
             "craft_gift_shortage_craft"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_craft_done": {
         "recognition": "OCR",
-        "expected": [
-            "没有可以合成"
-        ],
         "roi": [
             476,
             288,
             293,
             167
         ],
-        "next": [
-            "craft_gift_feed"
+        "expected": [
+            "没有可以合成"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "craft_gift_feed"
+        ]
     },
     "craft_gift_shortage_craft_done": {
         "recognition": "OCR",
+        "roi": [
+            476,
+            288,
+            293,
+            167
+        ],
         "expected": [
             "没有可以合成"
         ],
-        "roi": [
-            476,
-            288,
-            293,
-            167
-        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "craft_gift_feed_shortage"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_feed": {
         "recognition": "TemplateMatch",
-        "template": "Craft_gift/one_key_craft.png",
         "roi": [
             846,
             506,
             251,
             162
         ],
+        "template": "Craft_gift/one_key_craft.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]craft_gift_have_special_level_gift",
             "craft_gift_without_special_level_gift"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_have_special_level_gift": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Craft_gift/special_potion.png"
-        ],
         "roi": [
             740,
             98,
             539,
             469
         ],
+        "template": [
+            "Craft_gift/special_potion.png"
+        ],
         "threshold": 0.9,
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": true,
         "end": [
@@ -226,74 +228,74 @@
             69,
             56
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "pre_wait_freezes": 200,
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "post_delay": 0
     },
     "craft_gift_without_special_level_gift": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Craft_gift/special_potion.png"
-        ],
         "roi": [
             740,
             98,
             539,
             469
         ],
+        "template": [
+            "Craft_gift/special_potion.png"
+        ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "craft_gift_start"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_shortage": {
         "recognition": "OCR",
-        "expected": [
-            "道具不足"
-        ],
         "roi": [
             476,
             288,
             293,
             167
         ],
-        "next": [
-            "craft_gift_shortage_craft"
+        "expected": [
+            "道具不足"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "craft_gift_shortage_craft"
+        ]
     },
     "craft_gift_feed_shortage": {
         "recognition": "TemplateMatch",
-        "template": "Craft_gift/one_key_craft.png",
         "roi": [
             846,
             506,
             251,
             162
         ],
+        "template": "Craft_gift/one_key_craft.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]craft_gift_have_special_level_gift_shortage",
             "craft_gift_without_special_level_gift_shortage"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_have_special_level_gift_shortage": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Craft_gift/special_potion.png"
-        ],
         "roi": [
             740,
             98,
             539,
             469
         ],
+        "template": [
+            "Craft_gift/special_potion.png"
+        ],
         "threshold": 0.9,
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": true,
         "end": [
@@ -302,179 +304,177 @@
             69,
             56
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "pre_wait_freezes": 200,
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "post_delay": 0
     },
     "craft_gift_without_special_level_gift_shortage": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Craft_gift/special_potion.png"
-        ],
         "roi": [
             740,
             98,
             539,
             469
         ],
+        "template": [
+            "Craft_gift/special_potion.png"
+        ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "craft_gift_award",
             "craft_gift_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_full": {
         "recognition": "OCR",
+        "roi": [
+            476,
+            288,
+            293,
+            167
+        ],
         "expected": [
             "没有空格",
             "进行合成"
         ],
-        "roi": [
-            476,
-            288,
-            293,
-            167
-        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "craft_gift_craft"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_award": {
         "recognition": "TemplateMatch",
-        "template": "Craft_gift/award.png",
         "roi": [
             1158,
             634,
             120,
             85
         ],
-        "action": "Click",
+        "template": "Craft_gift/award.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "craft_gift_in_award",
             "craft_gift_award"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "craft_gift_in_award": {
         "recognition": "TemplateMatch",
-        "template": "Craft_gift/in_award.png",
         "roi": [
             392,
             53,
             93,
             175
         ],
+        "template": "Craft_gift/in_award.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "craft_gift_get_award",
             "craft_gift_get_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "craft_gift_get_award": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/get.png",
         "roi": [
             716,
             90,
             150,
             535
         ],
+        "template": "SharedNode/get.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "craft_gift_get_award_one_key",
             "craft_gift_get_award",
             "craft_gift_get_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "craft_gift_get_award_done": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/get.png",
         "roi": [
             716,
             90,
             150,
             535
         ],
+        "template": "SharedNode/get.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_get_award_one_key": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/one_key_get.png",
         "roi": [
             264,
             246,
             740,
             375
         ],
+        "template": "SharedNode/one_key_get.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "craft_gift_get_award_one_key",
             "craft_gift_get_award_done",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "craft_gift_award_done": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Craft_gift/award_done.png"
-        ],
         "roi": [
             1145,
             643,
             93,
             61
         ],
+        "template": [
+            "Craft_gift/award_done.png"
+        ],
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "craft_gift_done": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Treasure_gathering_trial_award/red_point.png"
-        ],
         "roi": [
             738,
             69,
             541,
             511
         ],
+        "template": [
+            "Treasure_gathering_trial_award/red_point.png"
+        ],
         "threshold": [
             0.8
         ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     }
 }

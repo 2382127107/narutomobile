@@ -1,9 +1,8 @@
-from pathlib import Path
-import zipfile
 import sys
+import zipfile
+from pathlib import Path
 
-
-from utils import get_maafw_version, get_proxy_url, download
+from utils import download, get_maafw_version, get_proxy_url
 
 sys.path.insert(0, Path(__file__).parent.__str__())
 sys.path.insert(0, (Path(__file__).parent / "ci").__str__())
@@ -12,11 +11,7 @@ program_dir = Path(__file__).parent.parent
 
 ghproxy = "https://gh-proxy.natsuu.top/"
 version = "v" + get_maafw_version()
-download_url = (
-    "https://github.com/MaaXYZ/MaaFramework/releases/download/"
-    + version
-    + f"/MAA-win-x86_64-{version}.zip"
-)
+download_url = "https://github.com/MaaXYZ/MaaFramework/releases/download/" + version + f"/MAA-win-x86_64-{version}.zip"
 
 
 def download_with_proxy_or_mirror(download_url, dest_path):

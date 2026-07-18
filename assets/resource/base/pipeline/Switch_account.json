@@ -1,26 +1,27 @@
 {
     "switch_account": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 2000,
         "next": [
             "switch_account_enter",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "timeout": 2000,
         "focus": "[color:DeepSkyBlue]进入切换账号任务[/color]"
     },
     "switch_account_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/settings.png",
         "roi": [
             14,
             113,
             98,
             74
         ],
+        "template": "SharedNode/settings.png",
         "green_mask": true,
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             24,
@@ -28,59 +29,59 @@
             -29,
             -32
         ],
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "switch_account_in_set",
             "switch_account_enter"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300
+        ]
     },
     "switch_account_in_set": {
         "recognition": "TemplateMatch",
-        "template": "Switch_account/emo.png",
         "roi": [
             133,
             382,
             229,
             145
         ],
+        "template": "Switch_account/emo.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "switch_account_already_in_target_area",
             "switch_account_logout"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "switch_account_already_in_target_area": {
         "recognition": "OCR",
-        "expected": [
-            "521"
-        ],
         "roi": [
             491,
             458,
             195,
             69
         ],
-        "next": [
-            "back_main_screen_and_stop"
+        "expected": [
+            "521"
         ],
         "pre_delay": 0,
         "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
         "focus": "[color:DeepSkyBlue]已在目标区[/color]"
     },
     "switch_account_logout": {
         "recognition": "TemplateMatch",
-        "template": "Switch_account/emo.png",
         "roi": [
             133,
             382,
             229,
             145
         ],
+        "template": "Switch_account/emo.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             306,
@@ -88,109 +89,109 @@
             -25,
             -14
         ],
+        "post_delay": 300,
         "next": [
             "switch_account_confirm_logout",
             "switch_account_logout"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "switch_account_confirm_logout": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confirm.png",
         "roi": [
             412,
             406,
             224,
             91
         ],
+        "template": "SharedNode/confirm.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "switch_account_in_before_game",
             "switch_account_confirm_logout"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "switch_account_in_before_game": {
         "recognition": "TemplateMatch",
-        "template": "Startup/naruto_logo.png",
         "roi": [
             6,
             0,
             348,
             218
         ],
+        "template": "Startup/naruto_logo.png",
         "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "switch_account_to_switch_area"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "switch_account_to_switch_area": {
         "recognition": "TemplateMatch",
-        "template": "Switch_account/switch_area.png",
         "roi": [
             738,
             483,
             204,
             98
         ],
+        "template": "Switch_account/switch_area.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "switch_account_in_switch_area",
             "switch_account_to_switch_area"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "switch_account_in_switch_area": {
         "recognition": "TemplateMatch",
-        "template": "Switch_account/in_switch_area.png",
         "roi": [
             466,
             552,
             145,
             74
         ],
+        "template": "Switch_account/in_switch_area.png",
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "switch_account_find_target_area",
             "[JumpBack]swipe_for_switch_account_find_target_area",
             "switch_account_not_find_target_area"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "switch_account_find_target_area": {
         "recognition": "OCR",
-        "expected": [
-            "521"
-        ],
         "roi": [
             264,
             137,
             1007,
             46
         ],
+        "expected": [
+            "521"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "switch_account_in_start_game",
             "switch_account_find_target_area"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "swipe_for_switch_account_find_target_area": {
+        "max_hit": 7,
         "recognition": "TemplateMatch",
-        "template": "Switch_account/in_switch_area.png",
         "roi": [
             466,
             552,
             145,
             74
         ],
+        "template": "Switch_account/in_switch_area.png",
         "action": "Swipe",
         "begin": [
             1100,
@@ -204,32 +205,31 @@
             1,
             1
         ],
-        "max_hit": 7,
         "duration": 150
     },
     "switch_account_not_find_target_area": {
         "recognition": "TemplateMatch",
-        "template": "Switch_account/in_switch_area.png",
         "roi": [
             466,
             552,
             145,
             74
         ],
-        "action": "StopTask",
+        "template": "Switch_account/in_switch_area.png",
         "pre_delay": 0,
+        "action": "StopTask",
         "post_delay": 0,
         "focus": "[color:tomato]没有找到目标区[/color]"
     },
     "switch_account_in_start_game": {
         "recognition": "TemplateMatch",
-        "template": "Startup/start_game.png",
         "roi": [
             355,
             441,
             612,
             278
         ],
+        "template": "Startup/start_game.png",
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -239,124 +239,125 @@
     },
     "switch_account_to_switch_social_media_account": {
         "recognition": "TemplateMatch",
-        "template": "Switch_account/back.png",
         "roi": [
             1128,
             16,
             81,
             83
         ],
+        "template": "Switch_account/back.png",
         "green_mask": true,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "switch_account_in_switch_social_media_account",
             "switch_account_to_switch_social_media_account"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "switch_account_in_switch_social_media_account": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/android_qq_login.png",
         "roi": [
             1002,
             500,
             120,
             81
         ],
+        "template": "SharedNode/android_qq_login.png",
+        "pre_delay": 0,
+        "post_delay": 500,
         "next": [
             "check_agreement",
             "agree_agreement",
             "[JumpBack]agreement_not_agree"
-        ],
-        "pre_delay": 0,
-        "post_delay": 500
+        ]
     },
     "switch_account_switch_social_media_account": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/android_qq_login.png",
         "roi": [
             1002,
             500,
             120,
             81
         ],
+        "template": "SharedNode/android_qq_login.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 500,
         "next": [
             "switch_account_switch_qq",
             "switch_account_switch_social_media_account"
-        ],
-        "pre_delay": 0,
-        "post_delay": 500
+        ]
     },
     "switch_account_switch_qq": {
         "recognition": "OCR",
-        "expected": [
-            "切换账号"
-        ],
         "roi": [
             353,
             367,
             619,
             352
         ],
+        "expected": [
+            "切换账号"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "switch_account_in_switch_qq",
             "switch_account_switch_qq"
         ],
-        "$doc": "为了适配不同分辨率只能使用文字识别",
-        "pre_delay": 0,
-        "post_delay": 300
+        "$doc": "为了适配不同分辨率只能使用文字识别"
     },
     "switch_account_in_switch_qq": {
         "recognition": "OCR",
-        "expected": [
-            "添加账号"
-        ],
         "roi": [
             982,
             209,
             297,
             510
         ],
+        "expected": [
+            "添加账号"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "switch_account_find_target_qq_account",
             "[JumpBack]swipe_for_switch_account_find_target_qq_account",
             "switch_account_not_find_target_qq_account"
         ],
-        "$doc": "为了适配不同分辨率只能使用文字识别",
-        "pre_delay": 0,
-        "post_delay": 0
+        "$doc": "为了适配不同分辨率只能使用文字识别"
     },
     "switch_account_find_target_qq_account": {
         "recognition": "OCR",
-        "expected": "MaaAutoNaruto",
         "roi": [
             9,
             58,
             372,
             656
         ],
+        "expected": "MaaAutoNaruto",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 200,
         "next": [
             "switch_account_to_switch_area",
             "[JumpBack]agree_log_in",
             "[JumpBack]agree_info"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200
+        ]
     },
     "swipe_for_switch_account_find_target_qq_account": {
+        "max_hit": 7,
         "recognition": "OCR",
-        "expected": [
-            "添加账号"
-        ],
         "roi": [
             982,
             209,
             297,
             510
+        ],
+        "expected": [
+            "添加账号"
         ],
         "action": "Swipe",
         "begin": [
@@ -371,25 +372,24 @@
             1,
             1
         ],
-        "$doc": "为了适配不同分辨率只能使用文字识别",
-        "max_hit": 7,
-        "duration": 150
+        "duration": 150,
+        "$doc": "为了适配不同分辨率只能使用文字识别"
     },
     "switch_account_not_find_target_qq_account": {
         "recognition": "OCR",
-        "expected": [
-            "添加账号"
-        ],
         "roi": [
             982,
             209,
             297,
             510
         ],
-        "action": "StopTask",
-        "$doc": "为了适配不同分辨率只能使用文字识别",
+        "expected": [
+            "添加账号"
+        ],
         "pre_delay": 0,
+        "action": "StopTask",
         "post_delay": 0,
-        "focus": "[color:tomato]没有找到目标账号[/color]"
+        "focus": "[color:tomato]没有找到目标账号[/color]",
+        "$doc": "为了适配不同分辨率只能使用文字识别"
     }
 }

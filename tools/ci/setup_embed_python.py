@@ -1,12 +1,12 @@
 import os
-import sys
 import shutil
+import stat  # 用于在 macOS/Linux 上设置文件权限
 import subprocess
-from urllib.error import HTTPError, URLError
+import sys
+import tarfile
 import urllib.request
 import zipfile
-import tarfile
-import stat  # 用于在 macOS/Linux 上设置文件权限
+from urllib.error import HTTPError, URLError
 
 sys.stdout.reconfigure(encoding="utf-8")  # type: ignore
 print(os.getcwd())
@@ -192,11 +192,7 @@ def main():
         if not os.path.exists(pth_file_path):
             # 有时 embeddable zip 中 pth 文件的命名可能不带 minor version，如 python3._pth
             # 尝试查找所有 python*._pth 文件
-            found_pth_files = [
-                f
-                for f in os.listdir(DEST_DIR)
-                if f.startswith("python") and f.endswith("._pth")
-            ]
+            found_pth_files = [f for f in os.listdir(DEST_DIR) if f.startswith("python") and f.endswith("._pth")]
             if found_pth_files:
                 pth_file_path = os.path.join(DEST_DIR, found_pth_files[0])
             else:
@@ -209,9 +205,7 @@ def main():
                 content = f.read()
                 # 取消注释 import site
                 content = content.replace("#import site", "import site")
-                content = content.replace(
-                    "# import site", "import site"
-                )  # 处理可能的空格
+                content = content.replace("# import site", "import site")  # 处理可能的空格
 
                 # 添加必要的相对路径 (相对于 DEST_DIR)
                 required_paths = [".", "Lib", "Lib\\site-packages", "DLLs"]
@@ -237,7 +231,7 @@ def main():
             return
 
         # 文件名格式: cpython-{PYTHON_VERSION}+{RELEASE_TAG_DATE}-{ARCH}-apple-darwin-install_only.tar.gz
-        pbs_filename = f"cpython-{PYTHON_VERSION_TARGET}+{PYTHON_BUILD_STANDALONE_RELEASE_TAG}-{pbs_arch}-apple-darwin-install_only.tar.gz"
+        pbs_filename = f"cpython-{PYTHON_VERSION_TARGET}+{PYTHON_BUILD_STANDALONE_RELEASE_TAG}-{pbs_arch}-apple-darwin-install_only.tar.gz"  # noqa: E501
         download_url = f"https://github.com/indygreg/python-build-standalone/releases/download/{PYTHON_BUILD_STANDALONE_RELEASE_TAG}/{pbs_filename}"
         tar_filename = pbs_filename  # 使用原始文件名
         tar_filepath = os.path.join(DEST_DIR, tar_filename)  # 下载到目标目录内
@@ -292,9 +286,7 @@ def main():
         print(f"错误: 不支持的操作系统: {os_type}")
         return
 
-    if not python_executable_final_path or not os.path.exists(
-        python_executable_final_path
-    ):
+    if not python_executable_final_path or not os.path.exists(python_executable_final_path):
         print("错误: Python 可执行文件在安装后未找到。")
         return
 

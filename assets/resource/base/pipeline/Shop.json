@@ -1,71 +1,72 @@
 {
     "shop": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_entry",
             "shop_in_root_shop",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入商店任务[/color]"
     },
     "shop_entry": {
         "recognition": "TemplateMatch",
-        "template": "Shop/shop_entry.png",
         "roi": [
             1177,
             200,
             98,
             101
         ],
+        "template": "Shop/shop_entry.png",
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 500,
         "next": [
             "shop_in_root_shop",
             "shop_entry"
-        ],
-        "pre_delay": 0,
-        "post_delay": 500,
-        "post_wait_freezes": 500
+        ]
     },
     "shop_in_root_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_to_shop_parent_shop",
             "shop_to_play_methon_parent_shop",
             "shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_to_shop_parent_shop": {
+        "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_find_shop_parent_shop",
             "shop_select_shop_parent_shop",
             "[JumpBack]swipe_for_find_shop",
             "shop_find_shop_parent_shop_end"
-        ],
-        "enabled": false,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "swipe_for_find_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             110,
@@ -80,127 +81,121 @@
             12
         ],
         "duration": 500,
-        "pre_delay": 0,
         "post_delay": 300
     },
     "shop_find_shop_parent_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/shop_parent_shop.png",
         "roi": [
             72,
             138,
             74,
             498
         ],
+        "template": "Shop/shop_parent_shop.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "shop_select_shop_parent_shop",
             "shop_find_shop_parent_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_select_shop_parent_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/select_shop_parent_shop.png",
         "roi": [
             72,
             138,
             74,
             498
         ],
+        "template": "Shop/select_shop_parent_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_to_jade_child_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_find_shop_parent_shop_end": {
         "recognition": "TemplateMatch",
-        "template": "Shop/play_methon_parent_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/play_methon_parent_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_to_play_methon_parent_shop",
             "shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_to_jade_child_shop": {
+        "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_find_jade_child_shop",
             "shop_select_jade_child_shop",
             "[JumpBack]swipe_for_find_shop",
             "shop_find_shop_parent_shop_end"
-        ],
-        "enabled": false,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_find_jade_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/jade_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/jade_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "shop_select_jade_child_shop",
             "shop_find_jade_child_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_select_jade_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/select_jade_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/select_jade_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "shop_exchange_jade",
             "shop_jade_child_shop_slot_1",
             "shop_jade_child_shop_slot_2",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_exchange_jade": {
+        "enabled": false,
         "recognition": "TemplateMatch",
-        "template": "Shop/batch_exchange_button.png",
         "roi": [
             1061,
             629,
             192,
             90
         ],
-        "enabled": false,
-        "action": "Click",
-        "next": [
-            "shop_without_exchange_jade",
-            "shop_in_exchange_jade",
-            "shop_exchange_jade"
-        ],
+        "template": "Shop/batch_exchange_button.png",
         "pre_delay": 0,
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -211,496 +206,503 @@
                 150
             ]
         },
+        "next": [
+            "shop_without_exchange_jade",
+            "shop_in_exchange_jade",
+            "shop_exchange_jade"
+        ],
         "focus": "[color:pink]进入玉石兑换[/color]"
     },
     "shop_without_exchange_jade": {
         "recognition": "OCR",
-        "expected": [
-            "暂无",
-            "可兑换"
-        ],
         "roi": [
             498,
             335,
             279,
             49
         ],
-        "next": [
-            "shop_exchange_jade_done"
+        "expected": [
+            "暂无",
+            "可兑换"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "shop_exchange_jade_done"
+        ]
     },
     "shop_in_exchange_jade": {
         "recognition": "TemplateMatch",
-        "template": "Shop/exchange_button.png",
         "roi": [
             548,
             431,
             182,
             83
         ],
+        "template": "Shop/exchange_button.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]shop_exchange_jade_not_check_S",
             "[JumpBack]shop_exchange_jade_not_check_A",
             "[JumpBack]shop_exchange_jade_not_check_B",
             "[JumpBack]shop_exchange_jade_not_check_C",
             "shop_try_exchange_jade"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_try_exchange_jade": {
         "recognition": "TemplateMatch",
-        "template": "Shop/exchange_button.png",
         "roi": [
             548,
             431,
             182,
             83
         ],
+        "template": "Shop/exchange_button.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 300,
         "next": [
             "shop_confirm_exchange_jade",
             "shop_try_exchange_jade",
             "shop_exchange_jade_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300,
-        "post_wait_freezes": 300
+        ]
     },
     "shop_confirm_exchange_jade": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confirm.png",
         "roi": [
             528,
             421,
             224,
             91
         ],
+        "template": "SharedNode/confirm.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 300,
         "next": [
             "shop_confirm_exchange_jade",
             "shop_exchange_jade_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 300,
-        "post_wait_freezes": 300
+        ]
     },
     "shop_exchange_jade_done": {
         "recognition": "TemplateMatch",
-        "template": "Shop/batch_exchange_button.png",
         "roi": [
             1061,
             629,
             192,
             90
         ],
+        "template": "Shop/batch_exchange_button.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shop_slot_1",
             "shop_jade_child_shop_slot_2",
             "shop_jade_shop_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:pink]玉石兑换完成[/color]"
     },
     "shop_exchange_jade_not_check_S": {
+        "enabled": false,
         "recognition": "TemplateMatch",
-        "template": "Shop/not_check.png",
         "roi": [
             437,
             308,
             64,
             54
         ],
+        "template": "Shop/not_check.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
-        "enabled": false,
+        "post_delay": 400,
         "next": [
             "shop_exchange_jade_check_S",
             "shop_exchange_jade_not_check_S"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_exchange_jade_check_S": {
         "recognition": "TemplateMatch",
-        "template": "Shop/check.png",
         "roi": [
             437,
             308,
             64,
             54
         ],
+        "template": "Shop/check.png",
         "threshold": 0.9,
         "pre_delay": 0,
         "post_delay": 0
     },
     "shop_exchange_jade_not_check_A": {
+        "enabled": false,
         "recognition": "TemplateMatch",
-        "template": "Shop/not_check.png",
         "roi": [
             687,
             307,
             51,
             54
         ],
+        "template": "Shop/not_check.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
-        "enabled": false,
+        "post_delay": 400,
         "next": [
             "shop_exchange_jade_check_A",
             "shop_exchange_jade_not_check_A"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_exchange_jade_check_A": {
         "recognition": "TemplateMatch",
-        "template": "Shop/check.png",
         "roi": [
             687,
             307,
             51,
             54
         ],
+        "template": "Shop/check.png",
         "threshold": 0.9,
         "pre_delay": 0,
         "post_delay": 0
     },
     "shop_exchange_jade_not_check_B": {
+        "enabled": false,
         "recognition": "TemplateMatch",
-        "template": "Shop/not_check.png",
         "roi": [
             442,
             361,
             51,
             49
         ],
+        "template": "Shop/not_check.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
-        "enabled": false,
+        "post_delay": 400,
         "next": [
             "shop_exchange_jade_check_B",
             "shop_exchange_jade_not_check_B"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_exchange_jade_check_B": {
         "recognition": "TemplateMatch",
-        "template": "Shop/check.png",
         "roi": [
             442,
             361,
             51,
             49
         ],
+        "template": "Shop/check.png",
         "threshold": 0.9,
         "pre_delay": 0,
         "post_delay": 0
     },
     "shop_exchange_jade_not_check_C": {
+        "enabled": false,
         "recognition": "TemplateMatch",
-        "template": "Shop/not_check.png",
         "roi": [
             687,
             361,
             51,
             51
         ],
+        "template": "Shop/not_check.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
-        "enabled": false,
+        "post_delay": 400,
         "next": [
             "shop_exchange_jade_check_C",
             "shop_exchange_jade_not_check_C"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_exchange_jade_check_C": {
         "recognition": "TemplateMatch",
-        "template": "Shop/check.png",
         "roi": [
             687,
             361,
             51,
             51
         ],
+        "template": "Shop/check.png",
         "threshold": 0.9,
         "pre_delay": 0,
         "post_delay": 0
     },
     "shop_jade_child_shop_old_snake": {
         "recognition": "TemplateMatch",
-        "template": "Shop/old_snake.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/old_snake.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_fight_snake": {
         "recognition": "TemplateMatch",
-        "template": "Shop/fight_snake.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/fight_snake.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_old_water": {
         "recognition": "TemplateMatch",
-        "template": "Shop/old_water.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/old_water.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_fight_water": {
         "recognition": "TemplateMatch",
-        "template": "Shop/fight_water.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/fight_water.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_the_oldest": {
         "recognition": "TemplateMatch",
-        "template": "Shop/the_oldest.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/the_oldest.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_one_tail_naruto": {
         "recognition": "TemplateMatch",
-        "template": "Shop/one_tail_naruto.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/one_tail_naruto.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_red_jade": {
         "recognition": "TemplateMatch",
-        "template": "Shop/red_jade.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/red_jade.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_cyan_jade": {
         "recognition": "TemplateMatch",
-        "template": "Shop/cyan_jade.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/cyan_jade.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_reincarnation_stone": {
         "recognition": "TemplateMatch",
-        "template": "Shop/reincarnation_stone.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/reincarnation_stone.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_fame": {
         "recognition": "TemplateMatch",
-        "template": "Shop/fame.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/fame.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_mystery_essence": {
         "recognition": "TemplateMatch",
-        "template": "Shop/mystery_essence.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/mystery_essence.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_blank": {
         "recognition": "TemplateMatch",
-        "template": "Shop/blank.png",
         "roi": [
             1091,
             559,
             123,
             54
         ],
+        "template": "Shop/blank.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_shopping",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_slot_1": {
+        "enabled": false,
+        "pre_delay": 0,
         "anchor": {
             "jade_child_shop_slot_1": "shop_jade_child_shop_old_snake"
         },
-        "enabled": false,
+        "post_delay": 0,
         "next": [
             "[Anchor]jade_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
             "shop_jade_child_shop_swipe_back_for_good",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_shop_slot_2": {
+        "enabled": false,
+        "max_hit": 1,
+        "pre_delay": 0,
         "anchor": {
             "jade_child_shop_slot_1": "",
             "jade_child_shop_slot_2": "shop_jade_child_shop_old_snake"
         },
-        "enabled": false,
-        "max_hit": 1,
+        "post_delay": 0,
         "next": [
             "[Anchor]jade_child_shop_slot_2",
             "[JumpBack]shop_swipe_for_goods",
             "shop_jade_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_swipe_for_goods": {
+        "max_hit": 3,
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             1064,
@@ -714,9 +716,7 @@
             1,
             1
         ],
-        "max_hit": 3,
         "duration": 400,
-        "pre_delay": 0,
         "post_delay": 500
     },
     "shop_jade_child_shopping": {
@@ -725,14 +725,8 @@
         "custom_recognition_param": {
             "shop_type": "jade_child_shop"
         },
-        "action": "Click",
-        "next": [
-            "shop_jade_child_shopping_interface",
-            "[JumpBack]shop_confirm_exchange",
-            "shop_jade_child_shop_swipe_back_for_good"
-        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -742,115 +736,116 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "shop_jade_child_shopping_interface",
+            "[JumpBack]shop_confirm_exchange",
+            "shop_jade_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_confirm_exchange": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confirm_small.png",
         "roi": [
             597,
             431,
             79,
             66
         ],
+        "template": "SharedNode/confirm_small.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "shop_witnout_confirm_exchange",
             "shop_confirm_exchange"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_witnout_confirm_exchange": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/confirm_small.png",
         "roi": [
             597,
             431,
             79,
             66
         ],
+        "template": "SharedNode/confirm_small.png",
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 0
     },
     "shop_jade_child_follow_up_shopping": {
-        "action": "Click",
         "roi": [
             1138,
             158,
             37,
             37
         ],
+        "pre_delay": 0,
+        "action": "Click",
         "repeat": 1,
         "repeat_delay": 500,
-        "next": "shop_jade_child_shop_swipe_back_for_good",
-        "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "shop_jade_child_shop_swipe_back_for_good"
     },
     "shop_jade_child_shopping_interface": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             357,
             51,
             49
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_check_shopping_count",
             "[JumpBack]shop_jade_child_add_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_check_shopping_count": {
         "recognition": "OCR",
-        "expected": "1",
         "roi": [
             614,
             362,
             46,
             39
         ],
+        "expected": "1",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_jade_child_buy_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_jade_child_add_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             355,
             51,
             56
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 500
     },
     "shop_jade_child_buy_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/buy.png",
         "roi": [
             558,
             448,
             170,
             69
         ],
+        "template": "SharedNode/buy.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "shop_jade_child_buy_shopping_count",
-            "shop_jade_child_shop_swipe_back_for_good"
-        ],
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -860,374 +855,379 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "shop_jade_child_buy_shopping_count",
+            "shop_jade_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_jade_child_shop_swipe_back_for_good": {
+        "max_hit": 1,
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
         "method": 10001,
         "threshold": 0.9,
-        "max_hit": 1,
+        "pre_delay": 0,
+        "action": "Custom",
+        "custom_action": "ShopSwipeBack",
+        "post_delay": 300,
         "next": [
             "shop_jade_child_shop_slot_2",
             "shop_jade_shop_done"
-        ],
-        "action": "Custom",
-        "custom_action": "ShopSwipeBack",
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "shop_jade_shop_done": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_to_play_methon_parent_shop",
             "shop_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]玉石商店任务完成[/color]"
     },
     "shop_to_play_methon_parent_shop": {
+        "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_find_play_methon_parent_shop",
             "shop_select_play_methon_parent_shop",
             "[JumpBack]swipe_for_find_shop",
             "shop_find_play_methon_parent_shop_end"
-        ],
-        "enabled": false,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_find_play_methon_parent_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/play_methon_parent_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/play_methon_parent_shop.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "shop_select_play_methon_parent_shop",
             "shop_find_play_methon_parent_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_select_play_methon_parent_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/select_play_methon_parent_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/select_play_methon_parent_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_to_survival_child_shop",
             "shop_to_point_race_child_shop",
             "shop_to_group_child_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_find_play_methon_parent_shop_end": {
         "recognition": "TemplateMatch",
-        "template": "Shop/welfare_parent_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/welfare_parent_shop.png",
         "method": 10001,
         "threshold": 0.95,
-        "next": "shop_done",
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "shop_done"
     },
     "shop_to_survival_child_shop": {
+        "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_find_survival_child_shop",
             "shop_select_survival_child_shop",
             "[JumpBack]swipe_for_find_shop",
             "shop_find_play_methon_parent_shop_end"
-        ],
-        "enabled": false,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_find_survival_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/survival_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/survival_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "shop_select_survival_child_shop",
             "shop_find_survival_child_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_select_survival_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/select_survival_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/select_survival_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shop_slot_1",
             "shop_survival_child_shop_slot_2",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_red_bean": {
         "recognition": "TemplateMatch",
-        "template": "Shop/red_bean.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/red_bean.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_gai": {
         "recognition": "TemplateMatch",
-        "template": "Shop/gai.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/gai.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_one_tail_naruto": {
         "recognition": "TemplateMatch",
-        "template": "Shop/one_tail_naruto.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/one_tail_naruto.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_ino_Shippuden": {
         "recognition": "TemplateMatch",
-        "template": "Shop/ino_Shippuden.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/ino_Shippuden.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_fame": {
         "recognition": "TemplateMatch",
-        "template": "Shop/fame.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/fame.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_temari_Shippuden": {
         "recognition": "TemplateMatch",
-        "template": "Shop/temari_Shippuden.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/temari_Shippuden.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_reincarnation_stone": {
         "recognition": "TemplateMatch",
-        "template": "Shop/reincarnation_stone.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/reincarnation_stone.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_ninja_jade": {
         "recognition": "TemplateMatch",
-        "template": "Shop/ninja_jade.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/ninja_jade.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_recast_rune": {
         "recognition": "TemplateMatch",
-        "template": "Shop/recast_rune.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/recast_rune.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_dodai": {
         "recognition": "TemplateMatch",
-        "template": "Shop/dodai.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/dodai.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_shopping",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_slot_1": {
+        "enabled": false,
+        "pre_delay": 0,
         "anchor": {
             "survival_child_shop_slot_1": "shop_survival_child_shop_red_bean"
         },
-        "enabled": false,
+        "post_delay": 0,
         "next": [
             "[Anchor]survival_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
             "shop_survival_child_shop_swipe_back_for_good",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shop_slot_2": {
+        "enabled": false,
+        "max_hit": 1,
+        "pre_delay": 0,
         "anchor": {
             "survival_child_shop_slot_1": "",
             "survival_child_shop_slot_2": "shop_survival_child_shop_red_bean"
         },
-        "enabled": false,
-        "max_hit": 1,
+        "post_delay": 0,
         "next": [
             "[Anchor]survival_child_shop_slot_2",
             "[JumpBack]shop_swipe_for_goods",
             "shop_survival_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_shopping": {
         "recognition": "Custom",
@@ -1235,14 +1235,8 @@
         "custom_recognition_param": {
             "shop_type": "survival_child_shop"
         },
-        "action": "Click",
-        "next": [
-            "shop_survival_child_shopping_interface",
-            "[JumpBack]shop_confirm_exchange",
-            "shop_survival_child_shop_swipe_back_for_good"
-        ],
         "pre_delay": 0,
-        "post_delay": 100,
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 400,
@@ -1252,85 +1246,86 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 100,
+        "next": [
+            "shop_survival_child_shopping_interface",
+            "[JumpBack]shop_confirm_exchange",
+            "shop_survival_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_survival_child_follow_up_shopping": {
-        "action": "Click",
         "roi": [
             1138,
             158,
             37,
             37
         ],
+        "pre_delay": 0,
+        "action": "Click",
         "repeat": 1,
         "repeat_delay": 500,
-        "next": "shop_survival_child_shop_swipe_back_for_good",
-        "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "shop_survival_child_shop_swipe_back_for_good"
     },
     "shop_survival_child_shopping_interface": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             357,
             51,
             49
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_check_shopping_count",
             "[JumpBack]shop_survival_child_add_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_check_shopping_count": {
         "recognition": "OCR",
-        "expected": "1",
         "roi": [
             614,
             362,
             46,
             39
         ],
+        "expected": "1",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_survival_child_buy_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_survival_child_add_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             355,
             51,
             56
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 500
     },
     "shop_survival_child_buy_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/buy.png",
         "roi": [
             558,
             448,
             170,
             69
         ],
+        "template": "SharedNode/buy.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "shop_survival_child_buy_shopping_count",
-            "shop_survival_child_shop_swipe_back_for_good"
-        ],
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 400,
@@ -1340,315 +1335,320 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "shop_survival_child_buy_shopping_count",
+            "shop_survival_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_survival_child_shop_swipe_back_for_good": {
+        "max_hit": 1,
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
         "method": 10001,
         "threshold": 0.9,
-        "max_hit": 1,
+        "pre_delay": 0,
+        "action": "Custom",
+        "custom_action": "ShopSwipeBack",
+        "post_delay": 300,
         "next": [
             "shop_survival_child_shop_slot_2",
             "shop_survival_shop_done"
-        ],
-        "action": "Custom",
-        "custom_action": "ShopSwipeBack",
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "shop_survival_shop_done": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_to_point_race_child_shop",
             "shop_to_group_child_shop",
             "shop_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]生存商店任务完成[/color]"
     },
     "shop_to_point_race_child_shop": {
+        "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_find_point_race_child_shop",
             "shop_select_point_race_child_shop",
             "[JumpBack]swipe_for_find_shop",
             "shop_find_play_methon_parent_shop_end"
-        ],
-        "enabled": false,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_find_point_race_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/point_race_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/point_race_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "shop_select_point_race_child_shop",
             "shop_find_point_race_child_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_select_point_race_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/select_point_race_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/select_point_race_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shop_slot_1",
             "shop_point_race_child_shop_slot_2",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_point_race_box": {
         "recognition": "TemplateMatch",
-        "template": "Shop/point_race_box.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/point_race_box.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_kisame": {
         "recognition": "TemplateMatch",
-        "template": "Shop/kisame.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/kisame.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_kimimaro_Curse_Mark": {
         "recognition": "TemplateMatch",
-        "template": "Shop/kimimaro_Curse_Mark.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/kimimaro_Curse_Mark.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_konohamaru_Shippuden": {
         "recognition": "TemplateMatch",
-        "template": "Shop/konohamaru_Shippuden.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/konohamaru_Shippuden.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_black_fly": {
         "recognition": "TemplateMatch",
-        "template": "Shop/black_fly.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/black_fly.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_sasori": {
         "recognition": "TemplateMatch",
-        "template": "Shop/sasori.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/sasori.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_ninja_jade": {
         "recognition": "TemplateMatch",
-        "template": "Shop/ninja_jade.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/ninja_jade.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_fame": {
         "recognition": "TemplateMatch",
-        "template": "Shop/fame.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/fame.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_advance_summon_scroll": {
         "recognition": "TemplateMatch",
-        "template": "Shop/advance_summon_scroll.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/advance_summon_scroll.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_reincarnation_stone": {
         "recognition": "TemplateMatch",
-        "template": "Shop/reincarnation_stone.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/reincarnation_stone.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_shopping",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_slot_1": {
+        "enabled": false,
+        "pre_delay": 0,
         "anchor": {
             "point_race_child_shop_slot_1": "shop_point_race_child_shop_sasori"
         },
-        "enabled": false,
+        "post_delay": 0,
         "next": [
             "[Anchor]point_race_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
             "shop_point_race_child_shop_swipe_back_for_good",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shop_slot_2": {
+        "enabled": false,
+        "max_hit": 1,
+        "pre_delay": 0,
         "anchor": {
             "point_race_child_shop_slot_1": "",
             "point_race_child_shop_slot_2": "shop_point_race_child_shop_sasori"
         },
-        "enabled": false,
-        "max_hit": 1,
+        "post_delay": 0,
         "next": [
             "[Anchor]point_race_child_shop_slot_2",
             "[JumpBack]shop_swipe_for_goods",
             "shop_point_race_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_shopping": {
         "recognition": "Custom",
@@ -1656,14 +1656,8 @@
         "custom_recognition_param": {
             "shop_type": "point_race_child_shop"
         },
-        "action": "Click",
-        "next": [
-            "shop_point_race_child_shopping_interface",
-            "[JumpBack]shop_confirm_exchange",
-            "shop_point_race_child_shop_swipe_back_for_good"
-        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -1673,85 +1667,86 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "shop_point_race_child_shopping_interface",
+            "[JumpBack]shop_confirm_exchange",
+            "shop_point_race_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_point_race_child_follow_up_shopping": {
-        "action": "Click",
         "roi": [
             1138,
             158,
             37,
             37
         ],
+        "pre_delay": 0,
+        "action": "Click",
         "repeat": 1,
         "repeat_delay": 500,
-        "next": "shop_point_race_child_shop_swipe_back_for_good",
-        "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "shop_point_race_child_shop_swipe_back_for_good"
     },
     "shop_point_race_child_shopping_interface": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             357,
             51,
             49
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_check_shopping_count",
             "[JumpBack]shop_point_race_child_add_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_check_shopping_count": {
         "recognition": "OCR",
-        "expected": "1",
         "roi": [
             614,
             362,
             46,
             39
         ],
+        "expected": "1",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_point_race_child_buy_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_point_race_child_add_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             355,
             51,
             56
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 500
     },
     "shop_point_race_child_buy_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/buy.png",
         "roi": [
             558,
             448,
             170,
             69
         ],
+        "template": "SharedNode/buy.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "shop_point_race_child_buy_shopping_count",
-            "shop_point_race_child_shop_swipe_back_for_good"
-        ],
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -1761,390 +1756,395 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "shop_point_race_child_buy_shopping_count",
+            "shop_point_race_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_point_race_child_shop_swipe_back_for_good": {
+        "max_hit": 1,
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
         "method": 10001,
         "threshold": 0.9,
-        "max_hit": 1,
+        "pre_delay": 0,
+        "action": "Custom",
+        "custom_action": "ShopSwipeBack",
+        "post_delay": 300,
         "next": [
             "shop_point_race_child_shop_slot_2",
             "shop_point_race_shop_done"
-        ],
-        "action": "Custom",
-        "custom_action": "ShopSwipeBack",
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "shop_point_race_shop_done": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_to_group_child_shop",
             "shop_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]积分赛商店任务完成[/color]"
     },
     "shop_to_group_child_shop": {
+        "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_find_group_child_shop",
             "shop_select_group_child_shop",
             "[JumpBack]swipe_for_find_shop",
             "shop_find_play_methon_parent_shop_end"
-        ],
-        "enabled": false,
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_find_group_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/group_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/group_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "shop_select_group_child_shop",
             "shop_find_group_child_shop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     },
     "shop_select_group_child_shop": {
         "recognition": "TemplateMatch",
-        "template": "Shop/select_group_child_shop.png",
         "roi": [
             19,
             137,
             187,
             496
         ],
+        "template": "Shop/select_group_child_shop.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "shop_group_child_shop_slot_1",
             "shop_group_child_shop_slot_2",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_old_horse": {
         "recognition": "TemplateMatch",
-        "template": "Shop/old_horse.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/old_horse.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_naruto_Shippuden": {
         "recognition": "TemplateMatch",
-        "template": "Shop/naruto_Shippuden.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/naruto_Shippuden.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_sakura_Shippuden": {
         "recognition": "TemplateMatch",
-        "template": "Shop/sakura_Shippuden.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/sakura_Shippuden.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_ino_Shippuden": {
         "recognition": "TemplateMatch",
-        "template": "Shop/ino_Shippuden.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/ino_Shippuden.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_random_ninja": {
         "recognition": "TemplateMatch",
-        "template": "Shop/random_ninja.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/random_ninja.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_group_box": {
         "recognition": "TemplateMatch",
-        "template": "Shop/group_box.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/group_box.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_reincarnation_stone": {
         "recognition": "TemplateMatch",
-        "template": "Shop/reincarnation_stone.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/reincarnation_stone.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_ninja_jade": {
         "recognition": "TemplateMatch",
-        "template": "Shop/ninja_jade.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/ninja_jade.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_copper": {
         "recognition": "TemplateMatch",
-        "template": "Shop/copper.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/copper.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_magic_dust": {
         "recognition": "TemplateMatch",
-        "template": "Shop/magic_dust.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/magic_dust.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_magic_star": {
         "recognition": "TemplateMatch",
-        "template": "Shop/magic_star.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/magic_star.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_mystery_essence": {
         "recognition": "TemplateMatch",
-        "template": "Shop/mystery_essence.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/mystery_essence.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_fame": {
         "recognition": "TemplateMatch",
-        "template": "Shop/fame.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/fame.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_random_level_3_magatama": {
         "recognition": "TemplateMatch",
-        "template": "Shop/random_level_3_magatama.png",
         "roi": [
             190,
             76,
             1089,
             567
         ],
+        "template": "Shop/random_level_3_magatama.png",
         "green_mask": true,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_shopping",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_slot_1": {
+        "enabled": false,
+        "pre_delay": 0,
         "anchor": {
             "group_child_shop_slot_1": "shop_group_child_shop_old_horse"
         },
-        "enabled": false,
+        "post_delay": 0,
         "next": [
             "[Anchor]group_child_shop_slot_1",
             "[JumpBack]shop_swipe_for_goods",
             "shop_group_child_shop_swipe_back_for_good",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shop_slot_2": {
+        "enabled": false,
+        "max_hit": 1,
+        "pre_delay": 0,
         "anchor": {
             "group_child_shop_slot_1": "",
             "group_child_shop_slot_2": "shop_group_child_shop_old_horse"
         },
-        "enabled": false,
-        "max_hit": 1,
+        "post_delay": 0,
         "next": [
             "[Anchor]group_child_shop_slot_2",
             "[JumpBack]shop_swipe_for_goods",
             "shop_group_shop_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_shopping": {
         "recognition": "Custom",
@@ -2152,14 +2152,8 @@
         "custom_recognition_param": {
             "shop_type": "group_child_shop"
         },
-        "action": "Click",
-        "next": [
-            "shop_group_child_shopping_interface",
-            "[JumpBack]shop_confirm_exchange",
-            "shop_group_child_shop_swipe_back_for_good"
-        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -2169,85 +2163,86 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "shop_group_child_shopping_interface",
+            "[JumpBack]shop_confirm_exchange",
+            "shop_group_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_group_child_follow_up_shopping": {
-        "action": "Click",
         "roi": [
             1138,
             158,
             37,
             37
         ],
+        "pre_delay": 0,
+        "action": "Click",
         "repeat": 1,
         "repeat_delay": 500,
-        "next": "shop_group_child_shop_swipe_back_for_good",
-        "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "shop_group_child_shop_swipe_back_for_good"
     },
     "shop_group_child_shopping_interface": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             357,
             51,
             49
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_check_shopping_count",
             "[JumpBack]shop_group_child_add_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_check_shopping_count": {
         "recognition": "OCR",
-        "expected": "1",
         "roi": [
             614,
             362,
             46,
             39
         ],
+        "expected": "1",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_group_child_buy_shopping_count"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "shop_group_child_add_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "Shop/add.png",
         "roi": [
             693,
             355,
             51,
             56
         ],
+        "template": "Shop/add.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 500
     },
     "shop_group_child_buy_shopping_count": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/buy.png",
         "roi": [
             558,
             448,
             170,
             69
         ],
+        "template": "SharedNode/buy.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "shop_group_child_buy_shopping_count",
-            "shop_group_child_shop_swipe_back_for_good"
-        ],
+        "action": "Click",
         "post_wait_freezes": {
             "threshold": 0.8,
             "time": 300,
@@ -2257,58 +2252,63 @@
                 261,
                 150
             ]
-        }
+        },
+        "post_delay": 0,
+        "next": [
+            "shop_group_child_buy_shopping_count",
+            "shop_group_child_shop_swipe_back_for_good"
+        ]
     },
     "shop_group_child_shop_swipe_back_for_good": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Custom",
+        "custom_action": "ShopSwipeBack",
+        "post_delay": 300,
         "next": [
             "shop_group_child_shop_slot_2",
             "shop_group_shop_done"
-        ],
-        "action": "Custom",
-        "custom_action": "ShopSwipeBack",
-        "pre_delay": 0,
-        "post_delay": 300
+        ]
     },
     "shop_group_shop_done": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "shop_done"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]组织商店任务完成[/color]"
     },
     "shop_done": {
         "recognition": "TemplateMatch",
-        "template": "Shop/root_shop.png",
         "roi": [
             96,
             4,
             180,
             118
         ],
+        "template": "Shop/root_shop.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]商店任务完成[/color]"
     }
 }

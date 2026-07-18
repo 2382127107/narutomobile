@@ -1,128 +1,128 @@
 {
     "get_copper": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "get_copper_in_center_enter",
             "[JumpBack]award_center_enter",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入铜币招财任务[/color]"
     },
     "get_copper_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_in_daily_award.png",
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "get_copper_ac_entry_undone",
             "get_copper_ac_done",
             "[JumpBack]swipe_for_award_center_find"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "get_copper_not_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_not_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "get_copper_in_center_enter",
             "get_copper_not_in_center_enter"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
     },
     "get_copper_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/award_center_entry.png",
         "roi": [
             1174,
             302,
             99,
             105
         ],
+        "template": "SharedNode/award_center_entry.png",
         "method": 10001,
         "threshold": [
             0.8
         ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "get_copper_in_center_enter",
             "get_copper_not_in_center_enter",
             "get_copper_ac_entry"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "get_copper_ac_entry_undone": {
         "recognition": "TemplateMatch",
-        "template": "Get_copper/get_copper_ac_undone.png",
         "roi": [
             180,
             288,
             1100,
             225
         ],
-        "threshold": 0.9,
+        "template": "Get_copper/get_copper_ac_undone.png",
         "green_mask": true,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
         "target_offset": [
             12,
             116,
             -40,
             -114
         ],
-        "action": "Click",
+        "post_delay": 0,
         "next": [
             "get_copper_in_get_copper",
             "get_copper_ac_entry_undone"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "get_copper_in_get_copper": {
         "recognition": "OCR",
-        "expected": [
-            "本轮",
-            "招满",
-            "可获得"
-        ],
         "roi": [
             713,
             90,
             345,
             296
         ],
+        "expected": [
+            "本轮",
+            "招满",
+            "可获得"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "check_free_copper_done",
             "[JumpBack]start_copper"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "get_copper_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
             1100,
             118
         ],
+        "template": "SharedNode/center_entry_end.png",
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -132,14 +132,14 @@
     },
     "start_copper": {
         "recognition": "OCR",
-        "expected": [
-            "免费一次"
-        ],
         "roi": [
             728,
             518,
             212,
             86
+        ],
+        "expected": [
+            "免费一次"
         ],
         "pre_delay": 0,
         "action": "Click",
@@ -148,14 +148,14 @@
     },
     "check_free_copper_done": {
         "recognition": "OCR",
-        "expected": [
-            "招财"
-        ],
         "roi": [
             743,
             534,
             181,
             58
+        ],
+        "expected": [
+            "招财"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -163,52 +163,52 @@
         "focus": "[color:DeepSkyBlue]免费铜币招财完成[/color]"
     },
     "get_copper_with_secondary_password": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "get_copper_by_roll",
             "get_copper_by_count",
             "free_copper_close_secondary_password",
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:pink]进入二级密码功能[/color]"
     },
     "free_copper_close_secondary_password": {
+        "max_hit": 1,
         "recognition": "OCR",
-        "expected": [
-            "招财"
-        ],
         "roi": [
             743,
             534,
             181,
             58
         ],
-        "max_hit": 1,
-        "action": "Click",
+        "expected": [
+            "招财"
+        ],
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 300
     },
     "get_copper_by_roll": {
         "recognition": "TemplateMatch",
-        "template": "Get_copper/get.png",
         "roi": [
             743,
             534,
             181,
             58
         ],
+        "template": "Get_copper/get.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "check_get_copper_by_roll",
             "check_get_copper_by_roll_1",
             "[JumpBack]try_get_copper_by_roll",
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "check_get_copper_by_roll": {
         "recognition": "Custom",
@@ -216,66 +216,66 @@
         "custom_recognition_param": {
             "count": 1
         },
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "get_copper_by_count",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "check_get_copper_by_roll_1": {
         "recognition": "TemplateMatch",
-        "template": "Get_copper/check_get_roll.png",
         "roi": [
             980,
             520,
             54,
             86
         ],
+        "template": "Get_copper/check_get_roll.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "get_copper_by_count",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "try_get_copper_by_roll": {
         "recognition": "TemplateMatch",
-        "template": "Get_copper/get_roll.png",
         "roi": [
             1032,
             518,
             150,
             93
         ],
+        "template": "Get_copper/get_roll.png",
         "method": 10001,
         "threshold": 0.95,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 500,
-        "post_wait_freezes": 300
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 500
     },
     "get_copper_by_count": {
         "recognition": "TemplateMatch",
-        "template": "Get_copper/get.png",
         "roi": [
             743,
             534,
             181,
             58
         ],
+        "template": "Get_copper/get.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "check_get_copper_by_count",
             "[JumpBack]try_get_copper_by_count",
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "check_get_copper_by_count": {
         "recognition": "Custom",
@@ -283,46 +283,46 @@
         "custom_recognition_param": {
             "count": 1
         },
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "try_get_copper_by_count": {
         "recognition": "TemplateMatch",
-        "template": "Get_copper/get.png",
         "roi": [
             743,
             534,
             181,
             58
         ],
+        "template": "Get_copper/get.png",
         "method": 10001,
         "threshold": 0.95,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 500,
-        "post_wait_freezes": 300
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 500
     },
     "get_copper_in_main_screen": {
         "recognition": "TemplateMatch",
-        "template": "Get_copper/copper.png",
         "roi": [
             585,
             12,
             61,
             56
         ],
+        "template": "Get_copper/copper.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 400,
         "next": [
             "get_copper_in_get_copper",
             "get_copper_in_main_screen"
-        ],
-        "pre_delay": 0,
-        "post_delay": 400
+        ]
     }
 }

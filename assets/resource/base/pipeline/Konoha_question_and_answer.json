@@ -1,24 +1,25 @@
 {
     "konoha_question_and_answer": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "konoha_question_and_answer_start",
             "konoha_question_and_answer_entry",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入问答子任务[/color]"
     },
     "konoha_question_and_answer_entry": {
         "recognition": "TemplateMatch",
-        "template": "Activity/headhunt.png",
         "roi": [
             1194,
             132,
             50,
             42
         ],
+        "template": "Activity/headhunt.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             1196,
@@ -26,62 +27,63 @@
             53,
             45
         ],
+        "post_wait_freezes": 700,
+        "post_delay": 0,
         "next": [
             "find_konoha_konoha_question_and_answer",
             "konoha_question_and_answer_entry",
             "[JumpBack]swipes_for_konoha_question_and_answer",
             "[JumpBack]back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 700
+        ]
     },
     "konoha_question_and_answer_start": {
         "recognition": "TemplateMatch",
-        "template": "Konoha_question_and_answer/start.png",
         "roi": [
             1064,
             649,
             160,
             61
         ],
+        "template": "Konoha_question_and_answer/start.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "konoha_question_and_answer_match"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入问答游戏[/color]"
     },
     "find_konoha_konoha_question_and_answer": {
         "recognition": "OCR",
-        "expected": [
-            "问答"
-        ],
         "roi": [
             0,
             115,
             212,
             605
         ],
+        "expected": [
+            "问答"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "konoha_question_and_answer_start",
             "[JumpBack]find_konoha_konoha_question_and_answer"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]找到木叶问答[/color]"
     },
     "swipes_for_konoha_question_and_answer": {
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "template": "SharedNode/activity_plus_button.png",
         "roi": [
             906,
             0,
             269,
             81
         ],
+        "template": "SharedNode/activity_plus_button.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             80,
@@ -96,63 +98,61 @@
             10
         ],
         "duration": 200,
-        "pre_delay": 0,
-        "post_delay": 700,
-        "max_hit": 5
+        "post_delay": 700
     },
     "konoha_question_and_answer_match": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/match.png",
         "roi": [
             1044,
             535,
             207,
             103
         ],
+        "template": "SharedNode/match.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "konoha_question_and_answer_in_game"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "konoha_question_and_answer_in_game": {
         "recognition": "OCR",
-        "expected": [
-            "排行榜"
-        ],
         "roi": [
             1244,
             162,
             35,
             108
         ],
+        "expected": [
+            "排行榜"
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000,
         "next": [
             "konoha_question_and_answer_in_game",
             "konoha_question_and_answer_quit"
-        ],
-        "pre_delay": 0,
-        "post_delay": 1000
+        ]
     },
     "konoha_question_and_answer_quit": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Konoha_question_and_answer/quit.png"
-        ],
         "roi": [
             540,
             617,
             197,
             76
         ],
+        "template": [
+            "Konoha_question_and_answer/quit.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "konoha_question_and_answer_start",
             "konoha_question_and_answer_in_game"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     }
 }

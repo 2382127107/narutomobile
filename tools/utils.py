@@ -7,7 +7,7 @@ def get_maafw_version():
     self_path = Path(__file__)
     requirements_path = self_path.parent.parent / "requirements.txt"
 
-    with open(requirements_path, "r") as f:
+    with open(requirements_path) as f:
         for line in f:
             if "maafw" in line:
                 return line.split("==")[1].strip()
@@ -34,7 +34,7 @@ def download(download_url: str, dest_path: str | Path, proxy_url: str | None = N
         req = request.Request(
             download_url,
             headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0"  # noqa: E501
             },
         )
 
@@ -42,9 +42,7 @@ def download(download_url: str, dest_path: str | Path, proxy_url: str | None = N
         if proxy_url:
             print(f"尝试使用本地代理 {proxy_url} 进行下载...")
             # 设置代理处理器
-            proxy_handler = request.ProxyHandler(
-                {"http": f"http://{proxy_url}", "https": f"http://{proxy_url}"}
-            )
+            proxy_handler = request.ProxyHandler({"http": f"http://{proxy_url}", "https": f"http://{proxy_url}"})
             opener = request.build_opener(proxy_handler)
 
             # 使用带代理的opener发送请求
@@ -69,7 +67,7 @@ def download(download_url: str, dest_path: str | Path, proxy_url: str | None = N
                 if total_size > 0:
                     percent = (downloaded / total_size) * 100
                     print(
-                        f"\rDownloaded: {downloaded / 1024 / 1024:.2f}/{total_size / 1024 / 1024:.2f} MB ({percent:.1f}%)",
+                        f"\rDownloaded: {downloaded / 1024 / 1024:.2f}/{total_size / 1024 / 1024:.2f} MB ({percent:.1f}%)",  # noqa: E501
                         end="",
                         flush=True,
                     )

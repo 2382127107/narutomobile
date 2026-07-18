@@ -1,24 +1,25 @@
 {
     "konoha_snack_shop": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "konoha_snack_start",
             "konoha_snack_entry",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入木叶小吃店任务[/color]"
     },
     "konoha_snack_entry": {
         "recognition": "TemplateMatch",
-        "template": "Activity/headhunt.png",
         "roi": [
             1194,
             132,
             50,
             42
         ],
+        "template": "Activity/headhunt.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             1196,
@@ -26,26 +27,27 @@
             53,
             45
         ],
+        "post_wait_freezes": 700,
+        "post_delay": 0,
         "next": [
             "find_konoha_snack",
             "konoha_snack_entry",
             "[JumpBack]swipes_for_konoha_snack",
             "[JumpBack]back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 700,
         "focus": "[color:DeepSkyBlue]进入木叶小吃店活动[/color]"
     },
     "swipes_for_konoha_snack": {
+        "max_hit": 5,
         "recognition": "TemplateMatch",
-        "template": "SharedNode/activity_plus_button.png",
         "roi": [
             906,
             0,
             269,
             81
         ],
+        "template": "SharedNode/activity_plus_button.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             80,
@@ -60,43 +62,43 @@
             10
         ],
         "duration": 200,
-        "pre_delay": 0,
         "post_delay": 700,
-        "max_hit": 5,
         "focus": "[color:DeepSkyBlue]前往木叶小吃店[/color]"
     },
     "find_konoha_snack": {
         "recognition": "OCR",
-        "expected": [
-            "木叶小吃"
-        ],
         "roi": [
             0,
             115,
             212,
             605
         ],
+        "expected": [
+            "木叶小吃"
+        ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "konoha_snack_start",
             "[JumpBack]find_konoha_snack"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]找到木叶小吃店[/color]"
     },
     "konoha_snack_start": {
         "recognition": "OCR",
-        "expected": [
-            "制作"
-        ],
         "roi": [
             269,
             483,
             834,
             120
         ],
+        "expected": [
+            "制作"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "konoha_snack_done",
             "[JumpBack]konoha_snack_hashirma",
@@ -106,21 +108,20 @@
             "[JumpBack]konoha_snack_get",
             "back_main_screen_and_stop"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入投喂游戏[/color]"
     },
     "konoha_snack_hashirma": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Konoha_snack_shop/hashirma.png"
-        ],
         "roi": [
             162,
             95,
             1117,
             222
         ],
+        "template": [
+            "Konoha_snack_shop/hashirma.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             37,
@@ -128,27 +129,27 @@
             -32,
             -47
         ],
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "konoha_snack_shortage",
             "konoha_snack_get",
             "[JumpBack]konoha_snack_start"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]太好了是柱间,我们有救了[/color]"
     },
     "konoha_snack_high": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Konoha_snack_shop/peak.png"
-        ],
         "roi": [
             162,
             95,
             1117,
             222
         ],
+        "template": [
+            "Konoha_snack_shop/peak.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             -125,
@@ -156,27 +157,27 @@
             0,
             -10
         ],
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "konoha_snack_shortage",
             "konoha_snack_get",
             "[JumpBack]konoha_snack_start"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]火之高兴[/color]"
     },
     "konoha_snack_low": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Konoha_snack_shop/low.png"
-        ],
         "roi": [
             162,
             95,
             1117,
             222
         ],
+        "template": [
+            "Konoha_snack_shop/low.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             -128,
@@ -184,27 +185,27 @@
             10,
             0
         ],
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "konoha_snack_shortage",
             "konoha_snack_get",
             "[JumpBack]konoha_snack_start"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]过牌[/color]"
     },
     "konoha_snack_mid": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Konoha_snack_shop/mid.png"
-        ],
         "roi": [
             162,
             95,
             1117,
             222
         ],
+        "template": [
+            "Konoha_snack_shop/mid.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             -128,
@@ -212,61 +213,60 @@
             5,
             -5
         ],
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "konoha_snack_shortage",
             "konoha_snack_get",
             "[JumpBack]konoha_snack_start"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]忧郁蓝调[/color]"
     },
     "konoha_snack_get": {
         "recognition": "OCR",
-        "expected": [
-            "恭喜",
-            "你获得"
-        ],
         "roi": [
             424,
             58,
             395,
             214
         ],
+        "expected": [
+            "恭喜",
+            "你获得"
+        ],
         "action": "Click"
     },
     "konoha_snack_done": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Treasure_gathering_trial_award/red_point.png"
-        ],
         "roi": [
             338,
             480,
             861,
             128
         ],
+        "template": [
+            "Treasure_gathering_trial_award/red_point.png"
+        ],
         "threshold": [
             0.8
         ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "konoha_snack_shortage": {
         "recognition": "OCR",
-        "expected": [
-            "材料不足"
-        ],
         "roi": [
             476,
             288,
             293,
             167
+        ],
+        "expected": [
+            "材料不足"
         ],
         "pre_delay": 0,
         "post_delay": 0,

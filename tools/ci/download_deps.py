@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 下载Python依赖的脚本
 """
 
-import sys
-import subprocess
 import argparse
+import subprocess
+import sys
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")  # type: ignore
@@ -69,9 +68,7 @@ def download_dependencies(deps_dir, platform_tag):
         ]
 
         print(f"执行下载命令: {' '.join(cmd_fallback)}")
-        result = subprocess.run(
-            cmd_fallback, check=True, capture_output=True, text=True
-        )
+        result = subprocess.run(cmd_fallback, check=True, capture_output=True, text=True)
         print(result.stdout)
 
         if result.stderr:

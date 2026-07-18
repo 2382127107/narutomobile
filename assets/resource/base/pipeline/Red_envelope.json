@@ -10,13 +10,13 @@
     },
     "red_envelope_to_activity": {
         "recognition": "TemplateMatch",
-        "template": "Activity/headhunt.png",
         "roi": [
             1194,
             132,
             50,
             42
         ],
+        "template": "Activity/headhunt.png",
         "threshold": 0.9,
         "action": "Click",
         "target": [
@@ -25,24 +25,24 @@
             53,
             45
         ],
+        "post_wait_freezes": 900,
         "next": [
             "red_envelope_check_in_activity",
             "red_envelope_to_activity"
         ],
-        "post_wait_freezes": 900,
         "focus": "[color:DeepSkyBlue]进入活动[/color]"
     },
     "red_envelope_check_in_activity": {
         "recognition": "OCR",
-        "expected": [
-            "一乐",
-            "外卖"
-        ],
         "roi": [
             0,
             0,
             261,
             288
+        ],
+        "expected": [
+            "一乐",
+            "外卖"
         ],
         "next": [
             "swipes_for_red_envelope"
@@ -63,44 +63,44 @@
             10,
             10
         ],
+        "duration": 200,
+        "post_delay": 900,
         "next": [
             "red_envelope_entry",
             "swipes_for_red_envelope",
             "back_main_screen_and_stop"
         ],
-        "duration": 200,
-        "post_delay": 900,
         "focus": "[color:DeepSkyBlue]寻找红包任务[/color]"
     },
     "red_envelope_entry": {
+        "max_hit": 5,
         "recognition": "OCR",
-        "expected": [
-            "冬日烟花"
-        ],
         "roi": [
             0,
             130,
             175,
             580
         ],
-        "max_hit": 5,
+        "expected": [
+            "冬日烟花"
+        ],
         "action": "Click",
+        "post_wait_freezes": 500,
         "next": [
             "check_selected_red_envelope",
             "[JumpBack]red_envelope_entry"
         ],
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]进入红包任务[/color]"
     },
     "check_selected_red_envelope": {
         "recognition": "TemplateMatch",
-        "template": "Red_envelope/love.png",
         "roi": [
             604,
             298,
             545,
             340
         ],
+        "template": "Red_envelope/love.png",
         "next": [
             "red_envelope_to_fire_work"
         ],
@@ -108,23 +108,23 @@
     },
     "red_envelope_to_fire_work": {
         "recognition": "OCR",
-        "expected": [
-            "立即",
-            "前往"
-        ],
         "roi": [
             965,
             535,
             314,
             184
         ],
+        "expected": [
+            "立即",
+            "前往"
+        ],
         "action": "Click",
+        "post_wait_freezes": 400,
         "next": [
             "red_envelope_in_fire_work",
             "[JumpBack]red_envelope_to_fire_work",
             "[JumpBack]get_red_envelope"
         ],
-        "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]进入烟花界面[/color]"
     },
     "red_envelope_in_fire_work": {
@@ -164,13 +164,13 @@
     },
     "get_red_envelope": {
         "recognition": "TemplateMatch",
-        "template": "Red_envelope/christmas_stocking.png",
         "roi": [
             138,
             179,
             1044,
             382
         ],
+        "template": "Red_envelope/christmas_stocking.png",
         "action": "Click",
         "next": [
             "without_red_envelope",
@@ -180,13 +180,13 @@
     },
     "without_red_envelope": {
         "recognition": "TemplateMatch",
-        "template": "Red_envelope/christmas_stocking.png",
         "roi": [
             138,
             179,
             1044,
             382
         ],
+        "template": "Red_envelope/christmas_stocking.png",
         "inverse": true,
         "focus": "[color:DeepSkyBlue]离开红包雨[/color]"
     }

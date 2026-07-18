@@ -1,68 +1,68 @@
 {
     "liveness_award": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "liveness_award_undone",
             "liveness_award_in_center_enter",
             "[JumpBack]back_main_screen"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入活跃度宝箱任务[/color]"
     },
     "liveness_award_undone": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/award_center_entry.png",
         "roi": [
             1194,
             314,
             72,
             66
         ],
-        "action": "Click",
+        "template": "SharedNode/award_center_entry.png",
         "green_mask": true,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 200,
         "next": [
             "liveness_award_in_center_enter",
             "liveness_award_not_in_center_enter",
             "liveness_award_undone"
-        ],
-        "pre_delay": 0,
-        "post_delay": 200,
-        "post_wait_freezes": 200
+        ]
     },
     "liveness_award_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_in_daily_award.png",
+        "pre_delay": 200,
+        "post_wait_freezes": 500,
+        "post_delay": 300,
         "next": [
             "liveness_award_box_1_done",
             "liveness_award_box_1_locked",
             "get_liveness_award_box_1"
-        ],
-        "pre_delay": 200,
-        "post_delay": 300,
-        "post_wait_freezes": 500
+        ]
     },
     "liveness_award_not_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/check_not_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "liveness_award_in_center_enter",
             "liveness_award_not_in_center_enter"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
     },
     "liveness_award_done": {
@@ -76,312 +76,312 @@
     },
     "get_liveness_award": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Liveness_award/award_box_10.png",
-            "Liveness_award/award_box_40.png",
-            "Liveness_award/award_box_80.png",
-            "Liveness_award/award_box_100.png"
-        ],
         "roi": [
             419,
             507,
             824,
             96
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
+        "template": [
+            "Liveness_award/award_box_10.png",
+            "Liveness_award/award_box_40.png",
+            "Liveness_award/award_box_80.png",
+            "Liveness_award/award_box_100.png"
+        ],
         "threshold": 0.9,
-        "post_wait_freezes": 300,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]领取活跃度宝箱[/color]"
     },
     "liveness_award_box_1_done": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_1_done.png",
         "roi": [
             437,
             503,
             175,
             138
         ],
+        "template": "Liveness_award/box_1_done.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "liveness_award_box_2_done",
             "liveness_award_box_2_locked",
             "get_liveness_award_box_2",
             "[JumpBack]liveness_award_background"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "get_liveness_award_box_1": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Liveness_award/award_box_10.png",
-            "Liveness_award/award_box_all.png"
-        ],
         "roi": [
             437,
             503,
             175,
             138
         ],
+        "template": [
+            "Liveness_award/award_box_10.png",
+            "Liveness_award/award_box_all.png"
+        ],
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "liveness_award_box_1_done",
             "get_liveness_award_box_1"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]领取活跃度宝箱[/color]"
     },
     "liveness_award_box_2_done": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_2_done.png",
         "roi": [
             659,
             503,
             170,
             140
         ],
+        "template": "Liveness_award/box_2_done.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "liveness_award_box_3_done",
             "liveness_award_box_3_locked",
             "get_liveness_award_box_3",
             "[JumpBack]liveness_award_background"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "get_liveness_award_box_2": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Liveness_award/award_box_40.png",
-            "Liveness_award/award_box_all.png"
-        ],
         "roi": [
             659,
             503,
             170,
             140
         ],
+        "template": [
+            "Liveness_award/award_box_40.png",
+            "Liveness_award/award_box_all.png"
+        ],
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "liveness_award_box_2_done",
             "get_liveness_award_box_2"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]领取活跃度宝箱[/color]"
     },
     "liveness_award_box_3_done": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_3_done.png",
         "roi": [
             945,
             505,
             160,
             138
         ],
+        "template": "Liveness_award/box_3_done.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "liveness_award_box_4_done",
             "liveness_award_box_4_locked",
             "get_liveness_award_box_4",
             "[JumpBack]liveness_award_background"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "get_liveness_award_box_3": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Liveness_award/award_box_80.png",
-            "Liveness_award/award_box_all.png"
-        ],
         "roi": [
             945,
             505,
             160,
             138
         ],
+        "template": [
+            "Liveness_award/award_box_80.png",
+            "Liveness_award/award_box_all.png"
+        ],
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "liveness_award_box_3_done",
             "get_liveness_award_box_3"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]领取活跃度宝箱[/color]"
     },
     "liveness_award_box_4_done": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_4_done.png",
         "roi": [
             1098,
             505,
             165,
             138
         ],
+        "template": "Liveness_award/box_4_done.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "weekly_liveness_award_undone",
             "weekly_liveness_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0
+        ]
     },
     "get_liveness_award_box_4": {
         "recognition": "TemplateMatch",
+        "roi": [
+            1098,
+            505,
+            165,
+            138
+        ],
         "template": [
             "Liveness_award/award_box_100.png",
             "Liveness_award/award_box_all.png"
         ],
-        "roi": [
-            1098,
-            505,
-            165,
-            138
-        ],
         "method": 10001,
         "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "liveness_award_box_4_done",
             "get_liveness_award_box_4"
         ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]领取活跃度宝箱[/color]"
     },
     "liveness_award_box_1_locked": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_1_locked.png",
         "roi": [
             437,
             503,
             175,
             138
         ],
+        "template": "Liveness_award/box_1_locked.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 300,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "weekly_liveness_award_undone",
             "weekly_liveness_award_done"
-        ],
-        "pre_delay": 300,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "liveness_award_box_2_locked": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_2_locked.png",
         "roi": [
             659,
             503,
             170,
             140
         ],
+        "template": "Liveness_award/box_2_locked.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "weekly_liveness_award_undone",
             "weekly_liveness_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "liveness_award_box_3_locked": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_3_locked.png",
         "roi": [
             945,
             505,
             160,
             138
         ],
+        "template": "Liveness_award/box_3_locked.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "weekly_liveness_award_undone",
             "weekly_liveness_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "liveness_award_box_4_locked": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/box_4_locked.png",
         "roi": [
             1098,
             505,
             165,
             138
         ],
+        "template": "Liveness_award/box_4_locked.png",
         "method": 10001,
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
             "weekly_liveness_award_undone",
             "weekly_liveness_award_done"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        ]
     },
     "liveness_award_background": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/background.png",
         "roi": [
             271,
             636,
             219,
             83
         ],
+        "template": "Liveness_award/background.png",
         "threshold": 0.9,
-        "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
-        "post_wait_freezes": 200
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0
     },
     "weekly_liveness_award_undone": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/weekly_award_undone.png",
         "roi": [
             1125,
             633,
             145,
             87
         ],
+        "template": "Liveness_award/weekly_award_undone.png",
         "action": "Click",
+        "post_wait_freezes": 300,
         "next": [
             "confirm_weekly_liveness_award",
             "weekly_liveness_award_undone"
         ],
-        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]周度500活跃奖励可领取[/color]"
     },
     "confirm_weekly_liveness_award": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/confirm_weekly_award.png",
         "roi": [
             597,
             431,
             91,
             58
         ],
+        "template": "Liveness_award/confirm_weekly_award.png",
         "action": "Click",
         "next": [
             "back_main_screen_and_stop"
@@ -390,13 +390,13 @@
     },
     "weekly_liveness_award_done": {
         "recognition": "TemplateMatch",
-        "template": "Liveness_award/weekly_award_undone.png",
         "roi": [
             1125,
             633,
             145,
             87
         ],
+        "template": "Liveness_award/weekly_award_undone.png",
         "inverse": true,
         "next": [
             "back_main_screen_and_stop"

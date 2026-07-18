@@ -29,7 +29,7 @@ def load_keybindings(keybind_path: str) -> dict:
         if not keybind_file.exists():
             raise FileNotFoundError(f"文件不存在：{keybind_path}")
 
-        with open(keybind_file, "r", encoding="utf-8") as f:
+        with open(keybind_file, encoding="utf-8") as f:
             keybind_data = json.load(f)
 
         # 构建技能名到位置信息的映射
@@ -111,7 +111,7 @@ def replace_keybindings(keybind_path: str, keybind_type: str) -> None:
             return
 
         # 3. 读取merged.json
-        with open(MERGED_JSON_PATH, "r", encoding="utf-8") as f:
+        with open(MERGED_JSON_PATH, encoding="utf-8") as f:
             merged_data = json.load(f)
 
         # 4. 替换所有swipes中的技能位置
@@ -151,9 +151,7 @@ def main():
     # 验证Python版本
     python_version = sys.version_info
     if python_version < (3, 12):
-        print(
-            f"⚠️  警告：当前Python版本为 {python_version.major}.{python_version.minor}，建议使用3.12及以上版本！"
-        )
+        print(f"⚠️  警告：当前Python版本为 {python_version.major}.{python_version.minor}，建议使用3.12及以上版本！")
         print("   程序仍会尝试运行，但可能存在兼容性问题。")
         input("\n按Enter键继续...")
 

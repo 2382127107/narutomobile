@@ -1,25 +1,25 @@
 {
-  "name": "man",
-  "license": "AGPL-3.0-or-later",
-  "scripts": {
-    "typecheck:py": "uv run --frozen pyright",
-    "lint:py": "uv run --frozen ruff check .",
-    "format": "prettier --write . && pnpm format:py && pnpm format:md",
-    "format:check": "prettier --check .",
-    "format:py": "uv run --frozen ruff format .",
-    "lint:md": "markdownlint-cli2 --config docs/.markdownlint.yaml \"docs/**/*.md\" \"README.md\" \"#**/node_modules\"",
-    "format:md": "markdownlint-cli2 --fix --config docs/.markdownlint.yaml \"docs/**/*.md\" \"README.md\" \"#**/node_modules\"",
-    "check": "pnpm format:check && pnpm check:maa && pnpm lint:md",
-    "check:maa": "pnpm exec maa-tools check",
-    "check:py": "pnpm lint:py && pnpm typecheck:py && pnpm test:py"
-  },
-  "devDependencies": {
-    "@nekosu/maa-tools": "^1.0.24",
-    "@nekosu/prettier-plugin-maafw-sort": "^1.0.5",
-    "markdownlint-cli2": "^0.13.0",
-    "prettier": "^3.9.5",
-    "prettier-plugin-multiline-arrays": "^4.1.10"
-  },
-  "private": true,
-  "packageManager": "pnpm@11.13.1"
+    "name": "man",
+    "license": "AGPL-3.0-or-later",
+    "scripts": {
+        "typecheck:py": "uv run --frozen pyright",
+        "lint:py": "uv run --frozen ruff check .",
+        "format": "prettier --write . && pnpm format:py && pnpm format:md",
+        "format:check": "prettier --check .",
+        "format:py": "uv run --frozen ruff format .",
+        "lint:md": "markdownlint-cli2 --config docs/.markdownlint.yaml \"docs/**/*.md\" \"README.md\" \"#**/node_modules\"",
+        "format:md": "markdownlint-cli2 --fix --config docs/.markdownlint.yaml \"docs/**/*.md\" \"README.md\" \"#**/node_modules\"",
+        "check": "pnpm format:check && pnpm check:maa && pnpm lint:md",
+        "check:maa": "pnpm exec maa-tools check",
+        "check:py": "pnpm lint:py && pnpm typecheck:py && pnpm test:py"
+    },
+    "devDependencies": {
+        "@nekosu/maa-tools": "^1.0.24",
+        "@nekosu/prettier-plugin-maafw-sort": "^1.0.5",
+        "markdownlint-cli2": "^0.13.0",
+        "prettier": "^3.9.5",
+        "prettier-plugin-multiline-arrays": "^4.1.10"
+    },
+    "private": true,
+    "packageManager": "pnpm@11.13.1"
 }

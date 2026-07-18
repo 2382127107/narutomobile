@@ -1,6 +1,5 @@
 import json
 import re
-from typing import Dict, List, Optional
 
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
@@ -10,7 +9,7 @@ from numpy import ndarray
 from utils.logger import logger
 
 # 商店配置
-SHOP_CONFIGS: Dict[str, dict] = {
+SHOP_CONFIGS: dict[str, dict] = {
     "jade_child_shop": {
         "total_roi": [1019, 17, 128, 37],
         "slot_1_anchor": "jade_child_shop_slot_1",
@@ -62,9 +61,7 @@ SHOP_CONFIGS: Dict[str, dict] = {
 class Shopping(CustomRecognition):
     """商店兑换"""
 
-    def analyze(
-        self, context: Context, argv: CustomRecognition.AnalyzeArg
-    ) -> CustomRecognition.AnalyzeResult:
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
         context.clear_hit_count("shop_swipe_back_for_good")
         param = json.loads(argv.custom_recognition_param)
         shop_type = param.get("shop_type", "root_shop")
@@ -88,7 +85,7 @@ class Shopping(CustomRecognition):
         context: Context,
         image: ndarray,
         config: dict,
-    ) -> Optional[List[int]]:
+    ) -> list[int] | None:
         """
         获取商店信息,返回可购买商品的价格区域坐标[x, y, w, h],否则返回 None;
         """
@@ -132,9 +129,7 @@ class Shopping(CustomRecognition):
 
         # 解析限购文本
         limit_roi = [best_box[0] + 10, best_box[1] + 87, 192, 138]
-        limit_detail = context.run_recognition(
-            "custom_ocr", image, {"custom_ocr": {"roi": limit_roi}}
-        )
+        limit_detail = context.run_recognition("custom_ocr", image, {"custom_ocr": {"roi": limit_roi}})
         limit_text = (
             str(
                 limit_detail.best_result.text  # ty:ignore[unresolved-attribute]
@@ -149,9 +144,7 @@ class Shopping(CustomRecognition):
 
         # 解析货币数量
         total_roi = config["total_roi"]
-        total_detail = context.run_recognition(
-            "custom_ocr", image, {"custom_ocr": {"roi": total_roi}}
-        )
+        total_detail = context.run_recognition("custom_ocr", image, {"custom_ocr": {"roi": total_roi}})
         total_text = (
             str(
                 total_detail.best_result.text  # ty:ignore[unresolved-attribute]
@@ -167,9 +160,7 @@ class Shopping(CustomRecognition):
             total_value *= w
         # 价格解析
         price_roi = [best_box[0] + 42, best_box[1] + 179, 123, 54]
-        price_detail = context.run_recognition(
-            "custom_ocr", image, {"custom_ocr": {"roi": price_roi}}
-        )
+        price_detail = context.run_recognition("custom_ocr", image, {"custom_ocr": {"roi": price_roi}})
         if price_detail and price_detail.hit:
             best = max(
                 price_detail.all_results,
@@ -237,7 +228,7 @@ class Shopping(CustomRecognition):
         logger.warning(f"限购文本格式无法明确判断: '{limit_text}'")
         return False
 
-    def extract_number(self, text: str) -> Optional[int]:
+    def extract_number(self, text: str) -> int | None:
         """从文本中提取第一个连续数字并返回整数，失败返回 None"""
         if not text:
             return None

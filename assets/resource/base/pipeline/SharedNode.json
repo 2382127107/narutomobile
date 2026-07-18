@@ -1,1340 +1,1340 @@
 {
-  "back_main_screen_before_task": {
-    "max_hit": 1,
-    "pre_delay": 0,
-    "post_delay": 0,
-    "next": "back_main_screen"
-  },
-  "back_and_stop_after_task_done": {
-    "max_hit": 1,
-    "pre_delay": 0,
-    "post_delay": 0,
-    "next": "back_main_screen_and_stop",
-    "focus": "任务已完成"
-  },
-  "back_main_screen_and_stop": {
-    "next": [
-      "[JumpBack]back_main_screen",
-      "check_main_screen_and_stop"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "back_main_screen": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "Startup/main_green_masked.png"
-    ],
-    "method": 10001,
-    "inverse": true,
-    "threshold": 0.9,
-    "action": "DoNothing",
-    "green_mask": true,
-    "next": [
-      "[JumpBack]leave_the_team",
-      "[JumpBack]check_has_x",
-      "[JumpBack]close_notice",
-      "check_main_screen",
-      "[JumpBack]weekly_sign",
-      "[JumpBack]close_chat",
-      "[JumpBack]close_friend_rank",
-      "[JumpBack]direct_hit_quit",
-      "[JumpBack]naruto_club_x",
-      "[JumpBack]text_notice",
-      "[JumpBack]group_notice",
-      "[JumpBack]im_come_back",
-      "[JumpBack]im_come_back_award",
-      "[JumpBack]christmas_stocking",
-      "[JumpBack]level_up",
-      "[JumpBack]shut_social_media"
-    ],
-    "timeout": 5000,
-    "on_error": [
-      "retry_failed"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:darkgray]尝试返回主页面[/color]"
-  },
-  "group_notice": {
-    "recognition": "Or",
-    "any_of": [
-      {
-        "sub_name": "group_domination_notice",
-        "recognition": "OCR",
-        "expected": [
-          "组织争霸",
-          "开赛了"
-        ],
-        "roi": [
-          548,
-          340,
-          483,
-          56
-        ]
-      }
-    ],
-    "action": "Click",
-    "target": [
-      1205,
-      32,
-      39,
-      34
-    ],
-    "pre_delay": 0,
-    "post_delay": 500
-  },
-  "leave_the_team": {
-    "recognition": "OCR",
-    "expected": [
-      "离开队伍"
-    ],
-    "roi": [
-      426,
-      267,
-      420,
-      111
-    ],
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 500,
-    "next": "confirm_tip",
-    "focus": "[color:darkgray]离开当前队伍[/color]"
-  },
-  "confirm_tip": {
-    "recognition": "OCR",
-    "expected": [
-      "确定"
-    ],
-    "roi": [
-      303,
-      263,
-      696,
-      456
-    ],
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 500
-  },
-  "christmas_stocking": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/christmas_stocking.png",
-    "action": "Click",
-    "enabled": false
-  },
-  "check_has_x": {
-    "recognition": "Or",
-    "any_of": [
-      {
-        "sub_name": "big_x",
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/big_x.png",
-        "green_mask": true,
-        "threshold": 0.6,
-        "roi": [
-          610,
-          0,
-          670,
-          229
-        ]
-      },
-      {
-        "sub_name": "announcement_x",
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/green_masked_x.png",
-        "green_mask": true,
-        "threshold": 0.6,
-        "roi": [
-          610,
-          0,
-          670,
-          229
-        ]
-      },
-      {
-        "sub_name": "right_top_x",
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/x_right_top.png",
-        "green_mask": true,
-        "threshold": 0.6,
-        "roi": [
-          610,
-          0,
-          670,
-          229
-        ]
-      },
-      {
-        "sub_name": "masked_x",
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/mask_x.png",
-        "green_mask": true,
-        "threshold": 0.68,
-        "roi": [
-          610,
-          0,
-          670,
-          229
-        ]
-      },
-      {
-        "sub_name": "advanture_x",
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/advanture_x.png",
-        "green_mask": true,
-        "threshold": 0.68,
-        "roi": [
-          610,
-          0,
-          670,
-          229
-        ]
-      }
-    ],
-    "pre_delay": 0,
-    "action": "Click",
-    "post_wait_freezes": 500,
-    "post_delay": 200
-  },
-  "close_friend_rank": {
-    "recognition": "TemplateMatch",
-    "template": "Startup/friend_rank.png",
-    "roi": [
-      738,
-      629,
-      93,
-      56
-    ],
-    "action": "Click",
-    "focus": "[color:DeepSkyBlue]关闭好友排名[/color]"
-  },
-  "close_chat": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/chat_close_button.png",
-    "roi": [
-      807,
-      295,
-      53,
-      104
-    ],
-    "action": "Click"
-  },
-  "loading_page": {
-    "recognition": "OCR",
-    "expected": [
-      "资源",
-      "加载中"
-    ],
-    "roi": [
-      483,
-      594,
-      303,
-      125
-    ]
-  },
-  "award_center_enter": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/award_center_entry.png",
-    "roi": [
-      1174,
-      302,
-      99,
-      105
-    ],
-    "threshold": 0.8,
-    "method": 10001,
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 300,
-    "next": [
-      "[JumpBack]goto_daily_award",
-      "already_in_daily_award",
-      "[JumpBack]close_chat",
-      "award_center_enter"
-    ]
-  },
-  "goto_daily_award": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/check_not_in_daily_award.png",
-    "roi": [
-      37,
-      172,
-      130,
-      47
-    ],
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 200
-  },
-  "already_in_daily_award": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/check_in_daily_award.png",
-    "roi": [
-      37,
-      172,
-      130,
-      47
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "$doc": "DoNothing and JumpBack to ac entry of task"
-  },
-  "swipe_for_award_center_find": {
-    "action": "Swipe",
-    "begin": [
-      1133,
-      169,
-      56,
-      61
-    ],
-    "end": [
-      542,
-      169,
-      56,
-      61
-    ],
-    "duration": 200,
-    "end_hold": 100,
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 200
-  },
-  "award_center_find_end": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/center_entry_end.png",
-    "roi": [
-      180,
-      384,
-      1100,
-      118
-    ],
-    "next": "back_main_screen_and_stop",
-    "focus": "[color:DeepSkyBlue]当前任务已完成[/color]"
-  },
-  "weekly_sign": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/weekly_sign.png",
-    "roi": [
-      533,
-      555,
-      217,
-      96
-    ],
-    "action": "Click",
-    "post_wait_freezes": 100,
-    "focus": "[color:DeepSkyBlue]进行周度签到[/color]"
-  },
-  "im_come_back": {
-    "recognition": "OCR",
-    "expected": "我回来了",
-    "action": "Click",
-    "roi": [
-      496,
-      560,
-      324,
-      160
-    ],
-    "next": [
-      "im_come_back_award"
-    ],
-    "timeout": 3000,
-    "focus": "[color:DeepSkyBlue]点击我回来了[/color]"
-  },
-  "im_come_back_award": {
-    "recognition": "OCR",
-    "expected": "领取礼物",
-    "action": "Click",
-    "roi": [
-      470,
-      441,
-      351,
-      191
-    ],
-    "focus": "[color:DeepSkyBlue]点击领取礼物[/color]"
-  },
-  "text_notice": {
-    "recognition": "Or",
-    "any_of": [
-      {
-        "sub_name": "next_step",
-        "recognition": "OCR",
-        "expected": [
-          "下一步"
-        ],
-        "roi": [
-          349,
-          497,
-          640,
-          222
-        ]
-      },
-      {
-        "sub_name": "seasonal_mission_notice",
-        "recognition": "OCR",
-        "expected": [
-          "点击继续"
-        ],
-        "roi": [
-          1037,
-          19,
-          172,
-          59
-        ]
-      }
-    ],
-    "action": "Click"
-  },
-  "direct_hit_quit": {
-    "recognition": "OCR",
-    "expected": [
-      "点击"
-    ],
-    "roi": [
-      480,
-      572,
-      316,
-      135
-    ],
-    "action": "Click",
-    "post_wait_freezes": 500,
-    "$doc": "点击任意地方退出"
-  },
-  "check_main_screen_and_stop": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "Startup/main_green_masked.png"
-    ],
-    "method": 10001,
-    "threshold": 0.9,
-    "action": "StopTask",
-    "green_mask": true,
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "check_main_screen": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "Startup/main_green_masked.png"
-    ],
-    "threshold": 0.9,
-    "method": 10001,
-    "green_mask": true,
-    "pre_delay": 0,
-    "action": "DoNothing",
-    "post_delay": 0
-  },
-  "main_screen_swipe_to_right": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "Startup/main_green_masked.png"
-    ],
-    "action": "Swipe",
-    "begin": [
-      742,
-      331,
-      71,
-      70
-    ],
-    "end": [
-      446,
-      335,
-      75,
-      79
-    ],
-    "duration": 500,
-    "post_delay": 500,
-    "green_mask": true,
-    "$doc": "在主界面向右滑动"
-  },
-  "main_screen_swipe_to_left": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "Startup/main_green_masked.png"
-    ],
-    "action": "Swipe",
-    "begin": [
-      446,
-      335,
-      75,
-      79
-    ],
-    "end": [
-      742,
-      331,
-      71,
-      70
-    ],
-    "duration": 500,
-    "post_delay": 500,
-    "green_mask": true,
-    "$doc": "在主界面向左滑动"
-  },
-  "naruto_club_x": {
-    "recognition": "TemplateMatch",
-    "template": "Naruto_club/close_club_button.png",
-    "roi": [
-      1142,
-      0,
-      77,
-      58
-    ],
-    "action": "Click",
-    "post_delay": 1000,
-    "focus": "[color:DeepSkyBlue]关闭情报社[/color]"
-  },
-  "debug_stop": {
-    "action": "StopTask"
-  },
-  "get_title": {
-    "recognition": "OCR",
-    "expected": "获得",
-    "roi": [
-      243,
-      594,
-      118,
-      38
-    ],
-    "action": "Click",
-    "focus": "获得称号",
-    "next": [
-      "[JumpBack]this_week_nintou_title",
-      "[JumpBack]this_week_fighting_title"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 200,
-    "timeout": 3000
-  },
-  "this_week_nintou_title": {
-    "recognition": "OCR",
-    "expected": "下一步",
-    "roi": [
-      567,
-      641,
-      145,
-      56
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 200,
-    "action": "Click",
-    "focus": "获得忍道称号"
-  },
-  "this_week_fighting_title": {
-    "recognition": "OCR",
-    "expected": "确定",
-    "roi": [
-      375,
-      644,
-      102,
-      47
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 200,
-    "action": "Click",
-    "focus": "获得格斗称号"
-  },
-  "close_notice": {
-    "recognition": {
-      "type": "TemplateMatch",
-      "param": {
-        "template": "SharedNode/notice_x.png",
-        "threshold": 0.85,
-        "roi": [
-          180,
-          123,
-          905,
-          325
-        ]
-      }
+    "back_main_screen_before_task": {
+        "max_hit": 1,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen"
     },
-    "action": "Click",
-    "focus": "关闭气泡弹窗",
-    "next": [
-      "ensure_to_close",
-      "close_notice",
-      "back_main_screen"
-    ],
-    "timeout": 4000,
-    "pre_delay": 0,
-    "post_delay": 800
-  },
-  "ensure_to_close": {
-    "recognition": {
-      "type": "OCR",
-      "param": {
-        "roi": [
-          593,
-          381,
-          151,
-          44
-        ],
-        "expected": "关闭所有"
-      }
+    "back_and_stop_after_task_done": {
+        "max_hit": 1,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop",
+        "focus": "任务已完成"
     },
-    "action": {
-      "type": "Click",
-      "param": {
-        "target": [
-          554,
-          390,
-          26,
-          27
+    "back_main_screen_and_stop": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]back_main_screen",
+            "check_main_screen_and_stop"
         ]
-      }
     },
-    "next": "click_ensure_close"
-  },
-  "click_ensure_close": {
-    "recognition": {
-      "type": "OCR",
-      "param": {
-        "roi": [
-          455,
-          441,
-          111,
-          51
-        ],
-        "expected": "确定"
-      }
-    },
-    "action": {
-      "type": "Click"
-    }
-  },
-  "open_ninja_guide": {
-    "recognition": "Or",
-    "any_of": [
-      {
-        "sub_name": "图像",
+    "back_main_screen": {
         "recognition": "TemplateMatch",
         "template": [
-          "SharedNode/guide.png",
-          "SharedNode/back_to_konoha.png",
-          "SharedNode/ninja_tools.png",
-          "SharedNode/rich_room_ninja_guide.png"
+            "Startup/main_green_masked.png"
         ],
-        "roi": [
-          934,
-          597,
-          178,
-          123
+        "green_mask": true,
+        "method": 10001,
+        "threshold": 0.9,
+        "inverse": true,
+        "pre_delay": 0,
+        "action": "DoNothing",
+        "post_delay": 0,
+        "timeout": 5000,
+        "next": [
+            "[JumpBack]leave_the_team",
+            "[JumpBack]check_has_x",
+            "[JumpBack]close_notice",
+            "check_main_screen",
+            "[JumpBack]weekly_sign",
+            "[JumpBack]close_chat",
+            "[JumpBack]close_friend_rank",
+            "[JumpBack]direct_hit_quit",
+            "[JumpBack]naruto_club_x",
+            "[JumpBack]text_notice",
+            "[JumpBack]group_notice",
+            "[JumpBack]im_come_back",
+            "[JumpBack]im_come_back_award",
+            "[JumpBack]christmas_stocking",
+            "[JumpBack]level_up",
+            "[JumpBack]shut_social_media"
         ],
-        "threshold": 0.8
-      },
-      {
-        "sub_name": "文字",
+        "on_error": [
+            "retry_failed"
+        ],
+        "focus": "[color:darkgray]尝试返回主页面[/color]"
+    },
+    "group_notice": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "group_domination_notice",
+                "recognition": "OCR",
+                "roi": [
+                    548,
+                    340,
+                    483,
+                    56
+                ],
+                "expected": [
+                    "组织争霸",
+                    "开赛了"
+                ]
+            }
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1205,
+            32,
+            39,
+            34
+        ],
+        "post_delay": 500
+    },
+    "leave_the_team": {
         "recognition": "OCR",
-        "expected": [
-          "即将",
-          "开放"
-        ],
         "roi": [
-          964,
-          674,
-          116,
-          45
+            426,
+            267,
+            420,
+            111
+        ],
+        "expected": [
+            "离开队伍"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
+        "next": "confirm_tip",
+        "focus": "[color:darkgray]离开当前队伍[/color]"
+    },
+    "confirm_tip": {
+        "recognition": "OCR",
+        "roi": [
+            303,
+            263,
+            696,
+            456
+        ],
+        "expected": [
+            "确定"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0
+    },
+    "christmas_stocking": {
+        "enabled": false,
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/christmas_stocking.png",
+        "action": "Click"
+    },
+    "check_has_x": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "big_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/big_x.png",
+                "green_mask": true,
+                "threshold": 0.6
+            },
+            {
+                "sub_name": "announcement_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/green_masked_x.png",
+                "green_mask": true,
+                "threshold": 0.6
+            },
+            {
+                "sub_name": "right_top_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/x_right_top.png",
+                "green_mask": true,
+                "threshold": 0.6
+            },
+            {
+                "sub_name": "masked_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/mask_x.png",
+                "green_mask": true,
+                "threshold": 0.68
+            },
+            {
+                "sub_name": "advanture_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/advanture_x.png",
+                "green_mask": true,
+                "threshold": 0.68
+            }
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 200
+    },
+    "close_friend_rank": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            738,
+            629,
+            93,
+            56
+        ],
+        "template": "Startup/friend_rank.png",
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]关闭好友排名[/color]"
+    },
+    "close_chat": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            807,
+            295,
+            53,
+            104
+        ],
+        "template": "SharedNode/chat_close_button.png",
+        "action": "Click"
+    },
+    "loading_page": {
+        "recognition": "OCR",
+        "roi": [
+            483,
+            594,
+            303,
+            125
+        ],
+        "expected": [
+            "资源",
+            "加载中"
         ]
-      }
-    ],
-    "$doc": "这里的图标在等级较低的账号可能显示为忍具,但由于有roi所以不会误判",
-    "action": "Click",
-    "target": [
-      1001,
-      651,
-      34,
-      29
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 400
-  },
-  "level_up": {
-    "recognition": "OCR",
-    "expected": [
-      "等级达到"
-    ],
-    "roi": [
-      49,
-      348,
-      1123,
-      333
-    ],
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 200,
-    "focus": "[color:darkgray]游戏等级提升[/color]"
-  },
-  "ninja_guide_to_funtion_retry": {
-    "recognition": "OCR",
-    "expected": "即刻",
-    "roi": [
-      588,
-      330,
-      691,
-      389
-    ],
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 200
-  },
-  "unknow_error": {
-    "action": "StopTask",
-    "focus": "[color:tomato]未知原因导致卡死。[/color]"
-  },
-  "retry_failed": {
-    "pre_delay": 0,
-    "post_delay": 0,
-    "next": [
-      "try_back_main_screen",
-      "back_main_screen_failed"
-    ],
-    "focus": "[color:tomato]超过重试次数!返回主页并结束任务。[/color]"
-  },
-  "try_back_main_screen": {
-    "max_hit": 1,
-    "action": "Custom",
-    "custom_action": "RetryFailed",
-    "next": "back_main_screen_and_stop"
-  },
-  "back_main_screen_failed": {
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:tomato]尝试返回主界面失败!任务中断![/color]",
-    "action": "Custom",
-    "custom_action": "StopTaskList"
-  },
-  "exit_naruto": {
-    "action": "StopApp",
-    "package": "com.tencent.KiHan",
-    "focus": "[color:DeepSkyBlue]关闭火影忍者手游APP[/color]"
-  },
-  "battle_failed": {
-    "$doc": "如果不是要结束任务不要往这里走",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:tomato]战斗失败！[/color]",
-    "next": "back_main_screen_and_stop"
-  },
-  "ac_entry_mission_done": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/center_entry_end.png",
-    "roi": [
-      180,
-      384,
-      1100,
-      118
-    ],
-    "focus": "[color:DeepSkyBlue]任务已完成[/color]",
-    "next": "back_main_screen_and_stop"
-  },
-  "ninja_guide_in_ninja_guide": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/in_ninja_guide.png",
-    "roi": [
-      988,
-      81,
-      180,
-      78
-    ],
-    "next": [
-      "ninja_guide_find_funtion_entry",
-      "up_swipe_for_ninja_guide_find_funtion_entry_end",
-      "[JumpBack]up_swipe_for_ninja_guide_find_funtion_entry"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 300,
-    "focus": "[color:DeepSkyBlue]进入忍界指引[/color]"
-  },
-  "up_swipe_for_ninja_guide_find_funtion_entry_end": {
-    "recognition": "OCR",
-    "expected": [
-      "装备",
-      "精英"
-    ],
-    "roi": [
-      0,
-      66,
-      219,
-      627
-    ],
-    "next": [
-      "ninja_guide_find_funtion_entry",
-      "down_swipe_for_ninja_guide_find_funtion_entry_end",
-      "[JumpBack]down_swipe_for_ninja_guide_find_funtion_entry"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "down_swipe_for_ninja_guide_find_funtion_entry_end": {
-    "recognition": "OCR",
-    "expected": [
-      "忍传",
-      "羁绊"
-    ],
-    "replace": [
-      [
-        "忍",
-        "双"
-      ],
-      [
-        "忍",
-        "丑"
-      ]
-    ],
-    "roi": [
-      0,
-      66,
-      219,
-      627
-    ],
-    "next": [
-      "back_main_screen_and_stop"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "up_swipe_for_ninja_guide_find_funtion_entry": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/in_ninja_guide.png",
-    "roi": [
-      988,
-      81,
-      180,
-      78
-    ],
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "NonlinearSwipe",
-        "custom_action_param": {
-          "start_x": 100,
-          "start_y": 150,
-          "end_x": 100,
-          "end_y": 450,
-          "after_swipe_delay": 100
-        }
-      }
     },
-    "max_hit": 15
-  },
-  "down_swipe_for_ninja_guide_find_funtion_entry": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/in_ninja_guide.png",
-    "roi": [
-      988,
-      81,
-      180,
-      78
-    ],
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "NonlinearSwipe",
-        "custom_action_param": {
-          "start_x": 100,
-          "start_y": 450,
-          "end_x": 100,
-          "end_y": 150,
-          "after_swipe_delay": 100
-        }
-      }
+    "award_center_enter": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1174,
+            302,
+            99,
+            105
+        ],
+        "template": "SharedNode/award_center_entry.png",
+        "method": 10001,
+        "threshold": 0.8,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]goto_daily_award",
+            "already_in_daily_award",
+            "[JumpBack]close_chat",
+            "award_center_enter"
+        ]
     },
-    "max_hit": 15
-  },
-  "ninja_guide_find_funtion_entry": {
-    "recognition": "OCR",
-    "expected": [
-      "装备"
-    ],
-    "roi": [
-      0,
-      66,
-      219,
-      627
-    ],
-    "action": "Click",
-    "next": [
-      "ninja_guide_in_funtion_entry",
-      "ninja_guide_find_funtion_entry"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]找到功能入口[/color]"
-  },
-  "ninja_guide_in_funtion_entry": {
-    "recognition": "OCR",
-    "expected": [
-      "装备"
-    ],
-    "roi": [
-      514,
-      85,
-      212,
-      72
-    ],
-    "next": [
-      "ninja_guide_to_funtion_entry",
-      "ninja_guide_to_funtion_entry_not_open"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]选中功能入口[/color]"
-  },
-  "ninja_guide_to_funtion_entry": {
-    "recognition": "OCR",
-    "expected": [
-      "即刻"
-    ],
-    "roi": [
-      852,
-      587,
-      138,
-      51
-    ],
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 300
-  },
-  "ninja_guide_to_funtion_entry_not_open": {
-    "recognition": "OCR",
-    "expected": [
-      "冒险"
-    ],
-    "roi": [
-      852,
-      587,
-      138,
-      51
-    ],
-    "next": [
-      "back_main_screen_and_stop"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]功能还没解锁[/color]"
-  },
-  "ninja_guide_returning_player": {
-    "recognition": "OCR",
-    "expected": [
-      "回流"
-    ],
-    "roi": [
-      0,
-      0,
-      195,
-      285
-    ],
-    "next": [
-      "ninja_guide_returning_player_to_ninja_guide",
-      "ninja_guide_returning_player_in_ninja_guide"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]进入回归版忍界指引[/color]"
-  },
-  "ninja_guide_returning_player_to_ninja_guide": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/ninja_guide_returning_player.png",
-    "roi": [
-      0,
-      577,
-      205,
-      142
-    ],
-    "action": "Click",
-    "next": [
-      "ninja_guide_returning_player_in_ninja_guide",
-      "ninja_guide_returning_player_to_ninja_guide"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "post_wait_freezes": 300
-  },
-  "ninja_guide_returning_player_in_ninja_guide": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
-    "roi": [
-      1057,
-      108,
-      222,
-      69
-    ],
-    "next": [
-      "ninja_guide_returning_player_find_funtion_entry",
-      "up_swipe_for_ninja_guide_returning_player_find_funtion_entry_end",
-      "[JumpBack]up_swipe_for_ninja_guide_returning_player_find_funtion_entry"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "up_swipe_for_ninja_guide_returning_player_find_funtion_entry_end": {
-    "recognition": "OCR",
-    "expected": [
-      "装备",
-      "精英"
-    ],
-    "roi": [
-      209,
-      88,
-      200,
-      580
-    ],
-    "next": [
-      "ninja_guide_returning_player_find_funtion_entry",
-      "down_swipe_for_ninja_guide_returning_player_find_funtion_entry_end",
-      "[JumpBack]down_swipe_for_ninja_guide_returning_player_find_funtion_entry"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "down_swipe_for_ninja_guide_returning_player_find_funtion_entry_end": {
-    "recognition": "OCR",
-    "expected": [
-      "忍传",
-      "羁绊"
-    ],
-    "replace": [
-      [
-        "忍",
-        "双"
-      ],
-      [
-        "忍",
-        "丑"
-      ]
-    ],
-    "roi": [
-      209,
-      88,
-      200,
-      580
-    ],
-    "next": [
-      "back_main_screen_and_stop"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "up_swipe_for_ninja_guide_returning_player_find_funtion_entry": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
-    "roi": [
-      1057,
-      108,
-      222,
-      69
-    ],
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "NonlinearSwipe",
-        "custom_action_param": {
-          "start_x": 300,
-          "start_y": 150,
-          "end_x": 300,
-          "end_y": 400,
-          "after_swipe_delay": 100
-        }
-      }
+    "goto_daily_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0
     },
-    "max_hit": 15
-  },
-  "down_swipe_for_ninja_guide_returning_player_find_funtion_entry": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
-    "roi": [
-      1057,
-      108,
-      222,
-      69
-    ],
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "NonlinearSwipe",
-        "custom_action_param": {
-          "start_x": 300,
-          "start_y": 400,
-          "end_x": 300,
-          "end_y": 150,
-          "after_swipe_delay": 100
+    "already_in_daily_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "template": "SharedNode/check_in_daily_award.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "$doc": "DoNothing and JumpBack to ac entry of task"
+    },
+    "swipe_for_award_center_find": {
+        "pre_delay": 0,
+        "action": "Swipe",
+        "begin": [
+            1133,
+            169,
+            56,
+            61
+        ],
+        "end": [
+            542,
+            169,
+            56,
+            61
+        ],
+        "end_hold": 100,
+        "duration": 200,
+        "post_wait_freezes": 200,
+        "post_delay": 0
+    },
+    "award_center_find_end": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            180,
+            384,
+            1100,
+            118
+        ],
+        "template": "SharedNode/center_entry_end.png",
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]当前任务已完成[/color]"
+    },
+    "weekly_sign": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            533,
+            555,
+            217,
+            96
+        ],
+        "template": "SharedNode/weekly_sign.png",
+        "action": "Click",
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]进行周度签到[/color]"
+    },
+    "im_come_back": {
+        "recognition": "OCR",
+        "roi": [
+            496,
+            560,
+            324,
+            160
+        ],
+        "expected": "我回来了",
+        "action": "Click",
+        "timeout": 3000,
+        "next": [
+            "im_come_back_award"
+        ],
+        "focus": "[color:DeepSkyBlue]点击我回来了[/color]"
+    },
+    "im_come_back_award": {
+        "recognition": "OCR",
+        "roi": [
+            470,
+            441,
+            351,
+            191
+        ],
+        "expected": "领取礼物",
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]点击领取礼物[/color]"
+    },
+    "text_notice": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "next_step",
+                "recognition": "OCR",
+                "roi": [
+                    349,
+                    497,
+                    640,
+                    222
+                ],
+                "expected": [
+                    "下一步"
+                ]
+            },
+            {
+                "sub_name": "seasonal_mission_notice",
+                "recognition": "OCR",
+                "roi": [
+                    1037,
+                    19,
+                    172,
+                    59
+                ],
+                "expected": [
+                    "点击继续"
+                ]
+            }
+        ],
+        "action": "Click"
+    },
+    "direct_hit_quit": {
+        "recognition": "OCR",
+        "roi": [
+            480,
+            572,
+            316,
+            135
+        ],
+        "expected": [
+            "点击"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "$doc": "点击任意地方退出"
+    },
+    "check_main_screen_and_stop": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Startup/main_green_masked.png"
+        ],
+        "green_mask": true,
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "StopTask",
+        "post_delay": 0
+    },
+    "check_main_screen": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Startup/main_green_masked.png"
+        ],
+        "green_mask": true,
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "DoNothing",
+        "post_delay": 0
+    },
+    "main_screen_swipe_to_right": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Startup/main_green_masked.png"
+        ],
+        "green_mask": true,
+        "action": "Swipe",
+        "begin": [
+            742,
+            331,
+            71,
+            70
+        ],
+        "end": [
+            446,
+            335,
+            75,
+            79
+        ],
+        "duration": 500,
+        "post_delay": 500,
+        "$doc": "在主界面向右滑动"
+    },
+    "main_screen_swipe_to_left": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Startup/main_green_masked.png"
+        ],
+        "green_mask": true,
+        "action": "Swipe",
+        "begin": [
+            446,
+            335,
+            75,
+            79
+        ],
+        "end": [
+            742,
+            331,
+            71,
+            70
+        ],
+        "duration": 500,
+        "post_delay": 500,
+        "$doc": "在主界面向左滑动"
+    },
+    "naruto_club_x": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1142,
+            0,
+            77,
+            58
+        ],
+        "template": "Naruto_club/close_club_button.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]关闭情报社[/color]"
+    },
+    "debug_stop": {
+        "action": "StopTask"
+    },
+    "get_title": {
+        "recognition": "OCR",
+        "roi": [
+            243,
+            594,
+            118,
+            38
+        ],
+        "expected": "获得",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "[JumpBack]this_week_nintou_title",
+            "[JumpBack]this_week_fighting_title"
+        ],
+        "focus": "获得称号"
+    },
+    "this_week_nintou_title": {
+        "recognition": "OCR",
+        "roi": [
+            567,
+            641,
+            145,
+            56
+        ],
+        "expected": "下一步",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "focus": "获得忍道称号"
+    },
+    "this_week_fighting_title": {
+        "recognition": "OCR",
+        "roi": [
+            375,
+            644,
+            102,
+            47
+        ],
+        "expected": "确定",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "focus": "获得格斗称号"
+    },
+    "close_notice": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    180,
+                    123,
+                    905,
+                    325
+                ],
+                "template": "SharedNode/notice_x.png",
+                "threshold": 0.85
+            }
+        },
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 800,
+        "timeout": 4000,
+        "next": [
+            "ensure_to_close",
+            "close_notice",
+            "back_main_screen"
+        ],
+        "focus": "关闭气泡弹窗"
+    },
+    "ensure_to_close": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    593,
+                    381,
+                    151,
+                    44
+                ],
+                "expected": "关闭所有"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    554,
+                    390,
+                    26,
+                    27
+                ]
+            }
+        },
+        "next": "click_ensure_close"
+    },
+    "click_ensure_close": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    455,
+                    441,
+                    111,
+                    51
+                ],
+                "expected": "确定"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
-      }
+    },
+    "open_ninja_guide": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "图像",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    934,
+                    597,
+                    178,
+                    123
+                ],
+                "template": [
+                    "SharedNode/guide.png",
+                    "SharedNode/back_to_konoha.png",
+                    "SharedNode/ninja_tools.png",
+                    "SharedNode/rich_room_ninja_guide.png"
+                ],
+                "threshold": 0.8
+            },
+            {
+                "sub_name": "文字",
+                "recognition": "OCR",
+                "roi": [
+                    964,
+                    674,
+                    116,
+                    45
+                ],
+                "expected": [
+                    "即将",
+                    "开放"
+                ]
+            }
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1001,
+            651,
+            34,
+            29
+        ],
+        "post_wait_freezes": 400,
+        "post_delay": 0,
+        "$doc": "这里的图标在等级较低的账号可能显示为忍具,但由于有roi所以不会误判"
+    },
+    "level_up": {
+        "recognition": "OCR",
+        "roi": [
+            49,
+            348,
+            1123,
+            333
+        ],
+        "expected": [
+            "等级达到"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "focus": "[color:darkgray]游戏等级提升[/color]"
+    },
+    "ninja_guide_to_funtion_retry": {
+        "recognition": "OCR",
+        "roi": [
+            588,
+            330,
+            691,
+            389
+        ],
+        "expected": "即刻",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0
+    },
+    "unknow_error": {
+        "action": "StopTask",
+        "focus": "[color:tomato]未知原因导致卡死。[/color]"
+    },
+    "retry_failed": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "try_back_main_screen",
+            "back_main_screen_failed"
+        ],
+        "focus": "[color:tomato]超过重试次数!返回主页并结束任务。[/color]"
+    },
+    "try_back_main_screen": {
+        "max_hit": 1,
+        "action": "Custom",
+        "custom_action": "RetryFailed",
+        "next": "back_main_screen_and_stop"
+    },
+    "back_main_screen_failed": {
+        "pre_delay": 0,
+        "action": "Custom",
+        "custom_action": "StopTaskList",
+        "post_delay": 0,
+        "focus": "[color:tomato]尝试返回主界面失败!任务中断![/color]"
+    },
+    "exit_naruto": {
+        "action": "StopApp",
+        "package": "com.tencent.KiHan",
+        "focus": "[color:DeepSkyBlue]关闭火影忍者手游APP[/color]"
+    },
+    "battle_failed": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:tomato]战斗失败！[/color]",
+        "$doc": "如果不是要结束任务不要往这里走"
+    },
+    "ac_entry_mission_done": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            180,
+            384,
+            1100,
+            118
+        ],
+        "template": "SharedNode/center_entry_end.png",
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]任务已完成[/color]"
+    },
+    "ninja_guide_in_ninja_guide": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            988,
+            81,
+            180,
+            78
+        ],
+        "template": "SharedNode/in_ninja_guide.png",
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_find_funtion_entry",
+            "up_swipe_for_ninja_guide_find_funtion_entry_end",
+            "[JumpBack]up_swipe_for_ninja_guide_find_funtion_entry"
+        ],
+        "focus": "[color:DeepSkyBlue]进入忍界指引[/color]"
+    },
+    "up_swipe_for_ninja_guide_find_funtion_entry_end": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            66,
+            219,
+            627
+        ],
+        "expected": [
+            "装备",
+            "精英"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_find_funtion_entry",
+            "down_swipe_for_ninja_guide_find_funtion_entry_end",
+            "[JumpBack]down_swipe_for_ninja_guide_find_funtion_entry"
+        ]
+    },
+    "down_swipe_for_ninja_guide_find_funtion_entry_end": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            66,
+            219,
+            627
+        ],
+        "expected": [
+            "忍传",
+            "羁绊"
+        ],
+        "replace": [
+            [
+                "忍",
+                "双"
+            ],
+            [
+                "忍",
+                "丑"
+            ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
+    },
+    "up_swipe_for_ninja_guide_find_funtion_entry": {
+        "max_hit": 15,
+        "recognition": "TemplateMatch",
+        "roi": [
+            988,
+            81,
+            180,
+            78
+        ],
+        "template": "SharedNode/in_ninja_guide.png",
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NonlinearSwipe",
+                "custom_action_param": {
+                    "start_x": 100,
+                    "start_y": 150,
+                    "end_x": 100,
+                    "end_y": 450,
+                    "after_swipe_delay": 100
+                }
+            }
+        }
+    },
+    "down_swipe_for_ninja_guide_find_funtion_entry": {
+        "max_hit": 15,
+        "recognition": "TemplateMatch",
+        "roi": [
+            988,
+            81,
+            180,
+            78
+        ],
+        "template": "SharedNode/in_ninja_guide.png",
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NonlinearSwipe",
+                "custom_action_param": {
+                    "start_x": 100,
+                    "start_y": 450,
+                    "end_x": 100,
+                    "end_y": 150,
+                    "after_swipe_delay": 100
+                }
+            }
+        }
+    },
+    "ninja_guide_find_funtion_entry": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            66,
+            219,
+            627
+        ],
+        "expected": [
+            "装备"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_in_funtion_entry",
+            "ninja_guide_find_funtion_entry"
+        ],
+        "focus": "[color:DeepSkyBlue]找到功能入口[/color]"
+    },
+    "ninja_guide_in_funtion_entry": {
+        "recognition": "OCR",
+        "roi": [
+            514,
+            85,
+            212,
+            72
+        ],
+        "expected": [
+            "装备"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_to_funtion_entry",
+            "ninja_guide_to_funtion_entry_not_open"
+        ],
+        "focus": "[color:DeepSkyBlue]选中功能入口[/color]"
+    },
+    "ninja_guide_to_funtion_entry": {
+        "recognition": "OCR",
+        "roi": [
+            852,
+            587,
+            138,
+            51
+        ],
+        "expected": [
+            "即刻"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300
+    },
+    "ninja_guide_to_funtion_entry_not_open": {
+        "recognition": "OCR",
+        "roi": [
+            852,
+            587,
+            138,
+            51
+        ],
+        "expected": [
+            "冒险"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]功能还没解锁[/color]"
+    },
+    "ninja_guide_returning_player": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            195,
+            285
+        ],
+        "expected": [
+            "回流"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_returning_player_to_ninja_guide",
+            "ninja_guide_returning_player_in_ninja_guide"
+        ],
+        "focus": "[color:DeepSkyBlue]进入回归版忍界指引[/color]"
+    },
+    "ninja_guide_returning_player_to_ninja_guide": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            577,
+            205,
+            142
+        ],
+        "template": "SharedNode/ninja_guide_returning_player.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_returning_player_in_ninja_guide",
+            "ninja_guide_returning_player_to_ninja_guide"
+        ]
+    },
+    "ninja_guide_returning_player_in_ninja_guide": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1057,
+            108,
+            222,
+            69
+        ],
+        "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_returning_player_find_funtion_entry",
+            "up_swipe_for_ninja_guide_returning_player_find_funtion_entry_end",
+            "[JumpBack]up_swipe_for_ninja_guide_returning_player_find_funtion_entry"
+        ]
+    },
+    "up_swipe_for_ninja_guide_returning_player_find_funtion_entry_end": {
+        "recognition": "OCR",
+        "roi": [
+            209,
+            88,
+            200,
+            580
+        ],
+        "expected": [
+            "装备",
+            "精英"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_returning_player_find_funtion_entry",
+            "down_swipe_for_ninja_guide_returning_player_find_funtion_entry_end",
+            "[JumpBack]down_swipe_for_ninja_guide_returning_player_find_funtion_entry"
+        ]
+    },
+    "down_swipe_for_ninja_guide_returning_player_find_funtion_entry_end": {
+        "recognition": "OCR",
+        "roi": [
+            209,
+            88,
+            200,
+            580
+        ],
+        "expected": [
+            "忍传",
+            "羁绊"
+        ],
+        "replace": [
+            [
+                "忍",
+                "双"
+            ],
+            [
+                "忍",
+                "丑"
+            ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
+    },
+    "up_swipe_for_ninja_guide_returning_player_find_funtion_entry": {
+        "max_hit": 15,
+        "recognition": "TemplateMatch",
+        "roi": [
+            1057,
+            108,
+            222,
+            69
+        ],
+        "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NonlinearSwipe",
+                "custom_action_param": {
+                    "start_x": 300,
+                    "start_y": 150,
+                    "end_x": 300,
+                    "end_y": 400,
+                    "after_swipe_delay": 100
+                }
+            }
+        }
+    },
+    "down_swipe_for_ninja_guide_returning_player_find_funtion_entry": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1057,
+            108,
+            222,
+            69
+        ],
+        "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NonlinearSwipe",
+                "custom_action_param": {
+                    "start_x": 300,
+                    "start_y": 400,
+                    "end_x": 300,
+                    "end_y": 150,
+                    "after_swipe_delay": 100
+                }
+            }
+        }
+    },
+    "ninja_guide_returning_player_find_funtion_entry": {
+        "recognition": "OCR",
+        "roi": [
+            209,
+            88,
+            200,
+            580
+        ],
+        "expected": [
+            "装备"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_returning_player_in_funtion_entry",
+            "ninja_guide_returning_player_find_funtion_entry"
+        ],
+        "focus": "[color:DeepSkyBlue]找到功能入口[/color]"
+    },
+    "ninja_guide_returning_player_in_funtion_entry": {
+        "recognition": "OCR",
+        "roi": [
+            651,
+            110,
+            187,
+            68
+        ],
+        "expected": [
+            "装备"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_returning_player_to_funtion_entry",
+            "ninja_guide_returning_player_to_funtion_entry_not_open"
+        ],
+        "focus": "[color:DeepSkyBlue]选中功能入口[/color]"
+    },
+    "ninja_guide_returning_player_to_funtion_entry": {
+        "recognition": "OCR",
+        "roi": [
+            916,
+            565,
+            130,
+            63
+        ],
+        "expected": [
+            "即刻"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300
+    },
+    "ninja_guide_returning_player_to_funtion_entry_not_open": {
+        "recognition": "OCR",
+        "roi": [
+            916,
+            565,
+            130,
+            63
+        ],
+        "expected": [
+            "冒险"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]功能还没解锁[/color]"
+    },
+    "game_resource_loading": {
+        "recognition": "OCR",
+        "roi": [
+            491,
+            589,
+            295,
+            130
+        ],
+        "expected": [
+            "资源加载"
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000
+    },
+    "shell_volume_up": {
+        "action": "Shell",
+        "cmd": "input keyevent 24"
+    },
+    "shell_volume_down": {
+        "action": "Shell",
+        "cmd": "input keyevent 25"
+    },
+    "shell_mute_and_unmute": {
+        "action": "Shell",
+        "cmd": "input keyevent 164"
+    },
+    "shell_back": {
+        "action": "Shell",
+        "cmd": "input keyevent 4"
+    },
+    "shell_home": {
+        "action": "Shell",
+        "cmd": "input keyevent 3"
+    },
+    "shell_enter": {
+        "action": "Shell",
+        "cmd": "input keyevent 66"
+    },
+    "secondary_password": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            387,
+            251,
+            241,
+            160
+        ],
+        "template": [
+            "SharedNode/secondary_password.png"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            567,
+            355,
+            54,
+            39
+        ],
+        "post_delay": 300,
+        "next": [
+            "input_secondary_password",
+            "incorrect_secondary_password",
+            "secondary_password"
+        ],
+        "focus": "[color:pink]开始输入二级密码[/color]"
+    },
+    "input_secondary_password": {
+        "recognition": "OCR",
+        "roi": [
+            1205,
+            649,
+            74,
+            59
+        ],
+        "expected": [
+            "确定"
+        ],
+        "pre_delay": 0,
+        "action": "InputText",
+        "input_text": "0",
+        "post_delay": 300,
+        "next": [
+            "incorrect_secondary_password",
+            "confirm_secondary_password"
+        ]
+    },
+    "check_secondary_password": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            651,
+            116,
+            68
+        ],
+        "expected": [
+            "0"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "confirm_secondary_password"
+        ]
+    },
+    "incorrect_secondary_password": {
+        "recognition": "OCR",
+        "roi": [
+            486,
+            290,
+            325,
+            138
+        ],
+        "expected": [
+            "长度不足",
+            "错误"
+        ],
+        "pre_delay": 0,
+        "action": "StopTask",
+        "post_delay": 0,
+        "focus": "[color:tomato]密码有误[/color]"
+    },
+    "confirm_secondary_password": {
+        "max_hit": 5,
+        "recognition": "TemplateMatch",
+        "roi": [
+            540,
+            409,
+            202,
+            111
+        ],
+        "template": "SharedNode/confirm_small_2.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "incorrect_secondary_password",
+            "without_confirm_secondary_password",
+            "confirm_secondary_password"
+        ]
+    },
+    "without_confirm_secondary_password": {
+        "recognition": "OCR",
+        "roi": [
+            562,
+            431,
+            143,
+            64
+        ],
+        "expected": [
+            "确定"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop"
+    },
+    "pay_to_stronger_tip": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            531,
+            397,
+            212,
+            103
+        ],
+        "template": "SharedNode/pay_button.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            795,
+            651,
+            64,
+            54
+        ],
+        "post_delay": 300,
+        "next": [
+            "without_pay_to_stronger_tip",
+            "pay_to_stronger_tip"
+        ],
+        "focus": "[color:pink]提升V等级提示[/color]"
+    },
+    "without_pay_to_stronger_tip": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            531,
+            397,
+            212,
+            103
+        ],
+        "template": "SharedNode/pay_button.png",
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:pink]提升V等级提示[/color]"
     }
-  },
-  "ninja_guide_returning_player_find_funtion_entry": {
-    "recognition": "OCR",
-    "expected": [
-      "装备"
-    ],
-    "roi": [
-      209,
-      88,
-      200,
-      580
-    ],
-    "action": "Click",
-    "next": [
-      "ninja_guide_returning_player_in_funtion_entry",
-      "ninja_guide_returning_player_find_funtion_entry"
-    ],
-    "pre_delay": 0,
-    "post_wait_freezes": 200,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]找到功能入口[/color]"
-  },
-  "ninja_guide_returning_player_in_funtion_entry": {
-    "recognition": "OCR",
-    "expected": [
-      "装备"
-    ],
-    "roi": [
-      651,
-      110,
-      187,
-      68
-    ],
-    "next": [
-      "ninja_guide_returning_player_to_funtion_entry",
-      "ninja_guide_returning_player_to_funtion_entry_not_open"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]选中功能入口[/color]"
-  },
-  "ninja_guide_returning_player_to_funtion_entry": {
-    "recognition": "OCR",
-    "expected": [
-      "即刻"
-    ],
-    "roi": [
-      916,
-      565,
-      130,
-      63
-    ],
-    "action": "Click",
-    "pre_delay": 0,
-    "post_delay": 300
-  },
-  "ninja_guide_returning_player_to_funtion_entry_not_open": {
-    "recognition": "OCR",
-    "expected": [
-      "冒险"
-    ],
-    "roi": [
-      916,
-      565,
-      130,
-      63
-    ],
-    "next": [
-      "back_main_screen_and_stop"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]功能还没解锁[/color]"
-  },
-  "game_resource_loading": {
-    "recognition": "OCR",
-    "expected": [
-      "资源加载"
-    ],
-    "roi": [
-      491,
-      589,
-      295,
-      130
-    ],
-    "pre_delay": 0,
-    "post_delay": 1000
-  },
-  "shell_volume_up": {
-    "action": "Shell",
-    "cmd": "input keyevent 24"
-  },
-  "shell_volume_down": {
-    "action": "Shell",
-    "cmd": "input keyevent 25"
-  },
-  "shell_mute_and_unmute": {
-    "action": "Shell",
-    "cmd": "input keyevent 164"
-  },
-  "shell_back": {
-    "action": "Shell",
-    "cmd": "input keyevent 4"
-  },
-  "shell_home": {
-    "action": "Shell",
-    "cmd": "input keyevent 3"
-  },
-  "shell_enter": {
-    "action": "Shell",
-    "cmd": "input keyevent 66"
-  },
-  "secondary_password": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "SharedNode/secondary_password.png"
-    ],
-    "roi": [
-      387,
-      251,
-      241,
-      160
-    ],
-    "action": "Click",
-    "target": [
-      567,
-      355,
-      54,
-      39
-    ],
-    "next": [
-      "input_secondary_password",
-      "incorrect_secondary_password",
-      "secondary_password"
-    ],
-    "pre_delay": 0,
-    "post_delay": 300,
-    "focus": "[color:pink]开始输入二级密码[/color]"
-  },
-  "input_secondary_password": {
-    "recognition": "OCR",
-    "expected": [
-      "确定"
-    ],
-    "roi": [
-      1205,
-      649,
-      74,
-      59
-    ],
-    "action": "InputText",
-    "input_text": "0",
-    "next": [
-      "incorrect_secondary_password",
-      "confirm_secondary_password"
-    ],
-    "pre_delay": 0,
-    "post_delay": 300
-  },
-  "check_secondary_password": {
-    "recognition": "OCR",
-    "expected": [
-      "0"
-    ],
-    "roi": [
-      0,
-      651,
-      116,
-      68
-    ],
-    "next": [
-      "confirm_secondary_password"
-    ],
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "incorrect_secondary_password": {
-    "recognition": "OCR",
-    "expected": [
-      "长度不足",
-      "错误"
-    ],
-    "roi": [
-      486,
-      290,
-      325,
-      138
-    ],
-    "action": "StopTask",
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:tomato]密码有误[/color]"
-  },
-  "confirm_secondary_password": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/confirm_small_2.png",
-    "roi": [
-      540,
-      409,
-      202,
-      111
-    ],
-    "threshold": 0.9,
-    "max_hit": 5,
-    "action": "Click",
-    "next": [
-      "incorrect_secondary_password",
-      "without_confirm_secondary_password",
-      "confirm_secondary_password"
-    ],
-    "pre_delay": 0,
-    "post_delay": 300
-  },
-  "without_confirm_secondary_password": {
-    "recognition": "OCR",
-    "expected": [
-      "确定"
-    ],
-    "roi": [
-      562,
-      431,
-      143,
-      64
-    ],
-    "inverse": true,
-    "next": "back_main_screen_and_stop",
-    "pre_delay": 0,
-    "post_delay": 0
-  },
-  "pay_to_stronger_tip": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/pay_button.png",
-    "roi": [
-      531,
-      397,
-      212,
-      103
-    ],
-    "action": "Click",
-    "target": [
-      795,
-      651,
-      64,
-      54
-    ],
-    "next": [
-      "without_pay_to_stronger_tip",
-      "pay_to_stronger_tip"
-    ],
-    "pre_delay": 0,
-    "post_delay": 300,
-    "focus": "[color:pink]提升V等级提示[/color]"
-  },
-  "without_pay_to_stronger_tip": {
-    "recognition": "TemplateMatch",
-    "template": "SharedNode/pay_button.png",
-    "roi": [
-      531,
-      397,
-      212,
-      103
-    ],
-    "inverse": true,
-    "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:pink]提升V等级提示[/color]"
-  }
 }
