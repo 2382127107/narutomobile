@@ -144,6 +144,10 @@ python -m agent.main <identifier>#<identifier>替换为uuid如"3be2c931-9c0d-4d6
 
 ---
 
+## 10.开发辅助环境(如格式化工具)
+
+- 参见[tools.md](https://github.com/duorua/narutomobile/edit/main/docs/develop/tools.md)
+
 ## 完成
 
 您已经成功搭建了 Maa Auto Naruto 的开发环境！
