@@ -3306,22 +3306,10 @@
             "description": "请尽量不要滥用这个功能影响其他人游戏体验",
             "cases": [
                 {
-                    "name": "忍道交锋(beta)",
-                    "description": "刷不出来8个S箱",
-                    "option": [
-                        "忍道交锋刷什么"
-                    ],
+                    "name": "送好礼摇铃",
                     "pipeline_override": {
                         "mini_game": {
-                            "next": "nindao_clash"
-                        }
-                    }
-                },
-                {
-                    "name": "聚宝试炼领取奖励",
-                    "pipeline_override": {
-                        "mini_game": {
-                            "next": "treasure_gathering_trial"
+                            "next": "fine_gift_bell"
                         }
                     }
                 },
@@ -3347,17 +3335,6 @@
                     "pipeline_override": {
                         "mini_game": {
                             "next": "red_envelope"
-                        }
-                    }
-                },
-                {
-                    "name": "羁绊追寻",
-                    "option": [
-                        "羁绊追寻自动退出"
-                    ],
-                    "pipeline_override": {
-                        "mini_game": {
-                            "next": "find_bonds"
                         }
                     }
                 },
@@ -3402,6 +3379,37 @@
                     "pipeline_override": {
                         "mini_game": {
                             "next": "craft_gift"
+                        }
+                    }
+                },
+                {
+                    "name": "忍道交锋(beta)",
+                    "description": "刷不出来8个S箱",
+                    "option": [
+                        "忍道交锋刷什么"
+                    ],
+                    "pipeline_override": {
+                        "mini_game": {
+                            "next": "nindao_clash"
+                        }
+                    }
+                },
+                {
+                    "name": "聚宝试炼领取奖励",
+                    "pipeline_override": {
+                        "mini_game": {
+                            "next": "treasure_gathering_trial"
+                        }
+                    }
+                },
+                {
+                    "name": "羁绊追寻",
+                    "option": [
+                        "羁绊追寻自动退出"
+                    ],
+                    "pipeline_override": {
+                        "mini_game": {
+                            "next": "find_bonds"
                         }
                     }
                 }

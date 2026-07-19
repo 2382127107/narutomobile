@@ -1,0 +1,214 @@
+{
+    "fine_gift_bell": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "select_fine_gift_bell",
+            "fine_gift_bell_entry",
+            "[JumpBack]back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入送好礼摇铃任务[/color]"
+    },
+    "fine_gift_bell_entry": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1194,
+            132,
+            50,
+            42
+        ],
+        "template": "Activity/headhunt.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1196,
+            32,
+            53,
+            45
+        ],
+        "post_wait_freezes": 700,
+        "post_delay": 0,
+        "next": [
+            "find_fine_gift_bell",
+            "fine_gift_bell_entry",
+            "[JumpBack]swipes_for_fine_gift_bell",
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]进入活动[/color]"
+    },
+    "find_fine_gift_bell": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            115,
+            212,
+            605
+        ],
+        "expected": "送好礼",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "select_fine_gift_bell",
+            "find_fine_gift_bell"
+        ],
+        "focus": "[color:DeepSkyBlue]找到送好礼摇铃[/color]"
+    },
+    "select_fine_gift_bell": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1000,
+            523,
+            279,
+            145
+        ],
+        "template": "Fine_gift_bell/ring_bell.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "fine_gift_get_voucher",
+            "fine_gift_get_voucher_done"
+        ],
+        "focus": "[color:DeepSkyBlue]选中送好礼摇铃[/color]"
+    },
+    "swipes_for_fine_gift_bell": {
+        "max_hit": 5,
+        "pre_delay": 0,
+        "action": "Swipe",
+        "begin": [
+            80,
+            300,
+            10,
+            10
+        ],
+        "end": [
+            80,
+            100,
+            10,
+            10
+        ],
+        "duration": 200,
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]前往送好礼摇铃[/color]"
+    },
+    "fine_gift_get_voucher": {
+        "recognition": "OCR",
+        "roi": [
+            513,
+            595,
+            71,
+            39
+        ],
+        "expected": [
+            "礼券",
+            "x1"
+        ],
+        "replace": [
+            [
+                "x",
+                "×"
+            ],
+            [
+                "1",
+                "ì"
+            ]
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            530,
+            580,
+            27,
+            21
+        ],
+        "post_delay": 300,
+        "next": [
+            "fine_gift_get_voucher",
+            "fine_gift_get_voucher_done"
+        ]
+    },
+    "fine_gift_get_voucher_done": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            511,
+            590,
+            69,
+            41
+        ],
+        "template": "Fine_gift_bell/voucher_done.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "fine_gift_ring_bell"
+        ]
+    },
+    "fine_gift_ring_bell": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1000,
+            523,
+            279,
+            145
+        ],
+        "template": "Fine_gift_bell/ring_bell.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 200,
+        "next": [
+            "fine_gift_bell_done",
+            "fine_gift_check_ring_bell"
+        ]
+    },
+    "fine_gift_check_ring_bell": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1000,
+            523,
+            279,
+            145
+        ],
+        "template": "Fine_gift_bell/ring_bell.png",
+        "method": 10001,
+        "threshold": 0.95,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 200,
+        "next": "fine_gift_bell_confirm"
+    },
+    "fine_gift_bell_confirm": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            506,
+            523,
+            269,
+            162
+        ],
+        "template": "SharedNode/confirm.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 200,
+        "next": [
+            "fine_gift_bell_confirm",
+            "back_main_screen_and_stop"
+        ]
+    },
+    "fine_gift_bell_done": {
+        "recognition": "OCR",
+        "roi": [
+            467,
+            331,
+            350,
+            57
+        ],
+        "expected": [
+            "不足",
+            "无法"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]礼卷不足[/color]"
+    }
+}
