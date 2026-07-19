@@ -13,6 +13,8 @@
 
 - [Maa Pipeline Support](https://marketplace.visualstudio.com/items?itemName=nekosu.maa-support) | MaaFramework 插件，提供调试、截图、获取ROI、取色等功能
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) | Markdown 语法检查插件
+- [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) | Python 代码 lint 和格式化（极快，替代 Black/Flake8）
+- [Pyright](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pyright) | Python 类型检查（基于 TypeScript 引擎）
 
 ## 代码格式化工具
 
@@ -22,6 +24,7 @@
 
 | 文件类型 | 格式化工具 |
 | --- | --- |
+| Python | [Ruff](https://docs.astral.sh/ruff/) |
 | JSON/Yaml | [prettier](https://prettier.io/) |
 | Markdown | [MarkdownLint](https://github.com/DavidAnson/markdownlint-cli2) |
 
@@ -91,3 +94,9 @@
 
 这里用到了 "prettier-plugin-multiline-arrays" 插件，目的是保持多行数组，不需要则可删去。
 关联文件 `package.json` 以及 `package-lock.json` 。
+
+### js环境常见命令
+
+可以在package.json内查看
+
+
