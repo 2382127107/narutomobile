@@ -1,0 +1,191 @@
+{
+    "champion_gift": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
+            "[JumpBack]back_main_screen_before_task"
+        ],
+        "focus": "[color:DeepSkyBlue]进入冠军送礼任务[/color]"
+    },
+    "go_into_champion_gift": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "IsInNinjaGuide"
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "GoIntoEntryByGuide",
+                "custom_action_param": {
+                    "entry_name": "忍者大赛"
+                }
+            }
+        },
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "champion_gift_to_event_center",
+            "[JumpBack]ninja_guide_to_funtion_retry"
+        ],
+        "focus": "[color:DeepSkyBlue]进入忍者大赛[/color]"
+    },
+    "champion_gift_to_event_center": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1108,
+            86,
+            88,
+            85
+        ],
+        "template": "Champion_gift/event_center.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "champion_gift_to_event",
+            "champion_gift_in_event",
+            "champion_gift_to_event_center"
+        ]
+    },
+    "champion_gift_to_event": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            846,
+            0,
+            88,
+            63
+        ],
+        "template": "Champion_gift/event.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "champion_gift_in_event",
+            "champion_gift_to_event"
+        ]
+    },
+    "champion_gift_in_event": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            846,
+            0,
+            88,
+            63
+        ],
+        "template": "Champion_gift/select_event.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "champion_gift_to_champion_gift",
+            "champion_gift_in_champion_gift"
+        ]
+    },
+    "champion_gift_to_champion_gift": {
+        "recognition": "OCR",
+        "roi": [
+            46,
+            49,
+            106,
+            670
+        ],
+        "expected": [
+            "冠军",
+            "送礼"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 0,
+        "next": [
+            "champion_gift_in_champion_gift",
+            "champion_gift_to_champion_gift"
+        ]
+    },
+    "champion_gift_in_champion_gift": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            46,
+            49,
+            106,
+            670
+        ],
+        "template": "Champion_gift/select_champion_gift.png",
+        "method": 10001,
+        "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "swipe_for_champion_gift"
+        ]
+    },
+    "swipe_for_champion_gift": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            46,
+            49,
+            106,
+            670
+        ],
+        "template": "Champion_gift/select_champion_gift.png",
+        "method": 10001,
+        "threshold": 0.95,
+        "pre_delay": 200,
+        "action": "Swipe",
+        "begin": [
+            1244,
+            621,
+            1,
+            1
+        ],
+        "end": [
+            1246,
+            320,
+            1,
+            1
+        ],
+        "post_delay": 0,
+        "next": [
+            "champion_gift_get",
+            "champion_gift_done"
+        ]
+    },
+    "champion_gift_get": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1138,
+            123,
+            106,
+            535
+        ],
+        "template": "Champion_gift/get.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "champion_gift_get",
+            "champion_gift_done"
+        ]
+    },
+    "champion_gift_done": {
+        "recognition": "OCR",
+        "roi": [
+            1138,
+            123,
+            106,
+            535
+        ],
+        "expected": [
+            "已领取",
+            "未完成"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]冠军送礼完成[/color]"
+    }
+}
