@@ -171,6 +171,7 @@
         ],
         "template": "Fine_gift_bell/ring_bell.png",
         "method": 10001,
+        "inverse": true,
         "threshold": 0.95,
         "pre_delay": 0,
         "action": "Click",
