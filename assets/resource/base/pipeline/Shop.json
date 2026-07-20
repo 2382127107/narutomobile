@@ -1077,7 +1077,7 @@
         ],
         "template": "Shop/ino_Shippuden.png",
         "green_mask": true,
-        "threshold": 0.9,
+        "threshold": 0.75,
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
