@@ -3370,6 +3370,7 @@
             "cases": [
                 {
                     "name": "送好礼摇铃",
+                    "description": "不会选择,只会签到",
                     "pipeline_override": {
                         "mini_game": {
                             "next": "fine_gift_bell"
