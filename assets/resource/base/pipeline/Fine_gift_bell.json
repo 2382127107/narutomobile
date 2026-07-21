@@ -176,7 +176,11 @@
         "pre_delay": 0,
         "action": "Click",
         "post_delay": 200,
-        "next": "fine_gift_bell_confirm"
+        "next": [
+            "fine_gift_bell_confirm",
+            "fine_gift_check_ring_bell",
+            "fine_gift_bell_done"
+        ]
     },
     "fine_gift_bell_confirm": {
         "recognition": "TemplateMatch",
@@ -192,6 +196,7 @@
         "post_delay": 200,
         "next": [
             "fine_gift_bell_confirm",
+            "fine_gift_bell_done",
             "back_main_screen_and_stop"
         ]
     },
