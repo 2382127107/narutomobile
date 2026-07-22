@@ -1618,7 +1618,7 @@
                         "ninja_guide_to_funtion_entry": {
                             "next": [
                                 "champion_gift_to_event_center",
-                                "[JumpBack]ninja_guide_to_funtion_retry"
+                                "ninja_guide_to_funtion_entry"
                             ]
                         },
                         "ninja_guide_returning_player_find_funtion_entry": {

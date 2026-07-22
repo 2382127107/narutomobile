@@ -174,7 +174,6 @@
         "threshold": 0.95,
         "inverse": true,
         "pre_delay": 0,
-        "action": "Click",
         "post_delay": 200,
         "next": [
             "fine_gift_bell_confirm",
