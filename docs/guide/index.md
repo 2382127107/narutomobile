@@ -17,6 +17,7 @@ MaaAutoNaruto 是一款基于[MaaFramework](https://maafw.xyz)开发的`火影�
 > 如果遇到问题，请先仔细阅读[常见问题解决方案](./faq)。
 
 ## 主要功能
+
 ### 日常
 
 - [x] 启动游戏

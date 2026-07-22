@@ -97,7 +97,7 @@
     A: 试试[Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&os=windows&arch=x64&channel=stable&source=MaaAutoNarutogh-doc)高速下载服务或自行前往GitHub仓库手动下载。
 
 3. Q: 无法启动火影app或者启动后在桌面乱点?
-    
+
     A: 在模拟器设置里把后台保活关掉（也可能叫应用保活）。
 
 4. Q: 资源加载失败，Agent启动失败 ？
