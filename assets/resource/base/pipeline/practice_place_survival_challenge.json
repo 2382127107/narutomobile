@@ -49,11 +49,27 @@
         ],
         "post_delay": 0,
         "next": [
-            "survival_challenge_above_kage",
-            "survival_challenge_yesterday_award",
+            "survival_challenge_in_survival_challenge",
             "survival_challenge_ac_entry_undone"
         ],
         "focus": "[color:DeepSkyBlue]进入生存挑战[/color]"
+    },
+    "survival_challenge_in_survival_challenge": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            451,
+            626,
+            108,
+            19
+        ],
+        "template": "Practice_place/survival_challenge_yesterday_award.png",
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "survival_challenge_above_kage",
+            "survival_challenge_yesterday_award"
+        ]
     },
     "survival_challenge_above_kage": {
         "recognition": "TemplateMatch",
