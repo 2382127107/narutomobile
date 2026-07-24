@@ -260,7 +260,10 @@
             174,
             523
         ],
-        "template": "Headhunt/top_secret_treasure_box_undone.png",
+        "template": [
+            "Headhunt/top_secret_treasure_box_undone.png",
+            "Headhunt/top_secret_treasure_solo_box_undone.png"
+        ],
         "threshold": 0.85,
         "pre_delay": 0,
         "action": "Click",
