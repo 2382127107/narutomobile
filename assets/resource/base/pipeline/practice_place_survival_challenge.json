@@ -79,7 +79,9 @@
             385,
             227
         ],
-        "template": "Weekly_win/battle_tips.png",
+        "template": "SharedNode/tip.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "survival_challenge_confirm_above_kage"
         ],
@@ -96,7 +98,9 @@
         "expected": [
             "确定"
         ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "survival_challenge_without_confirm_above_kage",
             "survival_challenge_confirm_above_kage"
