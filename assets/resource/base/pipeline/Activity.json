@@ -218,15 +218,15 @@
     },
     "mouthly_retroactive_signature": {
         "recognition": "TemplateMatch",
-        "template": "Activity/retroactive_sign.png",
         "roi": [
             1101,
             530,
             172,
             91
         ],
-        "action": "Click",
+        "template": "Activity/retroactive_sign.png",
         "pre_delay": 0,
+        "action": "Click",
         "post_delay": 0
     },
     "mouthly_signature_title_done": {
