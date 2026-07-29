@@ -48,8 +48,44 @@
             "外卖"
         ],
         "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "activity_check_in_ramen",
+            "activity_to_ramen"
+        ]
+    },
+    "activity_to_ramen": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            261,
+            288
+        ],
+        "expected": [
+            "一乐",
+            "外卖"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
         "post_wait_freezes": 300,
         "post_delay": 0,
+        "next": [
+            "activity_check_in_ramen",
+            "activity_to_ramen"
+        ]
+    },
+    "activity_check_in_ramen": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1061,
+            488,
+            218,
+            143
+        ],
+        "template": "Activity/ramen_interface.png",
+        "pre_delay": 0,
+        "post_delay": 200,
         "next": [
             "check_no_energy",
             "[JumpBack]get_ramen"
