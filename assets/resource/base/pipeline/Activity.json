@@ -27,8 +27,8 @@
             53,
             45
         ],
-        "post_wait_freezes": 200,
-        "post_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 100,
         "next": [
             "activity_check_in_activity",
             "activity_entry"
@@ -141,6 +141,7 @@
         "post_delay": 0,
         "next": [
             "[JumpBack]mouthly_signature",
+            "[JumpBack]mouthly_retroactive_signature",
             "mouthly_signature_done",
             "mouthly_sign_tab"
         ]
@@ -170,8 +171,7 @@
         ],
         "expected": [
             "已签到",
-            "活跃度",
-            "补签"
+            "活跃度"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -179,6 +179,19 @@
             "check_mouthly_signature_title",
             "mouthly_signature_title_done"
         ]
+    },
+    "mouthly_retroactive_signature": {
+        "recognition": "TemplateMatch",
+        "template": "Activity/retroactive_sign.png",
+        "roi": [
+            1101,
+            530,
+            172,
+            91
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "mouthly_signature_title_done": {
         "recognition": "OCR",
