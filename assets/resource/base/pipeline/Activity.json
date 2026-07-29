@@ -243,8 +243,25 @@
         "next": [
             "click_privilege_store",
             "[JumpBack]click_normal_store",
-            "store_enter"
+            "store_enter",
+            "[JumpBack]swipe_for_find_shop",
+            "shop_find_shop_parent_shop_end"
         ]
+    },
+    "store_find_shop_end": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            19,
+            137,
+            187,
+            496
+        ],
+        "template": "Shop/play_methon_parent_shop.png",
+        "method": 10001,
+        "threshold": 0.95,
+        "next": "shop_done",
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "click_normal_store": {
         "recognition": "OCR",
