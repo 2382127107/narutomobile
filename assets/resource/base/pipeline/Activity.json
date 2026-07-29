@@ -78,10 +78,10 @@
     "activity_check_in_ramen": {
         "recognition": "TemplateMatch",
         "roi": [
-            1061,
-            488,
-            218,
-            143
+            368,
+            41,
+            180,
+            153
         ],
         "template": "Activity/ramen_interface.png",
         "pre_delay": 0,
