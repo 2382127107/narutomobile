@@ -259,9 +259,9 @@
         "template": "Shop/play_methon_parent_shop.png",
         "method": 10001,
         "threshold": 0.95,
-        "next": "shop_done",
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "next": "shop_done"
     },
     "click_normal_store": {
         "recognition": "OCR",
