@@ -137,7 +137,10 @@
             69,
             41
         ],
-        "template": "Fine_gift_bell/voucher_done.png",
+        "template": [
+            "Fine_gift_bell/voucher_done.png",
+            "Fine_gift_bell/voucher_done_1.png"
+        ],
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
