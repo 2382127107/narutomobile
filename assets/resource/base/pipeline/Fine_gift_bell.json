@@ -228,13 +228,13 @@
     },
     "fine_gift_bell_all": {
         "recognition": "OCR",
-        "expected": "领完",
         "roi": [
             1086,
             564,
             135,
             56
         ],
+        "expected": "领完",
         "pre_delay": 0,
         "post_delay": 0,
         "next": "back_main_screen_and_stop",
