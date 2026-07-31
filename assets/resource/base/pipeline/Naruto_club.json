@@ -598,7 +598,8 @@
         "post_wait_freezes": 1000,
         "next": [
             "confirm_naruto_club_sign",
-            "naruto_club_sign"
+            "naruto_club_sign",
+            "sign_done"
         ],
         "focus": "[color:DeepSkyBlue]进行签到[/color]"
     },
@@ -618,7 +619,8 @@
         "post_wait_freezes": 500,
         "next": [
             "roger_naruto_club_sign",
-            "confirm_naruto_club_sign"
+            "confirm_naruto_club_sign",
+            "sign_done"
         ],
         "focus": "[color:DeepSkyBlue]确认签到[/color]"
     },
@@ -639,7 +641,8 @@
             "feed_pig",
             "without_feed_pig",
             "roger_naruto_club_sign",
-            "check_club_mission_done"
+            "check_club_mission_done",
+            "sign_done"
         ],
         "focus": "[color:DeepSkyBlue]收到签到提醒[/color]"
     },
